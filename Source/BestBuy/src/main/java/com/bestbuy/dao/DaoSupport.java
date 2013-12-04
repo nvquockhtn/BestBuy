@@ -12,21 +12,23 @@ import org.springframework.transaction.annotation.Transactional;
  * @author VanQuoc-CNTT
  */
 public abstract class DaoSupport {
+
     protected SessionFactory sessionFactory;
 
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
-	@Transactional
-	public void add(Object obj) {
-		sessionFactory.getCurrentSession().saveOrUpdate(obj);
-	}
+    @Transactional
+    public void add(Object obj) {
+        sessionFactory.getCurrentSession().saveOrUpdate(obj);
+    }
+    
 
-	/**
-	 * 
-	 */
-	public DaoSupport() {
-		// TODO Auto-generated constructor stub
-	}
+    /**
+     *
+     */
+    public DaoSupport() {
+        // TODO Auto-generated constructor stub
+    }
 }

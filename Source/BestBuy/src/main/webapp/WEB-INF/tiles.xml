@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+	       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+    <definition name="Page" template="/WEB-INF/jsp/template/Template.jsp">
+        <put-attribute name="title" value="Page" />
+        <put-attribute name="header" value="/WEB-INF/jsp/page/Header.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/jsp/page/Menu.jsp" />
+        <put-attribute name="introduction" value="/WEB-INF/jsp/page/Introduction.jsp" />
+        <put-attribute name="free_shipping" value="/WEB-INF/jsp/page/FreeShipping.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/page/Footer.jsp" />
+    </definition>
+    <definition name="Index" extends="Page">
+        <put-attribute name="title" value="Home" />
+        <put-attribute name="slider" value="/WEB-INF/jsp/page/Slider.jsp"/>
+        <put-attribute name="content_main" value="/WEB-INF/jsp/page/IndexContent.jsp"/>
+    </definition>    
+    <definition name="ShoppingCart" extends="Page">
+        <put-attribute name="title" value="Shop Cart" />
+        <put-attribute name="slider" value="/WEB-INF/jsp/page/Slider.jsp"/>
+        <put-attribute name="content_main" value="/WEB-INF/jsp/page/ShoppingCartContent.jsp"/>
+    </definition>    
+</tiles-definitions>

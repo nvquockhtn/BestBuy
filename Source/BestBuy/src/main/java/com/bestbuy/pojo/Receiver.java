@@ -1,4 +1,4 @@
-package com.itus.pojo;
+package com.bestbuy.pojo;
 // Generated Dec 4, 2013 3:47:16 PM by Hibernate Tools 3.2.1.GA
 
 

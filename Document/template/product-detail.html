@@ -1,0 +1,476 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Chi tiết sản phẩm</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="css/style.css" type="text/css" rel="stylesheet" media="screen" /> <!-- General style -->
+<link href="css/prettyPhoto.css" type="text/css" rel="stylesheet" media="screen"><!-- prettyPhoto -->
+<link href="css/tipsy.css" type="text/css" rel="stylesheet" media="screen"><!--tooltip-->
+<link href="css/jquery.jqzoom.css" type="text/css" rel="stylesheet" media="screen"><!--zoom-->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Arvo:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+
+<script type="text/javascript" src="js/css3-mediaqueries.js"></script><!--mediaqueries-->
+<script type="text/javascript" src="js/modernizr-1.7.min.js"></script><!--modernizr-->
+<script type="text/javascript" src="js/jquery.tipsy.js"></script><!--tooltip-->
+<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script><!-- prettyPhoto -->
+<script type="text/javascript" src="js/jquery-hover-effect.js"></script><!--Image Hover Effect-->
+<script type='text/javascript' src='js/jquery.hoverIntent.minified.js'></script><!--menu-->
+<script type='text/javascript' src='js/jquery.dcmegamenu.1.3.3.js'></script><!--menu-->
+<script type="text/javascript" src="js/jquery.quovolver.js"></script><!--blockquote-->
+<script type='text/javascript' src="js/jquery.jqzoom-core.js"></script><!--image zoom-->
+<script type="text/javascript" src="js/organictabs.jquery.js"></script><!--tabs-->
+<script type="text/javascript" src="js/custom.js"></script><!--custom-->
+<!--MENU-->
+<script type="text/javascript">
+var totalcomment = 2;
+$(document).ready(function($){
+	$('#mega-menu-3').dcMegaMenu({
+		rowItems: '2',
+		speed: 'fast',
+		effect: 'fade'
+	});
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.jqzoom').jqzoom({
+            zoomType: 'innerzoom',
+            preloadImages: false,
+			zoomWidth: 300,
+            alwaysOn:false
+        });
+});
+</script>
+<script type="text/javascript">
+$(function() {        
+	$("#tab").organicTabs({
+  		"speed": 200
+	});    
+});
+
+function getCurrentTime()
+{ 
+	var date = new Date();  
+	var hours = date.getHours();
+	var minutes = date.getMinutes();
+	if (minutes < 10)
+	{
+		minutes = "0" + minutes;
+	}  
+	var myDate = "Vào lúc: " + date.getDate() + "-" + (date.getMonth() + 1) + "-" + "-" + date.getFullYear() + ", " + (hours%12) + ":" + minutes; 
+	if(hours > 12)
+	{
+		myDate = myDate + " PM";
+	}else
+	{
+		myDate = myDate + " AM";
+	}
+	return myDate;
+}
+
+function addComment()
+{
+	var strName = $('#name').val();
+	var strDate = getCurrentTime();
+	var strComment = $('#message').val();
+	
+	if(strName=='Name' || strComment=='Nội dung')
+		return true;
+	
+	strComment = strComment.replace(/\n/g,"<br/>"); 
+	var strHTMLComment = '<div class="dvision">\
+                            <div class="feedback">\
+                                <img src="images/user-2.jpg" alt="">\
+                                    <div>\
+                                        <h4><a href="#">{0}</a></h4>\
+                                        <span><a href="#">{1}</a></span>\
+                                        <p>{2}</p>\
+                                        <span class="reply"><a href="#">Trả lời</a></span>\
+                                    </div>\
+                            </div>\
+                        </div>';
+	strHTMLComment = strHTMLComment.replace('{0}', strName);
+	strHTMLComment = strHTMLComment.replace('{1}', strDate);
+	strHTMLComment = strHTMLComment.replace('{2}', strComment);
+	$(strHTMLComment).insertAfter('#comment_here');
+	
+	totalcomment += 1;
+	document.getElementById("total_comment").innerHTML = totalcomment + " Bình luận";  
+	
+	$('#name').val('Name');
+	$('#message').val('Nội dung');
+}
+</script>
+</head>
+
+<body>
+	<div id="page_wrap">
+    	<header>
+        	<div id="top">
+            	<span>Chào bạn đến với Rồng Đỏ Computer</span>
+                <div>
+                	<p>Ngôn ngữ:
+                	<label>
+                        <select>
+                            <option selected>Tiếng việt </option>
+                            <option>German</option>
+                            <option>English</option>
+                        </select>
+                    </label>​
+                    </p>
+                    <p>Tiền tệ:
+                	<label>
+                        <select>
+                            <option selected>VNĐ</option>
+                            <option>US Dollar - USD </option>
+                            <option>Euro - EUR</option>
+                            <option>British Pound - GBP</option>
+                        </select>
+                    </label>​
+                    </p>
+                </div>
+            </div><!--end:top-->
+             <div id="top2">
+            	<ul class="myaccountmenu"> 
+                    <li class="login"><a href="#login-box" class="last login-window">Đăng nhập</a></li>
+                </ul>
+                <div id="login-box" class="login-popup">
+                <a href="#" class="close"><img src="images/process-stop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+                  <form method="post" class="signin" action="#">
+                        <fieldset class="textbox">
+                        <label class="username">
+                        <span>Tên đăng nhập</span>
+                        <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+                        </label>
+                        <label class="password">
+                        <span>Mật khẩu</span>
+                        <input id="password" name="password" value="" type="password" placeholder="Password">
+                        </label>
+                        <button class="submit button" type="button">Đăng nhập</button>
+                        <p>
+                        <a class="forgot" href="#">Quên mật khẩu?</a> / <a class="register" href="register.html">Tạo tài khoản</a>
+                        </p>        
+                        </fieldset>
+                  </form>
+       			</div>
+                
+            </div><!--end:top2-->
+            <div id="top3">
+            	<h1 class="logo"><a href="index.html"></a></h1>
+                <form action="#" method="post" class="search_bar">
+                    <fieldset>
+					  <select class="search">
+                        <option>Nhập từ khóa...</option>
+                        <option>Laptop</option>
+                        <option>Máy bàn</option>
+                        <option>Điện thoại</option> 
+                      </select>
+                      <!--<input type="text" name="search" class="search" value="Nhập từ khóa..." onBlur="if (this.value == ''){this.value = 'Nhập từ khóa...'; }" onFocus="if (this.value== 'Nhập từ khóa...') {this.value = ''; }" />-->
+                      <input type="submit" name="submit" value="Search" class="submit" onclick="" />
+                    </fieldset>
+                </form>
+            </div><!--end:top3-->
+        </header>
+        <div id="container">
+        	<nav>  
+                <ul id="mega-menu-3" class="mega-menu">
+                     <li><a href="index.html">Trang chủ</a></li> 
+				<li><a href="list_products.html">Sản phẩm</a>
+					<ul>
+						<li><a href="list_products.html">Laptop</a>
+							<ul>
+								<li><a href="list_products.html">Latop Apple</a></li>
+								<li><a href="list_products.html">Laptop Asus</a></li>
+								<li><a href="list_products.html">Laptop Dell</a></li>
+								<li><a href="list_products.html">Laptop Compaq-HP</a></li>
+								<li><a href="list_products.html">Laptop Acer</a></li>
+							</ul>
+						</li>
+						<li><a href="list_products.html">Computer</a>
+							<ul>
+								<li><a href="list_products.html">PC Acer</a></li>
+								<li><a href="list_products.html">PC Intel</a></li>
+								<li><a href="list_products.html">PC HP</a></li> 
+							</ul>
+						</li> 
+						<li><a href="list_products.html">Mobile</a>
+							<ul>
+								<li><a href="list_products.html">SamSung</a></li>
+								<li><a href="list_products.html">HTC</a></li> 
+							</ul>
+						</li>  
+					</ul>
+				</li> 
+				<li><a href="contact.html">Liên hệ</a></li>
+                </ul>
+            </nav><!--end:grey-->
+            <div class="content-wrap">
+            	<div style="clear:both; display:block; height:20px"></div>
+                <div id="intro">
+                	<div class="one-fourth serv first">
+                    	<img src="images/service-1.png" alt="">
+                        <h3><a href="#">Giao hàng</a></h3>
+                        <span>Tận nơi</span>
+                    </div>
+                    <div class="one-fourth serv">
+                    	<img src="images/service-2.png" alt="">
+                        <h3><a href="#">Hoàn trả</a></h3>
+                        <span>30 ngày</span>
+                    </div>
+                    <div class="one-fourth serv">
+                    	<img src="images/service-3.png" alt="">
+                        <h3><a href="#">ĐT liên hệ</a></h3>
+                        <span>(+84) 123 456 7890</span>
+                    </div>
+                    <div class="one-fourth serv">
+                    	<img src="images/service-4.png" alt="">
+                        <h3><a href="#">Bảo mật</a></h3>
+                        <span>Thanh toán</span>
+                    </div>
+                </div>
+                <div class="container-2">
+                	<div style="clear:both; display:block; height:40px"></div>
+                	<div class="prod">
+                        <div class="clearfix"> 
+                        <a href="images/new-products/xps_dell.jpg" class="jqzoom" rel='gal1'  title="triumph" > <img src="images/new-products/xps_dell_small.jpg" style="border: 4px solid #e5e5e5;"> </a>
+                        </div>
+                         <div class="clearfix" >
+                            <ul id="thumblist" class="clearfix" >
+                              <li>
+                              	<a class="zoomThumbActive"  rel="{gallery: 'gal1', smallimage: './images/new-products/xps_dell_small.jpg',largeimage: './images/new-products/xps_dell.jpg'}"><img src='images/new-products/xps_dell_small.jpg'></a>
+                              </li>
+                              <li><a rel="{gallery: 'gal1', smallimage: './images/new-products/img-1366183573-1_small.jpg',largeimage: './images/new-products/img-1366183573-1.jpg'}"><img src='images/new-products/img-1366183573-1_small.jpg'></a></li>
+                    
+                            </ul>
+                        </div>
+                    </div><!--end:prod-->
+                    <div class="prod-detail">
+                    	<h2>XPS 18</h2>
+                        <span class="price">18.000.000vnđ</span>  
+                         <div id="tab"> 
+                            <div class="list-wrap"> 
+                                <ul id="specs">
+                                    <li><span class="title_detail">Bộ xử lý</span><br/></li>
+                                    <li><span>Hãng CPU:</span> Intel</li>
+                                    <li><span>Loại CPU:</span> Core i5</li>
+                                    <li><span>Tốc độ:</span> 2.5GHhz</li>
+                                    <li><span>Dung lượng RAM:</span>4G</li>
+                                    <li><span class="title_detail">HDD</span><br/></li>
+                                    <li><span>Loại ổ đĩa:</span><br/></li>
+                                    <li><span>Dung lượng ổ đĩa:</span>500G</li>
+                                    <li><span class="title_detail">Màn hình</span><br/></li>
+                                    <li><span>Cảm ứng:</span>Không</li>
+                                    <li><span>Kích thước MH(inch):</span>14 HD Led</li>
+                                    <li><span class="title_detail">Đồ họa</span><br/></li>
+                                    <li><span>Chipset đồ họa:</span>Intel HD Graphics</li>
+                                    <li><span class="title_detail">CD_DVD(RW) ROM</span><br/></li>
+                                    <li><span>Loại đĩa quang:</span>DVDRW</li>
+                                </ul> 
+                            </div>
+                        </div>
+                    </div><!--prodetail-->
+                    <div class="relatedprod">
+                    	<h4>Sản phẩm liên quan</h4>
+                    	<div class="entry first">
+                            <div class="da-thumbs">
+                                <div class="div-related">
+                                    <img src="images/like_products/iphone5s_small.jpg" alt="">
+                                    <article class="da-animate da-slideFromRight" style="display: block;">
+                                    <p>
+                                    <a href="product-detail.html" class="link tip" title="Xem chi tiết"></a>&nbsp; 
+									<a href="#" class="cart tip" title="Thêm vào giỏ hàng"></a>&nbsp;&nbsp;
+									<a href="images/like_products/iphone5s.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Phóng to" ></a></p>
+                                	</article>
+                            	</div>
+                            </div>
+                         <h3><a href="product-detail.html">Iphone 5s</a></h3>
+                         <span>19.000.000vnđ</span>
+                         </div>
+                         <div class="entry">
+                            <div class="da-thumbs">
+                                <div class="div-related">
+									<img src="images/new-products/xps_dell_small.jpg" alt="" />  
+										 <article class="da-animate da-slideFromRight" style="display: block;">  
+											<p> 
+											<a href="product-detail.html" class="link tip" title="Xem chi tiết"></a>&nbsp; 
+											 <a href="#" class="cart tip" title="Thêm vào giỏ hàng"></a>&nbsp;&nbsp;
+											<a href="images/new-products/xps_dell.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Phóng to" ></a></p>
+										</article> 
+                            	</div>
+                            </div>
+                            <h3><a href="product-detail.html">XPS 18</a></h3>
+                         	<span>18.000.000vnđ</span>
+                         </div>
+                         <div class="entry">
+                            <div class="da-thumbs">
+                                <div class="div-related">
+									<img src="images/like_products/motorolax_small.png" alt="" />  
+										<article class="da-animate da-slideFromRight" style="display: block;">  
+										<p> 
+										<a href="product-detail.html" class="link tip" title="Xem chi tiết"></a>&nbsp; 
+										<a href="#" class="cart tip" title="Thêm vào giỏ hàng"></a>&nbsp;&nbsp;
+										<a href="images/like_products/motorolax.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Phóng to" ></a></p>
+										</article> 
+                            	</div>
+                            </div>
+                            <h3><a href="product-detail.html">Motorola X</a></h3>
+                         	<span>8.000.000vnđ</span>
+                         </div>
+                          <div class="entry">
+                            <div class="da-thumbs">
+                                <div class="div-related">
+									<img src="images/like_products/galaxys4_small.png" alt="" />  
+										<article class="da-animate da-slideFromRight" style="display: block;">  
+										<p> 
+										<a href="product-detail.html" class="link tip" title="Xem chi tiết"></a>&nbsp; 
+										<a href="#" class="cart tip" title="Thêm vào giỏ hàng"></a>&nbsp;&nbsp;
+										<a href="images/like_products/galaxys4.png" rel="prettyPhoto[gallery1]" class="zoom tip" title="Phóng to" ></a></p>
+										</article> 
+                            	</div>
+                            </div>
+                            <h3><a href="product-detail.html">Galaxy S4</a></h3>
+                         	<span>5.500.000vnđ</span>
+                         </div>
+                    </div>
+                </div><!--end:container-2-->
+                <div class="container-2">
+                	<div style="clear:both; display:block; height:40px"></div>
+					 <div class="feedback-wrap">
+                        <h3 id="total_comment">2 Bình luận</h3><br>
+							<div id = "comment_here"></div> 
+                            <div class="dvision">
+                                <div class="feedback">
+                                    <img src="images/user-3.jpg" alt="">
+                                    <div>
+                                        <h4><a href="#">Admin</a></h4>
+                                        <span><a href="#">Vào lúc: 17-4-2013, 9:10 AM</a></span>
+                                        <p>Đúng đó, máy xài bền lắm.</p>
+                                        <span class="reply"><a href="#">Trả lời</a></span>
+                                    </div>
+                                </div>
+                            </div> 
+							<div class="dvision">
+                                <div class="feedback">
+                                    <img src="images/user-1.jpg" alt="">
+                                    <div>
+                                        <h4><a href="#">Thanh Quang</a></h4>
+                                        <span><a href="#">Vào lúc: 17-4-2013, 9:00 AM</a></span>
+                                        <p>Giá cả cũng hợp lý. Tuyệt!!!</p>
+                                        <span class="reply"><a href="#">Trả lời</a></span>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div><!--end:feedback-wrap-->
+						
+						 <div class="commentf">
+                            <h3>Bình luận</h3>
+                            <form id="commentform" action="#" method="post">
+                                <fieldset>
+                                <input type="text" name="name" id="name" size="30" value="Name" class="input" onfocus="if(this.value=='Name') this.value='';" onblur="if(this.value=='') this.value='Name';"/> 
+                                <br style="clear:both" /> 
+                                <textarea cols="25" rows="5" name="message" id="message" class="textarea" onfocus="if(this.value=='Nội dung') this.value='';" onblur="if(this.value=='') this.value='Nội dung';">Nội dung</textarea>
+                                <br style="clear:both" />
+                                <input type="button" id="btnComment" name="submit" class="button"  value="Gửi" onclick="addComment()"/>
+                                </fieldset>
+                            </form>
+                        </div><!--end:comment--> 
+					<div style="clear:both; display:block; height:40px"></div>
+                     <div class="ship">
+                    	<a href="#"><img src="images/service-1.png" alt=""></a>
+                        <h4><a href="#">Giao hàng miễn phí</a></h4>
+                        <span>Khi thanh toán trên 1.000.000 vnđ</span>
+                    </div>
+                    <div class="subs">
+                    	<h4>Đăng kí để nhận tin tức</h4>
+                    	<form action="#" method="post" class="subscribes">
+                            <fieldset>
+                              <input type="text" name="subscribe" class="subscribe" value="Đóng góp ý kiến" onBlur="if (this.value == ''){this.value = 'Đóng góp ý kiến'; }" onFocus="if (this.value== 'Đóng góp ý kiến') {this.value = ''; }" />
+                              <input type="submit" name="submit" value="Gửi" class="submit" />
+                            </fieldset>
+                        </form>
+                    </div>
+                </div><!--end:container-2-->
+            </div><!--end:content-wrap-->
+             <footer>
+            	<div class="content-wrap">
+                	<div class="one-fourth first">
+                    	<h4>Thông tin</h4>
+                        <ul>
+                        	<li><a href="#">Giới thiệu</a></li> 
+                            <li><a href="#">Chính sách bảo mật</a></li>
+                            <li><a href="#">Điều khoản</a></li>
+                        </ul>
+                    </div>
+                    <div class="one-fourth">
+                    	<h4>Chăm sóc khách hàng</h4>
+                        <ul>
+                        	<li><a href="contact.html">Liên hệ</a></li>
+                            <li><a href="#">Hoàn trả</a></li>
+                            <li><a href="#">Bảo mật</a></li>
+                        </ul>
+                    </div>
+                    <div class="one-fourth">
+                    	<h4>Mở rộng</h4>
+                        <ul>
+                        	<li><a href="#">Thương hiệu</a></li>
+                            <li><a href="#">Phiếu quà tặng</a></li>
+                            <li><a href="#">Chi nhánh</a></li> 
+                        </ul>
+                    </div>
+                    <div class="one-fourth">
+                    	<h4>Tài khoản</h4>
+                        <ul>
+                        	<li><a href="#">Thông tin tài khoản</a></li>
+                            <li><a href="#">Lịch sử đặt hàng</a></li>
+                            <li><a href="#">Sản phẩm yêu thích</a></li> 
+                        </ul>
+                    </div>
+                </div>
+                <div class="content-wrap"> 
+                    <p style="clear:both; display:block;">&copy; 2013 <a href="index.html">Rồng Đỏ Computer</a>, All Rights Reserved. Designed by: <a href="#">Võ Thanh Quang</a></p>
+                   
+                </div>
+            </footer>
+        </div><!--end:container-->
+    </div><!--end:page_wrap-->
+	<script type="text/javascript">
+	var $container = $('#works-container');
+	//------ISOTOPE------------- 
+	$container.isotope({
+ 	itemSelector : '.element'
+	});
+	var $optionSets = $('#options .option-set'),
+          $optionLinks = $optionSets.find('a');
+
+      $optionLinks.click(function(){
+        var $this = $(this);
+        // don't proceed if already selected
+        if ( $this.hasClass('selected') ) {
+          return false;
+        }
+        var $optionSet = $this.parents('.option-set');
+        $optionSet.find('.selected').removeClass('selected');
+        $this.addClass('selected');
+  
+        // make option object dynamically, i.e. { filter: '.my-filter-class' }
+        var options = {},
+            key = $optionSet.attr('data-option-key'),
+            value = $this.attr('data-option-value');
+        // parse 'false' as false boolean
+        value = value === 'false' ? false : value;
+        options[ key ] = value;
+        if ( key === 'layoutMode' && typeof changeLayoutMode === 'function' ) {
+          // changes in layout modes need extra logic
+          changeLayoutMode( $this, options )
+        } else {
+          // otherwise, apply new options
+          $container.isotope( options );
+        }
+        
+        return false;
+      });	
+</script>    
+</body>
+</html>

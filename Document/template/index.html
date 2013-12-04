@@ -1,0 +1,436 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Rồng Đỏ Computer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="css/style.css" type="text/css" rel="stylesheet" media="screen" /> <!-- General style -->
+<link href="css/prettyPhoto.css" type="text/css" rel="stylesheet" media="screen"><!-- prettyPhoto -->
+<link href="css/tipsy.css" type="text/css" rel="stylesheet" media="screen"><!--tooltip-->
+<link href="css/camera.css" type="text/css" rel="stylesheet" media="screen"><!--camera-->
+<link href="css/jcarousel.css" type="text/css" rel="stylesheet" media="screen" /> <!-- list_work -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Arvo:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+
+<script type="text/javascript" src="js/css3-mediaqueries.js"></script><!--mediaqueries-->
+<script type="text/javascript" src="js/modernizr-1.7.min.js"></script><!--modernizr-->
+<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script><!-- prettyPhoto -->
+<script type="text/javascript" src="js/jquery.tipsy.js"></script><!--tooltip-->
+<script type='text/javascript' src='js/jquery.easing.1.3.js'></script> <!--camera slider-->
+<script type='text/javascript' src='js/camera.min.js'></script> <!--camera slider-->
+<script type="text/javascript" src="js/jquery.jcarousel.min.js"> </script> <!-- list_work -->
+<script type="text/javascript" src="js/jquery-hover-effect.js"></script><!--Image Hover Effect-->
+<script type='text/javascript' src='js/jquery.hoverIntent.minified.js'></script><!--menu-->
+<script type='text/javascript' src='js/jquery.dcmegamenu.1.3.3.js'></script><!--menu-->
+<script type='text/javascript' src="js/jquery.tweet.js"></script><!--twitter plugin-->
+<script type="text/javascript" src="js/jquery.quovolver.js"></script><!--blockquote-->
+<script type="text/javascript" src="js/custom.js"></script><!--custom-->
+<!--MENU-->
+<script type="text/javascript">
+$(document).ready(function($){
+	$('#mega-menu-3').dcMegaMenu({
+		rowItems: '2',
+		speed: 'fast',
+		effect: 'fade'
+	});
+});
+
+function beginSearch()
+{
+	
+}
+
+</script>
+</head>
+
+<body>
+	<div id="page_wrap">
+    	<header>
+        	<div id="top">
+            	<span>Chào bạn đến với Rồng Đỏ Computer</span>
+                <div>
+                	<p>Ngôn ngữ:
+                	<label>
+                        <select>
+                            <option selected>Tiếng việt </option>
+                            <option>German</option>
+                            <option>English</option>
+                        </select>
+                    </label>​
+                    </p>
+                    <p>Tiền tệ:
+                	<label>
+                        <select>
+                            <option selected>VNĐ</option>
+                            <option>US Dollar - USD </option>
+                            <option>Euro - EUR</option>
+                            <option>British Pound - GBP</option>
+                        </select>
+                    </label>​
+                    </p>
+                </div>
+            </div><!--end:top-->
+            <div id="top2">
+            	<ul class="myaccountmenu"> 
+                    <li class="login"><a href="#login-box" class="last login-window">Đăng nhập</a></li>
+                </ul>
+                <div id="login-box" class="login-popup">
+                <a href="#" class="close"><img src="images/process-stop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+                  <form method="post" class="signin" action="#">
+                        <fieldset class="textbox">
+                        <label class="username">
+                        <span>Tên đăng nhập</span>
+                        <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+                        </label>
+                        <label class="password">
+                        <span>Mật khẩu</span>
+                        <input id="password" name="password" value="" type="password" placeholder="Password">
+                        </label>
+                        <button class="submit button" type="button">Đăng nhập</button>
+                        <p>
+                        <a class="forgot" href="#">Quên mật khẩu?</a> / <a class="register" href="register.html">Tạo tài khoản</a>
+                        </p>        
+                        </fieldset>
+                  </form>
+       			</div>
+                
+            </div><!--end:top2-->
+            <div id="top3">
+            	<h1 class="logo"><a href="index.html"></a></h1>
+                <form action="#" method="post" class="search_bar">
+                    <fieldset>
+					  <select class="search">
+                        <option>Nhập từ khóa...</option>
+                        <option>Laptop</option>
+                        <option>Máy bàn</option>
+                        <option>Điện thoại</option> 
+                      </select>
+                      <!--<input type="text" name="search" class="search" value="Nhập từ khóa..." onBlur="if (this.value == ''){this.value = 'Nhập từ khóa...'; }" onFocus="if (this.value== 'Nhập từ khóa...') {this.value = ''; }" />-->
+                      <input type="submit" name="submit" value="Search" class="submit" onclick="" />
+                    </fieldset>
+                </form>
+            </div><!--end:top3-->
+        </header>
+        <div id="container">
+        	<nav>  
+                <ul id="mega-menu-3" class="mega-menu">
+                     <li><a href="index.html">Trang chủ</a></li> 
+				<li><a href="list_products.html">Sản phẩm</a>
+					<ul>
+						<li><a href="list_products.html">Laptop</a>
+							<ul>
+								<li><a href="list_products.html">Latop Apple</a></li>
+								<li><a href="list_products.html">Laptop Asus</a></li>
+								<li><a href="list_products.html">Laptop Dell</a></li>
+								<li><a href="list_products.html">Laptop Compaq-HP</a></li>
+								<li><a href="list_products.html">Laptop Acer</a></li>
+							</ul>
+						</li>
+						<li><a href="list_products.html">Computer</a>
+							<ul>
+								<li><a href="list_products.html">PC Acer</a></li>
+								<li><a href="list_products.html">PC Intel</a></li>
+								<li><a href="list_products.html">PC HP</a></li> 
+							</ul>
+						</li> 
+						<li><a href="list_products.html">Mobile</a>
+							<ul>
+								<li><a href="list_products.html">SamSung</a></li>
+								<li><a href="list_products.html">HTC</a></li> 
+							</ul>
+						</li>  
+					</ul>
+				</li> 
+				<li><a href="contact.html">Liên hệ</a></li>
+                </ul>
+            </nav><!--end:grey-->
+            <div class="content-wrap">
+                 <div id="featured">
+                    <div class="camera_wrap camera_emboss " id="camera_wrap_1">
+                    <div data-thumb="images/slides/thumbs/bridge.jpg" data-src="images/slider-banners/slider1.jpg"></div>
+                    <div data-thumb="images/slides/thumbs/bridge.jpg" data-src="images/slider-banners/slider2.jpg"></div>
+                    <div data-thumb="images/slides/thumbs/bridge.jpg" data-src="images/slider-banners/slider3.jpg"></div>
+                    <div data-thumb="images/slides/thumbs/bridge.jpg" data-src="images/slider-banners/slider4.jpg"></div> 
+                    </div><!-- #camera_wrap_1 -->
+                    <div style="clear:both; display:block; height:40px"></div>
+                </div><!--end:featured-->
+                <div id="intro">
+                	<div class="one-fourth serv first">
+                    	<img src="images/service-1.png" alt="">
+                        <h3><a href="#">Giao hàng</a></h3>
+                        <span>Tận nơi</span>
+                    </div>
+                    <div class="one-fourth serv">
+                    	<img src="images/service-2.png" alt="">
+                        <h3><a href="#">Hoàn trả</a></h3>
+                        <span>30 ngày</span>
+                    </div>
+                    <div class="one-fourth serv">
+                    	<img src="images/service-3.png" alt="">
+                        <h3><a href="#">ĐT liên hệ</a></h3>
+                        <span>(+84) 123 456 7890</span>
+                    </div>
+                    <div class="one-fourth serv">
+                    	<img src="images/service-4.png" alt="">
+                        <h3><a href="#">Bảo mật</a></h3>
+                        <span>Thanh toán</span>
+                    </div>
+                </div>
+                <div class="container-2">
+                	<section class="content">
+                    	<div class="list_work">
+                        <h4>Sản phẩm mới</h4>
+                        <ul id="mycarousel" class="jcarousel-skin-tango item da-thumbs">
+                            <li>
+                                <img src="images/new-products/xps_dell_small.jpg" alt="" />
+                            	<span>XPS 18<br><small>18.000.000 vnđ</small></span>
+                                <span class="new">Sale</span>
+                                <article class="da-animate da-slideFromRight" style="display: block;">
+                                    <h3>XPS 18</h3>
+                                    <p>
+                                    <a href="product-detail.html" class="link tip" title="Xem chi tiết"></a>&nbsp; 
+                                    <a href="images/new-products/xps_dell.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Phóng to" ></a></p>
+                                </article>
+                            </li> 
+                            <li>
+                                <img src="images/new-products/lumia_small.png" alt="" />
+                            	<span>Nokia Lumia 930<br><small>16.000.000vnđ</small></span>
+                                <span class="new">New</span>
+                                <article class="da-animate da-slideFromRight" style="display: block;">
+                                    <h3>Nokia Lumia 930</h3>
+                                    <p>
+                                    <a href="product-detail.html" class="link tip" title="Xem chi tiết"></a>&nbsp; 
+                                    <a href="images/new-products/lumia.png" rel="prettyPhoto[gallery1]" class="zoom tip" title="Phóng to" ></a></p>
+                                </article>
+                            </li> 
+                            <li>
+                                <img src="images/new-products/kyocera-torque_small.jpg" alt="" />
+                            	<span>Kyocera Torque<br><small>7.500.000vnđ</small></span>
+								<span class="new">New</span>
+                                <article class="da-animate da-slideFromRight" style="display: block;">
+                                    <h3>Kyocera Torque</h3>
+                                    <p>
+                                    <a href="product-detail.html" class="link tip" title="Xem chi tiết"></a>&nbsp; 
+                                    <a href="images/new-products/kyocera-torque.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Phóng to" ></a></p>
+                                </article>
+                            </li>      
+                            </ul>
+                    	</div><!--end:list_work-->
+                        <div class="list_work list_work2">
+                        <h4>Sản phẩm được ưa chuộng</h4>
+                        <ul id="mycarouselnew" class="jcarousel-skin-tango item">
+                            <li>
+                                <img src="images/like_products/iphone5s_small.jpg" alt="" />
+                            	<span>Iphone 5s<br><small>19.000.000vnđ</small></span>
+                                <span class="sale">Sale</span>
+                                <ul>
+                                	<li><a href="#" class="cart tip" title="Thêm vào giỏ hàng">Thêm vào giỏ hàng</a></li>
+                                    <li><a href="images/like_products/iphone5s.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Phóng to">Phóng to</a></li>
+                                    <li><a href="#" class="wishlist tip" title="Thêm vào mục yêu thích">Thêm vào mục yêu thích</a></li>
+                                    <li><a href="#" class="compare tip" title="So sánh">So sánh</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <img src="images/like_products/motorolax_small.png" alt="" />
+                            	<span>Motorola X<br><small>8.000.000vnđ</small></span>
+								<span class="sale">Sale</span>
+                                <ul>
+                                	<li><a href="#" class="cart tip" title="Thêm vào giỏ hàng">Thêm vào giỏ hàng</a></li>
+                                    <li><a href="images/like_products/motorolax.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Phóng to">Phóng to</a></li>
+                                    <li><a href="#" class="wishlist tip" title="Thêm vào mục yêu thích">Thêm vào mục yêu thích</a></li>
+                                    <li><a href="#" class="compare tip" title="So sánh">So sánh</a></li>
+                                </ul>
+                            </li>
+                             <li>
+                                <img src="images/like_products/galaxys4_small.png" alt="" />
+                            	<span>Galaxy S4<br><small>5.500.000vnđ</small></span>
+								<span class="sale">Sale</span>
+                                <ul>
+                                	<li><a href="#" class="cart tip" title="Thêm vào giỏ hàng">Thêm vào giỏ hàng</a></li>
+                                    <li><a href="images/like_products/galaxys4.png" rel="prettyPhoto[gallery1]" class="zoom tip" title="Phóng to">Phóng to</a></li>
+                                    <li><a href="#" class="wishlist tip" title="Thêm vào mục yêu thích">Thêm vào mục yêu thích</a></li>
+                                    <li><a href="#" class="compare tip" title="So sánh">So sánh</a></li>
+                                </ul>
+                            </li>     
+                            </ul>
+                    	</div><!--end:list_work-->
+                    </section>
+                    <aside class="sidebar">
+                    	<div class="side">
+                        	<h4>Sản phẩm hot</h4>
+                            <div class="entry">
+                            	<div class="da-thumbs">
+                                	<div>
+                                    	<img src="images/products/nokia 311 tmt.jpg" alt="">
+                                        <article class="da-animate da-slideFromRight" style="display: block;">
+                                            <p><a href="product-detail.html" class="link"></a></p>
+                                        </article>
+                                    </div>
+                                </div>
+                                <h3><a href="product-detail.html">Nokia Asha 311</a></h3>
+                                <small>6.100.000vnđ</small>
+                            </div>
+                            <div class="entry">
+                            	<div class="da-thumbs">
+                                	<div>
+                                    	<img src="images/products/iPhone_5_specs_and_features.jpg" alt="">
+                                        <article class="da-animate da-slideFromRight" style="display: block;">
+                                            <p><a href="product-detail.html" class="link"></a></p>
+                                        </article>
+                                    </div>
+                                </div>
+                                <h3><a href="product-detail.html">Iphone 5</a></h3>
+                                <small>11.500.000vnđ</small>
+                            </div>
+							 <div class="entry">
+                            	<div class="da-thumbs">
+                                	<div>
+                                    	<img src="images/products/Sony-Vaio-SVE14132CV-33122G32W8-l.jpg" alt="">
+                                        <article class="da-animate da-slideFromRight" style="display: block;">
+                                            <p><a href="product-detail.html" class="link"></a></p>
+                                        </article>
+                                    </div>
+                                </div>
+                                <h3><a href="product-detail.html">Sony Vaio SVE14132CV</a></h3>
+                                <small>11.990.000vnđ</small>
+                            </div>
+							<div class="entry">
+                            	<div class="da-thumbs">
+                                	<div>
+                                    	<img src="images/products/Archos-Arnova-7f-G3-–-Wifi-4GB-l.jpg" alt="">
+                                        <article class="da-animate da-slideFromRight" style="display: block;">
+                                            <p><a href="product-detail.html" class="link"></a></p>
+                                        </article>
+                                    </div>
+                                </div>
+                                <h3><a href="product-detail.html">Máy tính bảng Archos Arnova</a></h3>
+                                <small>3.290.000vnđ</small>
+                            </div>
+                        </div><!--end:side--> 
+                        <div class="side">
+                        	<h4>Hãy dến với chúng tôi!</h4>
+                            <ul class="fade">					
+                                <li class="feed">Đảm bảo chất lượng, giá cả hấp hẫn!<br> 
+                                </li>
+                                <li class="feed">Giao hàng tận nơi miễn phí!<br> 
+                                </li>
+                                <li class="feed">Chăm sóc khách hàng tận tình!<br> 
+                                </li> 
+								 <li class="feed">Rồng Đỏ Computer!<br> 
+                                </li> 
+                            </ul>
+                        </div>
+                    </aside>
+                </div><!--end:container-2-->
+                <div class="container-2"> 
+                </div><!--end:container-2-->
+                <div class="container-2">
+                	<div style="clear:both; display:block; height:40px"></div>
+                    <div class="ship">
+                    	<a href="#"><img src="images/service-1.png" alt=""></a>
+                        <h4><a href="#">Giao hàng miễn phí</a></h4>
+                        <span>Khi thanh toán trên 1.000.000 vnđ</span>
+                    </div>
+                    <div class="subs">
+                    	<h4>Đăng kí để nhận tin tức</h4>
+                    	<form action="#" method="post" class="subscribes">
+                            <fieldset>
+                              <input type="text" name="subscribe" class="subscribe" value="Đóng góp ý kiến" onBlur="if (this.value == ''){this.value = 'Đóng góp ý kiến'; }" onFocus="if (this.value== 'Đóng góp ý kiến') {this.value = ''; }" />
+                              <input type="submit" name="submit" value="Gửi" class="submit" />
+                            </fieldset>
+                        </form>
+                    </div>
+                </div><!--end:container-2-->
+            </div><!--end:content-wrap-->
+            <footer>
+            	<div class="content-wrap">
+                	<div class="one-fourth first">
+                    	<h4>Thông tin</h4>
+                        <ul>
+                        	<li><a href="#">Giới thiệu</a></li> 
+                            <li><a href="#">Chính sách bảo mật</a></li>
+                            <li><a href="#">Điều khoản</a></li>
+                        </ul>
+                    </div>
+                    <div class="one-fourth">
+                    	<h4>Chăm sóc khách hàng</h4>
+                        <ul>
+                        	<li><a href="contact.html">Liên hệ</a></li>
+                            <li><a href="#">Hoàn trả</a></li>
+                            <li><a href="#">Bảo mật</a></li>
+                        </ul>
+                    </div>
+                    <div class="one-fourth">
+                    	<h4>Mở rộng</h4>
+                        <ul>
+                        	<li><a href="#">Thương hiệu</a></li>
+                            <li><a href="#">Phiếu quà tặng</a></li>
+                            <li><a href="#">Chi nhánh</a></li> 
+                        </ul>
+                    </div>
+                    <div class="one-fourth">
+                    	<h4>Tài khoản</h4>
+                        <ul>
+                        	<li><a href="#">Thông tin tài khoản</a></li>
+                            <li><a href="#">Lịch sử đặt hàng</a></li>
+                            <li><a href="#">Sản phẩm yêu thích</a></li> 
+                        </ul>
+                    </div>
+                </div>
+                <div class="content-wrap"> 
+                    <p style="clear:both; display:block;">&copy; 2013 <a href="index.html">Rồng Đỏ Computer</a>, All Rights Reserved. Designed by: <a href="#">Võ Thanh Quang</a></p>
+                   
+                </div>
+            </footer>
+        </div><!--end:container-->
+    </div><!--end:page_wrap-->
+<script type="text/javascript">
+//------JCAROUSEL-------------
+		function mycarousel_initCallback(carousel){
+		// Disable autoscrolling if the user clicks the prev or next button.
+		carousel.buttonNext.bind('click', function() {
+			carousel.startAuto(0);
+		});
+		carousel.buttonPrev.bind('click', function() {
+			carousel.startAuto(0);
+		});
+		// Pause autoscrolling if the user moves with the cursor over the clip.
+		carousel.clip.hover(function() {
+			carousel.stopAuto();
+		}, function() {
+			carousel.startAuto();
+		});
+	};
+	jQuery(document).ready(function() {
+		jQuery('#mycarousel, #mycarouselnew').jcarousel({
+			auto: 0,
+			wrap: 'last',
+			initCallback: mycarousel_initCallback
+		});
+	});	
+</script>    
+<script type="text/javascript">
+   jQuery(function($){
+        $(".tweet").tweet({
+          join_text: "auto",
+          username: "html5awesome",
+          avatar_size: 48,
+          count: 3,
+          auto_join_text_default: " we said, ",
+          auto_join_text_ed: " we ",
+          auto_join_text_ing: " we were ",
+          auto_join_text_reply: " we replied ",
+          auto_join_text_url: " we were checking out ",
+          loading_text: "loading tweets..."
+        });
+      });
+  </script>
+    <script type="text/javascript">(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "../../../connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+</body>
+</html>

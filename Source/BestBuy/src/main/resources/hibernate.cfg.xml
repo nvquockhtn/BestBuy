@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bestbuy?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">633961</property>
+    <mapping class="com.itus.pojo.Account"/>
+    <mapping class="com.itus.pojo.Product"/>
+    <mapping class="com.itus.pojo.Producttype"/>
+    <mapping class="com.itus.pojo.Comment"/>
+    <mapping class="com.itus.pojo.Orderdetail"/>
+    <mapping class="com.itus.pojo.Image"/>
+    <mapping class="com.itus.pojo.Productstate"/>
+    <mapping class="com.itus.pojo.Order"/>
+    <mapping class="com.itus.pojo.Accounttype"/>
+    <mapping class="com.itus.pojo.Orderstate"/>
+    <mapping class="com.itus.pojo.Receiver"/>
+  </session-factory>
+</hibernate-configuration>

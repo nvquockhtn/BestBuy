@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bestbuy?zeroDateTimeBehavior=convertToNull</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">633961</property>
+    <mapping class="com.bestbuy.pojo.Account"/>
+    <mapping class="com.bestbuy.pojo.Producttype"/>
+    <mapping class="com.bestbuy.pojo.Receiver"/>
+    <mapping class="com.bestbuy.pojo.Product"/>
+    <mapping class="com.bestbuy.pojo.Orderdetail"/>
+    <mapping class="com.bestbuy.pojo.Orderstate"/>
+    <mapping class="com.bestbuy.pojo.Productstate"/>
+    <mapping class="com.bestbuy.pojo.Image"/>
+    <mapping class="com.bestbuy.pojo.Accounttype"/>
+    <mapping class="com.bestbuy.pojo.Order"/>
+    <mapping class="com.bestbuy.pojo.Comment"/>
+  </session-factory>
+</hibernate-configuration>

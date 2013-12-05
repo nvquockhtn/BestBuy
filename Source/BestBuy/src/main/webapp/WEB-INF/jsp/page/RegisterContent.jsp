@@ -152,7 +152,7 @@
             <div class="entry">
                 <div class="da-thumbs">
                     <div>
-                        <img src="/resources/images/products/thumb-1.jpg" alt="">
+                        <img src="${pageContext.request.contextPath}/resources/images/products/thumb-1.jpg" alt="">
                         <article class="da-animate da-slideFromRight" style="display: block;">
                             <p><a href="product-detail.html" class="link"></a></p>
                         </article>
@@ -164,7 +164,7 @@
             <div class="entry">
                 <div class="da-thumbs">
                     <div>
-                        <img src="/resources/images/products/thumb-2.jpg" alt="">
+                        <img src="${pageContext.request.contextPath}/resources/images/products/thumb-2.jpg" alt="">
                         <article class="da-animate da-slideFromRight" style="display: block;">
                             <p><a href="product-detail.html" class="link"></a></p>
                         </article>
@@ -179,7 +179,7 @@
             <div class="entry">
                 <div class="da-thumbs">
                     <div>
-                        <img src="/resources/images/products/thumb-1.jpg" alt="">
+                        <img src="${pageContext.request.contextPath}/resources/images/products/thumb-1.jpg" alt="">
                         <article class="da-animate da-slideFromRight" style="display: block;">
                             <p><a href="blog.html" class="link"></a></p>
                         </article>
@@ -191,7 +191,7 @@
             <div class="entry">
                 <div class="da-thumbs">
                     <div>
-                        <img src="/resources/images/products/thumb-2.jpg" alt="">
+                        <img src="${pageContext.request.contextPath}/resources/images/products/thumb-2.jpg" alt="">
                         <article class="da-animate da-slideFromRight" style="display: block;">
                             <p><a href="blog.html" class="link"></a></p>
                         </article>

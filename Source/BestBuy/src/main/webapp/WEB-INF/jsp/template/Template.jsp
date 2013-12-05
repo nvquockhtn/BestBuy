@@ -9,7 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title><tiles:insertAttribute name="title" /></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="/resources/css/style.css" type="text/css" rel="stylesheet" media="screen" /> <!-- General style -->
+        <link href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css" rel="stylesheet" media="screen" /> <!-- General style -->
         <link href="/resources/css/prettyPhoto.css" type="text/css" rel="stylesheet" media="screen"><!-- prettyPhoto -->
         <link href="/resources/css/tipsy.css" type="text/css" rel="stylesheet" media="screen"><!--tooltip-->
         <link href="/resources/css/camera.css" type="text/css" rel="stylesheet" media="screen"><!--camera-->

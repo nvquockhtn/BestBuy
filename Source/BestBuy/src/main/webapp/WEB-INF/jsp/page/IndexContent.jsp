@@ -11,7 +11,7 @@
             <h4>Featured Products</h4>
             <ul id="mycarousel" class="jcarousel-skin-tango item da-thumbs">
                 <li>
-                    <img src="images/products/product-1.jpg" alt="" />
+                    <img src="${pageContext.request.contextPath}/resources/images/products/product-1.jpg" alt="" />
                     <span>American Dress<br><small class="sale">$320.00</small>&nbsp;&nbsp;<small>$99.25</small></span>
                     <span class="sale">Sale</span>
                     <article class="da-animate da-slideFromRight" style="display: block;">
@@ -19,11 +19,11 @@
                         <p>
                             <a href="product-detail.html" class="link tip" title="View Detail"></a>&nbsp;
                             <a href="cart.html" class="cart tip" title="Add to cart"></a>&nbsp;&nbsp;
-                            <a href="images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
+                            <a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
                     </article>
                 </li>
                 <li>
-                    <img src="images/products/product-2.jpg" alt="" />
+                    <img src="${pageContext.request.contextPath}/resources/images/products/product-2.jpg" alt="" />
                     <span>Women's Dress<br><small>$56.25</small></span>
                     <span class="new">New</span>
                     <article class="da-animate da-slideFromRight" style="display: block;">
@@ -31,7 +31,7 @@
                         <p>
                             <a href="product-detail.html" class="link tip" title="View Detail"></a>&nbsp;
                             <a href="cart.html" class="cart tip" title="Add to cart"></a>&nbsp;&nbsp;
-                            <a href="images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
+                            <a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
                     </article>
                 </li>
                 <li>
@@ -42,40 +42,40 @@
                         <p>
                             <a href="product-detail.html" class="link tip" title="View Detail"></a>&nbsp;
                             <a href="cart.html" class="cart tip" title="Add to cart"></a>&nbsp;&nbsp;
-                            <a href="images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
+                            <a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
                     </article>
                 </li>
                 <li>
-                    <img src="images/products/product-1.jpg" alt="" />
+                    <img src="${pageContext.request.contextPath}/resources/images/products/product-1.jpg" alt="" />
                     <span>American Dress<br><small>$99.25</small></span>
                     <article class="da-animate da-slideFromRight" style="display: block;">
                         <h3>American Dress</h3>
                         <p>
                             <a href="product-detail.html" class="link tip" title="View Detail"></a>&nbsp;
                             <a href="cart.html" class="cart tip" title="Add to cart"></a>&nbsp;&nbsp;
-                            <a href="images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
+                            <a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
                     </article>
                 </li>
                 <li>
-                    <img src="images/products/product-2.jpg" alt="" />
+                    <img src="${pageContext.request.contextPath}/resources/images/products/product-2.jpg" alt="" />
                     <span>Women's Dress<br><small>$56.25</small></span>
                     <article class="da-animate da-slideFromRight" style="display: block;">
                         <h3>Women's Dress</h3>
                         <p>
                             <a href="product-detail.html" class="link tip" title="View Detail"></a>&nbsp;
                             <a href="cart.html" class="cart tip" title="Add to cart"></a>&nbsp;&nbsp;
-                            <a href="images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
+                            <a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
                     </article>
                 </li>
                 <li>
-                    <img src="images/products/product-3.jpg" alt="" />
+                    <img src="${pageContext.request.contextPath}/resources/images/products/product-3.jpg" alt="" />
                     <span>Casual Dress<br><small>$120.99</small></span>
                     <article class="da-animate da-slideFromRight" style="display: block;">
                         <h3>Casual Dress</h3>
                         <p>
                             <a href="product-detail.html" class="link tip" title="View Detail"></a>&nbsp;
                             <a href="cart.html" class="cart tip" title="Add to cart"></a>&nbsp;&nbsp;
-                            <a href="images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
+                            <a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
                     </article>
                 </li>                        
             </ul>
@@ -84,62 +84,62 @@
             <h4>New Arrival</h4>
             <ul id="mycarouselnew" class="jcarousel-skin-tango item">
                 <li>
-                    <img src="images/products/product-4.jpg" alt="" />
+                    <img src="${pageContext.request.contextPath}/resources/images/products/product-4.jpg" alt="" />
                     <span>American Dress<br><small class="sale">$320.00</small>&nbsp;&nbsp;<small>$99.25</small></span>
                     <span class="sale">Sale</span>
                     <ul>
                         <li><a href="cart.html" class="cart tip" title="Add to Cart">Cart</a></li>
-                        <li><a href="images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom">Zoom</a></li>
+                        <li><a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom">Zoom</a></li>
                         <li><a href="wishlist.html" class="wishlist tip" title="Add to Wishlist">Add Wishlist</a></li>
                         <li><a href="compare.html" class="compare tip" title="Compare">Compare</a></li>
                     </ul>
                 </li>
                 <li>
-                    <img src="images/products/product-5.jpg" alt="" />
+                    <img src="${pageContext.request.contextPath}/resources/images/products/product-5.jpg" alt="" />
                     <span>Women's Dress<br><small>$56.25</small></span>
                     <ul>
                         <li><a href="cart.html" class="cart tip" title="Add to Cart">Cart</a></li>
-                        <li><a href="images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom">Zoom</a></li>
+                        <li><a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom">Zoom</a></li>
                         <li><a href="wishlist.html" class="wishlist tip" title="Add to Wishlist">Add Wishlist</a></li>
                         <li><a href="http://html5awesome.com/themeforest/shopymart/compare.html.html" class="compare tip" title="Compare">Compare</a></li>
                     </ul>
                 </li>
                 <li>
-                    <img src="images/products/product-6.jpg" alt="" />
+                    <img src="${pageContext.request.contextPath}/resources/images/products/product-6.jpg" alt="" />
                     <span>Casual Dress<br><small>$120.99</small></span>
                     <ul>
                         <li><a href="cart.html" class="cart tip" title="Add to Cart">Cart</a></li>
-                        <li><a href="images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom">Zoom</a></li>
+                        <li><a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom">Zoom</a></li>
                         <li><a href="wishlist.html" class="wishlist tip" title="Add to Wishlist">Add Wishlist</a></li>
                         <li><a href="compare.html" class="compare tip" title="Compare">Compare</a></li>
                     </ul>
                 </li>
                 <li>
-                    <img src="images/products/product-1.jpg" alt="" />
+                    <img src="${pageContext.request.contextPath}/resources/images/products/product-1.jpg" alt="" />
                     <span>American Dress<br><small>$99.25</small></span>
                     <ul>
                         <li><a href="cart.html" class="cart tip" title="Add to Cart">Cart</a></li>
-                        <li><a href="images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom">Zoom</a></li>
+                        <li><a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom">Zoom</a></li>
                         <li><a href="wishlist.html" class="wishlist tip" title="Add to Wishlist">Add Wishlist</a></li>
                         <li><a href="http://html5awesome.com/themeforest/shopymart/compare.html.html" class="compare tip" title="Compare">Compare</a></li>
                     </ul>
                 </li>
                 <li>
-                    <img src="images/products/product-2.jpg" alt="" />
+                    <img src="${pageContext.request.contextPath}/resources/images/products/product-2.jpg" alt="" />
                     <span>Women's Dress<br><small>$56.25</small></span>
                     <ul>
                         <li><a href="cart.html" class="cart tip" title="Add to Cart">Cart</a></li>
-                        <li><a href="images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom">Zoom</a></li>
+                        <li><a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom">Zoom</a></li>
                         <li><a href="wishlist.html" class="wishlist tip" title="Add to Wishlist">Add Wishlist</a></li>
                         <li><a href="compare.html" class="compare tip" title="Compare">Compare</a></li>
                     </ul>
                 </li>
                 <li>
-                    <img src="images/products/product-3.jpg" alt="" />
+                    <img src="${pageContext.request.contextPath}/resources/images/products/product-3.jpg" alt="" />
                     <span>Casual Dress<br><small>$120.99</small></span>
                     <ul>
                         <li><a href="cart.html" class="cart tip" title="Add to Cart">Cart</a></li>
-                        <li><a href="images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom">Zoom</a></li>
+                        <li><a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom">Zoom</a></li>
                         <li><a href="wishlist.html" class="wishlist tip" title="Add to Wishlist">Add Wishlist</a></li>
                         <li><a href="compare.html" class="compare tip" title="Compare">Compare</a></li>
                     </ul>
@@ -153,7 +153,7 @@
             <div class="entry">
                 <div class="da-thumbs">
                     <div>
-                        <img src="images/products/thumb-1.jpg" alt="">
+                        <img src="${pageContext.request.contextPath}/resources/images/products/thumb-1.jpg" alt="">
                         <article class="da-animate da-slideFromRight" style="display: block;">
                             <p><a href="product-detail.html" class="link"></a></p>
                         </article>
@@ -165,7 +165,7 @@
             <div class="entry">
                 <div class="da-thumbs">
                     <div>
-                        <img src="images/products/thumb-2.jpg" alt="">
+                        <img src="${pageContext.request.contextPath}/resources/images/products/thumb-2.jpg" alt="">
                         <article class="da-animate da-slideFromRight" style="display: block;">
                             <p><a href="product-detail.html" class="link"></a></p>
                         </article>
@@ -180,7 +180,7 @@
             <div class="entry">
                 <div class="da-thumbs">
                     <div>
-                        <img src="images/products/thumb-1.jpg" alt="">
+                        <img src="${pageContext.request.contextPath}/resources/images/products/thumb-1.jpg" alt="">
                         <article class="da-animate da-slideFromRight" style="display: block;">
                             <p><a href="blog.html" class="link"></a></p>
                         </article>
@@ -192,7 +192,7 @@
             <div class="entry">
                 <div class="da-thumbs">
                     <div>
-                        <img src="images/products/thumb-2.jpg" alt="">
+                        <img src="${pageContext.request.contextPath}/resources/images/products/thumb-2.jpg" alt="">
                         <article class="da-animate da-slideFromRight" style="display: block;">
                             <p><a href="blog.html" class="link"></a></p>
                         </article>

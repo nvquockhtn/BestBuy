@@ -37,7 +37,7 @@
         <li class="login"><a href="#login-box" class="last login-window">Login</a></li>
     </ul>
     <div id="login-box" class="login-popup">
-        <a href="#" class="close"><img src="./images/process-stop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+        <a href="#" class="close"><img src="${pageContext.request.contextPath}/resources/images/process-stop.png" class="btn_close" title="Close Window" alt="Close" /></a>
         <form method="post" class="signin" action="#">
             <fieldset class="textbox">
                 <label class="username">
@@ -62,14 +62,14 @@
                 <table>
                     <tbody>
                         <tr>
-                            <td class="image"><a href="product.html"><img width="60" height="60" sr="./images/products/product-thumb-1.jpg" alt="product" title="product"></a></td>
+                            <td class="image"><a href="product.html"><img width="60" height="60" sr="${pageContext.request.contextPath}/resources/images/products/product-thumb-1.jpg" alt="product" title="product"></a></td>
                             <td class="name"><a href="product.html">Women's Saucony</a></td>
                             <td class="quantity">x&nbsp;1</td>
                             <td class="total">$59.95</td>
                             <td class="remove"><i class="icon-remove"></i></td>
                         </tr>
                         <tr>
-                            <td class="image"><a href="product.html"><img width="60" height="60" src="./images/products/product-thumb-1.jpg" alt="product" title="product"></a></td>
+                            <td class="image"><a href="product.html"><img width="60" height="60" src="${pageContext.request.contextPath}/resources/images/products/product-thumb-1.jpg" alt="product" title="product"></a></td>
                             <td class="name"><a href="product.html">Women's Saucony</a></td>
                             <td class="quantity">x&nbsp;1</td>
                             <td class="total">$59.95</td>

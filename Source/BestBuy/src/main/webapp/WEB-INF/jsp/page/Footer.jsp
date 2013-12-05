@@ -45,19 +45,19 @@
 <div class="content-wrap">
     <div style="clear:both; display:block;" class="social-wrap"></div>
     <ul class="social">
-        <li><a href="#" class="tip" title="Facebook"><img src="./images/social-icon-facebook.png" alt="Facebook"></a></li>
-        <li><a href="#" class="tip" title="Dribbble"><img src="./images/social-icon-dribbble.png" alt="Dribbble"></a></li>
-        <li><a href="#" class="tip" title="Flickr"><img src="./images/social-icon-flickr.png" alt="Flickr"></a></li>
-        <li><a href="#" class="tip" title="Pinterest"><img src="./images/social-icon-pinterest.png" alt="Pinterest"></a></li>
-        <li><a href="#" class="tip" title="Twitter"><img src="./images/social-icon-twitter.png" alt="Twitter"></a></li>
-        <li><a href="#" class="tip" title="RSS"><img src="./images/social-icon-rss.png" alt="RSS"></a></li>
+        <li><a href="#" class="tip" title="Facebook"><img src="${pageContext.request.contextPath}/resources/images/social-icon-facebook.png" alt="Facebook"></a></li>
+        <li><a href="#" class="tip" title="Dribbble"><img src="${pageContext.request.contextPath}/resources/images/social-icon-dribbble.png" alt="Dribbble"></a></li>
+        <li><a href="#" class="tip" title="Flickr"><img src="${pageContext.request.contextPath}/resources/images/social-icon-flickr.png" alt="Flickr"></a></li>
+        <li><a href="#" class="tip" title="Pinterest"><img src="${pageContext.request.contextPath}/resources/images/social-icon-pinterest.png" alt="Pinterest"></a></li>
+        <li><a href="#" class="tip" title="Twitter"><img src="${pageContext.request.contextPath}/resources/images/social-icon-twitter.png" alt="Twitter"></a></li>
+        <li><a href="#" class="tip" title="RSS"><img src="${pageContext.request.contextPath}/resources/images/social-icon-rss.png" alt="RSS"></a></li>
     </ul>
     <ul class="payment">
-        <li><a href="#" class="tip" title="Paypal"><img src="./images/payment-icon-paypal.png" alt="Paypal"></a></li>
-        <li><a href="#" class="tip" title="American Express"><img src="./images/payment-icon-ae.png" alt="American Express"></a></li>
-        <li><a href="#" class="tip" title="Discover"><img src="./images/payment-icon-discover.png" alt="Discover"></a></li>
-        <li><a href="#" class="tip" title="Master Card"><img src="./images/payment-icon-mastercard.png" alt="Master Card"></a></li>
-        <li><a href="#" class="tip" title="Visa"><img src="./images/payment-icon-visa.png" alt="Visa"></a></li>
+        <li><a href="#" class="tip" title="Paypal"><img src="${pageContext.request.contextPath}/resources/images/payment-icon-paypal.png" alt="Paypal"></a></li>
+        <li><a href="#" class="tip" title="American Express"><img src="${pageContext.request.contextPath}/resources/images/payment-icon-ae.png" alt="American Express"></a></li>
+        <li><a href="#" class="tip" title="Discover"><img src="${pageContext.request.contextPath}/resources/images/payment-icon-discover.png" alt="Discover"></a></li>
+        <li><a href="#" class="tip" title="Master Card"><img src="${pageContext.request.contextPath}/resources/images/payment-icon-mastercard.png" alt="Master Card"></a></li>
+        <li><a href="#" class="tip" title="Visa"><img src="${pageContext.request.contextPath}/resources/images/payment-icon-visa.png" alt="Visa"></a></li>
     </ul>
     <p style="clear:both; display:block;">&copy; 2013 <a href="index-2.html">Shopymart</a>, All Rights Reserved. Designed by: <a href="#">louiejiemahusay</a></p>
 </div>

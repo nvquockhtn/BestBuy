@@ -26,7 +26,7 @@
             <td class="price">$48.50</td>
             <td class="total">$48.50</td>
             <td class="remove-update"> <a href="#" class="tip remove" title="Remove"><img src="${pageContext.request.contextPath}/resources/images/remove.png" alt=""></a>
-                <a href="#" class="tip update" title="Update"><img src="images/update.png" alt=""></a></td>  
+                <a href="#" class="tip update" title="Update"><img src="${pageContext.request.contextPath}/resources/images/update.png" alt=""></a></td>  
         </tr>
         <tr>
             <td class="image"><a href="#"><img title="product" alt="product" src="${pageContext.request.contextPath}/resources/images/products/product-cart-thumb-1.jpg" height="50" width="50"></a></td>
@@ -36,7 +36,7 @@
             <td class="price">$48.50</td>
             <td class="total">$48.50</td>
             <td class="remove-update"> <a href="#" class="tip remove" title="Remove"><img src="${pageContext.request.contextPath}/resources/images/remove.png" alt=""></a>
-                <a href="#" class="tip update" title="Update"><img src="images/update.png" alt=""></a></td>  
+                <a href="#" class="tip update" title="Update"><img src="${pageContext.request.contextPath}/resources/images/update.png" alt=""></a></td>  
         <tr>
             <td class="image"><a href="#"><img title="product" alt="product" src="${pageContext.request.contextPath}/resources/images/products/product-cart-thumb-1.jpg" height="50" width="50"></a></td>
             <td  class="name"><a href="#">T-shirt</a></td>
@@ -44,8 +44,8 @@
             <td class="quantity"><input type="text" size="1" value="1" name="quantity[40]" class="span1"></td>
             <td class="price">$48.50</td>
             <td class="total">$48.50</td>
-            <td class="remove-update"> <a href="#" class="tip remove" title="Remove"><img src="images/remove.png" alt=""></a>
-                <a href="#" class="tip update" title="Update"><img src="images/update.png" alt=""></a></td>  
+            <td class="remove-update"> <a href="#" class="tip remove" title="Remove"><img src="${pageContext.request.contextPath}/resources/images/remove.png" alt=""></a>
+                <a href="#" class="tip update" title="Update"><img src="${pageContext.request.contextPath}/resources/images/update.png" alt=""></a></td>  
         </tr>
         <tr>
             <td class="image"><a href="#"><img title="product" alt="product" src="${pageContext.request.contextPath}/resources/images/products/product-cart-thumb-1.jpg" height="50" width="50"></a></td>

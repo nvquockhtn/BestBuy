@@ -20,5 +20,13 @@
         <put-attribute name="title" value="Shop Cart" />
         <put-attribute name="slider" value="/WEB-INF/jsp/page/Slider.jsp"/>
         <put-attribute name="content_main" value="/WEB-INF/jsp/page/ShoppingCartContent.jsp"/>
+    </definition> 
+    <definition name="404Page" extends="Page">
+        <put-attribute name="title" value="Not Found" />
+        <put-attribute name="content_main" value="/WEB-INF/jsp/page/404PageContent.jsp"/>
+    </definition>    
+    <definition name="Register" extends="Page">
+        <put-attribute name="title" value="Register Account" />
+        <put-attribute name="content_main" value="/WEB-INF/jsp/page/RegisterContent.jsp"/>
     </definition>    
 </tiles-definitions>

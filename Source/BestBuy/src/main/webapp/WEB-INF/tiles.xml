@@ -29,4 +29,20 @@
         <put-attribute name="title" value="Register Account" />
         <put-attribute name="content_main" value="/WEB-INF/jsp/page/RegisterContent.jsp"/>
     </definition>    
+    <definition name="Product" extends="Page">
+        <put-attribute name="title" value="Products" />
+        <put-attribute name="content_main" value="/WEB-INF/jsp/page/ProductContent.jsp"/>
+    </definition>    
+    <definition name="ProductDetail" extends="Page">
+        <put-attribute name="title" value="Products Detail" />
+        <put-attribute name="content_main" value="/WEB-INF/jsp/page/ProductDetailContent.jsp"/>
+    </definition>    
+    <definition name="ProductCompare" extends="Page">
+        <put-attribute name="title" value="Products Compare" />
+        <put-attribute name="content_main" value="/WEB-INF/jsp/page/ProductCompareContent.jsp"/>
+    </definition>    
+    <definition name="Checkout" extends="Page">
+        <put-attribute name="title" value="Bestbuy - Checkout" />
+        <put-attribute name="content_main" value="/WEB-INF/jsp/page/CheckoutContent.jsp"/>
+    </definition>    
 </tiles-definitions>

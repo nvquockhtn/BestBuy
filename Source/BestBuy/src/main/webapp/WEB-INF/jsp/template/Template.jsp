@@ -9,27 +9,27 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title><tiles:insertAttribute name="title" /></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link href="../css/style.css" type="text/css" rel="stylesheet" media="screen" /> <!-- General style -->
-        <link href="../css/prettyPhoto.css" type="text/css" rel="stylesheet" media="screen"><!-- prettyPhoto -->
-        <link href="../css/tipsy.css" type="text/css" rel="stylesheet" media="screen"><!--tooltip-->
-        <link href="../css/camera.css" type="text/css" rel="stylesheet" media="screen"><!--camera-->
-        <link href="../css/jcarousel.css" type="text/css" rel="stylesheet" media="screen" /> <!-- list_work -->
+        <link href="/resources/css/style.css" type="text/css" rel="stylesheet" media="screen" /> <!-- General style -->
+        <link href="/resources/css/prettyPhoto.css" type="text/css" rel="stylesheet" media="screen"><!-- prettyPhoto -->
+        <link href="/resources/css/tipsy.css" type="text/css" rel="stylesheet" media="screen"><!--tooltip-->
+        <link href="/resources/css/camera.css" type="text/css" rel="stylesheet" media="screen"><!--camera-->
+        <link href="/resources/css/jcarousel.css" type="text/css" rel="stylesheet" media="screen" /> <!-- list_work -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Arvo:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
-        <script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
-        <script type="text/javascript" src="../js/css3-mediaqueries.js"></script><!--mediaqueries-->
-        <script type="text/javascript" src="../js/modernizr-1.7.min.js"></script><!--modernizr-->
-        <script type="text/javascript" src="../js/jquery.prettyPhoto.js"></script><!-- prettyPhoto -->
-        <script type="text/javascript" src="../js/jquery.tipsy.js"></script><!--tooltip-->
-        <script type='text/javascript' src='../js/jquery.easing.1.3.js'></script> <!--camera slider-->
-        <script type='text/javascript' src='../js/camera.min.js'></script> <!--camera slider-->
-        <script type="text/javascript" src="../js/jquery.jcarousel.min.js"></script> <!-- list_work -->
-        <script type="text/javascript" src="../js/jquery-hover-effect.js"></script><!--Image Hover Effect-->
-        <script type='text/javascript' src='../js/jquery.hoverIntent.minified.js'></script><!--menu-->
-        <script type='text/javascript' src='../js/jquery.dcmegamenu.1.3.3.js'></script><!--menu-->
-        <script type='text/javascript' src="../js/jquery.tweet.js"></script><!--twitter plugin-->
-        <script type="text/javascript" src="../js/jquery.quovolver.js"></script><!--blockquote-->
-        <script type="text/javascript" src="../js/organictabs.jquery.js"></script>
-        <script type="text/javascript" src="../js/custom.js"></script><!--custom-->
+        <script type="text/javascript" src="/resources/js/jquery-1.8.2.min.js"></script>
+        <script type="text/javascript" src="/resources/js/css3-mediaqueries.js"></script><!--mediaqueries-->
+        <script type="text/javascript" src="/resources/js/modernizr-1.7.min.js"></script><!--modernizr-->
+        <script type="text/javascript" src="/resources/js/jquery.prettyPhoto.js"></script><!-- prettyPhoto -->
+        <script type="text/javascript" src="/resources/js/jquery.tipsy.js"></script><!--tooltip-->
+        <script type='text/javascript' src='/resources/js/jquery.easing.1.3.js'></script> <!--camera slider-->
+        <script type='text/javascript' src='/resources/js/camera.min.js'></script> <!--camera slider-->
+        <script type="text/javascript" src="/resources/js/jquery.jcarousel.min.js"></script> <!-- list_work -->
+        <script type="text/javascript" src="/resources/js/jquery-hover-effect.js"></script><!--Image Hover Effect-->
+        <script type='text/javascript' src='/resources/js/jquery.hoverIntent.minified.js'></script><!--menu-->
+        <script type='text/javascript' src='/resources/js/jquery.dcmegamenu.1.3.3.js'></script><!--menu-->
+        <script type='text/javascript' src="/resources/js/jquery.tweet.js"></script><!--twitter plugin-->
+        <script type="text/javascript" src="/resources/js/jquery.quovolver.js"></script><!--blockquote-->
+        <script type="text/javascript" src="/resources/js/organictabs.jquery.js"></script>
+        <script type="text/javascript" src="/resources/js/custom.js"></script><!--custom-->
         <!--MENU-->
         <script type="text/javascript">
             $(document).ready(function($) {

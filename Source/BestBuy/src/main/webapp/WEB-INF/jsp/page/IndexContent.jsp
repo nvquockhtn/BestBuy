@@ -35,7 +35,7 @@
                     </article>
                 </li>
                 <li>
-                    <img src="images/products/product-3.jpg" alt="" />
+                    <img src="${pageContext.request.contextPath}/resources/images/products/product-3.jpg" alt="" />
                     <span>Casual Dress<br><small>$120.99</small></span>
                     <article class="da-animate da-slideFromRight" style="display: block;">
                         <h3>Casual Dress</h3>

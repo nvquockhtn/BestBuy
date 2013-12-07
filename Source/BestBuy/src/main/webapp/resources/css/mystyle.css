@@ -1,0 +1,12 @@
+/* 
+    Document   : mystyle
+    Created on : Dec 5, 2013, 4:56:22 PM
+    Author     : NELSON QUANG
+    Description:
+        Purpose of the stylesheet follows.
+*/
+.list_work .jcarousel-skin-tango ul li img
+{
+    width: 200px;
+    height: 200px;
+}

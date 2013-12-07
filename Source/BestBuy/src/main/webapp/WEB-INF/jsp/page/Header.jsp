@@ -41,7 +41,7 @@
     </ul>
     <div id="login-box" class="login-popup">
         <a href="#" class="close"><img src="${pageContext.request.contextPath}/resources/images/process-stop.png" class="btn_close" title="Close Window" alt="Close" /></a>
-        <form:form method="post" class="signin" action="${pageContext.request.contextPath}/Account/Login.do" modelAttribute="account">
+        <form:form method="post" class="signin" action="${pageContext.request.contextPath}/Account/PostLogin.do" modelAttribute="account">
             <fieldset class="textbox">
                 <label class="username">
                     <span>Username or email</span>

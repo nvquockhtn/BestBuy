@@ -36,8 +36,13 @@ public class AccountController {
         return "Register";
     }
 
-    @RequestMapping(value = {"/Login.do"}, method = RequestMethod.POST)
-    public String login(@ModelAttribute("account") AccountModel form,
+    @RequestMapping(value = {"/GetLogin.do"}, method = RequestMethod.GET)
+    public String getLogin(@ModelAttribute("account") AccountModel form, Model model) {
+        return "Login";
+    }
+    
+    @RequestMapping(value = {"/PostLogin.do"}, method = RequestMethod.POST)
+    public String postLogin(@ModelAttribute("account") AccountModel form,
             Model model, HttpSession session) {
         String error = "";
         int rs = 3;

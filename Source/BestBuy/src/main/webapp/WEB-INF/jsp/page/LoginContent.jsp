@@ -12,7 +12,7 @@
 <div class="container-2">
     <section class="content">
         <h2>Đăng nhập</h2>
-        <form:form method="post" class="form-register" action="${pageContext.request.contextPath}/Account/Login.do" modelAttribute="account">
+        <form:form method="post" class="form-register" action="${pageContext.request.contextPath}/Account/PostLogin.do" modelAttribute="account">
             <div class="registerbox">
                 <fieldset>
                     <div class="control-group">
@@ -31,7 +31,9 @@
                         <label class="control-label"><span class="red"></span> &nbsp;</label>
                         <div class="controls">
                             <div class="pull-right">
-                                <input type ="button" class ="submit" value ="Đăng kí" style="width:80px; text-align:center" onclick="register()"/>
+                                <a href="${pageContext.request.contextPath}/Account/GetRegistration.do">
+                                    <input type ="button" class ="submit" value ="Đăng kí" style="width:80px; text-align:center" onclick="register()"/>
+                                </a>
                                 <input type ="submit" class ="submit" value ="Đăng nhập" style="width:80px; text-align:center"/>
                             </div>
                         </div>

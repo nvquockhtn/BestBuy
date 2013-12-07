@@ -1,5 +1,5 @@
 package com.bestbuy.pojo;
-// Generated Dec 7, 2013 10:06:55 AM by Hibernate Tools 3.2.1.GA
+// Generated Dec 7, 2013 2:54:26 PM by Hibernate Tools 3.2.1.GA
 
 
 import javax.persistence.Column;

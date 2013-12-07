@@ -24,13 +24,17 @@
                     <div class="control-group">
                         <label class="control-label"><span class="red">*</span> Mật khẩu:</label>
                         <div class="controls">
-                            <form:password path="username" class="input-xlarge" />
+                            <form:password path="password" class="input-xlarge" />
                         </div>
                     </div> 
                     <div class="control-group">
                         <label class="control-label"><span class="red"></span> &nbsp;</label>
                         <div class="controls">
-                            <div class="pull-right">
+                            <font color="#FF0000" style="font-size: 13px;">${requestScope.Error}</font>
+                        </div>
+                        <div class="controls">
+                            <label class="control-label"><span class="red"></span> &nbsp;</label>
+                            <div class="pull-right">                                
                                 <a href="${pageContext.request.contextPath}/Account/GetRegistration.do">
                                     <input type ="button" class ="submit" value ="Đăng kí" style="width:80px; text-align:center" onclick="register()"/>
                                 </a>

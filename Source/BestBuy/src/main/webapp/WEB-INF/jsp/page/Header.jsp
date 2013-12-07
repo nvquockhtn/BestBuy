@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <div id="top">
     <span>Hello! default welcome message</span>
     <div>
@@ -38,22 +41,22 @@
     </ul>
     <div id="login-box" class="login-popup">
         <a href="#" class="close"><img src="${pageContext.request.contextPath}/resources/images/process-stop.png" class="btn_close" title="Close Window" alt="Close" /></a>
-        <form method="post" class="signin" action="#">
+        <form:form method="post" class="signin" action="Login.do" modelAttribute="account">
             <fieldset class="textbox">
                 <label class="username">
                     <span>Username or email</span>
-                    <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+                    <form:input path="username" id="username" name="username" value="" type="text" autocomplete="on" placeholder="Username" />
                 </label>
                 <label class="password">
                     <span>Password</span>
-                    <input id="password" name="password" value="" type="password" placeholder="Password">
+                    <form:input path="password" id="password" name="password" value="" type="password" placeholder="Password" />
                 </label>
                 <button class="submit button" type="button">Sign in</button>
                 <p>
                     <a class="forgot" href="#">Forgot your password?</a> / <a class="register" href="register.html">Create an Account</a>
                 </p>        
             </fieldset>
-        </form>
+        </form:form>
     </div>
     <div id="demo-header">
         <a id="cart-link" href="#cart" title="Cart">2 Items - $295.00</a>

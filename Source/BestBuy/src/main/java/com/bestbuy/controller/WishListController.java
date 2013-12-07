@@ -14,16 +14,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
  *
  * @author VanQuoc-CNTT
  */
-@Controller
-@RequestMapping("/Cart")
-public class CartController {
 
-    public CartController() {
+@Controller
+@RequestMapping("/WishList")
+public class WishListController {
+
+    public WishListController() {
     }
 
     @RequestMapping(value = {"/Index.do"}, method = RequestMethod.GET)
     public String index(Model model, HttpSession session) {
 
-        return "ShoppingCart";
+        return "WishList";
     }
 }

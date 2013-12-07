@@ -4,9 +4,7 @@
  */
 package com.bestbuy.controller;
 
-import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -15,15 +13,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author VanQuoc-CNTT
  */
 @Controller
-@RequestMapping("/Cart")
-public class CartController {
+@RequestMapping("/Order")
+public class OrderController {
 
-    public CartController() {
+    public OrderController() {
+        // TODO Auto-generated constructor stub
     }
 
-    @RequestMapping(value = {"/Index.do"}, method = RequestMethod.GET)
-    public String index(Model model, HttpSession session) {
+    @RequestMapping(value = {"/Checkout.do"}, method = RequestMethod.GET)
+    public String checkout() {
 
-        return "ShoppingCart";
+        return "Checkout";
     }
 }

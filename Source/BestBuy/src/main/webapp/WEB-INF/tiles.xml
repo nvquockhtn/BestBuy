@@ -46,4 +46,8 @@
         <put-attribute name="title" value="Bestbuy - Checkout" />
         <put-attribute name="content_main" value="/WEB-INF/jsp/page/CheckoutContent.jsp"/>
     </definition>    
+    <definition name="WishList" extends="Page">
+        <put-attribute name="title" value="Bestbuy - WishList" />
+        <put-attribute name="content_main" value="/WEB-INF/jsp/page/WishListContent.jsp"/>
+    </definition>    
 </tiles-definitions>

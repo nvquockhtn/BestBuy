@@ -41,7 +41,7 @@
     </ul>
     <div id="login-box" class="login-popup">
         <a href="#" class="close"><img src="${pageContext.request.contextPath}/resources/images/process-stop.png" class="btn_close" title="Close Window" alt="Close" /></a>
-        <form:form method="post" class="signin" action="Login.do" modelAttribute="account">
+        <form:form method="post" class="signin" action="${pageContext.request.contextPath}/Account/Login.do" modelAttribute="account">
             <fieldset class="textbox">
                 <label class="username">
                     <span>Username or email</span>
@@ -51,7 +51,7 @@
                     <span>Password</span>
                     <form:input path="password" id="password" name="password" value="" type="password" placeholder="Password" />
                 </label>
-                <button class="submit button" type="button">Sign in</button>
+                <button type="submit" class="submit button" type="submit">Sign in</button>
                 <p>
                     <a class="forgot" href="#">Forgot your password?</a> / <a class="register" href="register.html">Create an Account</a>
                 </p>        

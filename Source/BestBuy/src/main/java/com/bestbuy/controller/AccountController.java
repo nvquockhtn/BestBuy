@@ -37,7 +37,7 @@ public class AccountController {
     }
 
     @RequestMapping(value = {"/Login.do"}, method = RequestMethod.POST)
-    public String postLogin(@ModelAttribute("account") AccountModel form,
+    public String login(@ModelAttribute("account") AccountModel form,
             Model model, HttpSession session) {
         String error = "";
         int rs = 3;

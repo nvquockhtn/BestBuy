@@ -14,6 +14,7 @@
         <link href="${pageContext.request.contextPath}/resources/css/tipsy.css" type="text/css" rel="stylesheet" media="screen"><!--tooltip-->
         <link href="${pageContext.request.contextPath}/resources/css/camera.css" type="text/css" rel="stylesheet" media="screen"><!--camera-->
         <link href="${pageContext.request.contextPath}/resources/css/jcarousel.css" type="text/css" rel="stylesheet" media="screen" /> <!-- list_work -->
+        <link href="${pageContext.request.contextPath}/resources/css/mystyle.css" type="text/css" rel="stylesheet" media="screen" /> <!-- list_work -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Arvo:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-1.8.2.min.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/css3-mediaqueries.js"></script><!--mediaqueries-->

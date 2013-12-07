@@ -40,7 +40,7 @@ public class AccountController {
     public String getLogin(@ModelAttribute("account") AccountModel form, Model model) {
         return "Login";
     }
-    
+
     @RequestMapping(value = {"/PostLogin.do"}, method = RequestMethod.POST)
     public String postLogin(@ModelAttribute("account") AccountModel form,
             Model model, HttpSession session) {
@@ -79,5 +79,11 @@ public class AccountController {
             return 0;
         }
         return 1;
+    }
+
+    @RequestMapping(value = {"/Logout.do"}, method = RequestMethod.GET)
+    public String logout(Model model, HttpSession session) {
+        session.invalidate();
+        return "Index";
     }
 }

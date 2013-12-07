@@ -9,7 +9,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <div id="top">
-    <span>Hello! default welcome message</span>
+    <c:if  test="${sessionScope.Account != null}">
+        <span>Hello! ${sessionScope.Account.username}</span>
+    </c:if>
     <div>
         <p>Language:
             <label>
@@ -37,11 +39,21 @@
         <li><a href="wishlist.html">My Wishlist</a></li>
         <li><a href="cart.html">My Cart</a></li>
         <li><a href="checkout.html">Checkout</a></li>
-        <li class="login"><a href="#login-box" class="last login-window">Login</a></li>
+        <li class="login">
+            <c:choose>
+                <c:when test="${sessionScope.Account == null}">
+                    <a href="#login-box" class="last login-window">Login</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="${pageContext.request.contextPath}/Account/Logout.do" class="last login-window">Logout</a>
+                </c:otherwise>
+            </c:choose>
+
+        </li>
     </ul>
     <div id="login-box" class="login-popup">
         <a href="#" class="close"><img src="${pageContext.request.contextPath}/resources/images/process-stop.png" class="btn_close" title="Close Window" alt="Close" /></a>
-        <form:form method="post" class="signin" action="${pageContext.request.contextPath}/Account/PostLogin.do" modelAttribute="account">
+            <form:form method="post" class="signin" action="${pageContext.request.contextPath}/Account/PostLogin.do" modelAttribute="account">
             <fieldset class="textbox">
                 <label class="username">
                     <span>Username or email</span>
@@ -113,10 +125,10 @@
     <form action="#" method="post" class="search_bar">
         <fieldset>
             <input type="text" name="search" class="search" value="Enter a keywords..." onBlur="if (this.value == '') {
-                              this.value = 'Enter a keywords...';
-                          }" onFocus="if (this.value == 'Enter a keywords...') {
-                              this.value = '';
-                          }" />
+                        this.value = 'Enter a keywords...';
+                    }" onFocus="if (this.value == 'Enter a keywords...') {
+                        this.value = '';
+                    }" />
             <input type="submit" name="submit" value="Search" class="submit" />
         </fieldset>
     </form>

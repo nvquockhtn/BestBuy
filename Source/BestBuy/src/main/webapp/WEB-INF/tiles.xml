@@ -30,6 +30,11 @@
         <put-attribute name="title" value="Register Account" />        
         <put-attribute name="content_main" value="/WEB-INF/jsp/page/RegisterContent.jsp"/>
     </definition>    
+    <definition name="Login" extends="Page">
+        <put-attribute name="title" value="Login Account" />        
+        <put-attribute name="slider" value="/WEB-INF/jsp/page/Slider.jsp"/>
+        <put-attribute name="content_main" value="/WEB-INF/jsp/page/LoginContent.jsp"/>
+    </definition>    
     <definition name="Product" extends="Page">
         <put-attribute name="title" value="Products" />
         <put-attribute name="content_main" value="/WEB-INF/jsp/page/ProductContent.jsp"/>

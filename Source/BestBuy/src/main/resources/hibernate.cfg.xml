@@ -40,5 +40,16 @@
     <mapping class="com.bestbuy.pojo.Accounttype"/>
     <mapping class="com.bestbuy.pojo.Order"/>
     <mapping class="com.bestbuy.pojo.Comment"/>
+    <mapping class="com.bestbuy.pojo.Account"/>
+    <mapping class="com.bestbuy.pojo.Producttype"/>
+    <mapping class="com.bestbuy.pojo.Receiver"/>
+    <mapping class="com.bestbuy.pojo.Product"/>
+    <mapping class="com.bestbuy.pojo.Orderdetail"/>
+    <mapping class="com.bestbuy.pojo.Orderstate"/>
+    <mapping class="com.bestbuy.pojo.Productstate"/>
+    <mapping class="com.bestbuy.pojo.Image"/>
+    <mapping class="com.bestbuy.pojo.Accounttype"/>
+    <mapping class="com.bestbuy.pojo.Order"/>
+    <mapping class="com.bestbuy.pojo.Comment"/>
   </session-factory>
 </hibernate-configuration>

@@ -1,5 +1,5 @@
 package com.bestbuy.pojo;
-// Generated Dec 7, 2013 2:54:26 PM by Hibernate Tools 3.2.1.GA
+// Generated Dec 8, 2013 1:03:58 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -40,12 +40,6 @@ public class Order  implements java.io.Serializable {
     public Order() {
     }
 
-	
-    public Order(Account account, Receiver receiver, Orderstate orderstate) {
-        this.account = account;
-        this.receiver = receiver;
-        this.orderstate = orderstate;
-    }
     public Order(Account account, Receiver receiver, Orderstate orderstate, Date createDate, Integer total, Set<Orderdetail> orderdetails) {
        this.account = account;
        this.receiver = receiver;
@@ -66,7 +60,7 @@ public class Order  implements java.io.Serializable {
         this.id = id;
     }
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="CreatorId", nullable=false)
+    @JoinColumn(name="CreatorId")
     public Account getAccount() {
         return this.account;
     }
@@ -75,7 +69,7 @@ public class Order  implements java.io.Serializable {
         this.account = account;
     }
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="ReceiverId", nullable=false)
+    @JoinColumn(name="ReceiverId")
     public Receiver getReceiver() {
         return this.receiver;
     }
@@ -84,7 +78,7 @@ public class Order  implements java.io.Serializable {
         this.receiver = receiver;
     }
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="StateId", nullable=false)
+    @JoinColumn(name="StateId")
     public Orderstate getOrderstate() {
         return this.orderstate;
     }

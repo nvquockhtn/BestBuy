@@ -1,5 +1,5 @@
 package com.bestbuy.pojo;
-// Generated Dec 7, 2013 2:54:26 PM by Hibernate Tools 3.2.1.GA
+// Generated Dec 8, 2013 1:03:58 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.HashSet;

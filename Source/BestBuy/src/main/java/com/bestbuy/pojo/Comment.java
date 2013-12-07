@@ -1,5 +1,5 @@
 package com.bestbuy.pojo;
-// Generated Dec 7, 2013 2:54:26 PM by Hibernate Tools 3.2.1.GA
+// Generated Dec 8, 2013 1:03:58 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;
@@ -35,11 +35,6 @@ public class Comment  implements java.io.Serializable {
     public Comment() {
     }
 
-	
-    public Comment(Product product, Account account) {
-        this.product = product;
-        this.account = account;
-    }
     public Comment(Product product, Account account, String text, Date createDate, Float rating) {
        this.product = product;
        this.account = account;
@@ -59,7 +54,7 @@ public class Comment  implements java.io.Serializable {
         this.id = id;
     }
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="ProductId", nullable=false)
+    @JoinColumn(name="ProductId")
     public Product getProduct() {
         return this.product;
     }
@@ -68,7 +63,7 @@ public class Comment  implements java.io.Serializable {
         this.product = product;
     }
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="AccountId", nullable=false)
+    @JoinColumn(name="AccountId")
     public Account getAccount() {
         return this.account;
     }

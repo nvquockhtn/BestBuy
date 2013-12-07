@@ -1,5 +1,5 @@
 package com.bestbuy.pojo;
-// Generated Dec 7, 2013 2:54:26 PM by Hibernate Tools 3.2.1.GA
+// Generated Dec 8, 2013 1:03:58 AM by Hibernate Tools 3.2.1.GA
 
 
 import javax.persistence.Column;
@@ -32,10 +32,6 @@ public class Image  implements java.io.Serializable {
     public Image() {
     }
 
-	
-    public Image(Product product) {
-        this.product = product;
-    }
     public Image(Product product, String text, String alt, String path, Integer typeId) {
        this.product = product;
        this.text = text;
@@ -55,7 +51,7 @@ public class Image  implements java.io.Serializable {
         this.id = id;
     }
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="ProductId", nullable=false)
+    @JoinColumn(name="ProductId")
     public Product getProduct() {
         return this.product;
     }

@@ -32,8 +32,55 @@ public class AccountController {
     }
 
     @RequestMapping(value = {"/GetRegistration.do"}, method = RequestMethod.GET)
-    public String getRegistrationForm(Model model) {
+    public String getRegistrationForm(@ModelAttribute("account") AccountModel form, Model model) {
         return "Register";
+    }
+
+    @RequestMapping(value = "/PostRegistration.do", method = RequestMethod.POST)
+    public String postRegistrationForm(
+            @ModelAttribute("account") AccountModel form, Model model) {
+        int rs = 4;
+        String error = "";
+
+        rs = RegisterAction(form);
+        switch (rs) {
+            case 0:
+                error = "";
+                break;
+            case 1:
+                error = "Tên đăng nhập đã tồn tại. Vui lòng chọn tên đăng nhập khác";
+                break;
+            case 2:
+                error = "Vui lòng điền đầy đủ các trường";
+                break;
+            case 3:
+                error = "Mật khẩu không khớp";
+                break;
+            case 5:
+                error = "Tạo tài khoản thất bại. Vui lòng thực hiện lại!";
+                break;
+        }
+
+        model.addAttribute("Error", error);
+        model.addAttribute("Result", rs);
+
+        if (rs == 4) {
+            return "RegistrationOK";
+        } else {
+            return "Register";
+        }
+    }
+
+    private int RegisterAction(AccountModel model) {
+        // --------- Kiem tra dieu kien ton tai
+        Account acc = new Account(null, model.getFullName(), model.getEmail(), model.getAddress(), model.getPhoneNumber(), model.getCompany(), model.getUsername(), model.getPassword(), false, true, null, null);
+
+        if (accountDao.checkExistByUserName(acc) == true) {
+            return 1;
+        }
+        // --------- End Kiem tra dieu kien dang ky
+
+        return accountDao.addAccount(acc) == true ? 4 : 5;
     }
 
     @RequestMapping(value = {"/GetLogin.do"}, method = RequestMethod.GET)

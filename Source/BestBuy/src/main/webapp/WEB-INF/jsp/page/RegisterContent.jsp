@@ -5,41 +5,32 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <div class="container-2">
     <section class="content">
         <h2>Register Account &nbsp;<small>Register your information details.</small></h2>
-        <form action="#" class="form-register">
+        <form:form method="post" class="form-register" action="${pageContext.request.contextPath}/Account/PostRegistration.do" modelAttribute="account">
             <h3>Your Personal Details</h3>
             <div class="registerbox">
                 <fieldset>
                     <div class="control-group">
-                        <label class="control-label"><span class="red">*</span> First Name:</label>
+                        <label class="control-label"><span class="red">*</span> Full Name:</label>
                         <div class="controls">
-                            <input type="text"  class="input-xlarge">
+                            <form:input  path="fullName"   class="input-xlarge" />
                         </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label"><span class="red">*</span> Last Name:</label>
-                        <div class="controls">
-                            <input type="text"  class="input-xlarge">
-                        </div>
-                    </div>
+                    </div>                    
                     <div class="control-group">
                         <label class="control-label"><span class="red">*</span> Email:</label>
                         <div class="controls">
-                            <input type="text"  class="input-xlarge">
+                            <form:input  path="email"  class="input-xlarge" />
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label"><span class="red">*</span> Telephone:</label>
                         <div class="controls">
-                            <input type="text"  class="input-xlarge">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label"> Fax:</label>
-                        <div class="controls">
-                            <input type="text"  class="input-xlarge">
+                            <form:input  path="phoneNumber"   class="input-xlarge" />
                         </div>
                     </div>
                 </fieldset>
@@ -50,19 +41,13 @@
                     <div class="control-group">
                         <label class="control-label"> Company:</label>
                         <div class="controls">
-                            <input type="text"  class="input-xlarge">
+                            <form:input  path="company"   class="input-xlarge" />
                         </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label"><span class="red">*</span> Last Name:</label>
-                        <div class="controls">
-                            <input type="text"  class="input-xlarge">
-                        </div>
-                    </div>
+                    </div>                    
                     <div class="control-group">
                         <label class="control-label"><span class="red">*</span> Address 1:</label>
                         <div class="controls">
-                            <input type="text"  class="input-xlarge">
+                            <form:input  path="address"   class="input-xlarge" />
                         </div>
                     </div>
                     <div class="control-group">
@@ -71,57 +56,27 @@
                             <input type="text"  class="input-xlarge">
                         </div>
                     </div>
-                    <div class="control-group">
-                        <label class="control-label">
-                            <span class="red">*</span>City:</label>
-                        <div class="controls">
-                            <input type="text"  class="input-xlarge">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">
-                            <span class="red">*</span>Post Code:</label>
-                        <div class="controls">
-                            <input type="text"  class="input-xlarge">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label for="select01" class="control-label">
-                            <span class="red">*</span>Country:</label>
-                        <div class="controls">
-                            <select id="select01" class="span3">
-                                <option>Country:</option>
-                                <option>Philippines</option>
-                                <option>Germany</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label">
-                            <span class="red">*</span>Region / State:</label>
-                        <div class="controls">
-                            <select id="select02" class="span3">
-                                <option>Region / State:</option>
-                                <option>Manila</option>
-                                <option>Cagayan de Oro City</option>
-                            </select>
-                        </div>
-                    </div>
                 </fieldset>
             </div>
-            <h3>Your Password</h3>
+            <h3>Your Account</h3>
             <div class="registerbox">
                 <fieldset>
                     <div class="control-group">
+                        <label  class="control-label"><span class="red">*</span> User name:</label>
+                        <div class="controls">
+                            <form:input  path="username" class="input-xlarge" />
+                        </div>
+                    </div>
+                    <div class="control-group">
                         <label  class="control-label"><span class="red">*</span> Password:</label>
                         <div class="controls">
-                            <input type="text"  class="input-xlarge">
+                            <form:password  path="password"   class="input-xlarge" />
                         </div>
                     </div>
                     <div class="control-group">
                         <label  class="control-label"><span class="red">*</span> Password Confirm::</label>
                         <div class="controls">
-                            <input type="text"  class="input-xlarge">
+                            <form:password  path="confirmPassword"  class="input-xlarge" />
                         </div>
                     </div>
                 </fieldset>
@@ -134,7 +89,7 @@
                 &nbsp;
                 <input type="Submit" class="submit" value="Continue">
             </div>
-        </form>
+        </form:form>
     </section>
     <aside class="sidebar">
         <div class="side">

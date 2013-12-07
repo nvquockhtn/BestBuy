@@ -65,7 +65,7 @@
                 </label>
                 <button type="submit" class="submit button" type="submit">Sign in</button>
                 <p>
-                    <a class="forgot" href="#">Forgot your password?</a> / <a class="register" href="register.html">Create an Account</a>
+                    <a class="forgot" href="#">Forgot your password?</a> / <a class="register" href="${pageContext.request.contextPath}/Account/GetRegistration.do">Create an Account</a>
                 </p>        
             </fieldset>
         </form:form>
@@ -121,7 +121,7 @@
     </div><!-- /demoheader -->	
 </div><!--end:top2-->
 <div id="top3">
-    <h1 class="logo"><a href="index-2.html">Shopy Mart</a></h1>
+    <h1 class="logo"><a href="${pageContext.request.contextPath}/Home/Index.do">Best Buy</a></h1>
     <form action="#" method="post" class="search_bar">
         <fieldset>
             <input type="text" name="search" class="search" value="Enter a keywords..." onBlur="if (this.value == '') {

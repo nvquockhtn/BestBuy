@@ -5,14 +5,18 @@
 package com.bestbuy.dao;
 
 import com.bestbuy.pojo.Account;
+import java.io.Console;
 import org.hibernate.Query;
 import org.hibernate.HibernateException;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author VanQuoc-CNTT
  */
+
+@Repository
 public class AccountDaoImpl extends DaoSupport implements AccountDao {
 
     @Transactional(readOnly = true)
@@ -33,6 +37,7 @@ public class AccountDaoImpl extends DaoSupport implements AccountDao {
         try {
             sessionFactory.getCurrentSession().saveOrUpdate(acc);
         } catch (Exception ex) {
+            System.out.println(ex.toString());
             kq = false;
         }
         return kq;

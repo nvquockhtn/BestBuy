@@ -82,7 +82,7 @@ public class AccountController {
 			String msg = error.getDefaultMessage();
 			if ("account.password.mismatch.message".equals(msg)) {
 				if (!result.hasFieldErrors("password")) {
-					result.rejectValue("password", "error.mismatch");
+					result.rejectValue("password", "error.mismatch"); 
 				}
 			}
 		}

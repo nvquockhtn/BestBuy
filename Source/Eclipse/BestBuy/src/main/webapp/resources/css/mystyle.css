@@ -10,3 +10,9 @@
     width: 200px;
     height: 200px;
 }
+
+.error{
+	color: red !important;;
+	margin: auto 10px;
+	font-size: 13px;
+}

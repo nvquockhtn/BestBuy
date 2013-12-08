@@ -4,88 +4,111 @@
  */
 package com.bestbuy.model;
 
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.ScriptAssert;
+
 /**
- *
+ * 
  * @author VanQuoc-CNTT
  */
+
+@ScriptAssert(lang = "javascript", script = "_this.confirmPassword.equals(_this.password)", message = "account.password.mismatch.message")
 public class AccountModel {
 
-    private String fullName;
-    private String email;
-    private String address;
-    private String phoneNumber;
-    private String company;
-    private String username;
-    private String password;
-    private String confirmPassword;
+	private String fullName;
+	private String email;
+	private String address;
+	private String phoneNumber;
+	private String company;
+	private String username;
+	private String password;
+	private String confirmPassword;
 
-    public String getFullName() {
-        return fullName;
-    }
+	@NotNull
+	@Size(min = 1, max = 50)
+	public String getFullName() {
+		return fullName;
+	}
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
+	
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	@NotNull
+	@Size(min = 1, max = 50)
+	@Email
+	public String getEmail() {
+		return email;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public String getAddress() {
-        return address;
-    }
+	@NotNull
+	@Size(min = 1, max = 50)
+	public String getAddress() {
+		return address;
+	}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
+	@NotNull
+	@Size(min = 1, max = 50)
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 
-    public String getCompany() {
-        return company;
-    }
+	public String getCompany() {
+		return company;
+	}
 
-    public void setCompany(String company) {
-        this.company = company;
-    }
+	public void setCompany(String company) {
+		this.company = company;
+	}
 
-    public String getUsername() {
-        return username;
-    }
+	@NotNull
+	@Size(min = 1, max = 50)
+	public String getUsername() {
+		return username;
+	}
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	@NotNull
+	@Size(min = 6, max = 50)
+	public String getPassword() {
+		return password;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    /**
-     * @return the confirmPassword
-     */
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
+	/**
+	 * @return the confirmPassword
+	 */
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
 
-    /**
-     * @param confirmPassword the confirmPassword to set
-     */
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
-    }
+	/**
+	 * @param confirmPassword
+	 *            the confirmPassword to set
+	 */
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 }

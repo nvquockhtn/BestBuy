@@ -5,12 +5,33 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="container-2">
     <section class="content">
         <div class="list_work">
             <h4>New Laptops</h4>
             <ul id="mycarousel" class="jcarousel-skin-tango item da-thumbs">
-                <li>
+            	<c:forEach var ="item" items="${requestScope.NewLaptopProduct}">
+            		<c:set var="listImages" value="${item.getImages().toArray()}"></c:set>
+            		<c:forEach var="itemImage" items="listImages">
+            			<c:if test="${itemImage.typeId == 1}">
+							<c:set var="image" value="${itemImage}"></c:set>
+						</c:if>
+            		</c:forEach>
+            		<li>
+	                    <img src="${pageContext.request.contextPath}/resources/images/Dell/Laptop/${image.path}" alt="" />
+	                    <span>American Dress<br><small class="sale">${item.price }</small>&nbsp;&nbsp;<small>$99.25</small></span>
+	                    <span class="sale">Sale</span>
+	                    <article class="da-animate da-slideFromRight" style="display: block;">
+	                        <h3>American Dress</h3>
+	                        <p>
+	                            <a href="product-detail.html" class="link tip" title="View Detail"></a>&nbsp;
+	                            <a href="cart.html" class="cart tip" title="Add to cart"></a>&nbsp;&nbsp;
+	                            <a href="${pageContext.request.contextPath}/resources/images/Dell/Laptop/${image.path}" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
+	                    </article>
+                	</li>
+            	</c:forEach>
+                <%-- <li>
                     <img src="${pageContext.request.contextPath}/resources/images/Dell/Laptop/Laptop Dell Inspiron 3521 33214G50_large.jpg" alt="" />
                     <span>American Dress<br><small class="sale">$320.00</small>&nbsp;&nbsp;<small>$99.25</small></span>
                     <span class="sale">Sale</span>
@@ -78,6 +99,7 @@
                             <a href="${pageContext.request.contextPath}/resources/images/Apple/Tablet/Máy tính bảng Apple iPad Air Celllular 32GB_large.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
                     </article>
                 </li>                        
+             --%>
             </ul>
         </div><!--end:list_work-->
         <div class="list_work list_work2">

@@ -107,6 +107,8 @@ public class AccountController {
 	@RequestMapping(value = { "/GetLogin.do" }, method = RequestMethod.GET)
 	public String getLogin(@ModelAttribute("account") AccountModel form,
 			Model model) {
+		String error = "Vui lòng điền đầy đủ các trường";
+		model.addAttribute("Error", error);
 		return "Login";
 	}
 

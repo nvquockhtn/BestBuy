@@ -31,5 +31,12 @@ public class ProductDaoImpl extends DaoSupport implements ProductDao{
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         return (ArrayList<Product>)query.list();
 	}
+
+	@Transactional(readOnly = true)
+	public Product getProductById(Integer maSp) {
+		Product product = null;
+		product = (Product) sessionFactory.getCurrentSession().get(Product.class, maSp);
+		return product;
+	}
     
 }

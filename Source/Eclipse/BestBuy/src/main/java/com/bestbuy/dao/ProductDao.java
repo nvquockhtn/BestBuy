@@ -21,4 +21,5 @@ public interface ProductDao {
      * @return  ArrayList<Product>
      */
     public ArrayList<Product> getListNewProducts(int type);
+	public Product getProductById(Integer maSp);
 }

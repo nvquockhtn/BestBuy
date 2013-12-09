@@ -11,7 +11,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <div class="container-2">
     <section class="content">
-        <h2>Đăng nhập</h2>
+        <h2>Login</h2>
         <form:form method="post" class="form-register" action="${pageContext.request.contextPath}/Account/PostLogin.do" modelAttribute="account">
             <div class="registerbox">
                 <fieldset>
@@ -19,12 +19,18 @@
                         <label class="control-label"><span class="red">*</span> Tên đăng nhập:</label>
                         <div class="controls">
                             <form:input  path="username" class="input-xlarge" />
+                            <form:errors path="username">
+								<form:errors path="username" htmlEscape="false" cssClass="error"/>
+							</form:errors>
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label"><span class="red">*</span> Mật khẩu:</label>
                         <div class="controls">
                             <form:password path="password" class="input-xlarge" />
+                            <form:errors path="password">
+								<form:errors path="password" htmlEscape="false" cssClass="error"/>
+							</form:errors>
                         </div>
                     </div> 
                     <div class="control-group">

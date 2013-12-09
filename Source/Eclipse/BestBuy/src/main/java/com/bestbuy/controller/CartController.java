@@ -4,26 +4,168 @@
  */
 package com.bestbuy.controller;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.bestbuy.dao.ProductDao;
+import com.bestbuy.model.ProductInCart;
+import com.bestbuy.pojo.Account;
 
 /**
- *
+ * 
  * @author VanQuoc-CNTT
  */
 @Controller
 @RequestMapping("/Cart")
 public class CartController {
+	ApplicationContext context = new ClassPathXmlApplicationContext(
+			"beans-hibernate.xml");
+	ProductDao productDao = (ProductDao) context.getBean("productDao");
 
-    public CartController() {
-    }
+	public CartController() {
+	}
 
-    @RequestMapping(value = {"/Index.do"}, method = RequestMethod.GET)
-    public String index(Model model, HttpSession session) {
+	@RequestMapping(value = { "/Index.do" }, method = RequestMethod.GET)
+	public String index(Model model, HttpSession session) {
+//		Account account = (Account) session.getAttribute("Account");
+//		if (account == null) {
+//			return "redirect:/Account/GetLogin.do";
+//		}
 
-        return "ShoppingCart";
-    }
+		ArrayList<ProductInCart> shopCart = GetShoppingCart(session);
+
+		return "ShoppingCart";
+	}
+
+	private ArrayList<ProductInCart> GetShoppingCart(HttpSession session) {
+		ArrayList<ProductInCart> shopCart;
+		if (session.getAttribute("ShoppingCart") == null) {
+			shopCart = new ArrayList<ProductInCart>();
+			session.setAttribute("ShoppingCart", shopCart);
+		} else {
+			shopCart = (ArrayList<ProductInCart>) session
+					.getAttribute("ShoppingCart");
+		}
+		return shopCart;
+	}
+
+	@RequestMapping(value = { "/Add.do" }, method = RequestMethod.GET)
+	public String AddProduct(@RequestParam("maSP") Integer maSP, Model model,
+			HttpSession session) {
+//		Account account = (Account) session.getAttribute("Account");
+//		if (account == null) {
+//			return "redirect:/Account/GetLogin.do";
+//		}
+
+		ArrayList<ProductInCart> shopCart = GetShoppingCart(session);
+
+		AddToCartAction(maSP, shopCart);
+		return "ShoppingCart";
+	}
+
+	private void AddToCartAction(Integer maSp, ArrayList<ProductInCart> shopCart)
+			throws NumberFormatException {
+		int i = 0;
+		for (i = 0; i < shopCart.size(); i++) {
+			ProductInCart item = shopCart.get(i);
+			if (item.getProduct().getId() == maSp) {
+				item.setQuantity(item.getQuantity() + 1);
+				break;
+			}
+		}
+		// truong hop chua co san pham trong gio hang
+		if (i == shopCart.size()) {
+			ProductInCart item = new ProductInCart(
+					productDao.getProductById(maSp), 1);
+			shopCart.add(item);
+		}
+	}
+
+	@RequestMapping(value = { "/Delete.do" }, method = RequestMethod.GET)
+	public String DeleteProduct(@RequestParam("maSP") Integer maSP,
+			Model model, HttpSession session) {
+		Account account = (Account) session.getAttribute("Account");
+		if (account == null) {
+			return "redirect:/Account/GetLogin.do";
+		}
+
+		ArrayList<ProductInCart> shopCart = GetShoppingCart(session);
+		DeleteItemCartAction(maSP, shopCart);
+
+		return "ShoppingCart";
+	}
+
+	private void DeleteItemCartAction(Integer maSp,
+			ArrayList<ProductInCart> shopCart) throws NumberFormatException {
+		int i = 0;
+		for (i = 0; i < shopCart.size(); i++) {
+			ProductInCart item = shopCart.get(i);
+			if (item.getProduct().getId() == maSp) {
+				shopCart.remove(item);
+				break;
+			}
+		}
+	}
+
+	@RequestMapping(value = { "/Update.do" }, method = RequestMethod.GET)
+	public String UpdateAndLiquidateProduct(
+			@RequestParam(value = "soLuong", required = false) String[] soLuong,
+			Model model, HttpSession session) throws IOException {
+		Account account = (Account) session.getAttribute("Account");
+		if (account == null) {
+			return "redirect:/Account/GetLogin.do";
+		}
+
+		ArrayList<ProductInCart> shopCart = GetShoppingCart(session);
+
+		UpdateCartAction(soLuong, shopCart);
+
+		return "ShoppingCart";
+	}
+
+	private void UpdateCartAction(String[] soLuong,
+			ArrayList<ProductInCart> shopCart) throws NumberFormatException {
+		for (int i = 0; i < shopCart.size(); i++) {
+			shopCart.get(i).setQuantity(Integer.parseInt(soLuong[i]));
+		}
+	}
+
+	/*
+	@RequestMapping(value = { "/Liquidate.do" }, method = RequestMethod.GET)
+	public String LiquidateProduct(Model model, HttpSession session)
+			throws IOException {
+		Account account = (Account) session.getAttribute("Account");
+		if (account == null) {
+			return "redirect:/Account/GetLogin.do";
+		}
+
+		ArrayList<ProductInCart> shopCart = GetShoppingCart(session);
+
+		if (!shopCart.isEmpty()) {
+			String url = LiquidateAction(account, shopCart, session);
+			return "redirect:" + url;
+		}
+		return "ShoppingCart";
+	}
+	
+	private String LiquidateAction(Account acc, ArrayList<ProductInCart> shopCart,
+			HttpSession session) throws IOException {
+		Order order = createOrderInfor(acc, shopCart);
+		ArrayList<OrderDetail> orderDetails = createOrderDetail(order, shopCart);
+		orderDetailDao.addOrderDetails(orderDetails);
+
+		session.removeAttribute("ShopCart");
+		return "/Order/GetOrderDetail.do?orderId=" + order.getId();
+
+	}*/
 }

@@ -17,9 +17,7 @@ public class ProductInCart {
     public ProductInCart(Product product, int quantity) {
         this.setProduct(product);
         this.quantity = quantity;
-    }
-
-    
+    }    
 
     public int getQuantity() {
         return quantity;

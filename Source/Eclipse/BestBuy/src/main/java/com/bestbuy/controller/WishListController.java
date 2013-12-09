@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bestbuy.dao.ProductDao;
-import com.bestbuy.model.ProductInCart;
 import com.bestbuy.pojo.Account;
+import com.bestbuy.pojo.Product;
 
 /**
- *
+ * 
  * @author VanQuoc-CNTT
  */
 
@@ -32,71 +32,65 @@ public class WishListController {
 			"beans-hibernate.xml");
 	ProductDao productDao = (ProductDao) context.getBean("productDao");
 
-    public WishListController() {
-    }
+	public WishListController() {
+	}
 
-    @RequestMapping(value = {"/Index.do"}, method = RequestMethod.GET)
-    public String index(Model model, HttpSession session) {
-    	GetWishList(session);
-        return "WishList";
-    }
-    
-    @RequestMapping(value = { "/Add.do" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/Index.do" }, method = RequestMethod.GET)
+	public String index(Model model, HttpSession session) {
+		GetWishList(session);
+		return "WishList";
+	}
+
+	@RequestMapping(value = { "/Add.do" }, method = RequestMethod.GET)
 	public String AddProduct(@RequestParam("maSP") Integer maSP, Model model,
 			HttpSession session) {
 
-		ArrayList<ProductInCart> wishList = GetWishList(session);
+		ArrayList<Product> wishList = GetWishList(session);
 
 		AddToWishListAction(maSP, wishList);
 		return "WishList";
 	}
-    
-    private ArrayList<ProductInCart> GetWishList(HttpSession session) {
-		ArrayList<ProductInCart> wishList;
+
+	private ArrayList<Product> GetWishList(HttpSession session) {
+		ArrayList<Product> wishList;
 		if (session.getAttribute("WishList") == null) {
-			wishList = new ArrayList<ProductInCart>();
+			wishList = new ArrayList<Product>();
 			session.setAttribute("WishList", wishList);
 		} else {
-			wishList = (ArrayList<ProductInCart>) session
-					.getAttribute("WishList");
+			wishList = (ArrayList<Product>) session.getAttribute("WishList");
 		}
 		return wishList;
 	}
-    
-    private void AddToWishListAction(Integer maSp, ArrayList<ProductInCart> wishList)
+
+	private void AddToWishListAction(Integer maSp, ArrayList<Product> wishList)
 			throws NumberFormatException {
-		int i = 0;
-		for (i = 0; i < wishList.size(); i++) {
-			ProductInCart item = wishList.get(i);
-			if (item.getProduct().getId() == maSp) {
-				item.setQuantity(item.getQuantity() + 1);
-				break;
-			}
+		
+		for (Product product : wishList) {
+			if (product.getId() == maSp)
+				return;
 		}
-		// truong hop chua co san pham trong gio hang
-		if (i == wishList.size()) {
-			ProductInCart item = new ProductInCart(
-					productDao.getProductById(maSp), 1);
+		
+		Product item = productDao.getProductById(maSp);
+		if (!wishList.contains(item))
 			wishList.add(item);
-		}
 	}
-    
-    @RequestMapping(value = { "/Delete.do" }, method = RequestMethod.GET)
+
+	@RequestMapping(value = { "/Delete.do" }, method = RequestMethod.GET)
 	public String DeleteProduct(@RequestParam("maSP") Integer maSP,
 			Model model, HttpSession session) {
-		
-		ArrayList<ProductInCart> shopCart = GetWishList(session);
+
+		ArrayList<Product> shopCart = GetWishList(session);
 		DeleteItemWishListAction(maSP, shopCart);
 
 		return "WishList";
 	}
-    
-    private void DeleteItemWishListAction(Integer maSp,
-			ArrayList<ProductInCart> wishList) throws NumberFormatException {
+
+	private void DeleteItemWishListAction(Integer maSp,
+			ArrayList<Product> wishList) throws NumberFormatException {
 		int i = 0;
 		for (i = 0; i < wishList.size(); i++) {
-			ProductInCart item = wishList.get(i);
-			if (item.getProduct().getId() == maSp) {
+			Product item = wishList.get(i);
+			if (item.getId() == maSp) {
 				wishList.remove(item);
 				break;
 			}

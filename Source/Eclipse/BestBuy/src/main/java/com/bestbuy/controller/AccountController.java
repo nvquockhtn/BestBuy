@@ -47,6 +47,7 @@ public class AccountController {
 			@ModelAttribute("account") @Valid AccountModel form,
 			BindingResult result, Model model) {
 
+		//form.setFullName("vanquang");
 		convertPasswordError(result);
 		if(result.hasErrors())
 			return "Register";

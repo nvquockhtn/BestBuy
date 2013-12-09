@@ -18,19 +18,13 @@
                     <div class="control-group">
                         <label class="control-label"><span class="red">*</span> Tên đăng nhập:</label>
                         <div class="controls">
-                            <form:input  path="username" class="input-xlarge" />
-                            <form:errors path="username">
-								<form:errors path="username" htmlEscape="false" cssClass="error"/>
-							</form:errors>
+                            <form:input  path="username" class="input-xlarge" />                            
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label"><span class="red">*</span> Mật khẩu:</label>
                         <div class="controls">
                             <form:password path="password" class="input-xlarge" />
-                            <form:errors path="password">
-								<form:errors path="password" htmlEscape="false" cssClass="error"/>
-							</form:errors>
                         </div>
                     </div> 
                     <div class="control-group">

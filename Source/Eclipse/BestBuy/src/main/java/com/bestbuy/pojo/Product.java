@@ -157,7 +157,7 @@ public class Product  implements java.io.Serializable {
     public void setComments(Set<Comment> comments) {
         this.comments = comments;
     }
-@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="product")
+@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="product")
     public Set<Image> getImages() {
         return this.images;
     }

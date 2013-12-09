@@ -22,4 +22,5 @@ table.shopping-cart tr td button.update {
 	-webkit-border-radius: 30px;
 	-khtml-border-radius: 30px;
 	border-radius: 30px;
+	border-color: transparent;
 }

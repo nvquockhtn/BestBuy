@@ -12,14 +12,14 @@
             <h4>New Laptops</h4>
             <ul id="mycarousel" class="jcarousel-skin-tango item da-thumbs">
             	<c:forEach var ="item" items="${requestScope.NewLaptopProduct}">
-            		<c:set var="listImages" value="${item.getImages().toArray()}"></c:set>
-            		<c:forEach var="itemImage" items="listImages">
+            		<c:set var="imageURL"/>
+            		<c:forEach var="itemImage" items="${item.getImages().iterator()}">
             			<c:if test="${itemImage.typeId == 1}">
-							<c:set var="image" value="${itemImage}"></c:set>
+							<c:set var="imageURL" value="${itemImage}" />
 						</c:if>
             		</c:forEach>
             		<li>
-	                    <img src="${pageContext.request.contextPath}/resources/images/Dell/Laptop/${image.path}" alt="" />
+	                    <img src="${pageContext.request.contextPath}/resources/images/${imageURL.path }" alt="" />
 	                    <span>American Dress<br><small class="sale">${item.price }</small>&nbsp;&nbsp;<small>$99.25</small></span>
 	                    <span class="sale">Sale</span>
 	                    <article class="da-animate da-slideFromRight" style="display: block;">
@@ -27,7 +27,7 @@
 	                        <p>
 	                            <a href="product-detail.html" class="link tip" title="View Detail"></a>&nbsp;
 	                            <a href="cart.html" class="cart tip" title="Add to cart"></a>&nbsp;&nbsp;
-	                            <a href="${pageContext.request.contextPath}/resources/images/Dell/Laptop/${image.path}" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
+	                            <a href="${pageContext.request.contextPath}/resources/images/${imageURL.path }" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
 	                    </article>
                 	</li>
             	</c:forEach>

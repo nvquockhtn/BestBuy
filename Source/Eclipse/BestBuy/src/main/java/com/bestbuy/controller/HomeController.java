@@ -38,6 +38,7 @@ public class HomeController {
     	
     	listProduct = productDao.getListNewProducts(1);
     	listTablet  = productDao.getListNewProducts(2);
+    	
     	// Image[] img = (Image[])(listProduct.get(0).getImages().toArray());
     	model.addAttribute("NewLaptopProduct", listProduct);
     	model.addAttribute("NewTabletProduct", listTablet);

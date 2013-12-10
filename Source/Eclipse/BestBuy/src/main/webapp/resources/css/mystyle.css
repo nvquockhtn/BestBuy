@@ -26,8 +26,17 @@ table.shopping-cart tr td button.update {
 }
 
 #specs table {
-	width: 500px;
+	width: 100%;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 12px;
 	color: #757575 !important;
+}
+
+#reviews .rating-detail{
+	border-bottom-style: groove;
+	border-top-style: groove;
+	border-bottom-width: 2px;
+	border-top-width: 2px;
+	height: 70px;
+	padding: 30px 0px 0px 10px;
 }

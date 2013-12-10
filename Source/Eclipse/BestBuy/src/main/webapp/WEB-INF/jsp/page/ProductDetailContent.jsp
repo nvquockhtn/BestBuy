@@ -14,23 +14,23 @@
 	<div class="prod">
 		<div class="clearfix">
 			<a
-				href="${pageContext.request.contextPath}/resources/images/products/product_big1.jpg"
+				href="${pageContext.request.contextPath}/resources/images/${requestScope.Product.getImages().iterator().next().path}"
 				class="jqzoom" rel='gal1' title="triumph"> <img
-				src="images/products/product_small1.jpg"
+				src="${pageContext.request.contextPath}/resources/images/${requestScope.Product.getImages().iterator().next().path}"
 				style="border: 4px solid #e5e5e5;">
 			</a>
+
 		</div>
 		<div class="clearfix">
 			<ul id="thumblist" class="clearfix">
-				<li><a class="zoomThumbActive" href='javascript:void(0);'
-					rel="{gallery: 'gal1', smallimage: './images/products/product_small1.jpg',largeimage: './images/products/product_big1.jpg'}"><img
-						src='images/products/product_small1.jpg'></a></li>
-				<li><a href='javascript:void(0);'
-					rel="{gallery: 'gal1', smallimage: './images/products/product_small2.jpg',largeimage: './images/products/product_big2.jpg'}"><img
-						src='images/products/product_small2.jpg'></a></li>
-				<li><a href='javascript:void(0);'
-					rel="{gallery: 'gal1', smallimage: './images/products/product_small3.jpg',largeimage: './images/products/product_big3.jpg'}"><img
-						src='images/products/product_small3.jpg'></a></li>
+				<c:forEach var="itemImage"
+					items="${requestScope.Product.getImages().iterator()}">
+					<c:if test="${itemImage.typeId == 2}">
+						<li><a href='javascript:void(0);'
+							rel="{gallery: 'gal1', smallimage: '${pageContext.request.contextPath}/resources/images/${itemImage.path}',largeimage: '${pageContext.request.contextPath}/resources/images/${itemImage.path}'}"><img
+								src='${pageContext.request.contextPath}/resources/images/${itemImage.path}'></a></li>
+					</c:if>
+				</c:forEach>
 			</ul>
 		</div>
 	</div>
@@ -51,39 +51,98 @@
 		<span class="cart-button"><a href="cart.html">Add to Cart</a><a
 			href="wishlist.html">Add to Wishlist</a><a href="compare.html">Add
 				to Compare</a></span>
-		<div id="tab">
-			<ul class="nav">
-				<li class="nav-one"><a href="#details" class="current">Details</a></li>
-				<li class="nav-two"><a href="#specs">Specification</a></li>
-				<li class="nav-three"><a href="#reviews">Reviews</a></li>
-				<li class="nav-four last"><a href="#tags">Tags</a></li>
-			</ul>
-			<div class="list-wrap">
-				<div id="details">
-					<p>${requestScope.Product.overview}</p>
-				</div>
-				<ul id="specs" class="hide">
-					${requestScope.Product.specification}
-				</ul>
-				<div id="reviews" class="hide">
-					<form action="#">
-						<fieldset>
-							<label>Input Text</label> <input type="text" name="input">
-							<label>Review</label>
-							<textarea rows="3"></textarea>
-						</fieldset>
-						<input type="submit" class="submit" value="Write a review">
-					</form>
-				</div>
-				<ul id="tags" class="hide">
-					<li><a href="#">Women's Clothes</a></li>
-					<li><a href="#">Men's Clothes</a></li>
-					<li><a href="#">Women's Shoes</a></li>
-					<li><a href="#">Men's Shoes</a></li>
-					<li><a href="#">Accessories</a></li>
-					<li><a href="#">Brand</a></li>
-				</ul>
+
+	</div>
+	<div id="tab">
+		<ul class="nav">
+			<li class="nav-one"><a href="#details" class="current">Details</a></li>
+			<li class="nav-two"><a href="#specs">Specification</a></li>
+			<li class="nav-three"><a href="#reviews">Reviews</a></li>
+			<li class="nav-four last"><a href="#tags">Additional
+					Accessories</a></li>
+		</ul>
+		<div class="list-wrap">
+			<div id="details">
+				<p>${requestScope.Product.overview}</p>
 			</div>
+			<ul id="specs" class="hide">
+				${requestScope.Product.specification}
+			</ul>
+			<div id="reviews" class="hide">
+				<h1>Best Buy Customer Reviews</h1>
+				<div class="rating-detail">
+					<div id="rate1" class="rating"></div><br />
+					<span>3.9 reviews</span>
+				</div>
+				
+                        <div class="feedback-wrap">
+                        <h3>4 Comment &mdash; <span><a href="#">Single Blog Post</a></span></h3><br>
+                            <div class="dvision">
+                                <div class="feedback">
+                                    <img src="${pageContext.request.contextPath}/resources/images/user-1.jpg" alt="">
+                                    <div>
+                                        <h4><a href="#">Louie Jie Mahusay</a></h4>
+                                        <span><a href="#">January 26, 2013 at 10:38 am</a></span>
+                                        <p>Mauris vestibulum elementum condimentum. Donec eget turpis eget arcu aliquam fermentum. Donec tincidunt ipsum et nisl laoreet id mattis ante mollis.</p>
+                                        <span class="reply"><a href="#">Reply</a></span>
+                                    </div>
+                                </div>
+                                <div class="feedback feed2">
+                                    <img src="${pageContext.request.contextPath}/resources/images/user-2.jpg" alt="">
+                                    <div>
+                                        <h4><a href="#">Divine Grace Mahusay</a></h4>
+                                        <span><a href="#">January 26, 2013 at 10:38 am</a></span>
+                                        <p>Mauris vestibulum elementum condimentum. Donec eget turpis eget arcu aliquam fermentum. Donec tincidunt ipsum et nisl laoreet id mattis ante mollis.</p>
+                                        <span class="reply"><a href="#">Reply</a></span>
+                                    </div>
+                                </div>
+                                <div class="feedback feed3">
+                                    <img src="${pageContext.request.contextPath}/resources/images/user-3.jpg" alt="">
+                                    <div>
+                                        <h4><a href="#">Belfred Charcus</a></h4>
+                                        <span><a href="#">January 26, 2013 at 10:38 am</a></span>
+                                        <p>Mauris vestibulum elementum condimentum. Donec eget turpis eget arcu aliquam fermentum. Donec tincidunt ipsum et nisl laoreet id mattis ante mollis.</p>
+                                        <span class="reply"><a href="#">Reply</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dvision">
+                                <div class="feedback">
+                                    <img src="${pageContext.request.contextPath}/resources/images/user-1.jpg" alt="">
+                                    <div>
+                                        <h4><a href="#">Louie Jie Mahusay</a></h4>
+                                        <span><a href="#">January 26, 2013 at 10:38 am</a></span>
+                                        <p>Mauris vestibulum elementum condimentum. Donec eget turpis eget arcu aliquam fermentum. Donec tincidunt ipsum et nisl laoreet id mattis ante mollis.</p>
+                                        <span class="reply"><a href="#">Reply</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--end:feedback-wrap-->
+                        <div class="commentf">
+                            <h3>Leave a comment</h3>
+                            <form id="commentform" action="#" method="post">
+                                <fieldset>
+                                <label>Name (required)</label>
+                                <br style="clear:both" />
+                                <input type="text" name="mail" id="mail" size="30" value="" class="input" />
+                                <label>Mail (will not be published) (required)</label>
+                                <br style="clear:both" />
+                                <textarea cols="25" rows="5" name="message" id="message" class="textarea"></textarea>
+                                <br style="clear:both" />
+                                <input type="submit" name="submit" class="button"  value="Write a review"/>
+                                </fieldset>
+                            </form>
+                        </div><!--end:comment-->
+                    
+			</div>
+			<ul id="tags" class="hide">
+				<li><a href="#">Women's Clothes</a></li>
+				<li><a href="#">Men's Clothes</a></li>
+				<li><a href="#">Women's Shoes</a></li>
+				<li><a href="#">Men's Shoes</a></li>
+				<li><a href="#">Accessories</a></li>
+				<li><a href="#">Brand</a></li>
+			</ul>
 		</div>
 	</div>
 	<!--prodetail-->
@@ -183,3 +242,12 @@
 		</div>
 	</div>
 </div>
+
+<!--STAR RATE-->    
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.rating.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/rating.css" />
+<script type="text/javascript">
+    $(document).ready(function() {
+    	$('#rate1').rating('http://html5awesome.com/themeforest/shopymart/www.url.php', {maxvalue:5, curvalue:3});
+	});
+</script>

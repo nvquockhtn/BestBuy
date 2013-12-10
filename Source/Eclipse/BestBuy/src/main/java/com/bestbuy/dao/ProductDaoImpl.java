@@ -29,18 +29,17 @@ public class ProductDaoImpl extends DaoSupport implements ProductDao{
 
 	@Transactional(readOnly = true)
 	public ArrayList<Product> getListNewProducts(int type) {
-		// if productstate =3 then return "Moi"
-		//String hql = "from Product a where a.productstate.id=3";
-		String hql = "from Product a left join fetch a.productstate where a.productstate.id=3";
+		String hql = "from Product a left join fetch a.productstate left join fetch a.producttype where a.productstate.id=3 and a.producttype.id = " + type;
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
-        //List<Product> ds = query.list();
+        //query.setInteger("idtype", type);
         ArrayList<Product> ds = (ArrayList<Product>)query.list();
         for(int i=0;i<ds.size();i++)
         {
         	Hibernate.initialize(ds.get(i).getImages());
         }
-        
-        //return ds.toArray(new ArrayList<Product>);
+        /*String hql = "from Account a where a.username=:userName";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString("userName", acc.getUsername());*/
         return ds;
 	}
 

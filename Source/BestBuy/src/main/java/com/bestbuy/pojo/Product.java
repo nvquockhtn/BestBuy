@@ -1,5 +1,5 @@
 package com.bestbuy.pojo;
-// Generated Dec 8, 2013 1:03:58 AM by Hibernate Tools 3.2.1.GA
+// Generated Dec 9, 2013 11:17:38 AM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.HashSet;
@@ -28,6 +28,7 @@ public class Product  implements java.io.Serializable {
 
      private Integer id;
      private Producttype producttype;
+     private Manufacturer manufacturer;
      private Productstate productstate;
      private String name;
      private String overview;
@@ -42,8 +43,9 @@ public class Product  implements java.io.Serializable {
     public Product() {
     }
 
-    public Product(Producttype producttype, Productstate productstate, String name, String overview, String specification, Integer price, Float discount, Integer productId, Set<Comment> comments, Set<Image> images, Set<Orderdetail> orderdetails) {
+    public Product(Producttype producttype, Manufacturer manufacturer, Productstate productstate, String name, String overview, String specification, Integer price, Float discount, Integer productId, Set<Comment> comments, Set<Image> images, Set<Orderdetail> orderdetails) {
        this.producttype = producttype;
+       this.manufacturer = manufacturer;
        this.productstate = productstate;
        this.name = name;
        this.overview = overview;
@@ -74,6 +76,15 @@ public class Product  implements java.io.Serializable {
     
     public void setProducttype(Producttype producttype) {
         this.producttype = producttype;
+    }
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="manufacturerId")
+    public Manufacturer getManufacturer() {
+        return this.manufacturer;
+    }
+    
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
     }
 @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="StateId")

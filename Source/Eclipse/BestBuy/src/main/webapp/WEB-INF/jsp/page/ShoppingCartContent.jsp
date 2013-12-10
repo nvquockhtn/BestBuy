@@ -30,15 +30,22 @@
 
 			<c:if test="${sessionScope.ShoppingCart != null}">
 				<c:forEach var="item" items="${sessionScope.ShoppingCart}">
+					<c:set var="imageURL" />
+					<c:forEach var="itemImage"
+						items="${item.getProduct().getImages().iterator()}">
+						<c:if test="${itemImage.typeId == 1}">
+							<c:set var="imageURL" value="${itemImage}" />
+						</c:if>
+					</c:forEach>
 					<c:set var="subTotal"
 						value="${subTotal + item.getProduct().getPrice() * item.getQuantity()}" />
 					<tr>
 						<td class="image"><a href="#"><img title="product"
 								alt="product"
-								src="${pageContext.request.contextPath}/resources/images/products/product-cart-thumb-1.jpg"
-								height="50" width="50"></a></td>
+								src="${pageContext.request.contextPath}/resources/images/${imageURL.path}" height="50"
+								width="50"></a></td>
 						<td class="name"><a href="#">${item.getProduct().getName()}</a></td>
-						<td class="model">${item.getProduct().producttype.getName()}</td>
+						<td class="model">${item.getProduct().productstate.getName()}</td>
 						<td class="quantity"><input type="text" size="1"
 							value="${item.getQuantity()}" name="soLuong" class="span1"></td>
 						<td class="price"><fmt:formatNumber type="number"
@@ -51,9 +58,11 @@
 							class="tip remove" title="Remove"> <img
 								src="${pageContext.request.contextPath}/resources/images/remove.png"
 								alt="">
-						</a> <input type="submit"
-							style="background-image: ${pageContext.request.contextPath}/resources/images/update.png;"
-							alt="" name="capNhat"></td>
+						</a>
+							<button type="submit" class="tip update" alt="" name="capNhat">
+								<img src="${pageContext.request.contextPath}/resources/images/update.png"
+									alt="">
+							</button></td>
 					</tr>
 				</c:forEach>
 			</c:if>

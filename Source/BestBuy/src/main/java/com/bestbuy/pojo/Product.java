@@ -1,5 +1,5 @@
 package com.bestbuy.pojo;
-// Generated Dec 9, 2013 11:17:38 AM by Hibernate Tools 3.2.1.GA
+// Generated Dec 10, 2013 10:12:57 PM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.HashSet;
@@ -36,6 +36,8 @@ public class Product  implements java.io.Serializable {
      private Integer price;
      private Float discount;
      private Integer productId;
+     private Set<Accessorydetail> accessorydetailsForAccessoryId = new HashSet<Accessorydetail>(0);
+     private Set<Accessorydetail> accessorydetailsForProductId = new HashSet<Accessorydetail>(0);
      private Set<Comment> comments = new HashSet<Comment>(0);
      private Set<Image> images = new HashSet<Image>(0);
      private Set<Orderdetail> orderdetails = new HashSet<Orderdetail>(0);
@@ -43,7 +45,7 @@ public class Product  implements java.io.Serializable {
     public Product() {
     }
 
-    public Product(Producttype producttype, Manufacturer manufacturer, Productstate productstate, String name, String overview, String specification, Integer price, Float discount, Integer productId, Set<Comment> comments, Set<Image> images, Set<Orderdetail> orderdetails) {
+    public Product(Producttype producttype, Manufacturer manufacturer, Productstate productstate, String name, String overview, String specification, Integer price, Float discount, Integer productId, Set<Accessorydetail> accessorydetailsForAccessoryId, Set<Accessorydetail> accessorydetailsForProductId, Set<Comment> comments, Set<Image> images, Set<Orderdetail> orderdetails) {
        this.producttype = producttype;
        this.manufacturer = manufacturer;
        this.productstate = productstate;
@@ -53,6 +55,8 @@ public class Product  implements java.io.Serializable {
        this.price = price;
        this.discount = discount;
        this.productId = productId;
+       this.accessorydetailsForAccessoryId = accessorydetailsForAccessoryId;
+       this.accessorydetailsForProductId = accessorydetailsForProductId;
        this.comments = comments;
        this.images = images;
        this.orderdetails = orderdetails;
@@ -148,6 +152,22 @@ public class Product  implements java.io.Serializable {
     
     public void setProductId(Integer productId) {
         this.productId = productId;
+    }
+@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="productByAccessoryId")
+    public Set<Accessorydetail> getAccessorydetailsForAccessoryId() {
+        return this.accessorydetailsForAccessoryId;
+    }
+    
+    public void setAccessorydetailsForAccessoryId(Set<Accessorydetail> accessorydetailsForAccessoryId) {
+        this.accessorydetailsForAccessoryId = accessorydetailsForAccessoryId;
+    }
+@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="productByProductId")
+    public Set<Accessorydetail> getAccessorydetailsForProductId() {
+        return this.accessorydetailsForProductId;
+    }
+    
+    public void setAccessorydetailsForProductId(Set<Accessorydetail> accessorydetailsForProductId) {
+        this.accessorydetailsForProductId = accessorydetailsForProductId;
     }
 @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="product")
     public Set<Comment> getComments() {

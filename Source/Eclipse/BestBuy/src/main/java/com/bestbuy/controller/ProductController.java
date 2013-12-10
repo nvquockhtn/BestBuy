@@ -28,7 +28,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value = { "/Detail.do" }, method = RequestMethod.GET)
-	public String AddProduct(@RequestParam("maSP") Integer maSP, Model model) {
+	public String Detail(@RequestParam("maSP") Integer maSP, Model model) {
 
 		Product product = productDao.getProductById(maSP);
 		model.addAttribute("Product",product);

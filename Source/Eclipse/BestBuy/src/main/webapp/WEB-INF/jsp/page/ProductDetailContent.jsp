@@ -48,8 +48,8 @@
 				<option>X-Small</option>
 			</select> &nbsp;&nbsp; Quantity:&nbsp; <input value="1" type="text">
 		</form>
-		<span class="cart-button"><a href="cart.html">Add to Cart</a><a
-			href="wishlist.html">Add to Wishlist</a><a href="compare.html">Add
+		<span class="cart-button"><a href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${requestScope.Product.id}">Add to Cart</a><a
+			href="${pageContext.request.contextPath}/WishList/Add.do?maSP=${requestScope.Product.id}">Add to Wishlist</a><a href="compare.html">Add
 				to Compare</a></span>
 
 	</div>
@@ -58,7 +58,7 @@
 			<li class="nav-one"><a href="#details" class="current">Overviews</a></li>
 			<li class="nav-two"><a href="#specs">Specification</a></li>
 			<li class="nav-three"><a href="#reviews">Reviews</a></li>
-			<li class="nav-four last"><a href="#tags">Additional & Accessories</a></li>
+			<li class="nav-four last"><a href="#tags">Additional Accessories</a></li>
 		</ul>
 		<div class="list-wrap">
 			<div id="details">
@@ -121,6 +121,7 @@
                             <h3>Leave a comment</h3>
                             <form id="commentform" action="#" method="post">
                                 <fieldset>
+                                <div id="rate2" class="rating"></div><br />
                                 <label>Name (required)</label>
                                 <br style="clear:both" />
                                 <input type="text" name="mail" id="mail" size="30" value="" class="input" />
@@ -136,94 +137,38 @@
 			</div>
 			<ul id="tags" class="hide">
 				<ul id="products" class="list clearfix">
-                        	<li class="da-thumbs item">
-                            	<div class="product-thumb-hover">
-                                    <section class="left">
-                                        <img src="${pageContext.request.contextPath}/resources/images/products/product-20.jpg" alt="">
-                                        <p class="sale">Sale</p>
-                                        <article class="da-animate da-slideFromBottom" style="display: block;">
-                                            <h3>Shoes</h3>
-                                            <p>
-                                            <a href="product-detail.html" class="link tip" original-title="View Detail"></a>&nbsp;
-                                            <a href="cart.html" class="cart tip" original-title="Add to cart"></a>&nbsp;&nbsp;
-                                            <a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" original-title="Zoom"></a></p>
-                                        </article>
-                                    </section>
-                                </div>
-                                <section class="center">
-                                	<h3>Shoes</h3>
-                                    <em>Category: <a href="#">Men's Dress</a></em>
-                                </section>
-                                <section class="right">
-                                    <span class="price"><small>$320.00</small>&nbsp;&nbsp; $95.00</span>
-                                    <ul class="menu-button">
-                                        <li><a href="cart.html" class="cart tip" original-title="Add to Cart"></a></li>
-                                        <li><a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" original-title="Zoom"></a></li>
-                                        <li><a href="wishlist.html" class="wishlist tip" original-title="Add to Wishlist"></a></li>
-                                        <li><a href="compare.html" class="compare tip" original-title="Compare"></a></li>
-                                        <li><a href="product-detail.html" class="link tip" original-title="View Detail"></a></li>
-                                    </ul>
-                                </section>
-                            </li>
-                            <li class="da-thumbs item">
-                            	<div class="product-thumb-hover">
-                                    <section class="left">
-                                        <img src="${pageContext.request.contextPath}/resources/images/products/product-20.jpg" alt="">
-                                        <p class="sale">Sale</p>
-                                        <article class="da-animate da-slideFromBottom" style="display: block;">
-                                            <h3>Shoes</h3>
-                                            <p>
-                                            <a href="product-detail.html" class="link tip" original-title="View Detail"></a>&nbsp;
-                                            <a href="cart.html" class="cart tip" original-title="Add to cart"></a>&nbsp;&nbsp;
-                                            <a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" original-title="Zoom"></a></p>
-                                        </article>
-                                    </section>
-                                </div>
-                                <section class="center">
-                                	<h3>Shoes</h3>
-                                    <em>Category: <a href="#">Men's Dress</a></em>
-                                </section>
-                                <section class="right">
-                                    <span class="price"><small>$320.00</small>&nbsp;&nbsp; $95.00</span>
-                                    <ul class="menu-button">
-                                        <li><a href="cart.html" class="cart tip" original-title="Add to Cart"></a></li>
-                                        <li><a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" original-title="Zoom"></a></li>
-                                        <li><a href="wishlist.html" class="wishlist tip" original-title="Add to Wishlist"></a></li>
-                                        <li><a href="compare.html" class="compare tip" original-title="Compare"></a></li>
-                                        <li><a href="product-detail.html" class="link tip" original-title="View Detail"></a></li>
-                                    </ul>
-                                </section>
-                            </li>
-                            <li class="da-thumbs item">
-                            	<div class="product-thumb-hover">
-                                    <section class="left">
-                                        <img src="${pageContext.request.contextPath}/resources/images/products/product-20.jpg" alt="">
-                                        <p class="sale">Sale</p>
-                                        <article class="da-animate da-slideFromBottom" style="display: block;">
-                                            <h3>Shoes</h3>
-                                            <p>
-                                            <a href="product-detail.html" class="link tip" original-title="View Detail"></a>&nbsp;
-                                            <a href="cart.html" class="cart tip" original-title="Add to cart"></a>&nbsp;&nbsp;
-                                            <a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" original-title="Zoom"></a></p>
-                                        </article>
-                                    </section>
-                                </div>
-                                <section class="center">
-                                	<h3>Shoes</h3>
-                                    <em>Category: <a href="#">Men's Dress</a></em>
-                                </section>
-                                <section class="right">
-                                    <span class="price"><small>$320.00</small>&nbsp;&nbsp; $95.00</span>
-                                    <ul class="menu-button">
-                                        <li><a href="cart.html" class="cart tip" original-title="Add to Cart"></a></li>
-                                        <li><a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" original-title="Zoom"></a></li>
-                                        <li><a href="wishlist.html" class="wishlist tip" original-title="Add to Wishlist"></a></li>
-                                        <li><a href="compare.html" class="compare tip" original-title="Compare"></a></li>
-                                        <li><a href="product-detail.html" class="link tip" original-title="View Detail"></a></li>
-                                    </ul>
-                                </section>
-                            </li>
-                        </ul>
+				<c:forEach var="item" items="${requestScope.Product.accessorydetailsForProductId}">
+                   	<li class="da-thumbs item">
+                       	<div class="product-thumb-hover">
+                               <section class="left">
+                                   <img src="${pageContext.request.contextPath}/resources/images/${item.productByAccessoryId.images.iterator().next().path}" alt="">
+                                   <p class="sale">${item.productByAccessoryId.productstate.name}</p>
+                                   <article class="da-animate da-slideFromBottom" style="display: block;">
+                                       <h3>${item.productByAccessoryId.name}</h3>
+                                       <p>
+                                       <a href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.productByAccessoryId.id}" class="link tip" original-title="View Detail"></a>&nbsp;
+                                       <a href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${item.productByAccessoryId.id}" class="cart tip" original-title="Add to cart"></a>&nbsp;&nbsp;
+                                       <a href="${pageContext.request.contextPath}/resources/images/${item.productByAccessoryId.images.iterator().next().path}" rel="prettyPhoto[gallery1]" class="zoom tip" original-title="Zoom"></a></p>
+                                   </article>
+                               </section>
+                           </div>
+                           <section class="center">
+                           	<h3>${item.productByAccessoryId.name}</h3>
+                               <em>Category: <a href="#">${item.productByAccessoryId.producttype.name}</a></em>
+                           </section>
+                           <section class="right">
+                               <span class="price"><small>$320.00</small>&nbsp;&nbsp; <fmt:formatNumber type="number" value="${item.productByAccessoryId.price}" /> VND</span>
+                               <ul class="menu-button">
+                                   <li><a href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${item.productByAccessoryId.id}" class="cart tip" original-title="Add to Cart"></a></li>
+                                   <li><a href="${pageContext.request.contextPath}/resources/images/${item.productByAccessoryId.images.iterator().next().path}" rel="prettyPhoto[gallery1]" class="zoom tip" original-title="Zoom"></a></li>
+                                   <li><a href="${pageContext.request.contextPath}/WishList/Add.do?maSP=${item.productByAccessoryId.id}" class="wishlist tip" original-title="Add to Wishlist"></a></li>
+                                   <li><a href="compare.html" class="compare tip" original-title="Compare"></a></li>
+                                   <li><a href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.productByAccessoryId.id}" class="link tip" original-title="View Detail"></a></li>
+                               </ul>
+                           </section>
+                       </li>
+                       </c:forEach>
+                 </ul>
 			</ul>
 		</div>
 	</div>
@@ -331,5 +276,6 @@
 <script type="text/javascript">
     $(document).ready(function() {
     	$('#rate1').rating('http://html5awesome.com/themeforest/shopymart/www.url.php', {maxvalue:5, curvalue:3});
+    	$('#rate2').rating('http://html5awesome.com/themeforest/shopymart/www.url.php', {maxvalue:5, curvalue:0});
 	});
 </script>

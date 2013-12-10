@@ -55,11 +55,10 @@
 	</div>
 	<div id="tab">
 		<ul class="nav">
-			<li class="nav-one"><a href="#details" class="current">Details</a></li>
+			<li class="nav-one"><a href="#details" class="current">Overviews</a></li>
 			<li class="nav-two"><a href="#specs">Specification</a></li>
 			<li class="nav-three"><a href="#reviews">Reviews</a></li>
-			<li class="nav-four last"><a href="#tags">Additional
-					Accessories</a></li>
+			<li class="nav-four last"><a href="#tags">Additional & Accessories</a></li>
 		</ul>
 		<div class="list-wrap">
 			<div id="details">
@@ -136,12 +135,95 @@
                     
 			</div>
 			<ul id="tags" class="hide">
-				<li><a href="#">Women's Clothes</a></li>
-				<li><a href="#">Men's Clothes</a></li>
-				<li><a href="#">Women's Shoes</a></li>
-				<li><a href="#">Men's Shoes</a></li>
-				<li><a href="#">Accessories</a></li>
-				<li><a href="#">Brand</a></li>
+				<ul id="products" class="list clearfix">
+                        	<li class="da-thumbs item">
+                            	<div class="product-thumb-hover">
+                                    <section class="left">
+                                        <img src="${pageContext.request.contextPath}/resources/images/products/product-20.jpg" alt="">
+                                        <p class="sale">Sale</p>
+                                        <article class="da-animate da-slideFromBottom" style="display: block;">
+                                            <h3>Shoes</h3>
+                                            <p>
+                                            <a href="product-detail.html" class="link tip" original-title="View Detail"></a>&nbsp;
+                                            <a href="cart.html" class="cart tip" original-title="Add to cart"></a>&nbsp;&nbsp;
+                                            <a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" original-title="Zoom"></a></p>
+                                        </article>
+                                    </section>
+                                </div>
+                                <section class="center">
+                                	<h3>Shoes</h3>
+                                    <em>Category: <a href="#">Men's Dress</a></em>
+                                </section>
+                                <section class="right">
+                                    <span class="price"><small>$320.00</small>&nbsp;&nbsp; $95.00</span>
+                                    <ul class="menu-button">
+                                        <li><a href="cart.html" class="cart tip" original-title="Add to Cart"></a></li>
+                                        <li><a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" original-title="Zoom"></a></li>
+                                        <li><a href="wishlist.html" class="wishlist tip" original-title="Add to Wishlist"></a></li>
+                                        <li><a href="compare.html" class="compare tip" original-title="Compare"></a></li>
+                                        <li><a href="product-detail.html" class="link tip" original-title="View Detail"></a></li>
+                                    </ul>
+                                </section>
+                            </li>
+                            <li class="da-thumbs item">
+                            	<div class="product-thumb-hover">
+                                    <section class="left">
+                                        <img src="${pageContext.request.contextPath}/resources/images/products/product-20.jpg" alt="">
+                                        <p class="sale">Sale</p>
+                                        <article class="da-animate da-slideFromBottom" style="display: block;">
+                                            <h3>Shoes</h3>
+                                            <p>
+                                            <a href="product-detail.html" class="link tip" original-title="View Detail"></a>&nbsp;
+                                            <a href="cart.html" class="cart tip" original-title="Add to cart"></a>&nbsp;&nbsp;
+                                            <a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" original-title="Zoom"></a></p>
+                                        </article>
+                                    </section>
+                                </div>
+                                <section class="center">
+                                	<h3>Shoes</h3>
+                                    <em>Category: <a href="#">Men's Dress</a></em>
+                                </section>
+                                <section class="right">
+                                    <span class="price"><small>$320.00</small>&nbsp;&nbsp; $95.00</span>
+                                    <ul class="menu-button">
+                                        <li><a href="cart.html" class="cart tip" original-title="Add to Cart"></a></li>
+                                        <li><a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" original-title="Zoom"></a></li>
+                                        <li><a href="wishlist.html" class="wishlist tip" original-title="Add to Wishlist"></a></li>
+                                        <li><a href="compare.html" class="compare tip" original-title="Compare"></a></li>
+                                        <li><a href="product-detail.html" class="link tip" original-title="View Detail"></a></li>
+                                    </ul>
+                                </section>
+                            </li>
+                            <li class="da-thumbs item">
+                            	<div class="product-thumb-hover">
+                                    <section class="left">
+                                        <img src="${pageContext.request.contextPath}/resources/images/products/product-20.jpg" alt="">
+                                        <p class="sale">Sale</p>
+                                        <article class="da-animate da-slideFromBottom" style="display: block;">
+                                            <h3>Shoes</h3>
+                                            <p>
+                                            <a href="product-detail.html" class="link tip" original-title="View Detail"></a>&nbsp;
+                                            <a href="cart.html" class="cart tip" original-title="Add to cart"></a>&nbsp;&nbsp;
+                                            <a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" original-title="Zoom"></a></p>
+                                        </article>
+                                    </section>
+                                </div>
+                                <section class="center">
+                                	<h3>Shoes</h3>
+                                    <em>Category: <a href="#">Men's Dress</a></em>
+                                </section>
+                                <section class="right">
+                                    <span class="price"><small>$320.00</small>&nbsp;&nbsp; $95.00</span>
+                                    <ul class="menu-button">
+                                        <li><a href="cart.html" class="cart tip" original-title="Add to Cart"></a></li>
+                                        <li><a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" original-title="Zoom"></a></li>
+                                        <li><a href="wishlist.html" class="wishlist tip" original-title="Add to Wishlist"></a></li>
+                                        <li><a href="compare.html" class="compare tip" original-title="Compare"></a></li>
+                                        <li><a href="product-detail.html" class="link tip" original-title="View Detail"></a></li>
+                                    </ul>
+                                </section>
+                            </li>
+                        </ul>
 			</ul>
 		</div>
 	</div>

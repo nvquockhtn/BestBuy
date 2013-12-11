@@ -7,6 +7,7 @@ package com.bestbuy.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
 import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
@@ -48,6 +49,55 @@ public class ProductDaoImpl extends DaoSupport implements ProductDao{
 		Product product = null;
 		product = (Product) sessionFactory.getCurrentSession().get(Product.class, maSp);
 		return product;
+	}
+	@Transactional(readOnly = true)
+	public int searchProductBy(String nameProduct,int idtypemanufacturer,int idtypeproduct, int pricefrom, int pricend, int idtypestate, int page, int numberinpage) 
+	{
+		int numsize = 0;
+		try
+		{
+			String hql = "from Product  s left outer join fetch s.manufacturer left outer join fetch s.producttype left outer join fetch s.productstate where 1=1 ";
+			if(nameProduct.trim().equals("")==false)
+	        {
+	            hql = hql + "and s.name like '%" + nameProduct.trim() + "%'";
+	        }
+	        if(idtypemanufacturer!=-1)
+	        {
+	            hql = hql + " and s.manufacturer.id = " + idtypemanufacturer;
+	        }
+	        if(idtypeproduct!=-1)
+	        {
+	            hql = hql + " and s.producttype.id = "+ idtypeproduct ;
+	        }
+	        if(pricefrom!=-1 && pricend !=-1)
+	        {
+	        	hql = hql + " and " + pricefrom +" s.price <= " + pricend;
+	        }
+	        if(idtypestate!=-1)
+	        {
+	            hql = hql + " and s.productstate.id = " + idtypestate;
+	        }
+	        int n = (page-1)*numberinpage;
+	        int m = numberinpage;
+	        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+	        
+	        if(query.list().size()>0)
+	        {
+	        	numsize = query.list().size();
+	        }
+	        query.setFirstResult(n);
+	        query.setMaxResults(m);
+	        BestBuyHelperDao.listProducts  = (ArrayList<Product>)query.list();
+	        for(int i=0;i<BestBuyHelperDao.listProducts.size();i++)
+	        {
+	        	Hibernate.initialize(BestBuyHelperDao.listProducts.get(i).getImages());
+	        }
+		}
+		catch(Exception ex)
+		{
+			String s = ex.getMessage();
+		}
+		return numsize;
 	}
     
 }

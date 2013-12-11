@@ -23,3 +23,46 @@ table.shopping-cart tr td button.update {
 	-khtml-border-radius: 30px;
 	border-radius: 30px;
 }
+.myinputext
+{
+	border: 1px solid #e5e5e5;
+	padding: 7px 10px;
+	width: 150px;
+	-webkit-border-radius: 2px;
+	-khtml-border-radius: 2px;
+	border-radius: 2px;
+}
+.formProduct
+{
+	margin-bottom: 6px;
+}
+.formSearch
+{
+	float: left;
+}
+.formPagg
+{
+	width: 256px;
+	float: left;
+}
+.formPagg select {
+	float: right;
+	display: inline;
+}
+.formPagg label {
+	float: left;
+	display: inline;
+}
+.formPagg input[type="text"]
+{
+	float: right;
+}
+.formProduct input[type="submit"]
+{
+	float: left;
+	margin-left: 10px;
+}
+.formClear
+{
+	clear: both;
+}

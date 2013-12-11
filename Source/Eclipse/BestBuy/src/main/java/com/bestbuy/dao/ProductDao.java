@@ -22,4 +22,5 @@ public interface ProductDao {
      */
     public ArrayList<Product> getListNewProducts(int type);
 	public Product getProductById(Integer maSp);
+	public int searchProductBy(String nameProduct,int idtypemanufacturer,int idtypeproduct, int pricefrom, int pricend, int idtypestate, int page, int numberinpage);
 }

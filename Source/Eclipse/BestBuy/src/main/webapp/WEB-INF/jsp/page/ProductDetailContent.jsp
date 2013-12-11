@@ -116,9 +116,7 @@
 							<label>Mail (will not be published)	(required)</label> <br style="clear: both" />
 							<form:textarea path="text" cols="25" rows="5" name="message" id="message" value="Message"
 								class="textarea" />
-							<form:errors path="text">
-								<form:errors path="text" htmlEscape="false" cssClass="error"/>
-							</form:errors>
+							<form:errors path="text" htmlEscape="false" cssClass="error"/>
 							<br style="clear: both" /> 
 							
 							<form:hidden path="productId" value="${requestScope.Product.id}"/>

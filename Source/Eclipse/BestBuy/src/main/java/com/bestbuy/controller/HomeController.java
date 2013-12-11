@@ -33,6 +33,7 @@ public class HomeController {
 	ProductDao productDao = (ProductDao) context.getBean("productDao");
 	ArrayList<Product> listProduct = new ArrayList<Product>();
 	ArrayList<Product> listTablet = new ArrayList<Product>();
+	
     @RequestMapping(value = {"/Index.do"}, method = RequestMethod.GET)
     public String Index(@ModelAttribute("account") AccountModel form, Model model) {
     	
@@ -45,6 +46,7 @@ public class HomeController {
     	
         return "Index";
     }
+    
     public HomeController() {
     }
 }

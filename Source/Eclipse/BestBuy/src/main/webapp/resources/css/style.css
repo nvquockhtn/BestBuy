@@ -232,7 +232,7 @@ nav select { display: none; }
 <!--feedback-->
 .feedback-wrap{ width:100%; float:left; margin-bottom:40px; }
 .feedback-wrap .dvision{ width:100%; float:left; margin:0 0 20px 0px;}
-.feedback-wrap .dvision .feedback{ width:100%; float:right; margin-bottom:40px; border-bottom:1px solid #e5e5e5; padding:0 0 40px 0;}
+.feedback-wrap .dvision .feedback{ width:100%; float:right; margin-bottom:40px; border-bottom:1px solid #e5e5e5; /*padding:0 0 40px 0;*/}
 .feedback-wrap .dvision .feedback img{ float:left;}
 .feedback-wrap .dvision .feedback div{ width:88%; float:right;}
 .feedback-wrap .dvision .feedback div h4{ float:left; font-size:14px; font-weight:600;}

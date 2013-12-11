@@ -8,6 +8,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 
 <!DOCTYPE html>
 <div class="container-2">
@@ -87,7 +89,7 @@
 						<div class="dvision">
 							<div class="feedback">
 								<img
-									src="${pageContext.request.contextPath}/resources/images/user-1.jpg"
+									src="${pageContext.request.contextPath}/resources/images/no-avatar.jpg"
 									alt="">
 								<div>
 									<h4>
@@ -114,6 +116,9 @@
 							<label>Mail (will not be published)	(required)</label> <br style="clear: both" />
 							<form:textarea path="text" cols="25" rows="5" name="message" id="message" value="Message"
 								class="textarea" />
+							<form:errors path="text">
+								<form:errors path="text" htmlEscape="false" cssClass="error"/>
+							</form:errors>
 							<br style="clear: both" /> 
 							
 							<form:hidden path="productId" value="${requestScope.Product.id}"/>

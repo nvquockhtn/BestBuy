@@ -2,6 +2,9 @@ package com.bestbuy.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class CommentModel {
 
 	private int id;
@@ -42,6 +45,8 @@ public class CommentModel {
 	/**
 	 * @return the text
 	 */
+	@NotNull
+	@Size(min = 1, max = 5000)
 	public String getText() {
 		return text;
 	}

@@ -72,3 +72,23 @@
     </table>
     <div style="clear:both; display:block; height:40px"></div>
 </div>
+
+<!--STAR RATE-->    
+<script type="text/javascript" src="js/jquery.rating.js"></script>
+<link rel="stylesheet" type="text/css" href="css/rating.css" />
+<script type="text/javascript">
+    $(document).ready(function() {
+    $('#rate1').rating({
+    	  readOnly:  true,
+    	  start:     2
+    	});
+	$('#rate2').rating('http://html5awesome.com/themeforest/shopymart/www.url.php', {maxvalue:5, curvalue:5});
+	$('#rate3').rating('http://html5awesome.com/themeforest/shopymart/www.url.php', {maxvalue:5, curvalue:4});
+	$('#rate4').rating('http://html5awesome.com/themeforest/shopymart/www.url.php', {maxvalue:5, curvalue:2});
+	$('#rate5').rating('http://html5awesome.com/themeforest/shopymart/www.url.php', {maxvalue:5, curvalue:2});
+	$('#rate6').rating('http://html5awesome.com/themeforest/shopymart/www.url.php', {maxvalue:5, curvalue:0});
+	$('#rate7').rating('http://html5awesome.com/themeforest/shopymart/www.url.php', {maxvalue:5, curvalue:4});
+	$('#rate8').rating('http://html5awesome.com/themeforest/shopymart/www.url.php', {maxvalue:5, curvalue:1});
+	$('#rate9').rating('http://html5awesome.com/themeforest/shopymart/www.url.php', {maxvalue:5, curvalue:3});
+});
+</script>   

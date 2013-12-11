@@ -25,8 +25,8 @@
 	                    <article class="da-animate da-slideFromRight" style="display: block;">
 	                        <h3>${item.name }</h3>
 	                        <p>
-	                            <a href="product-detail.html" class="link tip" title="View Detail"></a>&nbsp;
-	                            <a href="cart.html" class="cart tip" title="Add to cart"></a>&nbsp;&nbsp;
+	                            <a href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.id}" class="link tip" title="View Detail"></a>&nbsp;
+	                            <a href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${item.id}" class="cart tip" title="Add to cart"></a>&nbsp;&nbsp;
 	                            <a href="${pageContext.request.contextPath}/resources/images/${imageURL.path }" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
 	                    </article>
                 	</li>
@@ -48,9 +48,9 @@
 		                    <span>${item.name }<br><small class="sale">Price: </small>&nbsp;&nbsp;<small>${item.price }</small></span>
 		                    <span class="sale">Sale</span>
 		                    <ul>
-		                        <li><a href="cart.html" class="cart tip" title="Add to Cart">Cart</a></li>
+		                        <li><a href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${item.id}" class="cart tip" title="Add to Cart">Cart</a></li>
 		                        <li><a href="${pageContext.request.contextPath}/resources/images/${imageURL.path }" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom">Zoom</a></li>
-		                        <li><a href="wishlist.html" class="wishlist tip" title="Add to Wishlist">Add Wishlist</a></li>
+		                        <li><a href="${pageContext.request.contextPath}/WishList/Add.do?maSP=${item.id}" class="wishlist tip" title="Add to Wishlist">Add Wishlist</a></li>
 		                        <li><a href="compare.html" class="compare tip" title="Compare">Compare</a></li>
                     		</ul>
                 		</li>

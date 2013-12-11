@@ -12,6 +12,7 @@
         <link href="${pageContext.request.contextPath}/resources/css/style.css" type="text/css" rel="stylesheet" media="screen" /> <!-- General style -->
         <link href="${pageContext.request.contextPath}/resources/css/prettyPhoto.css" type="text/css" rel="stylesheet" media="screen"><!-- prettyPhoto -->
         <link href="${pageContext.request.contextPath}/resources/css/tipsy.css" type="text/css" rel="stylesheet" media="screen"><!--tooltip-->
+        <link href="${pageContext.request.contextPath}/resources/css/jquery.jqzoom.css" type="text/css" rel="stylesheet" media="screen"><!--zoom-->
         <link href="${pageContext.request.contextPath}/resources/css/camera.css" type="text/css" rel="stylesheet" media="screen"><!--camera-->
         <link href="${pageContext.request.contextPath}/resources/css/jcarousel.css" type="text/css" rel="stylesheet" media="screen" /> <!-- list_work -->
         <link href="${pageContext.request.contextPath}/resources/css/mystyle.css" type="text/css" rel="stylesheet" media="screen" /> <!-- list_work -->
@@ -29,6 +30,8 @@
         <script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/jquery.dcmegamenu.1.3.3.js'></script><!--menu-->
         <script type='text/javascript' src="${pageContext.request.contextPath}/resources/js/jquery.tweet.js"></script><!--twitter plugin-->
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.quovolver.js"></script><!--blockquote-->
+        <script type='text/javascript' src="${pageContext.request.contextPath}/resources/js/jquery.jqzoom-core.js"></script><!--image zoom-->
+		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/organictabs.jquery.js"></script><!--tabs-->        
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/organictabs.jquery.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/custom.js"></script><!--custom-->
         <!--MENU-->
@@ -41,7 +44,16 @@
                 });
             });
         </script>
-
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$('.jqzoom').jqzoom({
+		            zoomType: 'innerzoom',
+		            preloadImages: false,
+					zoomWidth: 300,
+		            alwaysOn:false
+		        });
+		});
+		</script>
         <script type="text/javascript">
             $(function() {
                 $("#tab").organicTabs({

@@ -1,5 +1,5 @@
 package com.bestbuy.pojo;
-// Generated Dec 9, 2013 11:17:38 AM by Hibernate Tools 3.2.1.GA
+// Generated Dec 10, 2013 10:12:57 PM by Hibernate Tools 3.2.1.GA
 
 
 import java.util.Date;

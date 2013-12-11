@@ -5,211 +5,144 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <div class="container-2">
     <section class="content">
         <div class="ctrl">
-            <form class="left">
-                Sort By :&nbsp;
-                <select>
-                    <option>Position</option>
-                    <option>Name</option>
-                    <option>Price</option>
-                    <option>Rating </option>
-                    <option>Color</option>
-                </select>
-                &nbsp;&nbsp;
-                Show:&nbsp;
-                <select>
-                    <option>6</option>
-                    <option>10</option>
-                    <option>25</option>
-                </select>
-            </form>
+        	<form:form cssClass="left" modelAttribute="product" method="post" action="${pageContext.request.contextPath}/Product/PostProducts.do?page=1&search=&idmanufacturer=-1&idproducttype=-1&fromprice=-1&endprice=-1" >
+            	<div class = "formProduct">
+	            	<div class = "formSearch">
+	            		<div class ="formPagg">
+	            			<label> &nbsp; &nbsp; Search: </label>
+	            			<form:input path="name" cssClass="myinputext"/>
+	            		</div>
+	            	</div>
+	            	<div class= "formClear"></div>
+            	</div>
+            	<div class = "formProduct">
+	            	<div class = "formSearch">
+	            		<div class ="formPagg">
+	            			<label> &nbsp; &nbsp; Price from: </label>
+	            			<form:select path="fromprice">
+			            		<form:option label="Choose price" value = "-1"/>
+			            		<form:options items="${requestScope.listFromPrices}" itemValue="id" itemLabel="price"/>
+	            			</form:select>
+	            		</div>
+	            	</div>
+	            	<div class = "formSearch">
+	            		<div class ="formPagg">
+	            			<label> &nbsp; &nbsp; Price end: </label>
+	            			<form:select path="endprice">
+			            		<form:option label="Choose price" value = "-1"/>
+			            		<form:options items="${requestScope.listFromPrices}" itemValue="id" itemLabel="price"/>
+	            			</form:select>
+	            		</div>
+	            	</div>
+	            	<div class="formClear"></div>
+            	</div>
+            	<div class = "formProduct" >
+	            	<div class = "formSearch">
+	            		<div class ="formPagg">
+	            			<label>&nbsp; &nbsp; Manufacturer: </label>
+	            			<form:select path="manufacturer">
+	                			<form:option value="-1" label="All"/>
+	                			<form:options items = "${requestScope.listManufacturers}" itemValue="id" itemLabel="name"/>
+	               			</form:select>
+	            		</div>
+	            	</div>
+            	</div>
+                <div class = "formProduct" >
+	                <div class = "formSearch">
+	            		<div class ="formPagg">
+	            			<label>&nbsp; &nbsp; Product type: </label>
+	            			<form:select path="producttype">
+	                			<form:option value="-1" label="All"/>
+	                			<form:options items = "${requestScope.listProducttypes}" itemValue="id" itemLabel="name"/>
+	                		</form:select>
+	            		</div>
+	            	</div>
+	                <input type="submit" value="submit">
+                </div>
+            </form:form>
             <span class="list-style-buttons">
                 <a href="#" id="gridview" class="switcher"><img src="${pageContext.request.contextPath}/resources/images/grid-view.png" alt="Grid"></a>
                 <a href="#" id="listview" class="switcher active"><img src="${pageContext.request.contextPath}/resources/images/list-view-active.png" alt="List"></a>
             </span>
         </div>
         <ul id="products" class="list clearfix">
-            <li class="da-thumbs">
+        	<c:forEach items="${listProducts}" var ="item">
+        		<c:set var="imageURL"/>
+            		<c:forEach var="itemImage" items="${item.getImages().iterator()}">
+            			<c:if test="${itemImage.typeId == 1}">
+							<c:set var="imageURL" value="${itemImage}" />
+						</c:if>
+            		</c:forEach>
+        		<li class="da-thumbs">
                 <div class="product-thumb-hover">
                     <section class="left">
-                        <img src="${pageContext.request.contextPath}/resources/images/products/product-1.jpg" alt="">
+                        <img src="${pageContext.request.contextPath}/resources/images/${imageURL.path}" alt="">
                         <p class="sale">Sale</p>
                         <article class="da-animate da-slideFromRight" style="display: block;">
-                            <h3>American Dress</h3>
+                            <h3>${item.name}</h3>
                             <p>
                                 <a href="product-detail.html" class="link tip" title="View Detail"></a>&nbsp;
                                 <a href="cart.html" class="cart tip" title="Add to cart"></a>&nbsp;&nbsp;
-                                <a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
+                                <a href="${pageContext.request.contextPath}/resources/images/${imageURL.path}" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
                         </article>
                     </section>
                 </div>
                 <section class="center">
-                    <h3>American Dress</h3>
-                    <em>Category: <a href="#">Men's Dress</a></em>
+                    <h3>${item.name}</h3>
+                    <em>Category: <a href="#">${item.producttype.name }</a></em>
                 </section>
                 <section class="right">
-                    <span class="price"><small>$320.00</small>&nbsp;&nbsp; $95.00</span>
+                    <span class="price"><small>Price: </small>&nbsp;&nbsp; ${item.price}</span>
                     <ul class="menu-button">
                         <li><a href="cart.html" class="cart tip" title="Add to Cart"></a></li>
-                        <li><a href="${pageContext.request.contextPath}/resources/images/preview/work_1_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom"></a></li>
+                        <li><a href="${pageContext.request.contextPath}/resources/images/${imageURL.path}" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom"></a></li>
                         <li><a href="wishlist.html" class="wishlist tip" title="Add to Wishlist"></a></li>
                         <li><a href="compare.html" class="compare tip" title="Compare"></a></li>
                         <li><a href="product-detail.html" class="link tip" title="View Detail"></a></li>
                     </ul>
                 </section>
             </li>
-            <li class="da-thumbs">
-                <div class="product-thumb-hover">
-                    <section class="left">
-                        <img src="${pageContext.request.contextPath}/resources/images/products/product-2.jpg" alt="">
-                        <p class="new">New</p>
-                        <article class="da-animate da-slideFromRight" style="display: block;">
-                            <h3>Women's Dress</h3>
-                            <p>
-                                <a href="product-detail.html" class="link tip" title="View Detail"></a>&nbsp;
-                                <a href="cart.html" class="cart tip" title="Add to cart"></a>&nbsp;&nbsp;
-                                <a href="${pageContext.request.contextPath}/resources/images/preview/work_2_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
-                        </article>
-                    </section>
-                </div>
-                <section class="center">
-                    <h3>Women's Dress</h3>
-                    <em>Category: <a href="#">Women's Dress</a></em>
-                </section>
-                <section class="right">
-                    <span class="price">$56.00</span>
-                    <ul class="menu-button">
-                        <li><a href="cart.html" class="cart tip" title="Add to Cart"></a></li>
-                        <li><a href="${pageContext.request.contextPath}/resources/images/preview/work_2_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom"></a></li>
-                        <li><a href="wishlist.html" class="wishlist tip" title="Add to Wishlist"></a></li>
-                        <li><a href="compare.html" class="compare tip" title="Compare"></a></li>
-                        <li><a href="product-detail.html" class="link tip" title="View Detail"></a></li>
-                    </ul>
-                </section>
-            </li>
-            <li class="da-thumbs">
-                <div class="product-thumb-hover">
-                    <section class="left">
-                        <img src="${pageContext.request.contextPath}/resources/images/products/product-3.jpg" alt="">
-                        <p class="new">New</p>
-                        <article class="da-animate da-slideFromRight" style="display: block;">
-                            <h3>Casual Dress</h3>
-                            <p>
-                                <a href="product-detail.html" class="link tip" title="View Detail"></a>&nbsp;
-                                <a href="cart.html" class="cart tip" title="Add to cart"></a>&nbsp;&nbsp;
-                                <a href="${pageContext.request.contextPath}/resources/images/preview/work_3_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
-                        </article>
-                    </section>
-                </div>
-                <section class="center">
-                    <h3>Casual Dress</h3>
-                    <em>Category: <a href="#">Women's Dress</a></em>
-                </section>
-                <section class="right">
-                    <span class="price">$120.00</span>
-                    <ul class="menu-button">
-                        <li><a href="cart.html" class="cart tip" title="Add to Cart"></a></li>
-                        <li><a href="${pageContext.request.contextPath}/resources/images/preview/work_3_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom"></a></li>
-                        <li><a href="wishlist.html" class="wishlist tip" title="Add to Wishlist"></a></li>
-                        <li><a href="compare.html" class="compare tip" title="Compare"></a></li>
-                        <li><a href="product-detail.html" class="link tip" title="View Detail"></a></li>
-                    </ul>
-                </section>
-            </li>
-            <li class="da-thumbs">
-                <div class="product-thumb-hover">
-                    <section class="left">
-                        <img src="${pageContext.request.contextPath}/resources/images/products/product-4.jpg" alt="">
-                        <article class="da-animate da-slideFromRight" style="display: block;">
-                            <h3>Sandals</h3>
-                            <p>
-                                <a href="product-detail.html" class="link tip" title="View Detail"></a>&nbsp;
-                                <a href="cart.html" class="cart tip" title="Add to cart"></a>&nbsp;&nbsp;
-                                <a href="${pageContext.request.contextPath}/resources/images/preview/work_4_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
-                        </article>
-                    </section>
-                </div>
-                <section class="center">
-                    <h3>Sandals</h3>
-                    <em>Category: <a href="#">Women's Shoes</a></em>
-                </section>
-                <section class="right">
-                    <span class="price">$99.00</span>
-                    <ul class="menu-button">
-                        <li><a href="cart.html" class="cart tip" title="Add to Cart"></a></li>
-                        <li><a href="${pageContext.request.contextPath}/resources/images/preview/work_4_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom"></a></li>
-                        <li><a href="wishlist.html" class="wishlist tip" title="Add to Wishlist"></a></li>
-                        <li><a href="compare.html" class="compare tip" title="Compare"></a></li>
-                        <li><a href="product-detail.html" class="link tip" title="View Detail"></a></li>
-                    </ul>
-                </section>
-            </li>
-            <li class="da-thumbs">
-                <div class="product-thumb-hover">
-                    <section class="left">
-                        <img src="${pageContext.request.contextPath}/resources/images/products/product-5.jpg" alt="">
-                        <article class="da-animate da-slideFromRight" style="display: block;">
-                            <h3>Formal Polo Shirt</h3>
-                            <p>
-                                <a href="product-detail.html" class="link tip" title="View Detail"></a>&nbsp;
-                                <a href="cart.html" class="cart tip" title="Add to cart"></a>&nbsp;&nbsp;
-                                <a href="${pageContext.request.contextPath}/resources/images/preview/work_5_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
-                        </article>
-                    </section>
-                </div>
-                <section class="center">
-                    <h3>Formal Polo Shirt</h3>
-                    <em>Category: <a href="#">Men's Dress</a></em>
-                </section>
-                <section class="right">
-                    <span class="price">$99.00</span>
-                    <ul class="menu-button">
-                        <li><a href="cart.html" class="cart tip" title="Add to Cart"></a></li>
-                        <li><a href="${pageContext.request.contextPath}/resources/images/preview/work_5_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom"></a></li>
-                        <li><a href="wishlist.html" class="wishlist tip" title="Add to Wishlist"></a></li>
-                        <li><a href="compare.html" class="compare tip" title="Compare"></a></li>
-                        <li><a href="product-detail.html" class="link tip" title="View Detail"></a></li>
-                    </ul>
-                </section>
-            </li>
-            <li class="da-thumbs">
-                <div class="product-thumb-hover">
-                    <section class="left">
-                        <img src="${pageContext.request.contextPath}/resources/images/products/product-6.jpg" alt="">
-                        <article class="da-animate da-slideFromRight" style="display: block;">
-                            <h3>Polo Shirt</h3>
-                            <p>
-                                <a href="product-detail.html" class="link tip" title="View Detail"></a>&nbsp;
-                                <a href="cart.html" class="cart tip" title="Add to cart"></a>&nbsp;&nbsp;
-                                <a href="${pageContext.request.contextPath}/resources/images/preview/work_6_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
-                        </article>
-                    </section>
-                </div>
-                <section class="center">
-                    <h3>Polo Shirt</h3>
-                    <em>Category: <a href="#">Men's Dress</a></em>
-                </section>
-                <section class="right">
-                    <span class="price">$99.00</span>
-                    <ul class="menu-button">
-                        <li><a href="cart.html" class="cart tip" title="Add to Cart"></a></li>
-                        <li><a href="${pageContext.request.contextPath}/resources/images/preview/work_6_l.jpg" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom"></a></li>
-                        <li><a href="wishlist.html" class="wishlist tip" title="Add to Wishlist"></a></li>
-                        <li><a href="compare.html" class="compare tip" title="Compare"></a></li>
-                        <li><a href="product-detail.html" class="link tip" title="View Detail"></a></li>
-                    </ul>
-                </section>
-            </li>
+        	</c:forEach>
         </ul><!--end:products-->
         <ul id="pagination">
-            <li><a class="current" href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">next</a></li>
+        	<c:if test = "${requestScope.pageNumber <= requestScope.pageCount && requestScope.pageNumber >1 }" >
+        		<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=1&search=${requestScope.search }&idmanufacturer=${requestScope.idmanufacturer }&idproducttype=${requestScope.idproducttype }&fromprice=${requestScope.fromprice }&endprice=${requestScope.endprice }"> << </a></li>
+        		<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=${requestScope.pageNumber-1}&search=${requestScope.search }&idmanufacturer=${requestScope.idmanufacturer }&idproducttype=${requestScope.idproducttype }&fromprice=${requestScope.fromprice }&endprice=${requestScope.endprice }"> Prev </a></li>
+        	</c:if>
+        	<c:if test="${requestScope.pageNumber>3 }">
+        		<c:set var="end" value="${requestScope.pageNumber+2 }"/>
+        	</c:if>
+        	<c:if test="${requestScope.pageNumber<=3 }">
+        		<c:set var = "end" value = "4"/>
+        	</c:if>
+        	<c:if test="${end>requestScope.pageCount }">
+        		<c:set var = "end" value = "${requestScope.pageCount}"/>
+        	</c:if>
+        	<c:set var = "start" value = "${end-3 }" />
+        	<c:if test = "${(end-3)<1 }">
+        		<c:set var ="start" value = "1" />
+        	</c:if>
+             <c:forEach var = "i" begin="${start }" end ="${end}">
+             	<c:if test="${i<=requestScope.pageCount && i>0}">
+             		<c:if test ="${i==requestScope.pageNumber}">
+             			<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=${i}&search=${requestScope.search }&idmanufacturer=${requestScope.idmanufacturer }&idproducttype=${requestScope.idproducttype }&fromprice=${requestScope.fromprice }&endprice=${requestScope.endprice }" class = "current"> ${i} </a></li>
+             		</c:if>
+             		<c:if test ="${i!=requestScope.pageNumber}">
+             			<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=${i}&search=${requestScope.search }&idmanufacturer=${requestScope.idmanufacturer }&idproducttype=${requestScope.idproducttype }&fromprice=${requestScope.fromprice }&endprice=${requestScope.endprice }"> ${i} </a></li>
+             		</c:if>
+             	</c:if>
+             </c:forEach>
+            <c:if test = "${requestScope.pageNumber <requestScope.pageCount-1 }" >
+            	<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=${requestScope.pageNumber+1}&search=${requestScope.search }&idmanufacturer=${requestScope.idmanufacturer }&idproducttype=${requestScope.idproducttype }&fromprice=${requestScope.fromprice }&endprice=${requestScope.endprice }"> Next </a></li>
+        		<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=${requestScope.pageCount}&search=${requestScope.search }&idmanufacturer=${requestScope.idmanufacturer }&idproducttype=${requestScope.idproducttype }&fromprice=${requestScope.fromprice }&endprice=${requestScope.endprice }"> >> </a></li>
+        		
+        	</c:if>
         </ul>
     </section>
     <aside class="sidebar">

@@ -40,11 +40,11 @@
 					<c:set var="subTotal"
 						value="${subTotal + item.getProduct().getPrice() * item.getQuantity()}" />
 					<tr>
-						<td class="image"><a href="#"><img title="product"
+						<td class="image"><a href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.getProduct().getId()}"><img title="product"
 								alt="product"
 								src="${pageContext.request.contextPath}/resources/images/${imageURL.path}" height="50"
 								width="50"></a></td>
-						<td class="name"><a href="#">${item.getProduct().getName()}</a></td>
+						<td class="name"><a href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.getProduct().getId()}">${item.getProduct().getName()}</a></td>
 						<td class="model">${item.getProduct().productstate.getName()}</td>
 						<td class="quantity"><input type="text" size="1"
 							value="${item.getQuantity()}" name="soLuong" class="span1"></td>

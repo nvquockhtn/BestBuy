@@ -48,9 +48,11 @@
 				<option>X-Small</option>
 			</select> &nbsp;&nbsp; Quantity:&nbsp; <input value="1" type="text">
 		</form>
-		<span class="cart-button"><a href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${requestScope.Product.id}">Add to Cart</a><a
-			href="${pageContext.request.contextPath}/WishList/Add.do?maSP=${requestScope.Product.id}">Add to Wishlist</a><a href="compare.html">Add
-				to Compare</a></span>
+		<span class="cart-button"><a
+			href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${requestScope.Product.id}">Add
+				to Cart</a><a
+			href="${pageContext.request.contextPath}/WishList/Add.do?maSP=${requestScope.Product.id}">Add
+				to Wishlist</a><a href="compare.html">Add to Compare</a></span>
 
 	</div>
 	<div id="tab">
@@ -58,7 +60,8 @@
 			<li class="nav-one"><a href="#details" class="current">Overviews</a></li>
 			<li class="nav-two"><a href="#specs">Specification</a></li>
 			<li class="nav-three"><a href="#reviews">Reviews</a></li>
-			<li class="nav-four last"><a href="#tags">Additional Accessories</a></li>
+			<li class="nav-four last"><a href="#products">Additional
+					Accessories</a></li>
 		</ul>
 		<div class="list-wrap">
 			<div id="details">
@@ -70,105 +73,153 @@
 			<div id="reviews" class="hide">
 				<h1>Best Buy Customer Reviews</h1>
 				<div class="rating-detail">
-					<div id="rate1" class="rating"></div><br />
-					<span>3.9 reviews</span>
+					<div id="rate1" class="rating"></div>
+					<br /> <span>3.9 reviews</span>
 				</div>
-				
-                        <div class="feedback-wrap">
-                        <h3>4 Comment &mdash; <span><a href="#">Single Blog Post</a></span></h3><br>
-                            <div class="dvision">
-                                <div class="feedback">
-                                    <img src="${pageContext.request.contextPath}/resources/images/user-1.jpg" alt="">
-                                    <div>
-                                        <h4><a href="#">Louie Jie Mahusay</a></h4>
-                                        <span><a href="#">January 26, 2013 at 10:38 am</a></span>
-                                        <p>Mauris vestibulum elementum condimentum. Donec eget turpis eget arcu aliquam fermentum. Donec tincidunt ipsum et nisl laoreet id mattis ante mollis.</p>
-                                        <span class="reply"><a href="#">Reply</a></span>
-                                    </div>
-                                </div>
-                                <div class="feedback feed2">
-                                    <img src="${pageContext.request.contextPath}/resources/images/user-2.jpg" alt="">
-                                    <div>
-                                        <h4><a href="#">Divine Grace Mahusay</a></h4>
-                                        <span><a href="#">January 26, 2013 at 10:38 am</a></span>
-                                        <p>Mauris vestibulum elementum condimentum. Donec eget turpis eget arcu aliquam fermentum. Donec tincidunt ipsum et nisl laoreet id mattis ante mollis.</p>
-                                        <span class="reply"><a href="#">Reply</a></span>
-                                    </div>
-                                </div>
-                                <div class="feedback feed3">
-                                    <img src="${pageContext.request.contextPath}/resources/images/user-3.jpg" alt="">
-                                    <div>
-                                        <h4><a href="#">Belfred Charcus</a></h4>
-                                        <span><a href="#">January 26, 2013 at 10:38 am</a></span>
-                                        <p>Mauris vestibulum elementum condimentum. Donec eget turpis eget arcu aliquam fermentum. Donec tincidunt ipsum et nisl laoreet id mattis ante mollis.</p>
-                                        <span class="reply"><a href="#">Reply</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dvision">
-                                <div class="feedback">
-                                    <img src="${pageContext.request.contextPath}/resources/images/user-1.jpg" alt="">
-                                    <div>
-                                        <h4><a href="#">Louie Jie Mahusay</a></h4>
-                                        <span><a href="#">January 26, 2013 at 10:38 am</a></span>
-                                        <p>Mauris vestibulum elementum condimentum. Donec eget turpis eget arcu aliquam fermentum. Donec tincidunt ipsum et nisl laoreet id mattis ante mollis.</p>
-                                        <span class="reply"><a href="#">Reply</a></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!--end:feedback-wrap-->
-                        <div class="commentf">
-                            <h3>Leave a comment</h3>
-                            <form id="commentform" action="#" method="post">
-                                <fieldset>
-                                <div id="rate2" class="rating"></div><br />
-                                <label>Name (required)</label>
-                                <br style="clear:both" />
-                                <input type="text" name="mail" id="mail" size="30" value="" class="input" />
-                                <label>Mail (will not be published) (required)</label>
-                                <br style="clear:both" />
-                                <textarea cols="25" rows="5" name="message" id="message" class="textarea"></textarea>
-                                <br style="clear:both" />
-                                <input type="submit" name="submit" class="button"  value="Write a review"/>
-                                </fieldset>
-                            </form>
-                        </div><!--end:comment-->
-                    
+
+				<div class="feedback-wrap">
+					<h3>
+						4 Comment &mdash; <span><a href="#">Single Blog Post</a></span>
+					</h3>
+					<br>
+					<div class="dvision">
+						<div class="feedback">
+							<img
+								src="${pageContext.request.contextPath}/resources/images/user-1.jpg"
+								alt="">
+							<div>
+								<h4>
+									<a href="#">Louie Jie Mahusay</a>
+								</h4>
+								<span><a href="#">January 26, 2013 at 10:38 am</a></span>
+								<p>Mauris vestibulum elementum condimentum. Donec eget
+									turpis eget arcu aliquam fermentum. Donec tincidunt ipsum et
+									nisl laoreet id mattis ante mollis.</p>
+								<span class="reply"><a href="#">Reply</a></span>
+							</div>
+						</div>
+						<div class="feedback feed2">
+							<img
+								src="${pageContext.request.contextPath}/resources/images/user-2.jpg"
+								alt="">
+							<div>
+								<h4>
+									<a href="#">Divine Grace Mahusay</a>
+								</h4>
+								<span><a href="#">January 26, 2013 at 10:38 am</a></span>
+								<p>Mauris vestibulum elementum condimentum. Donec eget
+									turpis eget arcu aliquam fermentum. Donec tincidunt ipsum et
+									nisl laoreet id mattis ante mollis.</p>
+								<span class="reply"><a href="#">Reply</a></span>
+							</div>
+						</div>
+						<div class="feedback feed3">
+							<img
+								src="${pageContext.request.contextPath}/resources/images/user-3.jpg"
+								alt="">
+							<div>
+								<h4>
+									<a href="#">Belfred Charcus</a>
+								</h4>
+								<span><a href="#">January 26, 2013 at 10:38 am</a></span>
+								<p>Mauris vestibulum elementum condimentum. Donec eget
+									turpis eget arcu aliquam fermentum. Donec tincidunt ipsum et
+									nisl laoreet id mattis ante mollis.</p>
+								<span class="reply"><a href="#">Reply</a></span>
+							</div>
+						</div>
+					</div>
+					<div class="dvision">
+						<div class="feedback">
+							<img
+								src="${pageContext.request.contextPath}/resources/images/user-1.jpg"
+								alt="">
+							<div>
+								<h4>
+									<a href="#">Louie Jie Mahusay</a>
+								</h4>
+								<span><a href="#">January 26, 2013 at 10:38 am</a></span>
+								<p>Mauris vestibulum elementum condimentum. Donec eget
+									turpis eget arcu aliquam fermentum. Donec tincidunt ipsum et
+									nisl laoreet id mattis ante mollis.</p>
+								<span class="reply"><a href="#">Reply</a></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end:feedback-wrap-->
+				<div class="commentf">
+					<h3>Leave a comment</h3>
+					<form id="commentform" action="#" method="post">
+						<fieldset>
+							<div id="rate2" class="rating"></div>
+							<br /> <label>Name (required)</label> <br style="clear: both" />
+							<input type="text" name="mail" id="mail" size="30" value=""
+								class="input" /> <label>Mail (will not be published)
+								(required)</label> <br style="clear: both" />
+							<textarea cols="25" rows="5" name="message" id="message"
+								class="textarea"></textarea>
+							<br style="clear: both" /> <input type="submit" name="submit"
+								class="button" value="Write a review" />
+						</fieldset>
+					</form>
+				</div>
+				<!--end:comment-->
+
 			</div>
-			<ul id="tags" class="hide">
-				<ul id="products" class="list clearfix">
-				<c:forEach var="item" items="${requestScope.Product.accessorydetailsForProductId}">
-                   	<li class="da-thumbs item">
-                       	<div class="product-thumb-hover">
-                               <section class="left">
-                                   <img src="${pageContext.request.contextPath}/resources/images/${item.productByAccessoryId.images.iterator().next().path}" alt="">
-                                   <p class="sale">${item.productByAccessoryId.productstate.name}</p>
-                                   <article class="da-animate da-slideFromBottom" style="display: block;">
-                                       <h3>${item.productByAccessoryId.name}</h3>
-                                       <p>
-                                       <a href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.productByAccessoryId.id}" class="link tip" original-title="View Detail"></a>&nbsp;
-                                       <a href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${item.productByAccessoryId.id}" class="cart tip" original-title="Add to cart"></a>&nbsp;&nbsp;
-                                       <a href="${pageContext.request.contextPath}/resources/images/${item.productByAccessoryId.images.iterator().next().path}" rel="prettyPhoto[gallery1]" class="zoom tip" original-title="Zoom"></a></p>
-                                   </article>
-                               </section>
-                           </div>
-                           <section class="center">
-                           	<h3>${item.productByAccessoryId.name}</h3>
-                               <em>Category: <a href="#">${item.productByAccessoryId.producttype.name}</a></em>
-                           </section>
-                           <section class="right">
-                               <span class="price"><small>$320.00</small>&nbsp;&nbsp; <fmt:formatNumber type="number" value="${item.productByAccessoryId.price}" /> VND</span>
-                               <ul class="menu-button">
-                                   <li><a href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${item.productByAccessoryId.id}" class="cart tip" original-title="Add to Cart"></a></li>
-                                   <li><a href="${pageContext.request.contextPath}/resources/images/${item.productByAccessoryId.images.iterator().next().path}" rel="prettyPhoto[gallery1]" class="zoom tip" original-title="Zoom"></a></li>
-                                   <li><a href="${pageContext.request.contextPath}/WishList/Add.do?maSP=${item.productByAccessoryId.id}" class="wishlist tip" original-title="Add to Wishlist"></a></li>
-                                   <li><a href="compare.html" class="compare tip" original-title="Compare"></a></li>
-                                   <li><a href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.productByAccessoryId.id}" class="link tip" original-title="View Detail"></a></li>
-                               </ul>
-                           </section>
-                       </li>
-                       </c:forEach>
-                 </ul>
+			<ul id="products" class="list clearfix hide">
+				<c:forEach var="item"
+					items="${requestScope.Product.accessorydetailsForProductId}">
+					<li class="da-thumbs item">
+						<div class="product-thumb-hover">
+							<section class="left">
+								<img
+									src="${pageContext.request.contextPath}/resources/images/${item.productByAccessoryId.images.iterator().next().path}"
+									alt="">
+								<p class="sale">${item.productByAccessoryId.productstate.name}</p>
+								<article class="da-animate da-slideFromBottom"
+									style="display: block;">
+									<h3>${item.productByAccessoryId.name}</h3>
+									<p>
+										<a
+											href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.productByAccessoryId.id}"
+											class="link tip" original-title="View Detail"></a>&nbsp; <a
+											href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${item.productByAccessoryId.id}"
+											class="cart tip" original-title="Add to cart"></a>&nbsp;&nbsp;
+										<a
+											href="${pageContext.request.contextPath}/resources/images/${item.productByAccessoryId.images.iterator().next().path}"
+											rel="prettyPhoto[gallery1]" class="zoom tip"
+											original-title="Zoom"></a>
+									</p>
+								</article>
+							</section>
+						</div>
+						<section class="center">
+							<h3>${item.productByAccessoryId.name}</h3>
+							<em>Category: <a href="#">${item.productByAccessoryId.producttype.name}</a></em>
+						</section>
+						<section class="right">
+							<span class="price"><small>$320.00</small>&nbsp;&nbsp; <fmt:formatNumber
+									type="number" value="${item.productByAccessoryId.price}" />
+								VND</span>
+							<ul class="menu-button">
+								<li><a
+									href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${item.productByAccessoryId.id}"
+									class="cart tip" original-title="Add to Cart"></a></li>
+								<li><a
+									href="${pageContext.request.contextPath}/resources/images/${item.productByAccessoryId.images.iterator().next().path}"
+									rel="prettyPhoto[gallery1]" class="zoom tip"
+									original-title="Zoom"></a></li>
+								<li><a
+									href="${pageContext.request.contextPath}/WishList/Add.do?maSP=${item.productByAccessoryId.id}"
+									class="wishlist tip" original-title="Add to Wishlist"></a></li>								
+								<li><a
+									href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.productByAccessoryId.id}"
+									class="link tip" original-title="View Detail"></a></li>
+							</ul>
+						</section>
+					</li>
+				</c:forEach>
 			</ul>
 		</div>
 	</div>
@@ -270,12 +321,28 @@
 	</div>
 </div>
 
-<!--STAR RATE-->    
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.rating.js"></script>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/rating.css" />
+<!--STAR RATE-->
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/jquery.rating.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/rating.css" />
 <script type="text/javascript">
-    $(document).ready(function() {
-    	$('#rate1').rating('http://html5awesome.com/themeforest/shopymart/www.url.php', {maxvalue:5, curvalue:3});
-    	$('#rate2').rating('http://html5awesome.com/themeforest/shopymart/www.url.php', {maxvalue:5, curvalue:0});
-	});
+	$(document)
+			.ready(
+					function() {
+						$('#rate1')
+								.rating(
+										'http://html5awesome.com/themeforest/shopymart/www.url.php',
+										{
+											maxvalue : 5,
+											curvalue : 3
+										});
+						$('#rate2')
+								.rating(
+										'http://html5awesome.com/themeforest/shopymart/www.url.php',
+										{
+											maxvalue : 5,
+											curvalue : 0
+										});
+					});
 </script>

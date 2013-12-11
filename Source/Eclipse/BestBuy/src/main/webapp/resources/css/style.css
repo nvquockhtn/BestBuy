@@ -409,7 +409,7 @@ ul li.da-thumbs div article p a:hover{ -ms-transition: all 0.5s ease-in-out; -we
 .clearfix{ display:block;zoom:1}
 .prod{ width:36%; float:left; margin-bottom:20px;}
 .prod .jqzoom img{ max-width:300px;}
-ul#thumblist{ display: block;overflow: auto;height: 55px;}
+ul#thumblist{ display: block;overflow: auto;height: 60px;}
 ul#thumblist li{ float:left;margin-right:2px;list-style:none;}
 ul#thumblist li a{ display:block; border:1px solid #f0f0f0; width:50px; height:52px; padding-bottom:0;}
 ul#thumblist li a.zoomThumbActive{ border:1px solid #f5640c;}

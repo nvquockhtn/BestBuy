@@ -4,10 +4,12 @@
  */
 package com.bestbuy.dao;
 
+import com.bestbuy.pojo.Comment;
+
 /**
  *
  * @author VanQuoc-CNTT
  */
 public interface CommentDao {
-    
+    public boolean add(Comment comment);
 }

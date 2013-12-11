@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <!DOCTYPE html>
 <div class="container-2">
@@ -74,95 +75,52 @@
 				<h1>Best Buy Customer Reviews</h1>
 				<div class="rating-detail">
 					<div id="rate1" class="rating"></div>
-					<br /> <span>3.9 reviews</span>
+					<br /> <span>${requestScope.AvarageRating} reviews</span>
 				</div>
 
 				<div class="feedback-wrap">
 					<h3>
-						4 Comment &mdash; <span><a href="#">Single Blog Post</a></span>
+						${requestScope.Product.comments.size()} Comment &mdash; <span><a href="#">Single Blog Post</a></span>
 					</h3>
 					<br>
-					<div class="dvision">
-						<div class="feedback">
-							<img
-								src="${pageContext.request.contextPath}/resources/images/user-1.jpg"
-								alt="">
-							<div>
-								<h4>
-									<a href="#">Louie Jie Mahusay</a>
-								</h4>
-								<span><a href="#">January 26, 2013 at 10:38 am</a></span>
-								<p>Mauris vestibulum elementum condimentum. Donec eget
-									turpis eget arcu aliquam fermentum. Donec tincidunt ipsum et
-									nisl laoreet id mattis ante mollis.</p>
-								<span class="reply"><a href="#">Reply</a></span>
-							</div>
+					<c:forEach var="item" items="${requestScope.Product.comments.iterator()}">
+						<div class="dvision">
+							<div class="feedback">
+								<img
+									src="${pageContext.request.contextPath}/resources/images/user-1.jpg"
+									alt="">
+								<div>
+									<h4>
+										<a href="#">${item.account.username}</a>
+									</h4>
+									<span><a href="#">${item.createDate}</a></span>
+									<p>${item.text}</p>
+								</div>
+							</div>			
 						</div>
-						<div class="feedback feed2">
-							<img
-								src="${pageContext.request.contextPath}/resources/images/user-2.jpg"
-								alt="">
-							<div>
-								<h4>
-									<a href="#">Divine Grace Mahusay</a>
-								</h4>
-								<span><a href="#">January 26, 2013 at 10:38 am</a></span>
-								<p>Mauris vestibulum elementum condimentum. Donec eget
-									turpis eget arcu aliquam fermentum. Donec tincidunt ipsum et
-									nisl laoreet id mattis ante mollis.</p>
-								<span class="reply"><a href="#">Reply</a></span>
-							</div>
-						</div>
-						<div class="feedback feed3">
-							<img
-								src="${pageContext.request.contextPath}/resources/images/user-3.jpg"
-								alt="">
-							<div>
-								<h4>
-									<a href="#">Belfred Charcus</a>
-								</h4>
-								<span><a href="#">January 26, 2013 at 10:38 am</a></span>
-								<p>Mauris vestibulum elementum condimentum. Donec eget
-									turpis eget arcu aliquam fermentum. Donec tincidunt ipsum et
-									nisl laoreet id mattis ante mollis.</p>
-								<span class="reply"><a href="#">Reply</a></span>
-							</div>
-						</div>
-					</div>
-					<div class="dvision">
-						<div class="feedback">
-							<img
-								src="${pageContext.request.contextPath}/resources/images/user-1.jpg"
-								alt="">
-							<div>
-								<h4>
-									<a href="#">Louie Jie Mahusay</a>
-								</h4>
-								<span><a href="#">January 26, 2013 at 10:38 am</a></span>
-								<p>Mauris vestibulum elementum condimentum. Donec eget
-									turpis eget arcu aliquam fermentum. Donec tincidunt ipsum et
-									nisl laoreet id mattis ante mollis.</p>
-								<span class="reply"><a href="#">Reply</a></span>
-							</div>
-						</div>
-					</div>
+					</c:forEach>
+					
 				</div>
 				<!--end:feedback-wrap-->
 				<div class="commentf">
 					<h3>Leave a comment</h3>
-					<form id="commentform" action="#" method="post">
+					<form:form method="post" id="commentform" action="${pageContext.request.contextPath}/Comment/Add.do" modelAttribute="comment">
 						<fieldset>
 							<div id="rate2" class="rating"></div>
-							<br /> <label>Name (required)</label> <br style="clear: both" />
+							<br /> 
+							<label>Name (required)</label> <br style="clear: both" />
 							<input type="text" name="mail" id="mail" size="30" value=""
-								class="input" /> <label>Mail (will not be published)
-								(required)</label> <br style="clear: both" />
-							<textarea cols="25" rows="5" name="message" id="message"
-								class="textarea"></textarea>
-							<br style="clear: both" /> <input type="submit" name="submit"
+								class="input" /> 
+							<label>Mail (will not be published)	(required)</label> <br style="clear: both" />
+							<form:textarea path="text" cols="25" rows="5" name="message" id="message" value="Message"
+								class="textarea" />
+							<br style="clear: both" /> 
+							
+							<form:hidden path="productId" value="${requestScope.Product.id}"/>
+							<input type="submit" name="submit"
 								class="button" value="Write a review" />
 						</fieldset>
-					</form>
+					</form:form>
 				</div>
 				<!--end:comment-->
 
@@ -328,21 +286,8 @@
 	href="${pageContext.request.contextPath}/resources/css/rating.css" />
 <script type="text/javascript">
 	$(document)
-			.ready(
-					function() {
-						$('#rate1')
-								.rating(
-										'http://html5awesome.com/themeforest/shopymart/www.url.php',
-										{
-											maxvalue : 5,
-											curvalue : 3
-										});
-						$('#rate2')
-								.rating(
-										'http://html5awesome.com/themeforest/shopymart/www.url.php',
-										{
-											maxvalue : 5,
-											curvalue : 0
-										});
+			.ready(function() {
+						$('#rate1').rating('',{maxvalue : 5,curvalue : ${requestScope.AvarageRating}});
+						$('#rate2').rating("${pageContext.request.contextPath}/Comment/Rating.do",{maxvalue : 5,curvalue : 0});
 					});
 </script>

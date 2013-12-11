@@ -181,7 +181,7 @@ public class Product implements java.io.Serializable {
 		this.accessorydetailsForProductId = accessorydetailsForProductId;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "product")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "product")
 	public Set<Comment> getComments() {
 		return this.comments;
 	}

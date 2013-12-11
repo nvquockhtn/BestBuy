@@ -24,7 +24,6 @@ import javax.persistence.TemporalType;
 )
 public class Comment  implements java.io.Serializable {
 
-
      private Integer id;
      private Product product;
      private Account account;
@@ -53,7 +52,7 @@ public class Comment  implements java.io.Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="ProductId")
     public Product getProduct() {
         return this.product;
@@ -62,7 +61,7 @@ public class Comment  implements java.io.Serializable {
     public void setProduct(Product product) {
         this.product = product;
     }
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="AccountId")
     public Account getAccount() {
         return this.account;

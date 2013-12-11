@@ -5,8 +5,11 @@
 package com.bestbuy.interceptor;
 
 import com.bestbuy.model.AccountModel;
+import com.bestbuy.model.CommentModel;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,6 +27,10 @@ public class BestbuyInterceptor implements HandlerInterceptor {
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
         if (request.getAttribute("account") == null) {
             request.setAttribute("account", new AccountModel());
+        }
+        
+        if (request.getAttribute("comment") == null) {
+            request.setAttribute("comment", new CommentModel());
         }
     }
 

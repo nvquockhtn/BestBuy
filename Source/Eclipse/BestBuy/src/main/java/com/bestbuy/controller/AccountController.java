@@ -131,7 +131,7 @@ public class AccountController {
 			break;
 		}
 		if (rs == 0) {
-			return "Index";
+			return "redirect:/Home/Index.do";
 		}
 		model.addAttribute("Error", error);
 		model.addAttribute("Result", rs);
@@ -155,6 +155,6 @@ public class AccountController {
 	@RequestMapping(value = { "/Logout.do" }, method = RequestMethod.GET)
 	public String logout(Model model, HttpSession session) {
 		session.invalidate();
-		return "Index";
+		return "redirect:/Home/Index.do";
 	}
 }

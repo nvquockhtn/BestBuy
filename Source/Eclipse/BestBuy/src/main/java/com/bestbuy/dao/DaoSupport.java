@@ -19,12 +19,12 @@ public abstract class DaoSupport {
         this.sessionFactory = sessionFactory;
     }
 
-    @Transactional
-    public boolean add(Object obj) throws Exception {
-        sessionFactory.getCurrentSession().saveOrUpdate(obj);
-
-        return true;
-    }
+//    @Transactional
+//    public boolean add(Object obj) throws Exception {
+//        sessionFactory.getCurrentSession().saveOrUpdate(obj);
+//
+//        return true;
+//    }
 
     /**
      *

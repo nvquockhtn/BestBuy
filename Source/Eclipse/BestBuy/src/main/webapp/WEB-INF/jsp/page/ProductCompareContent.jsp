@@ -12,62 +12,66 @@
     <div style="clear:both; display:block; height:40px"></div>
     <h2>Compare Products &nbsp;<small>compare other products</small></h2>
     <table class="compare">
+    	<c:if test="${requestScope.numCompares>0 && requestScope.numCompares<=3 }" >
         <tbody>
-        <tr>
-        	<td class="name">Product ${requestScope.numCompares}</td>
-	        <c:forEach var ="item" items = "${requestScope.numCompares}">
-	        	<td class="name"><a href="#">${sessionScope.listProductsCompare.get(item).getName()}</a></td>
-	        </c:forEach>
-        </tr>
-            <tr>
-                <td class="name">Product</td>
-                <td class="name"><a href="#">T-shirts</a></td>
-                <td class="name"><a href="#">Shoes</a></td>
-                <td class="name"><a href="#">Jeans</a></td>
-            </tr>
-            <tr>
-                <td class="name">Image</td>
-                <td><img src="${pageContext.request.contextPath}/resources/images/products/thumb-2.jpg" alt=""></td>
-                <td><img src="${pageContext.request.contextPath}/resources/images/products/thumb-1.jpg" alt=""></td>
-                <td><img src="${pageContext.request.contextPath}/resources/images/products/thumb-2.jpg" alt=""></td>
-            </tr>
-            <tr>
-                <td class="name">Price</td>
-                <td> $105.00 </td>
-                <td> $40.00 </td>
-                <td> $200.00 </td>
-            </tr>
-            <tr>
-                <td class="name">Model</td>
-                <td>Model 1</td>
-                <td>Model 2</td>
-                <td>Model 3</td>
-            </tr>
-            <tr>
-                <td class="name">Brand</td>
-                <td>Levis</td>
-                <td>Adidas</td>
-                <td>Lee</td>
-            </tr>
-            <tr>
-                <td class="name">Availability</td>
-                <td>Out of Stock</td>
-                <td>In Stock</td>
-                <td>In Stock</td>
-            </tr>
-            <tr>
-                <td class="name">Rating</td>
-                <td><div id="rate1" class="rating">&nbsp;</div></td>
-                <td><div id="rate2" class="rating">&nbsp;</div></td>
-                <td><div id="rate3" class="rating">&nbsp;</div></td>
-            </tr>
-            <tr class="description">
-                <td class="name">Summary</td>
-                <td ><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p></td>
-                <td ><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p></td>
-                <td><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p></td>
-            </tr>
+		        <tr>
+		        	<td class="name">Product ${requestScope.numCompares}</td>
+			        <c:forEach var ="item" begin = "0" end ="${requestScope.numCompares-1}" >
+			        	<td class="name"><a href="#">${sessionScope.listProductsCompare.get(item).getName()}</a></td>
+			        </c:forEach>
+		        </tr>
+		            
+		            <tr>
+		                <td class="name">Image</td>
+		                <c:forEach var ="item" begin = "0" end ="${requestScope.numCompares-1}" >
+		                	<c:set var="imageURL"/>
+		            		<c:forEach var="itemImage" items="${sessionScope.listProductsCompare.get(item).getImages().iterator()}">
+		            			<c:if test="${itemImage.typeId == 1}">
+									<c:set var="imageURL" value="${itemImage}" />
+								</c:if>
+		            		</c:forEach>
+			        		<td><img src="${pageContext.request.contextPath}/resources/images/${imageURL.path}" alt=""></td>
+			        	</c:forEach>
+		            </tr>
+		            <tr>
+		                <td class="name">Price</td>
+		                <c:forEach var ="item" begin = "0" end ="${requestScope.numCompares-1}" >
+		                	<td> ${sessionScope.listProductsCompare.get(item).getPrice() } </td>
+			        	</c:forEach>
+		            </tr>
+		            <tr>
+		                <td class="name">Model</td>
+		                <td>Model 1</td>
+		                <td>Model 2</td>
+		                <td>Model 3</td>
+		            </tr>
+		            <tr>
+		                <td class="name">Brand</td>
+		                <td>Levis</td>
+		                <td>Adidas</td>
+		                <td>Lee</td>
+		            </tr>
+		            <tr>
+		                <td class="name">Availability</td>
+		                <td>Out of Stock</td>
+		                <td>In Stock</td>
+		                <td>In Stock</td>
+		            </tr>
+		            <tr>
+		                <td class="name">Rating</td>
+		                <td><div id="rate1" class="rating">&nbsp;</div></td>
+		                <td><div id="rate2" class="rating">&nbsp;</div></td>
+		                <td><div id="rate3" class="rating">&nbsp;</div></td>
+		            </tr>
+		            <tr class="description">
+		                <td class="name">Summary</td>
+		                <td ><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p></td>
+		                <td ><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p></td>
+		                <td><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p></td>
+		            </tr>
+		        
         </tbody>
+        </c:if>
         <tbody>
             <tr>
                 <td></td>

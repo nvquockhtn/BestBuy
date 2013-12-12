@@ -9,9 +9,13 @@ import java.util.ArrayList;
 import com.bestbuy.pojo.Order;
 
 /**
- *
+ * 
  * @author VanQuoc-CNTT
  */
 public interface OrderDao {
-    ArrayList<Order> getOrdersByAccountId(int id);
+	ArrayList<Order> getOrdersByAccountId(int id);
+
+	Order getOrderById(int id);
+
+	public boolean updateOrder(Order order);
 }

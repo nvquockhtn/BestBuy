@@ -51,11 +51,13 @@
 							VND</td>
 						<td class="quantity">${item.orderstate.name}</td>
 						<td class="remove-update">
-						<a href="${pageContext.request.contextPath}/"
+						<c:if test="${item.orderstate.id == 1}"> <%-- chi hien cho phep huy khi dang chuyen giao hang --%>
+						<a href="${pageContext.request.contextPath}/Order/Cancel.do?orderId=${item.id}"
 							class="tip remove" title="Remove"> <img
 								src="${pageContext.request.contextPath}/resources/images/remove.png"
 								alt="">
 						</a>
+						</c:if>
 							</td>
 					</tr>
 				</c:forEach>

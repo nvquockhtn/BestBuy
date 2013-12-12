@@ -59,7 +59,7 @@ public class Order  implements java.io.Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="CreatorId")
     public Account getAccount() {
         return this.account;

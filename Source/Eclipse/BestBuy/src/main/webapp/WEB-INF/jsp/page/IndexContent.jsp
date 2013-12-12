@@ -51,7 +51,7 @@
 		                        <li><a href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${item.id}" class="cart tip" title="Add to Cart">Cart</a></li>
 		                        <li><a href="${pageContext.request.contextPath}/resources/images/${imageURL.path }" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom">Zoom</a></li>
 		                        <li><a href="${pageContext.request.contextPath}/WishList/Add.do?maSP=${item.id}" class="wishlist tip" title="Add to Wishlist">Add Wishlist</a></li>
-		                        <li><a href="compare.html" class="compare tip" title="Compare">Compare</a></li>
+		                        <li><a href="${pageContext.request.contextPath}/ProductCompare/AddProductToListCompare.do?idProduct=${item.id}" class="compare tip" title="Compare">Compare</a></li>
                     		</ul>
                 		</li>
             	</c:forEach>

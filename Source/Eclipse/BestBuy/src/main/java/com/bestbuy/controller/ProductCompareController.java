@@ -39,7 +39,7 @@ public class ProductCompareController {
 			HttpSession session)
 	{
 		ArrayList<Product> listProductsCompare  = GetProductsCompare(session);
-		//listProductsCompare.get(1).getName();
+		//listProductsCompare.get(1).getImages()
 		int numCompares = listProductsCompare.size();
 		model.addAttribute("numCompares", numCompares);
 		AddProductToListCompare(idProduct, listProductsCompare);

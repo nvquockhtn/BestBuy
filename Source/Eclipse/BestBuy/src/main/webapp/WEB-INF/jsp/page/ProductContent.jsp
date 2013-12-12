@@ -11,22 +11,23 @@
 <div class="container-2">
     <section class="content">
         <div class="ctrl">
-        	<form:form cssClass="left" modelAttribute="product" method="post" action="${pageContext.request.contextPath}/Product/PostProducts.do?page=1&search=&idmanufacturer=-1&idproducttype=-1&fromprice=-1&endprice=-1" >
+        	<form:form cssClass="left" modelAttribute="product" method="get" action="${pageContext.request.contextPath}/Product/GetProducts.do" >
             	<div class = "formProduct">
 	            	<div class = "formSearch">
 	            		<div class ="formPagg">
 	            			<label> &nbsp; &nbsp; Search: </label>
-	            			<form:input path="name" cssClass="myinputext"/>
+	            			<form:input path="search" cssClass="myinputext" cssStyle="width: 120px" placeholder = "search..."/>
 	            		</div>
 	            	</div>
 	            	<div class= "formClear"></div>
             	</div>
+            	<form:hidden path="page" value = "1"/>
             	<div class = "formProduct">
 	            	<div class = "formSearch">
 	            		<div class ="formPagg">
 	            			<label> &nbsp; &nbsp; Price from: </label>
 	            			<form:select path="fromprice">
-			            		<form:option label="Choose price" value = "-1"/>
+			            		<form:option label="-- Choose price --" value = "-1"/>
 			            		<form:options items="${requestScope.listFromPrices}" itemValue="id" itemLabel="price"/>
 	            			</form:select>
 	            		</div>
@@ -35,7 +36,7 @@
 	            		<div class ="formPagg">
 	            			<label> &nbsp; &nbsp; Price end: </label>
 	            			<form:select path="endprice">
-			            		<form:option label="Choose price" value = "-1"/>
+			            		<form:option label="-- Choose price --" value = "-1"/>
 			            		<form:options items="${requestScope.listFromPrices}" itemValue="id" itemLabel="price"/>
 	            			</form:select>
 	            		</div>
@@ -46,8 +47,8 @@
 	            	<div class = "formSearch">
 	            		<div class ="formPagg">
 	            			<label>&nbsp; &nbsp; Manufacturer: </label>
-	            			<form:select path="manufacturer">
-	                			<form:option value="-1" label="All"/>
+	            			<form:select path="idmanufacturer">
+	                			<form:option value="-1" label="-- All --"/>
 	                			<form:options items = "${requestScope.listManufacturers}" itemValue="id" itemLabel="name"/>
 	               			</form:select>
 	            		</div>
@@ -57,8 +58,8 @@
 	                <div class = "formSearch">
 	            		<div class ="formPagg">
 	            			<label>&nbsp; &nbsp; Product type: </label>
-	            			<form:select path="producttype">
-	                			<form:option value="-1" label="All"/>
+	            			<form:select path="idproducttype">
+	                			<form:option value="-1" label="-- All --"/>
 	                			<form:options items = "${requestScope.listProducttypes}" itemValue="id" itemLabel="name"/>
 	                		</form:select>
 	            		</div>
@@ -103,7 +104,8 @@
                         <li><a href="cart.html" class="cart tip" title="Add to Cart"></a></li>
                         <li><a href="${pageContext.request.contextPath}/resources/images/${imageURL.path}" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom"></a></li>
                         <li><a href="wishlist.html" class="wishlist tip" title="Add to Wishlist"></a></li>
-                        <li><a href="compare.html" class="compare tip" title="Compare"></a></li>
+                        <!-- <li><a href="compare.html" class="compare tip" title="Compare"></a></li> -->
+                        <li><a href="${pageContext.request.contextPath}/ProductCompare/AddProductToListCompare.do?idProduct=${item.id}" class="compare tip" title="Compare"></a></li>
                         <li><a href="product-detail.html" class="link tip" title="View Detail"></a></li>
                     </ul>
                 </section>
@@ -111,14 +113,14 @@
         	</c:forEach>
         </ul><!--end:products-->
         <ul id="pagination">
-        	<c:if test = "${requestScope.pageNumber <= requestScope.pageCount && requestScope.pageNumber >1 }" >
-        		<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=1&search=${requestScope.search }&idmanufacturer=${requestScope.idmanufacturer }&idproducttype=${requestScope.idproducttype }&fromprice=${requestScope.fromprice }&endprice=${requestScope.endprice }"> << </a></li>
-        		<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=${requestScope.pageNumber-1}&search=${requestScope.search }&idmanufacturer=${requestScope.idmanufacturer }&idproducttype=${requestScope.idproducttype }&fromprice=${requestScope.fromprice }&endprice=${requestScope.endprice }"> Prev </a></li>
+        	<c:if test = "${product.page <= requestScope.pageCount && product.page >1 }" >
+        		<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=1&search=${product.search }&idmanufacturer=${product.idmanufacturer }&idproducttype=${product.idproducttype }&fromprice=${product.fromprice }&endprice=${product.endprice }"> << </a></li>
+        		<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=${product.page-1 }&search=${product.search }&idmanufacturer=${product.idmanufacturer }&idproducttype=${product.idproducttype }&fromprice=${product.fromprice }&endprice=${product.endprice }"> Prev </a></li>
         	</c:if>
-        	<c:if test="${requestScope.pageNumber>3 }">
-        		<c:set var="end" value="${requestScope.pageNumber+2 }"/>
+        	<c:if test="${product.page>3 }">
+        		<c:set var="end" value="${product.page+2 }"/>
         	</c:if>
-        	<c:if test="${requestScope.pageNumber<=3 }">
+        	<c:if test="${product.page<=3 }">
         		<c:set var = "end" value = "4"/>
         	</c:if>
         	<c:if test="${end>requestScope.pageCount }">
@@ -130,17 +132,17 @@
         	</c:if>
              <c:forEach var = "i" begin="${start }" end ="${end}">
              	<c:if test="${i<=requestScope.pageCount && i>0}">
-             		<c:if test ="${i==requestScope.pageNumber}">
-             			<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=${i}&search=${requestScope.search }&idmanufacturer=${requestScope.idmanufacturer }&idproducttype=${requestScope.idproducttype }&fromprice=${requestScope.fromprice }&endprice=${requestScope.endprice }" class = "current"> ${i} </a></li>
+             		<c:if test ="${i==product.page}">
+             			<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=${i }&search=${product.search }&idmanufacturer=${product.idmanufacturer }&idproducttype=${product.idproducttype }&fromprice=${product.fromprice }&endprice=${product.endprice }" class = "current"> ${i} </a></li>
              		</c:if>
-             		<c:if test ="${i!=requestScope.pageNumber}">
-             			<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=${i}&search=${requestScope.search }&idmanufacturer=${requestScope.idmanufacturer }&idproducttype=${requestScope.idproducttype }&fromprice=${requestScope.fromprice }&endprice=${requestScope.endprice }"> ${i} </a></li>
+             		<c:if test ="${i!=product.page}">
+             			<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=${i }&search=${product.search }&idmanufacturer=${product.idmanufacturer }&idproducttype=${product.idproducttype }&fromprice=${product.fromprice }&endprice=${product.endprice }"> ${i} </a></li>
              		</c:if>
              	</c:if>
              </c:forEach>
-            <c:if test = "${requestScope.pageNumber <requestScope.pageCount-1 }" >
-            	<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=${requestScope.pageNumber+1}&search=${requestScope.search }&idmanufacturer=${requestScope.idmanufacturer }&idproducttype=${requestScope.idproducttype }&fromprice=${requestScope.fromprice }&endprice=${requestScope.endprice }"> Next </a></li>
-        		<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=${requestScope.pageCount}&search=${requestScope.search }&idmanufacturer=${requestScope.idmanufacturer }&idproducttype=${requestScope.idproducttype }&fromprice=${requestScope.fromprice }&endprice=${requestScope.endprice }"> >> </a></li>
+            <c:if test = "${product.page <requestScope.pageCount-1 }" >
+            	<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=${end+1 }&search=${product.search }&idmanufacturer=${product.idmanufacturer }&idproducttype=${product.idproducttype }&fromprice=${product.fromprice }&endprice=${product.endprice }"> Next </a></li>
+        		<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=${requestScope.pageCount }&search=${product.search }&idmanufacturer=${product.idmanufacturer }&idproducttype=${product.idproducttype }&fromprice=${product.fromprice }&endprice=${product.endprice }"> >> </a></li>
         		
         	</c:if>
         </ul>

@@ -59,7 +59,7 @@ public class ProductDaoImpl extends DaoSupport implements ProductDao{
 			String hql = "from Product  s left outer join fetch s.manufacturer left outer join fetch s.producttype left outer join fetch s.productstate where 1=1 ";
 			if(nameProduct.trim().equals("")==false)
 	        {
-	            hql = hql + "and s.name like '%" + nameProduct.trim() + "%'";
+	            hql = hql + " and s.name like '%" + nameProduct.trim() + "%'";
 	        }
 	        if(idtypemanufacturer!=-1)
 	        {

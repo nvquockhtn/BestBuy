@@ -5,12 +5,20 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <div class="container-2">
     <div style="clear:both; display:block; height:40px"></div>
     <h2>Compare Products &nbsp;<small>compare other products</small></h2>
     <table class="compare">
         <tbody>
+        <tr>
+        	<td class="name">Product ${requestScope.numCompares}</td>
+	        <c:forEach var ="item" items = "${requestScope.numCompares}">
+	        	<td class="name"><a href="#">${sessionScope.listProductsCompare.get(item).getName()}</a></td>
+	        </c:forEach>
+        </tr>
             <tr>
                 <td class="name">Product</td>
                 <td class="name"><a href="#">T-shirts</a></td>

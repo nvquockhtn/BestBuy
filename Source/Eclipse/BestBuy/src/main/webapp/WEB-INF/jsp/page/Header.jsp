@@ -39,6 +39,7 @@
         <li><a href="${pageContext.request.contextPath}/WishList/Index.do">My Wishlist</a></li>
         <li><a href="${pageContext.request.contextPath}/Cart/Index.do">My Cart</a></li>
         <li><a href="checkout.html">Checkout</a></li>
+        <li><a href="${pageContext.request.contextPath}/ProductCompare/ProductsCompare.do">My Compare</a></li>
         <li class="login">
             <c:choose>
                 <c:when test="${sessionScope.Account == null}">

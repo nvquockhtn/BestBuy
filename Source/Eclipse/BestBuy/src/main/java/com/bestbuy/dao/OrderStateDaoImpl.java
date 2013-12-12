@@ -1,5 +1,8 @@
 package com.bestbuy.dao;
 
+import java.util.ArrayList;
+
+import org.hibernate.Query;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bestbuy.pojo.Orderstate;
@@ -16,6 +19,13 @@ public class OrderStateDaoImpl extends DaoSupport implements OrderStateDao {
 		orderState = (Orderstate) sessionFactory.getCurrentSession().get(
 				Orderstate.class, idOrder);
 		return orderState;
+	}
+
+	@Transactional(readOnly = true)
+	public ArrayList<Orderstate> getAll() {
+		String hql = "from Orderstate";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		return (ArrayList<Orderstate>) query.list();
 	}
 
 }

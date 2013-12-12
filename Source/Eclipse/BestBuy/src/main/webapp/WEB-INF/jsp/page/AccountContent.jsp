@@ -20,7 +20,7 @@
 				<li><a href="#">Modify you wishlist</a></li>
 			</ul>
 			<ul id="order" class="hide">
-				<li><a href="#">View your order history</a></li>
+				<li><a href="${pageContext.request.contextPath}/Order/Index.do">View your order history</a></li>
 				<li><a href="#">Downloads</a></li>
 				<li><a href="#">View your return request</a></li>
 				<li><a href="#">Your transactions</a></li>

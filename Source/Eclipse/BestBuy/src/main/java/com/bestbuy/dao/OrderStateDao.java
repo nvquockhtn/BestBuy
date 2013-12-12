@@ -7,4 +7,6 @@ import com.bestbuy.pojo.Orderstate;
 
 public interface OrderStateDao {
     public Orderstate getOrderStateById(int idOrder);
+
+	public ArrayList<Orderstate> getAll();
 }

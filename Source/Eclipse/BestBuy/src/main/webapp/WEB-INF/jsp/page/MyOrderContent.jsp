@@ -11,7 +11,9 @@
 		Orders List &nbsp;<small>Your orders</small>
 	</h2>
 	<div class="ctrl">
-      	<form class="left">
+      	<form:form modelAttribute="orderState"
+				action="${pageContext.request.contextPath}/Order/Filter.do"
+				method="post" cssClass="left">
               Sort By :&nbsp;
               <select>
                 <option>Time</option>
@@ -19,13 +21,13 @@
               </select>
               &nbsp;&nbsp;
               State:&nbsp;
-              <select>
-                <option>Dang cho</option>
-                <option>Huy boi Admin</option>
-                <option>Huy boi khach hang</option>
-                <option>Da chuyen giao</option>
-              </select>
-          </form>
+			
+				<form:select path="id" onchange="submit();">
+					<form:option value="-1" label="--- All ---" />
+					<form:options items="${requestScope.OrderStates}" itemLabel="name" itemValue="id"/>
+				</form:select>
+			</form:form>
+
           <span class="list-style-buttons">
                <a href="#" style="height: 38px;" class="switcher"></a>
           </span>

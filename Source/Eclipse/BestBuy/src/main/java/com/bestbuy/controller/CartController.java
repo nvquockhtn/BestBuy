@@ -13,6 +13,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.bestbuy.dao.ProductDao;
 import com.bestbuy.model.ProductInCart;
 import com.bestbuy.pojo.Account;
+import com.bestbuy.pojo.Receiver;
 
 /**
  * 
@@ -139,7 +141,26 @@ public class CartController {
 			shopCart.get(i).setQuantity(Integer.parseInt(soLuong[i]));
 		}
 	}
-
+	@RequestMapping(value = { "/Checkout.do" }, method = RequestMethod.GET)
+	private String Checkout(@ModelAttribute("receiverModel") Receiver receiverModel, Model model, HttpSession session)
+	{
+		ArrayList<ProductInCart> shopCart = GetShoppingCart(session);
+		return "Checkout";
+	}
+	@RequestMapping(value = { "/SaveCheckout.do" }, method = RequestMethod.POST)
+	private String SaveCheckout(@ModelAttribute("receiverModel") Receiver receiverModel, Model model, HttpSession session)
+	{
+		ArrayList<ProductInCart> shopCart = GetShoppingCart(session);
+		
+		return "redirect:/Cart/Checkout.do";
+	}
+	@RequestMapping(value = { "/DeleteFromCheckout.do" }, method = RequestMethod.GET)
+	private String DeleteFromCheckout(@RequestParam("idProduct") Integer idProduct,HttpSession session)
+	{
+		ArrayList<ProductInCart> shopCart = GetShoppingCart(session);
+		DeleteItemCartAction(1,shopCart);
+		return "redirect:/Cart/Checkout.do";
+	}
 	/*
 	@RequestMapping(value = { "/Liquidate.do" }, method = RequestMethod.GET)
 	public String LiquidateProduct(Model model, HttpSession session)

@@ -6,6 +6,7 @@ package com.bestbuy.dao;
 
 import java.util.ArrayList;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +23,7 @@ public class ReceiverDaoImpl extends DaoSupport implements ReceiverDao{
 	@Transactional
 	public boolean insertNewReceiver(Receiver receiver)
 	{
-		if (checkExistReceiverById(receiver.getId())) {
+		if (checkExistByEmail(receiver.getEmail())) {
             return false;
         }
         boolean kq = true;
@@ -52,5 +53,18 @@ public class ReceiverDaoImpl extends DaoSupport implements ReceiverDao{
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         return query.uniqueResult() != null;
 	}
-    
+	@Transactional(readOnly = true)
+    public boolean checkExistByEmail(String email) throws HibernateException {
+        String hql = "from Receiver a where a.email=:eMail";
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+        query.setString("eMail", email);
+        return query.uniqueResult() != null;
+    }
+	@Transactional(readOnly = true)
+	public Receiver getReceiverByEmail(String email) {
+		String hql = "from Receiver a where a.email = " + email;
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+
+        return (Receiver) query.uniqueResult();
+	}
 }

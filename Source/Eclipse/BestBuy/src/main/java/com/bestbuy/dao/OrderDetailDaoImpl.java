@@ -36,7 +36,7 @@ public class OrderDetailDaoImpl extends DaoSupport implements OrderDetailDao {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	@Transactional(readOnly = true)
 	public boolean checkExistOrderdetailById(int idOrderdetail) {
 		String hql = "from Orderdetail a where a.id= " + idOrderdetail;
         Query query = sessionFactory.getCurrentSession().createQuery(hql);

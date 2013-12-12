@@ -63,4 +63,15 @@ public class OrderDaoImpl extends DaoSupport implements OrderDao{
 		return (ArrayList<Order>)query.list();
 	}
     
+	@Transactional
+	public boolean updateOrder(Order order) {
+		boolean kq = true;
+		try {
+			sessionFactory.getCurrentSession().saveOrUpdate(order);
+		} catch (Exception ex) {
+			System.out.println(ex.toString());
+			kq = false;
+		}
+		return kq;
+	}
 }

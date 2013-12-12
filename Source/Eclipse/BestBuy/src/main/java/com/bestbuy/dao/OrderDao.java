@@ -18,4 +18,5 @@ public interface OrderDao {
     public Order getOrderById(int idOrder);
     public ArrayList<Order> getAllOrder();
     public boolean checkExistOrderById(int idOrder);
+    public boolean updateOrder(Order order);
 }

@@ -66,7 +66,7 @@ public class OrderController {
 		Order order = orderDao.getOrderById(orderId);
 		if (order != null) {
 			if (order.getAccount().getId().intValue() == account.getId().intValue()) { // Kiem tra don dat hang co phai cua nguoi nay ko???
-				order.setOrderstate(orderStateDao.getById(2)); // id = 2: Huy boi khach hang
+				order.setOrderstate(orderStateDao.getOrderStateById(2)); // id = 2: Huy boi khach hang
 				orderDao.updateOrder(order);
 			}
 		}

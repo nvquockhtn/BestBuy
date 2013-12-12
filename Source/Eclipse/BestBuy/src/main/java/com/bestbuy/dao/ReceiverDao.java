@@ -17,4 +17,6 @@ public interface ReceiverDao {
     public Receiver getReceiverById(int idReceiver);
     public ArrayList<Receiver> getAllReceiver();
     public boolean checkExistReceiverById(int idReceiver);
+    public boolean checkExistByEmail(String email);
+    public Receiver getReceiverByEmail(String email);
 }

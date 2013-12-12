@@ -12,10 +12,10 @@ import com.bestbuy.pojo.Producttype;
 
 public class ProductModel {
 	private int id  =-1;
-    private int producttype =-1;
-    private int manufacturer =-1;
-    private int productstate =-1;
-    private String name = "";
+    private int idproducttype =-1;
+    private int idmanufacturer =-1;
+    private int idproductstate =-1;
+    private String search = "";
     private String overview;
     private String specification;
     private int price;
@@ -23,7 +23,39 @@ public class ProductModel {
     private int productId;
     private int fromprice = -1;
     private int endprice = -1;
+    private int page = 1;
     
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
+	}
+	public int getIdproducttype() {
+		return idproducttype;
+	}
+	public void setIdproducttype(int idproducttype) {
+		this.idproducttype = idproducttype;
+	}
+	public int getIdmanufacturer() {
+		return idmanufacturer;
+	}
+	public void setIdmanufacturer(int idmanufacturer) {
+		this.idmanufacturer = idmanufacturer;
+	}
+	public int getIdproductstate() {
+		return idproductstate;
+	}
+	public void setIdproductstate(int idproductstate) {
+		this.idproductstate = idproductstate;
+	}
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
+	
 	public int getFromprice() {
 		return fromprice;
 	}
@@ -42,30 +74,8 @@ public class ProductModel {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getProducttype() {
-		return producttype;
-	}
-	public void setProducttype(int producttype) {
-		this.producttype = producttype;
-	}
-	public int getManufacturer() {
-		return manufacturer;
-	}
-	public void setManufacturer(int manufacturer) {
-		this.manufacturer = manufacturer;
-	}
-	public int getProductstate() {
-		return productstate;
-	}
-	public void setProductstate(int productstate) {
-		this.productstate = productstate;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+	
+	
 	public String getOverview() {
 		return overview;
 	}

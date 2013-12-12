@@ -32,11 +32,11 @@
 					</c:if>
 				</c:forEach>
 				<tr>
-					<td class="image"><a href="#"><img title="product"
+					<td class="image"><a href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.getId()}"><img title="product"
 							alt="product"
 							src="${pageContext.request.contextPath}/resources/images/${imageURL.path}"
 							height="50" width="50"></a></td>
-					<td class="name"><a href="#">${item.getName()}</a></td>
+					<td class="name"><a href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.getId()}">${item.getName()}</a></td>
 					<td class="model">${item.producttype.getName()}</td>
 					<td class="stock">${item.productstate.getName()}</td>
 					<td class="price"><fmt:formatNumber type="number"

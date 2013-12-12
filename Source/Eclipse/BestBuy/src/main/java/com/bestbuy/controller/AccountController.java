@@ -36,6 +36,11 @@ public class AccountController {
 	public AccountController() {
 	}
 
+	@RequestMapping(value = { "/Index.do" }, method = RequestMethod.GET)
+	public String index(Model model) {
+		return "Account";
+	}
+
 	@RequestMapping(value = { "/GetRegistration.do" }, method = RequestMethod.GET)
 	public String getRegistrationForm(
 			@ModelAttribute("account") AccountModel form, Model model) {

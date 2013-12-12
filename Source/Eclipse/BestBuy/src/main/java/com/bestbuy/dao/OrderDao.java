@@ -4,10 +4,14 @@
  */
 package com.bestbuy.dao;
 
+import java.util.ArrayList;
+
+import com.bestbuy.pojo.Order;
+
 /**
  *
  * @author VanQuoc-CNTT
  */
 public interface OrderDao {
-    
+    ArrayList<Order> getOrdersByAccountId(int id);
 }

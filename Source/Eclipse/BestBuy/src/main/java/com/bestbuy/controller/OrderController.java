@@ -4,9 +4,18 @@
  */
 package com.bestbuy.controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.bestbuy.dao.AccountDao;
+import com.bestbuy.dao.OrderDao;
+import com.bestbuy.pojo.Account;
 
 /**
  *
@@ -15,6 +24,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/Order")
 public class OrderController {
+	ApplicationContext context = new ClassPathXmlApplicationContext(
+			"beans-hibernate.xml");
+	OrderDao orderDao = (OrderDao) context.getBean("orderDao");
 
     public OrderController() {
         // TODO Auto-generated constructor stub
@@ -24,5 +36,16 @@ public class OrderController {
     public String checkout() {
 
         return "Checkout";
+    }
+
+    @RequestMapping(value = {"/Index.do"}, method = RequestMethod.GET)
+    public String myOrder(Model model,HttpSession session) {
+		Account account = (Account) session.getAttribute("Account");
+		if (account == null) {
+			return "redirect:/Account/GetLogin.do";
+		}
+    	
+    	model.addAttribute("MyOrders", orderDao.getOrdersByAccountId(account.getId()));
+    	return "MyOrder";
     }
 }

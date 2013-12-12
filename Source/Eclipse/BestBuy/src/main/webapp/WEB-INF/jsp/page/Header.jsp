@@ -35,11 +35,7 @@
 </div><!--end:top-->
 <div id="top2">
     <ul class="myaccountmenu">
-        <li><a href="account.html" class="first">
-        <c:if test = "${sessionScope.Account!=null }">
-        	Hi!! ${sessionScope.Account.username}
-        </c:if>
-        </a></li>
+        <li><a href="account.html" class="first">My Account</a></li>
         <li><a href="${pageContext.request.contextPath}/WishList/Index.do">My Wishlist</a></li>
         <li><a href="${pageContext.request.contextPath}/Cart/Index.do">My Cart</a></li>
         <li><a href="${pageContext.request.contextPath}/Cart/Checkout.do">Checkout</a></li>

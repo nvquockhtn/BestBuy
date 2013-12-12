@@ -30,8 +30,11 @@ import com.bestbuy.model.ProductInCart;
 import com.bestbuy.pojo.Account;
 import com.bestbuy.pojo.Accounttype;
 import com.bestbuy.pojo.Order;
+import com.bestbuy.pojo.Orderdetail;
 import com.bestbuy.pojo.Orderstate;
+import com.bestbuy.pojo.Product;
 import com.bestbuy.pojo.Receiver;
+
 
 /**
  * 
@@ -179,21 +182,49 @@ public class CartController {
 					receiverDao.insertNewReceiver(receiverModel);
 				}
 				receiver = receiverDao.getReceiverByEmail(receiverModel.getEmail());
-				Order order = new Order();
-				Date date = new Date();
-				order.setCreateDate(date);
-				order.setAccount(acc);
-				Orderstate orderstate = new Orderstate();
-				orderstate = orderStateDao.getOrderStateById(1);
-				order.setOrderstate(orderstate);
-				order.setReceiver(receiver);
-				order.setTotal(1000000);
-				orderDao.insertNewOrder(order);
+				Order order = createOrderInfor(acc, receiver, shopCart);
+				createOrderDetail(order,shopCart);
+								//orderDao.insertNewOrder(order);
 			}
 		}
 		String s = receiverModel.getFullName();
 		return "Checkout";
 	}
+	private Order createOrderInfor(Account acc,Receiver receiver, ArrayList<ProductInCart> shopCart) {
+		int total = 0;
+		for (int i = 0; i < shopCart.size(); i++) {
+			ProductInCart item = shopCart.get(i);
+			total += item.getQuantity() * item.getProduct().getPrice();
+		}
+		Order order = new Order();
+		Date date = new Date();
+		order.setCreateDate(date);
+		order.setAccount(acc);
+		order.setTotal(total);
+		Orderstate orderstate = new Orderstate();
+		orderstate = orderStateDao.getOrderStateById(1);
+		order.setOrderstate(orderstate);
+		order.setReceiver(receiver);
+		order.setTotal(1000000);
+		orderDao.insertNewOrder(order);
+		return order;
+	}
+	private boolean createOrderDetail(Order order,
+			ArrayList<ProductInCart> shopCart) {
+		ArrayList<Orderdetail> orderDetails = new ArrayList<Orderdetail>();
+		for (int i = 0; i < shopCart.size(); i++) {
+			Product product = new Product();
+			product = productDao.getProductById(shopCart.get(i).getProduct().getId());
+			Orderdetail orderDetail = new Orderdetail();
+			orderDetail.setOrder(order);
+			orderDetail.setProduct(product);
+			orderDetail.setQuantity(shopCart.get(i).getQuantity());
+			orderDetail.setUnitPrice(shopCart.get(i).getQuantity()*shopCart.get(i).getProduct().getPrice());
+			orderDetailDao.insertNewOrderdetail(orderDetail);
+		}
+		return true;
+	}
+
 	@RequestMapping(value = { "/DeleteFromCheckout.do" }, method = RequestMethod.GET)
 	private String DeleteFromCheckout(@RequestParam("idProduct") Integer idProduct,HttpSession session)
 	{

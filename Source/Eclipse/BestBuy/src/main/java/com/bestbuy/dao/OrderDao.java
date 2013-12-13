@@ -14,9 +14,16 @@ import com.bestbuy.pojo.Order;
  */
 public interface OrderDao {
 	public boolean insertNewOrder(Order order);
-    public ArrayList<Order> getOrdersByAccountId(int id);
-    public Order getOrderById(int idOrder);
-    public ArrayList<Order> getAllOrder();
-    public boolean checkExistOrderById(int idOrder);
-    public boolean updateOrder(Order order);
+
+	public ArrayList<Order> getOrdersByAccountId(int id);
+
+	public ArrayList<Order> filterOrdersByStateId(int accId, int stateId);
+
+	public Order getOrderById(int idOrder);
+
+	public ArrayList<Order> getAllOrder();
+
+	public boolean checkExistOrderById(int idOrder);
+
+	public boolean updateOrder(Order order);
 }

@@ -101,12 +101,12 @@
                 <section class="right">
                     <span class="price"><small>Price: </small>&nbsp;&nbsp; ${item.price}</span>
                     <ul class="menu-button">
-                        <li><a href="cart.html" class="cart tip" title="Add to Cart"></a></li>
+                        <li><a href="${pageContext.request.contextPath}/Cart/Add.do.do?maSP=${item.id}" class="cart tip" title="Add to Cart"></a></li>
                         <li><a href="${pageContext.request.contextPath}/resources/images/${imageURL.path}" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom"></a></li>
                         <li><a href="wishlist.html" class="wishlist tip" title="Add to Wishlist"></a></li>
                         <!-- <li><a href="compare.html" class="compare tip" title="Compare"></a></li> -->
                         <li><a href="${pageContext.request.contextPath}/ProductCompare/AddProductToListCompare.do?idProduct=${item.id}" class="compare tip" title="Compare"></a></li>
-                        <li><a href="product-detail.html" class="link tip" title="View Detail"></a></li>
+                        <li><a href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.id}" class="link tip" title="View Detail"></a></li>
                     </ul>
                 </section>
             </li>

@@ -10,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +20,7 @@ import com.bestbuy.dao.OrderDao;
 import com.bestbuy.dao.OrderStateDao;
 import com.bestbuy.pojo.Account;
 import com.bestbuy.pojo.Order;
+import com.bestbuy.pojo.Orderstate;
 
 /**
  * 
@@ -71,5 +73,18 @@ public class OrderController {
 			}
 		}
 		return "redirect:/Order/Index.do";
+	}
+	
+	@RequestMapping(value = { "/Filter.do" }, method = RequestMethod.POST)
+	public String filter(@ModelAttribute("orderState") Orderstate form,
+			Model model, HttpSession session) {
+		Account account = (Account) session.getAttribute("Account");
+		if (account == null) {
+			return "redirect:/Account/GetLogin.do";
+		}
+		
+		model.addAttribute("MyOrders",
+				orderDao.filterOrdersByStateId(account.getId(), form.getId()));
+		return "MyOrder";
 	}
 }

@@ -19,10 +19,10 @@ import com.bestbuy.pojo.Product;
  */
 
 @Repository
-public class OrderDaoImpl extends DaoSupport implements OrderDao{
+public class OrderDaoImpl extends DaoSupport implements OrderDao {
+	
 	@Transactional
-	public boolean insertNewOrder(Order Order)
-	{
+	public boolean insertNewOrder(Order Order) {
 		if(Order.getId()!=null)
 		{
 			if (checkExistOrderById(Order.getId())) 
@@ -39,23 +39,25 @@ public class OrderDaoImpl extends DaoSupport implements OrderDao{
         }
         return kq;
 	}
+
 	@Transactional(readOnly = true)
 	public Order getOrderById(int idOrder) {
 		String hql = "from Order a where a.id= " + idOrder;
-        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 
-        return (Order) query.uniqueResult();
+		return (Order) query.uniqueResult();
 	}
+
 	@Transactional(readOnly = true)
-	public ArrayList<Order> getAllOrder()
-	{
+	public ArrayList<Order> getAllOrder() {
 		return null;
 	}
+
 	@Transactional(readOnly = true)
 	public boolean checkExistOrderById(int idOrder) {
 		String hql = "from Order a where a.id= " + idOrder;
-        Query query = sessionFactory.getCurrentSession().createQuery(hql);
-        return query.uniqueResult() != null;
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		return query.uniqueResult() != null;
 	}
 
 	@Transactional(readOnly = true)
@@ -63,10 +65,10 @@ public class OrderDaoImpl extends DaoSupport implements OrderDao{
 		String hql = "select distinct ord from Order ord, Account acc where ord.account.id=:accId";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger("accId", id);
-		
-		return (ArrayList<Order>)query.list();
+
+		return (ArrayList<Order>) query.list();
 	}
-    
+
 	@Transactional
 	public boolean updateOrder(Order order) {
 		boolean kq = true;
@@ -77,5 +79,20 @@ public class OrderDaoImpl extends DaoSupport implements OrderDao{
 			kq = false;
 		}
 		return kq;
+	}
+
+	@Transactional(readOnly = true)
+	public ArrayList<Order> filterOrdersByStateId(int accId, int stateId) {
+		String hql = "select distinct ord from Order ord, Account acc where ord.account.id=:accId";
+		if (stateId != -1)
+			hql += " and ord.orderstate.id=:stateId";
+
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setInteger("accId", accId);
+		
+		if (stateId != -1)
+			query.setInteger("stateId", stateId);
+
+		return (ArrayList<Order>) query.list();
 	}
 }

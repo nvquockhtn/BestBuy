@@ -24,7 +24,7 @@
 		<div class="list-wrap checkoutbox">
 			<div id="checkout">
 				<div class="one-half log">
-					<form:form method="post" cssClass="signin" action="${pageContext.request.contextPath}/Account/GetRegistration.do" modelAttribute="account">
+					<form:form method="post" cssClass="signin" action="${pageContext.request.contextPath}/Account/PostLogin.do" modelAttribute="account">
 						<fieldset class="textbox">
 							<c:if test="${sessionScope.Account!=null }">
 								<h4>Hi! ${sessionScope.Account.username}</h4>
@@ -39,7 +39,8 @@
 								<label class="password"> <span>Password</span> 
 									<form:input path="password" autocomplete="on" placeholder="password" type="password"/>
 								</label>
-								<button class="submit button" type="button">Sign in</button>
+								
+								<button class="submit button" type="submit">Sign in</button>
 								<p>
 									<a class="forgot" href="#">Forgot your password?</a> / <a
 										class="register" href="${pageContext.request.contextPath}/Account/GetRegistration.do">Create an account</a>

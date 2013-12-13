@@ -19,7 +19,7 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
         <tbody>
         
 		        <tr>
-		        	<td class="name">Product ${sessionScope.listProductsCompare.size()}</td>
+		        	<td class="name">Product</td>
 			        <c:forEach var ="item" items ="${sessionScope.listProductsCompare}" >
 			        	<td class="name"><a href="#">${item.getName()}</a></td>
 			        </c:forEach>

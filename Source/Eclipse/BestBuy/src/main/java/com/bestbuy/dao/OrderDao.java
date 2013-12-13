@@ -4,10 +4,17 @@
  */
 package com.bestbuy.dao;
 
+import java.util.ArrayList;
+
+import com.bestbuy.pojo.Order;
+
 /**
  *
  * @author VanQuoc-CNTT
  */
 public interface OrderDao {
-    
+	public boolean insertNewOrder(Order order);
+    public Order getOrderById(int idOrder);
+    public ArrayList<Order> getAllOrder();
+    public boolean checkExistOrderById(int idOrder);
 }

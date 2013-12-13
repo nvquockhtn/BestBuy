@@ -29,9 +29,9 @@ public class ProductCompareController {
 	@RequestMapping(value = {"/ProductsCompare.do"}, method =  RequestMethod.GET)
 	public String ProductCompare( Model model,HttpSession session)
 	{
-		int numCompares = GetProductsCompare(session).size();
-		model.addAttribute("numCompares", numCompares);
 		
+		GetProductsCompare(session).size();
+		//model.addAttribute("numCompares", numCompares);
 		return "ProductCompare";
 	}
 	@RequestMapping(value = {"/AddProductToListCompare.do"}, method =  RequestMethod.GET)
@@ -39,25 +39,31 @@ public class ProductCompareController {
 			HttpSession session)
 	{
 		ArrayList<Product> listProductsCompare  = GetProductsCompare(session);
-		//listProductsCompare.get(1).getImages()
 		int numCompares = listProductsCompare.size();
+		if(numCompares<=3)
+		{
+			AddProductToListCompare(idProduct, listProductsCompare);
+		}
+		numCompares+= 1;
 		model.addAttribute("numCompares", numCompares);
-		AddProductToListCompare(idProduct, listProductsCompare);
-		return "ProductCompare";
+		//redirect:/Home/Index.do
+		return "redirect:/ProductCompare/ProductsCompare.do";
 	}
 	@RequestMapping(value = {"/DeleteProductFromListCompare.do"}, method =  RequestMethod.GET)
 	public String DeleteProductToListCompare(@RequestParam("idProduct") Integer idProduct, Model model,
 			HttpSession session)
 	{
 		ArrayList<Product> listProductsCompare  = GetProductsCompare(session);
-		int numCompares = listProductsCompare.size();
-		model.addAttribute("numCompares", numCompares);
+		
 		DeleteProductFromListCompare(idProduct, listProductsCompare);
-		return "ProductCompare";
+		int numCompares = listProductsCompare.size();
+		//model.addAttribute("numCompares", numCompares);
+		return "redirect:/ProductCompare/ProductsCompare.do";
 	}
 	public ArrayList<Product> GetProductsCompare(HttpSession session) {
-		ArrayList<Product> listProductsCompare;
-		if (session.getAttribute("listProductsCompare") == null) {
+		ArrayList<Product> listProductsCompare = null;
+		if (session.getAttribute("listProductsCompare") == null)
+		{
 			listProductsCompare = new ArrayList<Product>();
 			session.setAttribute("listProductsCompare", listProductsCompare);
 		} else {
@@ -68,26 +74,28 @@ public class ProductCompareController {
 	private void AddProductToListCompare(Integer idProduct, ArrayList<Product> listProductsCompare)
 			throws NumberFormatException {
 		int i = 0;
+		boolean temp  = false;
 		for (i = 0; i < listProductsCompare.size(); i++) {
 			Product item = listProductsCompare.get(i);
-			if (item.getId() == idProduct) {
-				break;
-			}
+				if (item.getId() == idProduct) {
+					temp = true;
+					break;
+				}
 		}
 		// truong hop chua co san pham trong gio hang
-		if (i == listProductsCompare.size()) {
+		if(temp==false)
+		{
 			Product item = productDao.getProductById(idProduct);
 			listProductsCompare.add(item);
 		}
 	}
 	private void DeleteProductFromListCompare(Integer idProduct, ArrayList<Product> listProductsCompare)
 			throws NumberFormatException {
-		int i = 0;
-		for (i = 0; i < listProductsCompare.size(); i++) {
+		for (int i = 0; i < listProductsCompare.size(); i++) {
 			Product item = listProductsCompare.get(i);
 			if (item.getId() == idProduct)
 			{
-				listProductsCompare.remove(i);
+				listProductsCompare.remove(item);
 				break;
 			}
 		}

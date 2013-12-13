@@ -38,5 +38,11 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
     <bean id="orderDao" class="com.bestbuy.dao.OrderDaoImpl">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+    <bean id="orderDetailDao" class="com.bestbuy.dao.OrderDetailDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="receiverDao" class="com.bestbuy.dao.ReceiverDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 </beans>

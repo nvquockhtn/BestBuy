@@ -52,8 +52,8 @@
 
 			</div>
 			<div id="billing" class="hide">
-				<%-- <form:form
-					action="${pageContext.request.contextPath}/Cart/Checkout.do"
+				<form:form
+					action="${pageContext.request.contextPath}/Cart/SaveCheckout.do"
 					cssClass="form-register" modelAttribute="receiverModel">
 					<div class="one-third first">
 						<h3>Your Personal Details</h3>
@@ -98,7 +98,6 @@
 						</div>
 					</div>
 				</form:form>
-			 --%>
 			</div>
 			<!--end:billing-->
 

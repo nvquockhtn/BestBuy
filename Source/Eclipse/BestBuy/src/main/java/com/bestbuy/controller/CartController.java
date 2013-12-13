@@ -18,7 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.bestbuy.dao.OrderDao;
+import com.bestbuy.dao.OrderDetailDao;
 import com.bestbuy.dao.ProductDao;
+import com.bestbuy.dao.ReceiverDao;
 import com.bestbuy.model.ProductInCart;
 import com.bestbuy.pojo.Account;
 import com.bestbuy.pojo.Receiver;
@@ -33,7 +36,9 @@ public class CartController {
 	ApplicationContext context = new ClassPathXmlApplicationContext(
 			"beans-hibernate.xml");
 	ProductDao productDao = (ProductDao) context.getBean("productDao");
-
+	ReceiverDao receiverDao = (ReceiverDao) context.getBean("receiverDao");
+	OrderDetailDao orderDetailDao = (OrderDetailDao) context.getBean("orderDetailDao");
+	OrderDao orderDao = (OrderDao) context.getBean("orderDao");
 	public CartController() {
 	}
 
@@ -151,7 +156,16 @@ public class CartController {
 	private String SaveCheckout(@ModelAttribute("receiverModel") Receiver receiverModel, Model model, HttpSession session)
 	{
 		ArrayList<ProductInCart> shopCart = GetShoppingCart(session);
-		
+		if(shopCart.size()>0)
+		{
+			if(receiverDao.checkExistByEmail(receiverModel.getEmail())==true)
+			{
+				
+			}else
+			{
+				receiverDao.insertNewReceiver(receiverModel);
+			}
+		}
 		return "redirect:/Cart/Checkout.do";
 	}
 	@RequestMapping(value = { "/DeleteFromCheckout.do" }, method = RequestMethod.GET)

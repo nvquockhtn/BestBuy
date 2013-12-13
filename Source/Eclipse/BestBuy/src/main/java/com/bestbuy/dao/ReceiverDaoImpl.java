@@ -23,7 +23,7 @@ public class ReceiverDaoImpl extends DaoSupport implements ReceiverDao{
 	@Transactional
 	public boolean insertNewReceiver(Receiver receiver)
 	{
-		if (checkExistReceiverById(receiver.getId())) {
+		if (checkExistByEmail(receiver.getEmail())) {
             return false;
         }
         boolean kq = true;

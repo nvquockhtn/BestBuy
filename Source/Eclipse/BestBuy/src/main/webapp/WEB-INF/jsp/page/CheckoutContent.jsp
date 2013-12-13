@@ -24,7 +24,7 @@
 		<div class="list-wrap checkoutbox">
 			<div id="checkout">
 				<div class="one-half log">
-					<form method="post" class="signin" action="#">
+					<form:form method="post" cssClass="signin" action="${pageContext.request.contextPath}/Account/GetRegistration.do" modelAttribute="account">
 						<fieldset class="textbox">
 							<c:if test="${sessionScope.Account!=null }">
 								<h4>Hi! ${sessionScope.Account.username}</h4>
@@ -32,21 +32,21 @@
 							<c:if test="${sessionScope.Account==null }">
 								<h4>Please login</h4>
 								<label class="username"> <span>Username or email</span>
-									<input id="username" name="username" value="" type="text"
-									autocomplete="on" placeholder="Username">
+									<!-- <input id="username" name="username" value="" type="text"
+									autocomplete="on" placeholder="Username"> -->
+									<form:input path="username" autocomplete="on" placeholder="Username"/>
 								</label>
-								<label class="password"> <span>Password</span> <input
-									id="password" name="password" value="" type="password"
-									placeholder="Password">
+								<label class="password"> <span>Password</span> 
+									<form:input path="password" autocomplete="on" placeholder="password" type="password"/>
 								</label>
 								<button class="submit button" type="button">Sign in</button>
 								<p>
 									<a class="forgot" href="#">Forgot your password?</a> / <a
-										class="register" href="register.html">Create an account</a>
+										class="register" href="${pageContext.request.contextPath}/Account/GetRegistration.do">Create an account</a>
 								</p>
 							</c:if>
 						</fieldset>
-					</form>
+					</form:form>
 
 				</div>
 
@@ -209,8 +209,13 @@
 								</span></td>
 							</tr>
 						</table>
-						<input type="submit" value="Continue Shopping"> <input
-							type="submit" value="CheckOut">
+						<a href="${pageContext.request.contextPath}/Home/Index.do">
+							<input type="button" value="Continue Shopping" />
+						</a>
+						<a href="${pageContext.request.contextPath}/Cart/Checkout.do">
+							<input type="submit" value="CheckOut">
+						</a>
+						
 					</div>
 					<!--end:alltotal-->
 				</div>

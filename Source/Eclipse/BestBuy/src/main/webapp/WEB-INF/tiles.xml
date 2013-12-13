@@ -65,5 +65,9 @@
     <definition name="WishList" extends="Page">
         <put-attribute name="title" value="Bestbuy - WishList" />
         <put-attribute name="content_main" value="/WEB-INF/jsp/page/WishListContent.jsp"/>
+    </definition>
+    <definition name="HistoryCheckout" extends="Page">
+        <put-attribute name="title" value="Bestbuy - HistoryCheckout" />
+        <put-attribute name="content_main" value="/WEB-INF/jsp/page/HistoryCheckoutContent.jsp"/>
     </definition>    
 </tiles-definitions>

@@ -12,9 +12,12 @@ import com.bestbuy.pojo.Orderdetail;
 public class OrderDetailDaoImpl extends DaoSupport implements OrderDetailDao {
 	@Transactional
 	public boolean insertNewOrderdetail(Orderdetail orderdetail) {
-		if (checkExistOrderdetailById(orderdetail.getId())) {
-            return false;
-        }
+		if(orderdetail.getId()!=null)
+		{
+			if (checkExistOrderdetailById(orderdetail.getId())) {
+	            return false;
+	        }
+		}
         boolean kq = true;
         try {
             sessionFactory.getCurrentSession().saveOrUpdate(orderdetail);

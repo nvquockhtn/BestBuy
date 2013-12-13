@@ -23,9 +23,13 @@ public class OrderDaoImpl extends DaoSupport implements OrderDao{
 	@Transactional
 	public boolean insertNewOrder(Order Order)
 	{
-		if (checkExistOrderById(Order.getId())) {
-            return false;
-        }
+		if(Order.getId()!=null)
+		{
+			if (checkExistOrderById(Order.getId())) 
+			{
+	            return false;
+	        }
+		}
         boolean kq = true;
         try {
             sessionFactory.getCurrentSession().saveOrUpdate(Order);

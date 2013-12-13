@@ -55,16 +55,31 @@ public class ReceiverDaoImpl extends DaoSupport implements ReceiverDao{
 	}
 	@Transactional(readOnly = true)
     public boolean checkExistByEmail(String email) throws HibernateException {
-        String hql = "from Receiver a where a.email=:eMail";
-        Query query = sessionFactory.getCurrentSession().createQuery(hql);
-        query.setString("eMail", email);
-        return query.uniqueResult() != null;
+		/* String hql = "from Account a where a.username=:userName";
+	        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+	        query.setString("userName", acc.getUsername());*/
+		try
+		{
+	        String hql = "from Receiver a where a.email = '" + email.trim() +"'";
+	        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+	        return query.uniqueResult() != null;
+		}catch(Exception ex)
+		{
+			String s = ex.getMessage();
+			return false;
+		}
     }
 	@Transactional(readOnly = true)
 	public Receiver getReceiverByEmail(String email) {
-		String hql = "from Receiver a where a.email = " + email;
-        Query query = sessionFactory.getCurrentSession().createQuery(hql);
-
-        return (Receiver) query.uniqueResult();
+		try
+		{
+			String hql = "from Receiver a where a.email = '" + email.trim() +"'";
+	        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+	        return (Receiver) query.uniqueResult();
+		}catch(Exception e)
+		{
+			return null;
+			
+		}
 	}
 }

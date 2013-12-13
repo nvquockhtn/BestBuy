@@ -184,6 +184,7 @@ public class CartController {
 				receiver = receiverDao.getReceiverByEmail(receiverModel.getEmail());
 				Order order = createOrderInfor(acc, receiver, shopCart);
 				createOrderDetail(order,shopCart);
+				return "HistoryCheckout";
 								//orderDao.insertNewOrder(order);
 			}
 		}
@@ -204,8 +205,10 @@ public class CartController {
 		Orderstate orderstate = new Orderstate();
 		orderstate = orderStateDao.getOrderStateById(1);
 		order.setOrderstate(orderstate);
+		
 		order.setReceiver(receiver);
-		order.setTotal(1000000);
+		order.setTotal(total);
+		order.setOrderdetails(null);
 		orderDao.insertNewOrder(order);
 		return order;
 	}

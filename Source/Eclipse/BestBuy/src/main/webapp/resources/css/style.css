@@ -232,7 +232,7 @@ nav select { display: none; }
 <!--feedback-->
 .feedback-wrap{ width:100%; float:left; margin-bottom:40px; }
 .feedback-wrap .dvision{ width:100%; float:left; margin:0 0 20px 0px;}
-.feedback-wrap .dvision .feedback{ width:100%; float:right; margin-bottom:40px; border-bottom:1px solid #e5e5e5; padding:0 0 40px 0;}
+.feedback-wrap .dvision .feedback{ width:100%; float:right; margin-bottom:40px; border-bottom:1px solid #e5e5e5; /*padding:0 0 40px 0;*/}
 .feedback-wrap .dvision .feedback img{ float:left;}
 .feedback-wrap .dvision .feedback div{ width:88%; float:right;}
 .feedback-wrap .dvision .feedback div h4{ float:left; font-size:14px; font-weight:600;}
@@ -277,7 +277,7 @@ div.commentf{ float:left; width:100%;}
 	}
 #commentform label{ font-size:12px; color:#6a6a6a; }
 #commentform #name:focus,#commentform #subject:focus, #commentform #mail:focus, #commentform #website:focus,#commentform #message:focus { border:1px solid #dedede; background:#f7f7f7;}
-#commentform .button{ width:100px; background-color:#f5640c; padding:7px 15px; color:#fff;
+#commentform .button{ width:120px; background-color:#f5640c; padding:7px 15px; color:#fff;
 	-webkit-border-radius:2px;  -moz-border-radius:2px; -o-border-radius:4px; border-radius:2px; border:0;}
 #commentform .button:hover{ cursor:pointer; background:#353535;}
 

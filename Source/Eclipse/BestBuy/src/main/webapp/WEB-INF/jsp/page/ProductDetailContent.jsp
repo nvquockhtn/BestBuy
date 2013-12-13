@@ -8,6 +8,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 
 <!DOCTYPE html>
 <div class="container-2">
@@ -87,7 +89,7 @@
 						<div class="dvision">
 							<div class="feedback">
 								<img
-									src="${pageContext.request.contextPath}/resources/images/user-1.jpg"
+									src="${pageContext.request.contextPath}/resources/images/no-avatar.jpg"
 									alt="">
 								<div>
 									<h4>
@@ -101,27 +103,30 @@
 					</c:forEach>
 					
 				</div>
-				<!--end:feedback-wrap-->
-				<div class="commentf">
-					<h3>Leave a comment</h3>
-					<form:form method="post" id="commentform" action="${pageContext.request.contextPath}/Comment/Add.do" modelAttribute="comment">
-						<fieldset>
-							<div id="rate2" class="rating"></div>
-							<br /> 
-							<label>Name (required)</label> <br style="clear: both" />
-							<input type="text" name="mail" id="mail" size="30" value=""
-								class="input" /> 
-							<label>Mail (will not be published)	(required)</label> <br style="clear: both" />
-							<form:textarea path="text" cols="25" rows="5" name="message" id="message" value="Message"
-								class="textarea" />
-							<br style="clear: both" /> 
-							
-							<form:hidden path="productId" value="${requestScope.Product.id}"/>
-							<input type="submit" name="submit"
-								class="button" value="Write a review" />
-						</fieldset>
-					</form:form>
-				</div>
+				<!--end:feedback-wrap--> 
+				<c:if test="${sessionScope.Account != null}">
+					<div class="commentf">
+						<h3>Leave a comment</h3>
+						<form:form method="post" id="commentform" action="${pageContext.request.contextPath}/Comment/Add.do" modelAttribute="comment">
+							<fieldset>
+								<div id="rate2" class="rating"></div>
+								<br /> 
+								<label>Name (required)</label> <br style="clear: both" />
+								<input type="text" name="mail" id="mail" size="30" value=""
+									class="input" /> 
+								<label>Mail (will not be published)	(required)</label> <br style="clear: both" />
+								<form:textarea path="text" cols="25" rows="5" name="message" id="message" value="Message"
+									class="textarea" />
+								<form:errors path="text" htmlEscape="false" cssClass="error"/>
+								<br style="clear: both" /> 
+								
+								<form:hidden path="productId" value="${requestScope.Product.id}"/>
+								<input type="submit" name="submit"
+									class="button" value="Write a review" />
+							</fieldset>
+						</form:form>
+					</div>
+				</c:if>
 				<!--end:comment-->
 
 			</div>

@@ -3,3 +3,5 @@ http://www.igniteui.com/html-editor/overview
 http://www.tinymce.com/
 http://ckeditor.com/download
 http://testweb3.iecworld.com/jsdemo/js/lq_js_point/
+http://www.mkyong.com/spring-mvc/spring-mvc-redirectview-example/
+http://www.mkyong.com/spring-security/spring-security-form-login-example/

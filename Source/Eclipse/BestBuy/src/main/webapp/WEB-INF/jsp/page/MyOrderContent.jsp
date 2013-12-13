@@ -1,0 +1,68 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+
+<!DOCTYPE html>
+<div class="container-2">
+	<div style="clear: both; display: block; height: 40px"></div>
+	<h2>
+		Orders List &nbsp;<small>Your orders</small>
+	</h2>
+	<div class="ctrl">
+      	<form class="left">
+              Sort By :&nbsp;
+              <select>
+                <option>Time</option>
+                <option>Total</option>
+              </select>
+              &nbsp;&nbsp;
+              State:&nbsp;
+              <select>
+                <option>Dang cho</option>
+                <option>Huy boi Admin</option>
+                <option>Huy boi khach hang</option>
+                <option>Da chuyen giao</option>
+              </select>
+          </form>
+          <span class="list-style-buttons">
+               <a href="#" style="height: 38px;" class="switcher"></a>
+          </span>
+      </div>
+	<form name="gioHang" action="<c:url value="/Cart/Update.do"/>"
+		method="get">
+		<table class="shopping-cart">
+			<tr>
+				<th class="image">No.</th>
+				<th class="name">The Order Date</th>
+				<th class="total">Total</th>
+				<th class="quantity">State</th>
+				<th class="action">Action</th>
+			</tr>
+
+			<c:if test="${requestScope.MyOrders != null}">
+				<c:forEach var="item" items="${requestScope.MyOrders}" varStatus="status">
+					<tr>
+						<td class="image">${status.index}</td>
+						<td class="name"><a href="${pageContext.request.contextPath}/"><fmt:formatDate value="${item.createDate}" type="both"/></a></td>						
+						<td class="total"><fmt:formatNumber type="number"
+								value="${item.total}" />
+							VND</td>
+						<td class="quantity">${item.orderstate.name}</td>
+						<td class="remove-update">
+						<a href="${pageContext.request.contextPath}/"
+							class="tip remove" title="Remove"> <img
+								src="${pageContext.request.contextPath}/resources/images/remove.png"
+								alt="">
+						</a>
+							</td>
+					</tr>
+				</c:forEach>
+			</c:if>
+		</table>
+	</form>
+	
+	<!--end:contentbox-->
+	<div style="clear: both; display: block; height: 40px"></div>
+</div>

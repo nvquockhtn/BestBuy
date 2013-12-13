@@ -77,7 +77,7 @@ public class Order  implements java.io.Serializable {
     public void setReceiver(Receiver receiver) {
         this.receiver = receiver;
     }
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="StateId")
     public Orderstate getOrderstate() {
         return this.orderstate;

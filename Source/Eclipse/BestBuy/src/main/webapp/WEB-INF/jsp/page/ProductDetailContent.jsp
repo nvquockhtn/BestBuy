@@ -55,7 +55,7 @@
 			href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${requestScope.Product.id}">Add
 				to Cart</a><a
 			href="${pageContext.request.contextPath}/WishList/Add.do?maSP=${requestScope.Product.id}">Add
-				to Wishlist</a><a href="compare.html">Add to Compare</a></span>
+				to Wishlist</a><a href="${pageContext.request.contextPath}/ProductCompare/AddProductToListCompare.do?idProduct=${requestScope.Product.id}">Add to Compare</a></span>
 
 	</div>
 	<div id="tab">

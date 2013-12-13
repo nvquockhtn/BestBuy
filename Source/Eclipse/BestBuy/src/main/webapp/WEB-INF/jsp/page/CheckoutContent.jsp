@@ -196,17 +196,18 @@
 							<tr>
 								<td><span class="extra">Sub-Total :</span></td>
 								<td><span> <fmt:formatNumber type="number"
-											value="${total}" />
+											value="${total}" /> VNĐ
 								</span></td>
 							</tr>
 							<tr>
-								<td><span class="extra">VAT (18.2%) :</span></td>
-								<td><span>20,000 vnd</span></td>
+								<td><span class="extra">VAT (10%) :</span></td>
+								<td><span><fmt:formatNumber type="number"
+											value="${total * 0.1}" /> VNĐ</span></td>
 							</tr>
 							<tr>
 								<td><span class="extra grandtotal">Total :</span></td>
 								<td><span class="grandtotal"> <fmt:formatNumber
-											type="number" value="${total - 2000}" />
+											type="number" value="${total * 1.1}" /> VNĐ
 								</span></td>
 							</tr>
 						</table>

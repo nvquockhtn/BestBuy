@@ -74,7 +74,7 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
             	<c:if test = "${sessionScope.listProductsCompare.size()>0}">
 		                <c:forEach var ="item" items ="${sessionScope.listProductsCompare}" >
 		                		<td class="button"> <a href="${pageContext.request.contextPath}/ProductCompare/DeleteProductFromListCompare.do?idProduct=${item.getId()}" class="tip remove" title="Remove"><img src="${pageContext.request.contextPath}/resources/images/remove.png" alt=""></a>
-                    			<a href="#" class="tip addtocart" title="Add to cart"><img src="${pageContext.request.contextPath}/resources/images/icon-addcart.png" alt=""></a></td>
+                    			<a href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${item.getId()}" class="tip addtocart" title="Add to cart"><img src="${pageContext.request.contextPath}/resources/images/icon-addcart.png" alt=""></a></td>
 			        	</c:forEach>
 			    </c:if>
             </tr>

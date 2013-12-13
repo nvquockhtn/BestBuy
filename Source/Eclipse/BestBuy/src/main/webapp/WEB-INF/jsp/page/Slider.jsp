@@ -12,8 +12,8 @@
                 <h2>Awesome Responsive Online Store</h2>
                 <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                 <div class="button">
-                    <a href="cart.html">View Cart</a>
-                    <a href="checkout.html">Checkout</a>
+                    <a href="${pageContext.request.contextPath}/Cart/Index.do">View Cart</a>
+                    <a href="${pageContext.request.contextPath}/Cart/Checkout.do">Checkout</a>
                 </div>
             </div>
         </div>
@@ -22,8 +22,8 @@
                 <h2>You can Order Through You Mobile Phone</h2>
                 <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                 <div class="button">
-                    <a href="cart.html">View Cart</a>
-                    <a href="checkout.html">Checkout</a>
+                    <a href="${pageContext.request.contextPath}/Cart/Index.do">View Cart</a>
+                    <a href="${pageContext.request.contextPath}/Cart/Checkout.do">Checkout</a>
                 </div>
             </div>
         </div>
@@ -32,8 +32,8 @@
                 <h2>Compatible in any Browsers</h2>
                 <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                 <div class="button">
-                    <a href="cart.html">View Cart</a>
-                    <a href="checkout.html">Checkout</a>
+                    <a href="${pageContext.request.contextPath}/Cart/Index.do">View Cart</a>
+                    <a href="${pageContext.request.contextPath}/Cart/Checkout.do">Checkout</a>
                 </div>
             </div>
         </div>
@@ -42,8 +42,8 @@
                 <h2>Easy to use in any Mobile Device</h2>
                 <p>Lorem ipsum dolor sit amet conse ctetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                 <div class="button">
-                    <a href="cart.html">View Cart</a>
-                    <a href="checkout.html">Checkout</a>
+                    <a href="${pageContext.request.contextPath}/Cart/Index.do">View Cart</a>
+                    <a href="${pageContext.request.contextPath}/Cart/Checkout.do">Checkout</a>
                 </div>
             </div>
         </div>

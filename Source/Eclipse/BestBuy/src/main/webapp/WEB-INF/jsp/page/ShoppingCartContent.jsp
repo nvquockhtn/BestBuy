@@ -27,6 +27,7 @@
 			</tr>
 
 			<c:set var="subTotal" value="0" />
+			<c:set var="vat" value="0" />
 
 			<c:if test="${sessionScope.ShoppingCart != null}">
 				<c:forEach var="item" items="${sessionScope.ShoppingCart}">
@@ -101,22 +102,20 @@
 					<td><span class="extra">Sub-Total :</span></td>
 					<td><span><fmt:formatNumber type="number"
 								value="${subTotal}" /> VNĐ</span></td>
-				</tr>
+				</tr>				
 				<tr>
-					<td><span class="extra">Eco Tax (-2.00) :</span></td>
-					<td><span>$11.0</span></td>
-				</tr>
-				<tr>
-					<td><span class="extra">VAT (18.2%) :</span></td>
-					<td><span>$21.0</span></td>
+					<td><span class="extra">VAT (10%) :</span></td>
+					<td><span><fmt:formatNumber type="number"
+								value="${subTotal * 0.1}" /> VNĐ</span></td>
 				</tr>
 				<tr>
 					<td><span class="extra grandtotal">Total :</span></td>
-					<td><span class="grandtotal">$150.28</span></td>
+					<td><span class="grandtotal"><fmt:formatNumber type="number"
+								value="${subTotal * 1.1}" /> VNĐ</span></td>
 				</tr>
 			</table>
-			<input type="submit" value="Continue Shopping"> <input
-				type="submit" value="CheckOut">
+			<a href="${pageContext.request.contextPath}/Product/GetProducts.do"><input type="button" value="Continue Shopping"></a>
+			<a href="${pageContext.request.contextPath}/Cart/Checkout.do"><input type="button" value="CheckOut"></a>
 		</div>
 		<!--end:alltotal-->
 	</div>

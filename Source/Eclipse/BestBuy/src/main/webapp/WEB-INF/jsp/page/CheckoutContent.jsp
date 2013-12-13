@@ -63,7 +63,11 @@
 									<label class="control-label"><span class="red">*</span>
 										Full Name:</label>
 									<div class="controls">
-										<form:input path="fullName" cssClass="input-xlarge" />
+											<form:input path="fullName" cssClass="input-xlarge" />
+												<form:errors path="fullName">
+													<form:errors path="fullName" htmlEscape="false"
+														cssClass="error" />
+												</form:errors>
 									</div>
 								</div>
 								<div class="control-group">
@@ -71,6 +75,9 @@
 										Email:</label>
 									<div class="controls">
 										<form:input path="email" cssClass="input-xlarge" />
+										<form:errors path="email">
+											<form:errors path="email" htmlEscape="false" cssClass="error" />
+										</form:errors>
 									</div>
 								</div>
 								<div class="control-group">
@@ -78,6 +85,10 @@
 										Address:</label>
 									<div class="controls">
 										<form:input path="address" cssClass="input-xlarge" />
+										<form:errors path="address">
+											<form:errors path="address" htmlEscape="false"
+												cssClass="error" />
+										</form:errors>
 									</div>
 								</div>
 								<div class="control-group">
@@ -85,6 +96,9 @@
 										Telephone:</label>
 									<div class="controls">
 										<form:input path="phone" cssClass="input-xlarge" />
+										<form:errors path="phone">
+											<form:errors path="phone" htmlEscape="false" cssClass="error" />
+										</form:errors>
 									</div>
 								</div>
 								<div class="control-group">
@@ -92,6 +106,16 @@
 										Company:</label>
 									<div class="controls">
 										<form:input path="company" cssClass="input-xlarge" />
+										<form:errors path="company">
+											<form:errors path="company" htmlEscape="false"
+												cssClass="error" />
+										</form:errors>
+									</div>
+								</div>
+								<div class="control-group">
+
+									<div class="controls">
+										<input type="submit" />
 									</div>
 								</div>
 							</fieldset>
@@ -112,7 +136,7 @@
 			</div>
 			<!--end:payment-->
 			<div id="confirm" class="hide">
-			<c:set var = "total" value = "0"/>
+				<c:set var="total" value="0" />
 				<c:if test="${sessionScope.ShoppingCart !=null}">
 					<table class="shopping-cart">
 						<tr>
@@ -132,7 +156,8 @@
 									<c:set var="imageURL" value="${itemImage}" />
 								</c:if>
 							</c:forEach>
-							<c:set var = "total" value = "${item.getProduct().getPrice() * item.getQuantity() + total }" />
+							<c:set var="total"
+								value="${item.getProduct().getPrice() * item.getQuantity() + total }" />
 							<tr>
 								<td class="image"><a
 									href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.getProduct().getId()}"><img
@@ -142,18 +167,12 @@
 								<td class="name"><a
 									href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.getProduct().getId()}">${item.getProduct().getName()}</a></td>
 								<td class="model">${item.getProduct().productstate.getName()}</td>
-								<td class="quantity">
-									${item.getQuantity()}
-								</td>
-								<td class="price">
-								<fmt:formatNumber type="number"
-										value="${item.getProduct().getPrice()}" /> VND
-										</td>
-								<td class="total">
-								<fmt:formatNumber type="number"
+								<td class="quantity">${item.getQuantity()}</td>
+								<td class="price"><fmt:formatNumber type="number"
+										value="${item.getProduct().getPrice()}" /> VND</td>
+								<td class="total"><fmt:formatNumber type="number"
 										value="${item.getProduct().getPrice() * item.getQuantity()}" />
-									VND
-									</td>
+									VND</td>
 								<td class="remove-update"><a
 									href="${pageContext.request.contextPath}/Cart/Delete.do?maSP=${item.getProduct().getId()}"
 									class="tip remove" title="Remove"> <img
@@ -175,9 +194,8 @@
 						<table class="alltotal">
 							<tr>
 								<td><span class="extra">Sub-Total :</span></td>
-								<td><span>
-								<fmt:formatNumber type="number"
-								value="${total}" />
+								<td><span> <fmt:formatNumber type="number"
+											value="${total}" />
 								</span></td>
 							</tr>
 							<tr>
@@ -186,9 +204,8 @@
 							</tr>
 							<tr>
 								<td><span class="extra grandtotal">Total :</span></td>
-								<td><span class="grandtotal">
-								<fmt:formatNumber type="number"
-								value="${total - 2000}" />
+								<td><span class="grandtotal"> <fmt:formatNumber
+											type="number" value="${total - 2000}" />
 								</span></td>
 							</tr>
 						</table>

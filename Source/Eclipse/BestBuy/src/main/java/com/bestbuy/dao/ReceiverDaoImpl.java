@@ -60,4 +60,11 @@ public class ReceiverDaoImpl extends DaoSupport implements ReceiverDao{
         query.setString("eMail", email);
         return query.uniqueResult() != null;
     }
+	@Transactional(readOnly = true)
+	public Receiver getReceiverByEmail(String email) {
+		String hql = "from Receiver a where a.email = " + email;
+        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+
+        return (Receiver) query.uniqueResult();
+	}
 }

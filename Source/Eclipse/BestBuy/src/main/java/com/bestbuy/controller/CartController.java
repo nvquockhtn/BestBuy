@@ -6,13 +6,16 @@ package com.bestbuy.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,10 +23,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bestbuy.dao.OrderDao;
 import com.bestbuy.dao.OrderDetailDao;
+import com.bestbuy.dao.OrderStateDao;
 import com.bestbuy.dao.ProductDao;
 import com.bestbuy.dao.ReceiverDao;
 import com.bestbuy.model.ProductInCart;
 import com.bestbuy.pojo.Account;
+import com.bestbuy.pojo.Accounttype;
+import com.bestbuy.pojo.Order;
+import com.bestbuy.pojo.Orderstate;
 import com.bestbuy.pojo.Receiver;
 
 /**
@@ -39,6 +46,7 @@ public class CartController {
 	ReceiverDao receiverDao = (ReceiverDao) context.getBean("receiverDao");
 	OrderDetailDao orderDetailDao = (OrderDetailDao) context.getBean("orderDetailDao");
 	OrderDao orderDao = (OrderDao) context.getBean("orderDao");
+	OrderStateDao orderStateDao = (OrderStateDao) context.getBean("orderStateDao");
 	public CartController() {
 	}
 
@@ -153,20 +161,38 @@ public class CartController {
 		return "Checkout";
 	}
 	@RequestMapping(value = { "/SaveCheckout.do" }, method = RequestMethod.POST)
-	private String SaveCheckout(@ModelAttribute("receiverModel") Receiver receiverModel, Model model, HttpSession session)
+	private String SaveCheckout(@ModelAttribute("receiverModel")@Valid Receiver receiverModel,BindingResult result, Model model, HttpSession session)
 	{
 		ArrayList<ProductInCart> shopCart = GetShoppingCart(session);
-		if(shopCart.size()>0)
+		Account acc = (Account) session.getAttribute("Account");
+		if(acc!=null)
 		{
-			if(receiverDao.checkExistByEmail(receiverModel.getEmail())==true)
+			if(shopCart.size()>0)
 			{
-				
-			}else
-			{
-				receiverDao.insertNewReceiver(receiverModel);
+				Receiver receiver = new Receiver();
+				if(receiverDao.checkExistByEmail(receiverModel.getEmail())==true)
+				{
+					
+				}else
+				{
+					receiverModel.setOrders(null);
+					receiverDao.insertNewReceiver(receiverModel);
+				}
+				receiver = receiverDao.getReceiverByEmail(receiverModel.getEmail());
+				Order order = new Order();
+				Date date = new Date();
+				order.setCreateDate(date);
+				order.setAccount(acc);
+				Orderstate orderstate = new Orderstate();
+				orderstate = orderStateDao.getOrderStateById(1);
+				order.setOrderstate(orderstate);
+				order.setReceiver(receiver);
+				order.setTotal(1000000);
+				orderDao.insertNewOrder(order);
 			}
 		}
-		return "redirect:/Cart/Checkout.do";
+		String s = receiverModel.getFullName();
+		return "Checkout";
 	}
 	@RequestMapping(value = { "/DeleteFromCheckout.do" }, method = RequestMethod.GET)
 	private String DeleteFromCheckout(@RequestParam("idProduct") Integer idProduct,HttpSession session)

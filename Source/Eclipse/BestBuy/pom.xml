@@ -9,12 +9,15 @@
 
 	<properties>
 		<org.springframework.version>3.2.4.RELEASE</org.springframework.version>
+		<spring.security.version>3.1.0.RELEASE</spring.security.version>
 		<tiles.version>2.2.2</tiles.version>
 		<jstl.version>1.2</jstl.version>
 		<junit.version>3.8.1</junit.version>
 		<slf4j.version>1.5.6</slf4j.version>
 		<servlet.version>2.5</servlet.version>
-		<hibernate.version>4.2.2.Final</hibernate.version>
+		<!-- <hibernate.version>4.2.2.Final</hibernate.version> -->
+		<hibernate.version>4.1.7.Final</hibernate.version>
+		<mysql.connector.version>5.1.21</mysql.connector.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
@@ -86,7 +89,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.9</version>
+			<version>${mysql.connector.version}</version>
 		</dependency>
 
 		<!-- Hibernate framework -->
@@ -110,13 +113,13 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>4.1.5.SP1</version>
+			<version>${hibernate.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>3.3.2.GA</version>
+			<version>${hibernate.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>asm</groupId>
@@ -187,6 +190,28 @@
 			<groupId>javax.transaction</groupId>
 			<artifactId>jta</artifactId>
 			<version>1.0.1B</version>
+		</dependency>
+
+		<!-- Spring Security -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring.security.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-javaconfig</artifactId>
+			<version>1.0.0.M1</version>
 		</dependency>
 	</dependencies>
 	<build>

@@ -13,6 +13,9 @@ import javax.validation.Valid;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -111,12 +114,14 @@ public class AccountController {
 
 	@RequestMapping(value = { "/GetLogin.do" }, method = RequestMethod.GET)
 	public String getLogin(@ModelAttribute("account") AccountModel form,
-			Model model) {
+			Model model) {		
+		
 		String error = "Vui lòng điền đầy đủ các trường";
 		model.addAttribute("Error", error);
 		return "Login";
 	}
 
+	/*
 	@RequestMapping(value = { "/PostLogin.do" }, method = RequestMethod.POST)
 	public String postLogin(@ModelAttribute("account") AccountModel form,
 			Model model, HttpSession session) {
@@ -162,4 +167,5 @@ public class AccountController {
 		session.invalidate();
 		return "redirect:/Home/Index.do";
 	}
+	*/
 }

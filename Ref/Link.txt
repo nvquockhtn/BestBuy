@@ -5,3 +5,12 @@ http://ckeditor.com/download
 http://testweb3.iecworld.com/jsdemo/js/lq_js_point/
 http://www.mkyong.com/spring-mvc/spring-mvc-redirectview-example/
 http://www.mkyong.com/spring-security/spring-security-form-login-example/
+http://krams915.blogspot.pt/2010/12/spring-security-3-mvc-using-simple-user.html
+http://stackoverflow.com/questions/9048995/get-spring-security-principal-in-jsp-el-expression
+http://www.mkyong.com/spring-security/get-current-logged-in-username-in-spring-security/
+http://www.beingjavaguys.com/2013/09/spring-security-example.html
+http://fruzenshtein.com/spring-mvc-security-mysql-hibernate/
+http://www.mkyong.com/spring-security/spring-security-form-login-example/
+http://www.mkyong.com/spring-security/spring-security-hello-world-example/
+http://www.particlewave.com/2013/06/09/spring-security-part-i-spring-authentication-and-authorization-basics/
+http://stackoverflow.com/questions/12371770/spring-mvc-checking-if-user-is-already-logged-in-via-spring-security

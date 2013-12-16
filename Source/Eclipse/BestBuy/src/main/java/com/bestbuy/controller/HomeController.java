@@ -14,6 +14,9 @@ import com.bestbuy.pojo.Product;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -43,10 +46,12 @@ public class HomeController {
     	// Image[] img = (Image[])(listProduct.get(0).getImages().toArray());
     	model.addAttribute("NewLaptopProduct", listProduct);
     	model.addAttribute("NewTabletProduct", listTablet);
-    	
+    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();  
+		String name = auth.getName(); //get logged in username
         return "Index";
     }
     
     public HomeController() {
+//    	UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getDetails();
     }
 }

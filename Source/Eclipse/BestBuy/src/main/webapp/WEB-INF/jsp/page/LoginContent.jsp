@@ -12,19 +12,19 @@
 <div class="container-2">
     <section class="content">
         <h2>Login</h2>
-        <form:form method="post" class="form-register" action="${pageContext.request.contextPath}/Account/PostLogin.do" modelAttribute="account">
-            <div class="registerbox">
+        <form name='f' action="<c:url value='/j_spring_security_check' />" method='POST' class="form-register">    
+        <div class="registerbox">
                 <fieldset>
                     <div class="control-group">
                         <label class="control-label"><span class="red">*</span> Tên đăng nhập:</label>
                         <div class="controls">
-                            <form:input  path="username" class="input-xlarge" />                            
+                            <input type='text' name='j_username' value='' class="input-xlarge" />                           
                         </div>
                     </div>
                     <div class="control-group">
                         <label class="control-label"><span class="red">*</span> Mật khẩu:</label>
                         <div class="controls">
-                            <form:password path="password" class="input-xlarge" />
+                            <input type='password' name='j_password' class="input-xlarge" />
                         </div>
                     </div> 
                     <div class="control-group">
@@ -45,7 +45,7 @@
                     </div>
                 </fieldset>
             </div> 
-        </form:form>
+        </form>
     </section>
 
 </div>

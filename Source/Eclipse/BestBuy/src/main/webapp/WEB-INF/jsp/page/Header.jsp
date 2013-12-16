@@ -51,7 +51,7 @@
 					<a href="#login-box" class="last login-window">Login</a>
 				</c:when>
 				<c:otherwise>
-					<a href="${pageContext.request.contextPath}/Account/Logout.do"
+					<a href="${pageContext.request.contextPath}/j_spring_security_logout"
 						class="last login-window">Logout</a>
 				</c:otherwise>
 			</c:choose></li>
@@ -60,16 +60,16 @@
 		<a href="#" class="close"><img
 			src="${pageContext.request.contextPath}/resources/images/process-stop.png"
 			class="btn_close" title="Close Window" alt="Close" /></a>
-		<form:form method="post" class="signin"
-			action="${pageContext.request.contextPath}/Account/PostLogin.do"
+		<form:form method="post" class="signin" name="f"
+			action="${pageContext.request.contextPath}/j_spring_security_check"
 			modelAttribute="account">
 			<fieldset class="textbox">
-				<label class="username"> <span>Username or email</span> <form:input
-						path="username" id="username" name="username" value="" type="text"
-						autocomplete="on" placeholder="Username" />
-				</label> <label class="password"> <span>Password</span> <form:input
-						path="password" id="password" name="password" value=""
-						type="password" placeholder="Password" />
+				<label class="username"> <span>Username or email</span> 
+				<input type='text' name='j_username' value='' autocomplete="on" placeholder="Username" id="username"/>
+				
+				</label> <label class="password"> <span>Password</span> 
+				<input type='password' name='j_password' placeholder="Password" id="password"/>
+				
 				</label>
 				<button type="submit" class="submit button" type="submit">Sign
 					in</button>

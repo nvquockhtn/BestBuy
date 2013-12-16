@@ -1,0 +1,27 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<http auto-config="true">
+
+		<intercept-url pattern="/Cart/*" access="ROLE_CUSTOMER" />
+		<intercept-url pattern="/Order/*" access="ROLE_CUSTOMER" />
+		<intercept-url pattern="/Account/Index.do" access="ROLE_CUSTOMER" />
+
+		<form-login login-page="/Account/GetLogin.do"
+			default-target-url="/Home/Index.do" authentication-failure-url="/Account/GetLogin.do" />
+		<logout logout-success-url="/Home/Index.do" />
+	</http>
+
+	
+
+	<authentication-manager>
+		<authentication-provider user-service-ref="customUserDetailsService">
+			<password-encoder hash="plaintext">
+			</password-encoder>
+		</authentication-provider>
+	</authentication-manager>
+</beans:beans>

@@ -32,7 +32,7 @@
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.quovolver.js"></script><!--blockquote-->
         <script type='text/javascript' src="${pageContext.request.contextPath}/resources/js/jquery.jqzoom-core.js"></script><!--image zoom-->
 		<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/organictabs.jquery.js"></script><!--tabs-->        
-        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/organictabs.jquery.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/productview.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/custom.js"></script><!--custom-->
         <!--MENU-->
         <script type="text/javascript">

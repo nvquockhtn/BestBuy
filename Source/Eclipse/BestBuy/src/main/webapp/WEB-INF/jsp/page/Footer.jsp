@@ -59,5 +59,5 @@
         <li><a href="#" class="tip" title="Master Card"><img src="${pageContext.request.contextPath}/resources/images/payment-icon-mastercard.png" alt="Master Card"></a></li>
         <li><a href="#" class="tip" title="Visa"><img src="${pageContext.request.contextPath}/resources/images/payment-icon-visa.png" alt="Visa"></a></li>
     </ul>
-    <p style="clear:both; display:block;">&copy; 2013 <a href="index-2.html">Shopymart</a>, All Rights Reserved. Designed by: <a href="#">louiejiemahusay</a></p>
+    <p style="clear:both; display:block;">&copy; 2013 <a href="index-2.html">RongDoComputer</a>, All Rights Reserved. Designed by: <a href="#">RongDoComputer</a></p>
 </div>

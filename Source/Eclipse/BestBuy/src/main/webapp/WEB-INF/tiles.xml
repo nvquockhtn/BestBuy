@@ -69,5 +69,9 @@
     <definition name="HistoryCheckout" extends="Page">
         <put-attribute name="title" value="Bestbuy - HistoryCheckout" />
         <put-attribute name="content_main" value="/WEB-INF/jsp/page/HistoryCheckoutContent.jsp"/>
-    </definition>    
+    </definition>
+    <definition name="ProductManager" extends="Page">
+        <put-attribute name="title" value="Bestbuy - ProductManager" />
+        <put-attribute name="content_main" value="/WEB-INF/jsp/page/ProductManagerContent.jsp"/>
+    </definition>       
 </tiles-definitions>

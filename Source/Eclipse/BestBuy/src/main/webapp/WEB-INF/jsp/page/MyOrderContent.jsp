@@ -60,6 +60,13 @@
 								alt="">
 						</a>
 						</c:if>
+						<c:if test="${item.orderstate.id == 2}"> <%-- chi hien cho phep reactive khi da huy boi khach hang --%>
+						<a href="${pageContext.request.contextPath}/Order/Reactive.do?orderId=${item.id}"
+							class="tip update" title="Reactive"> <img
+								src="${pageContext.request.contextPath}/resources/images/update.png"
+								alt="">
+						</a>
+						</c:if>
 							</td>
 					</tr>
 				</c:forEach>

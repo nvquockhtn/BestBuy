@@ -60,8 +60,9 @@ public class ReceiverDaoImpl extends DaoSupport implements ReceiverDao{
 	        query.setString("userName", acc.getUsername());*/
 		try
 		{
-	        String hql = "from Receiver a where a.email = '" + email.trim() +"'";
+	        String hql = "from Receiver a where a.email =:eMail";
 	        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+	        query.setString("eMail", email);
 	        return query.uniqueResult() != null;
 		}catch(Exception ex)
 		{
@@ -73,8 +74,9 @@ public class ReceiverDaoImpl extends DaoSupport implements ReceiverDao{
 	public Receiver getReceiverByEmail(String email) {
 		try
 		{
-			String hql = "from Receiver a where a.email = '" + email.trim() +"'";
+			String hql = "from Receiver a where a.email =:eMail";
 	        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+	        query.setString("eMail", email);
 	        return (Receiver) query.uniqueResult();
 		}catch(Exception e)
 		{

@@ -7,8 +7,8 @@ $(document).ready(function(){
 		var theproducts = $("ul#products");
 		var classNames = $(this).attr('class').split(' ');
 		
-		var gridthumb = "images/products/grid-default-thumb.png";
-		var listthumb = "images/products/list-default-thumb.png";
+		var gridthumb = "/BestBuy/resources/images/products/grid-default-thumb.png";
+		var listthumb = "/BestBuy/resources/images/products/list-default-thumb.png";
 		
 		if($(this).hasClass("active")) {
 			// if currently clicked button has the active class
@@ -22,10 +22,10 @@ $(document).ready(function(){
 				$(this).addClass("active");
 				$("#listview").removeClass("active");
 			
-				$("#listview").children("img").attr("src","images/list-view.png");
+				$("#listview").children("img").attr("src","/BestBuy/resources/images/list-view.png");
 			
 				var theimg = $(this).children("img");
-				theimg.attr("src","images/grid-view-active.png");
+				theimg.attr("src","/BestBuy/resources/images/grid-view-active.png");
 			
 				// remove the list class and change to grid
 				theproducts.removeClass("list");
@@ -39,10 +39,10 @@ $(document).ready(function(){
 				$(this).addClass("active");
 				$("#gridview").removeClass("active");
 					
-				$("#gridview").children("img").attr("src","images/grid-view.png");
+				$("#gridview").children("img").attr("src","/BestBuy/resources/images/grid-view.png");
 					
 				var theimg = $(this).children("img");
-				theimg.attr("src","images/list-view-active.png");
+				theimg.attr("src","/BestBuy/resources/images/list-view-active.png");
 					
 				// remove the grid view and change to list
 				theproducts.removeClass("grid")

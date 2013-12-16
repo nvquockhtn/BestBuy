@@ -55,7 +55,9 @@
 			<div id="billing" class="hide">
 				<form:form
 					action="${pageContext.request.contextPath}/Cart/SaveCheckout.do"
-					cssClass="form-register" modelAttribute="receiverModel">
+					cssClass="form-register" modelAttribute="receiverModel"
+					method="post"
+					>
 					<div class="one-third first">
 						<h3>Your Personal Details</h3>
 						<div class="registerbox">
@@ -114,9 +116,8 @@
 									</div>
 								</div>
 								<div class="control-group">
-
 									<div class="controls">
-										<input type="submit" id = "idsubmit" />
+										<input type="submit"  />
 									</div>
 								</div>
 							</fieldset>

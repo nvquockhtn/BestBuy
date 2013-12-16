@@ -178,17 +178,25 @@ public class CartController {
 					
 				}else
 				{
-					receiverModel.setOrders(null);
+					//receiverModel.setOrders(null);
 					receiverDao.insertNewReceiver(receiverModel);
 				}
-				receiver = receiverDao.getReceiverByEmail(receiverModel.getEmail());
-				Order order = createOrderInfor(acc, receiver, shopCart);
-				createOrderDetail(order,shopCart);
-				return "HistoryCheckout";
-								//orderDao.insertNewOrder(order);
+				if(shopCart.size()>0)
+				{
+					receiver = receiverDao.getReceiverByEmail(receiverModel.getEmail().trim());
+					Order order = createOrderInfor(acc, receiver, shopCart);
+					createOrderDetail(order,shopCart);
+					session.removeAttribute("ShoppingCart");
+					return "HistoryCheckout";
+				}else
+				{
+					return "Checkout";
+				}
 			}
+		}else
+		{
+			return "redirect:/Account/GetLogin.do";
 		}
-		//String s = receiverModel.getFullName();
 		return "Checkout";
 	}
 	private Order createOrderInfor(Account acc,Receiver receiver, ArrayList<ProductInCart> shopCart) {

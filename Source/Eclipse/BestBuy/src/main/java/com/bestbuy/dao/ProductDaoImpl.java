@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bestbuy.pojo.Image;
+import com.bestbuy.pojo.Orderdetail;
 import com.bestbuy.pojo.Product;
 
 
@@ -43,7 +44,18 @@ public class ProductDaoImpl extends DaoSupport implements ProductDao{
         query.setString("userName", acc.getUsername());*/
         return ds;
 	}
-
+	@Transactional
+	public boolean updateProduct(Product product)
+	{
+        boolean kq = true;
+        try {
+            sessionFactory.getCurrentSession().saveOrUpdate(product);
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+            kq = false;
+        }
+        return kq;
+	}
 	@Transactional(readOnly = true)
 	public Product getProductById(Integer maSp) {
 		Product product = null;

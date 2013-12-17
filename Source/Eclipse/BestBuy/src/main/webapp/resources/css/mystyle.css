@@ -32,7 +32,7 @@ table.shopping-cart tr td button.update {
 	color: #757575 !important;
 }
 
-#reviews .rating-detail{
+#reviews .rating-detail {
 	border-bottom-style: groove;
 	border-top-style: groove;
 	border-bottom-width: 2px;
@@ -40,8 +40,8 @@ table.shopping-cart tr td button.update {
 	height: 70px;
 	padding: 30px 0px 0px 10px;
 }
-.myinputext
-{
+
+.myinputext {
 	border: 1px solid #e5e5e5;
 	padding: 7px 10px;
 	width: 150px;
@@ -49,37 +49,53 @@ table.shopping-cart tr td button.update {
 	-khtml-border-radius: 2px;
 	border-radius: 2px;
 }
-.formProduct
-{
+
+.formProduct {
 	margin-bottom: 3px;
 }
-.formSearch
-{
+
+.formSearch {
 	float: left;
 }
-.formPagg
-{
+
+.formPagg {
 	width: 256px;
 	float: left;
 }
+
 .formPagg select {
 	float: right;
 	display: inline;
 }
+
 .formPagg label {
 	float: left;
 	display: inline;
 }
-.formPagg input[type="text"]
-{
+
+.formPagg input[type="text"] {
 	float: right;
 }
-.formProduct input[type="submit"]
-{
+
+.formProduct input[type="submit"] {
 	float: left;
 	margin-left: 10px;
 }
-.formClear
-{
+
+.formClear {
 	clear: both;
 }
+
+.ctrl form.left input.input-medium {
+	border: 1px solid #e5e5e5;
+	padding: 5px 5px;
+	width: 150px;
+	-webkit-border-radius: 2px;
+	-khtml-border-radius: 2px;
+	border-radius: 2px;
+	margin: 0px 10px;
+	cursor: pointer;
+}
+
+.ctrl form.left input[type="submit"]{ border:none; cursor:pointer; background:#f5640c; padding:5px 10px; color:#fff; -webkit-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px;}
+.ctrl form.left input[type="submit"]:hover{ color:#fff !important; background:#353535; -ms-transition: all 0.5s ease-in-out; -webkit-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; transition: all 0.5s ease-in-out;}

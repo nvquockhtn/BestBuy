@@ -612,6 +612,7 @@ table.shopping-cart tr td.remove-update{ text-align:center;}
 table.shopping-cart tr td a.remove{ background:#e76565; padding:9px 7px 3px 7px; -webkit-border-radius: 30px; -khtml-border-radius: 30px; border-radius: 30px;}
 table.shopping-cart tr td a.remove:hover{ background:#353535; -ms-transition: all 0.5s ease-in-out; -webkit-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; transition: all 0.5s ease-in-out;}
 table.shopping-cart tr td a.update{ background:#a3d464; padding:9px 7px 3px 7px; -webkit-border-radius: 30px; -khtml-border-radius: 30px; border-radius: 30px;}
+table.shopping-cart tr td a.delivered{ background:#0547F1; padding:9px 7px 3px 7px; -webkit-border-radius: 30px; -khtml-border-radius: 30px; border-radius: 30px;}
 table.shopping-cart tr td a.update:hover{ background:#353535; -ms-transition: all 0.5s ease-in-out; -webkit-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; transition: all 0.5s ease-in-out;}
 table.shopping-cart tr td a.addtocart{ background:#a3d464; padding:9px 7px 3px 7px; -webkit-border-radius: 30px; -khtml-border-radius: 30px; border-radius: 30px;}
 table.shopping-cart tr td input{ border:1px solid #e5e5e5; padding:4px 5px; -webkit-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px; color:#757575;}

@@ -13,6 +13,7 @@ import javax.validation.Valid;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -76,6 +77,7 @@ public class CartController {
 		}
 		return shopCart;
 	}
+
 
 	@RequestMapping(value = { "/Add.do" }, method = RequestMethod.GET)
 	public String AddProduct(@RequestParam("maSP") Integer maSP, Model model,

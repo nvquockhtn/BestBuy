@@ -4,15 +4,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
+  
 <!DOCTYPE html>
 <div class="container-2">
 	<div style="clear: both; display: block; height: 40px"></div>
 	<h2>
-		Orders List &nbsp;<small>Your orders</small>
+		Orders List &nbsp;<small>Customer's orders</small>
 	</h2>
 	<div class="ctrl">
       	<form:form modelAttribute="OrderFilterModel"
-				action="${pageContext.request.contextPath}/Order/Filter.do"
+				action="${pageContext.request.contextPath}/Order/Administrator/Filter.do"
 				method="post" cssClass="left">
               
               State:&nbsp;			
@@ -42,8 +43,8 @@
 				<th class="action">Action</th>
 			</tr>
 
-			<c:if test="${requestScope.MyOrders != null}">
-				<c:forEach var="item" items="${requestScope.MyOrders}" varStatus="status">
+			<c:if test="${requestScope.Orders != null}">
+				<c:forEach var="item" items="${requestScope.Orders}" varStatus="status">
 					<tr>
 						<td class="image">${status.index}</td>
 						<td class="name"><a href="${pageContext.request.contextPath}/"><fmt:formatDate value="${item.createDate}" type="both"/></a></td>						
@@ -52,17 +53,31 @@
 							VND</td>
 						<td class="quantity">${item.orderstate.name}</td>
 						<td class="remove-update">
-						<c:if test="${item.orderstate.id == 1 || item.orderstate.id == 5}"> <%-- chi hien cho phep huy khi dang chuyen giao hang hoac cho xac nhan--%>
-						<a href="${pageContext.request.contextPath}/Order/Cancel.do?orderId=${item.id}"
+						<c:if test="${item.orderstate.id != 3 && item.orderstate.id != 4}"> <%-- chi hien cho phep huy khi khac da huy boi ad va da giao hang --%>
+						<a href="${pageContext.request.contextPath}/Order/Administrator/Cancel.do?orderId=${item.id}"
 							class="tip remove" title="Remove"> <img
 								src="${pageContext.request.contextPath}/resources/images/remove.png"
 								alt="">
 						</a>
 						</c:if>
-						<c:if test="${item.orderstate.id == 2}"> <%-- chi hien cho phep reactive khi da huy boi khach hang --%>
-						<a href="${pageContext.request.contextPath}/Order/Reactive.do?orderId=${item.id}"
+						<c:if test="${item.orderstate.id == 3}"> <%-- chi hien cho phep reactive khi da huy boi ad --%>
+						<a href="${pageContext.request.contextPath}/Order/Administrator/Reactive.do?orderId=${item.id}"
 							class="tip update" title="Reactive"> <img
 								src="${pageContext.request.contextPath}/resources/images/update.png"
+								alt="">
+						</a>
+						</c:if>
+						<c:if test="${item.orderstate.id == 5}"> <%-- chi hien cho phep approve khi dang cho --%>
+						<a href="${pageContext.request.contextPath}/Order/Administrator/Approve.do?orderId=${item.id}"
+							class="tip update" title="Approve"> <img
+								src="${pageContext.request.contextPath}/resources/images/process-accept.png"
+								alt="">
+						</a>
+						</c:if>
+						<c:if test="${item.orderstate.id == 1}"> <%-- chi hien cho phep da giao hang khi dang giao hang--%>
+						<a href="${pageContext.request.contextPath}/Order/Administrator/Delivered.do?orderId=${item.id}"
+							class="tip delivered" title="Delivered"> <img
+								src="${pageContext.request.contextPath}/resources/images/icon-addcart.png"
 								alt="">
 						</a>
 						</c:if>

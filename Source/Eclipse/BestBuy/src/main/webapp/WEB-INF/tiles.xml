@@ -3,71 +3,90 @@
 	       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
 	       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
-    <definition name="Page" template="/WEB-INF/jsp/template/Template.jsp">
-        <put-attribute name="title" value="Page" />
-        <put-attribute name="header" value="/WEB-INF/jsp/page/Header.jsp" />
-        <put-attribute name="menu" value="/WEB-INF/jsp/page/Menu.jsp" />
-        <put-attribute name="slider" value=""/>
-        <put-attribute name="introduction" value="/WEB-INF/jsp/page/Introduction.jsp" />
-        <put-attribute name="free_shipping" value="/WEB-INF/jsp/page/FreeShipping.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/jsp/page/Footer.jsp" />
-    </definition>
-    <definition name="Index" extends="Page">
-        <put-attribute name="title" value="Home" />
-        <put-attribute name="slider" value="/WEB-INF/jsp/page/Slider.jsp"/>
-        <put-attribute name="content_main" value="/WEB-INF/jsp/page/IndexContent.jsp"/>
-    </definition>    
-    <definition name="ShoppingCart" extends="Page">
-        <put-attribute name="title" value="Shop Cart" />
-        <put-attribute name="content_main" value="/WEB-INF/jsp/page/ShoppingCartContent.jsp"/>
-    </definition> 
-    <definition name="Account" extends="Page">
-        <put-attribute name="title" value="Profile" />
-        <put-attribute name="content_main" value="/WEB-INF/jsp/page/AccountContent.jsp"/>
-    </definition> 
-    <definition name="404Page" extends="Page">
-        <put-attribute name="title" value="Not Found" />
-        <put-attribute name="content_main" value="/WEB-INF/jsp/page/404PageContent.jsp"/>
-    </definition>    
-    <definition name="Register" extends="Page">
-        <put-attribute name="title" value="Register Account" />        
-        <put-attribute name="content_main" value="/WEB-INF/jsp/page/RegisterContent.jsp"/>
-    </definition>    
-    <definition name="RegistrationOK" extends="Page">
-        <put-attribute name="title" value="Welcome" />        
-        <put-attribute name="content_main" value="/WEB-INF/jsp/page/RegistrationOKContent.jsp"/>
-    </definition>    
-    <definition name="Login" extends="Page">
-        <put-attribute name="title" value="Login Account" />        
-        <put-attribute name="slider" value="/WEB-INF/jsp/page/Slider.jsp"/>
-        <put-attribute name="content_main" value="/WEB-INF/jsp/page/LoginContent.jsp"/>
-    </definition>    
-    <definition name="Product" extends="Page">
-        <put-attribute name="title" value="Products" />
-        <put-attribute name="content_main" value="/WEB-INF/jsp/page/ProductContent.jsp"/>
-    </definition>    
-    <definition name="ProductDetail" extends="Page">
-        <put-attribute name="title" value="Products Detail" />
-        <put-attribute name="content_main" value="/WEB-INF/jsp/page/ProductDetailContent.jsp"/>
-    </definition>    
-    <definition name="ProductCompare" extends="Page">
-        <put-attribute name="title" value="Products Compare" />
-        <put-attribute name="content_main" value="/WEB-INF/jsp/page/ProductCompareContent.jsp"/>
-    </definition>    
-    <definition name="Checkout" extends="Page">
-        <put-attribute name="title" value="Bestbuy - Checkout" />
-        <put-attribute name="content_main" value="/WEB-INF/jsp/page/CheckoutContent.jsp"/>
-    </definition>    
-    <definition name="MyOrder" extends="Page">
-        <put-attribute name="title" value="My Orders" />
-        <put-attribute name="content_main" value="/WEB-INF/jsp/page/MyOrderContent.jsp"/>
-    </definition>    
-    <definition name="WishList" extends="Page">
-        <put-attribute name="title" value="Bestbuy - WishList" />
-        <put-attribute name="content_main" value="/WEB-INF/jsp/page/WishListContent.jsp"/>
-    </definition>
-    <definition name="HistoryCheckout" extends="Page">
-        <put-attribute name="title" value="Bestbuy - HistoryCheckout" />
-        <put-attribute name="content_main" value="/WEB-INF/jsp/page/HistoryCheckoutContent.jsp"/>
-    </definition>    
+	<definition name="Page" template="/WEB-INF/jsp/template/Template.jsp">
+		<put-attribute name="title" value="Page" />
+		<put-attribute name="header" value="/WEB-INF/jsp/page/Header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/jsp/page/Menu.jsp" />
+		<put-attribute name="slider" value="" />
+		<put-attribute name="introduction" value="/WEB-INF/jsp/page/Introduction.jsp" />
+		<put-attribute name="free_shipping" value="/WEB-INF/jsp/page/FreeShipping.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/page/Footer.jsp" />
+	</definition>
+	<definition name="Index" extends="Page">
+		<put-attribute name="title" value="Home" />
+		<put-attribute name="slider" value="/WEB-INF/jsp/page/Slider.jsp" />
+		<put-attribute name="content_main" value="/WEB-INF/jsp/page/IndexContent.jsp" />
+	</definition>
+	<definition name="ShoppingCart" extends="Page">
+		<put-attribute name="title" value="Shop Cart" />
+		<put-attribute name="content_main"
+			value="/WEB-INF/jsp/page/ShoppingCartContent.jsp" />
+	</definition>
+	<definition name="Account" extends="Page">
+		<put-attribute name="title" value="Profile" />
+		<put-attribute name="content_main"
+			value="/WEB-INF/jsp/page/AccountContent.jsp" />
+	</definition>
+	<definition name="404Page" extends="Page">
+		<put-attribute name="title" value="Not Found" />
+		<put-attribute name="content_main"
+			value="/WEB-INF/jsp/page/404PageContent.jsp" />
+	</definition>
+	<definition name="Register" extends="Page">
+		<put-attribute name="title" value="Register Account" />
+		<put-attribute name="content_main"
+			value="/WEB-INF/jsp/page/RegisterContent.jsp" />
+	</definition>
+	<definition name="RegistrationOK" extends="Page">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="content_main"
+			value="/WEB-INF/jsp/page/RegistrationOKContent.jsp" />
+	</definition>
+	<definition name="Login" extends="Page">
+		<put-attribute name="title" value="Login Account" />
+		<put-attribute name="slider" value="/WEB-INF/jsp/page/Slider.jsp" />
+		<put-attribute name="content_main" value="/WEB-INF/jsp/page/LoginContent.jsp" />
+	</definition>
+	<definition name="Product" extends="Page">
+		<put-attribute name="title" value="Products" />
+		<put-attribute name="content_main"
+			value="/WEB-INF/jsp/page/ProductContent.jsp" />
+	</definition>
+	<definition name="ProductDetail" extends="Page">
+		<put-attribute name="title" value="Products Detail" />
+		<put-attribute name="content_main"
+			value="/WEB-INF/jsp/page/ProductDetailContent.jsp" />
+	</definition>
+	<definition name="ProductCompare" extends="Page">
+		<put-attribute name="title" value="Products Compare" />
+		<put-attribute name="content_main"
+			value="/WEB-INF/jsp/page/ProductCompareContent.jsp" />
+	</definition>
+	<definition name="Checkout" extends="Page">
+		<put-attribute name="title" value="Bestbuy - Checkout" />
+		<put-attribute name="content_main"
+			value="/WEB-INF/jsp/page/CheckoutContent.jsp" />
+	</definition>
+	<definition name="MyOrder" extends="Page">
+		<put-attribute name="title" value="My Orders" />
+		<put-attribute name="content_main"
+			value="/WEB-INF/jsp/page/MyOrderContent.jsp" />
+	</definition>
+	<definition name="WishList" extends="Page">
+		<put-attribute name="title" value="Bestbuy - WishList" />
+		<put-attribute name="content_main"
+			value="/WEB-INF/jsp/page/WishListContent.jsp" />
+	</definition>
+	<definition name="HistoryCheckout" extends="Page">
+		<put-attribute name="title" value="Bestbuy - HistoryCheckout" />
+		<put-attribute name="content_main"
+			value="/WEB-INF/jsp/page/HistoryCheckoutContent.jsp" />
+	</definition>
+	<!-- Administrator -->
+
+	<definition name="OrderManagement" extends="Page">
+		<put-attribute name="title" value="Orders Management" />
+		<put-attribute name="content_main"
+			value="/WEB-INF/jsp/page/OrderManagementContent.jsp" />
+	</definition>
 </tiles-definitions>

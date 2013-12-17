@@ -5,6 +5,7 @@
 package com.bestbuy.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import com.bestbuy.pojo.Order;
 
@@ -18,6 +19,8 @@ public interface OrderDao {
 	public ArrayList<Order> getOrdersByAccountId(int id);
 
 	public ArrayList<Order> filterOrdersByStateId(int accId, int stateId);
+
+	public ArrayList<Order> filterOrders(Integer accId, int stateId, String fromDate, String toDate);
 
 	public Order getOrderById(int idOrder);
 

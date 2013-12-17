@@ -15,3 +15,4 @@ http://www.mkyong.com/spring-security/spring-security-hello-world-example/
 http://www.particlewave.com/2013/06/09/spring-security-part-i-spring-authentication-and-authorization-basics/
 http://stackoverflow.com/questions/12371770/spring-mvc-checking-if-user-is-already-logged-in-via-spring-security
 http://viralpatel.net/blogs/spring-mvc-flash-attribute-example/
+http://www.mkyong.com/hibernate/hibernate-criteria-examples/

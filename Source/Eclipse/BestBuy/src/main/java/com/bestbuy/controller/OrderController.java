@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.bestbuy.dao.AccountDao;
 import com.bestbuy.dao.OrderDao;
 import com.bestbuy.dao.OrderStateDao;
+import com.bestbuy.model.OrderFilterModel;
 import com.bestbuy.pojo.Account;
 import com.bestbuy.pojo.Order;
 import com.bestbuy.pojo.Orderstate;
@@ -47,7 +48,7 @@ public class OrderController {
 	}
 
 	@RequestMapping(value = { "/Index.do" }, method = RequestMethod.GET)
-	public String myOrder(Model model, HttpSession session) {
+	public String getMyOrder(Model model, HttpSession session) {
 		Account account = (Account) session.getAttribute("Account");
 		if (account == null) {
 			return "redirect:/Order/Index.do";
@@ -55,23 +56,25 @@ public class OrderController {
 
 		model.addAttribute("MyOrders",
 				orderDao.getOrdersByAccountId(account.getId()));
+		model.addAttribute("OrderFilterModel", new OrderFilterModel());
 		return "MyOrder";
 	}
 
 	@RequestMapping(value = { "/Cancel.do" }, method = RequestMethod.GET)
 	public String cancelByCustomer(@RequestParam("orderId") Integer orderId,
-			Model model, HttpSession session, final RedirectAttributes redirectAttributes) {
+			Model model, HttpSession session,
+			final RedirectAttributes redirectAttributes) {
 		Account account = (Account) session.getAttribute("Account");
 		if (account == null) {
 			redirectAttributes.addAttribute("orderId", orderId);
 			return "redirect:/Order/Cancel.do";
 		}
 
-		updateOrderByCustomer(orderId, account, 2);
-		
+		updateOrder(orderId, account, 2);
+
 		return "redirect:/Order/Index.do";
 	}
-	
+
 	@RequestMapping(value = { "/Reactive.do" }, method = RequestMethod.GET)
 	public String reactiveByCustomer(@RequestParam("orderId") Integer orderId,
 			Model model, HttpSession session) {
@@ -80,8 +83,8 @@ public class OrderController {
 			return "redirect:/Account/GetLogin.do";
 		}
 
-		updateOrderByCustomer(orderId, account, 1);
-		
+		updateOrder(orderId, account, 5); // dang cho xac nhan
+
 		return "redirect:/Order/Index.do";
 	}
 
@@ -89,26 +92,90 @@ public class OrderController {
 	 * @param orderId
 	 * @param account
 	 */
-	private void updateOrderByCustomer(Integer orderId, Account account, int typeId) {
+	private void updateOrder(Integer orderId, Account account, int typeId) {
 		Order order = orderDao.getOrderById(orderId);
 		if (order != null) {
-			if (order.getAccount().getId().intValue() == account.getId().intValue()) { // Kiem tra don dat hang co phai cua nguoi nay ko???
-				order.setOrderstate(orderStateDao.getOrderStateById(typeId)); // id = 2: Huy boi khach hang || id=1: Reactive by khach hang
+			if (account != null) {
+				if (order.getAccount().getId().intValue() == account.getId()
+						.intValue()) { // Kiem tra don dat hang co phai cua nguoi nay ko???
+					order.setOrderstate(orderStateDao.getOrderStateById(typeId));
+					orderDao.updateOrder(order);
+				}
+			} else {
+				order.setOrderstate(orderStateDao.getOrderStateById(typeId));
 				orderDao.updateOrder(order);
 			}
 		}
 	}
-	
+
 	@RequestMapping(value = { "/Filter.do" }, method = RequestMethod.POST)
-	public String filter(@ModelAttribute("orderState") Orderstate form,
+	public String filter(
+			@ModelAttribute("OrderFilterModel") OrderFilterModel form,
 			Model model, HttpSession session) {
 		Account account = (Account) session.getAttribute("Account");
 		if (account == null) {
 			return "redirect:/Account/GetLogin.do";
 		}
-		
-		model.addAttribute("MyOrders",
-				orderDao.filterOrdersByStateId(account.getId(), form.getId()));
+
+		model.addAttribute("MyOrders", orderDao.filterOrders(account.getId(),
+				form.getOrderStateId(), form.getFromDate(), form.getToDate()));
+
 		return "MyOrder";
+	}
+
+	@RequestMapping(value = { "/Administrator/Index.do" }, method = RequestMethod.GET)
+	public String getOrders(Model model, HttpSession session) {
+
+		model.addAttribute("Orders", orderDao.getAllOrder());
+		model.addAttribute("OrderFilterModel", new OrderFilterModel());
+		return "OrderManagement";
+	}
+
+	@RequestMapping(value = { "/Administrator/Filter.do" }, method = RequestMethod.POST)
+	public String adminFilter(
+			@ModelAttribute("OrderFilterModel") OrderFilterModel form,
+			Model model, HttpSession session) {
+
+		model.addAttribute(
+				"Orders",
+				orderDao.filterOrders(null, form.getOrderStateId(),
+						form.getFromDate(), form.getToDate()));
+		return "OrderManagement";
+	}
+	
+	@RequestMapping(value = { "/Administrator/Cancel.do" }, method = RequestMethod.GET)
+	public String cancelByAdmin(@RequestParam("orderId") Integer orderId,
+			Model model) {		
+
+		updateOrder(orderId, null, 3);
+
+		return "redirect:/Order/Administrator/Index.do";
+	}
+
+	@RequestMapping(value = { "/Administrator/Reactive.do" }, method = RequestMethod.GET)
+	public String reactiveByAdmin(@RequestParam("orderId") Integer orderId,
+			Model model, HttpSession session) {
+		
+		updateOrder(orderId, null, 5); // dang cho xac nhan
+
+		return "redirect:/Order/Administrator/Index.do";
+	}
+	
+	@RequestMapping(value = { "/Administrator/Delivered.do" }, method = RequestMethod.GET)
+	public String deliveredByAdmin(@RequestParam("orderId") Integer orderId,
+			Model model, HttpSession session) {
+		
+		updateOrder(orderId, null, 4); // da giao hang
+
+		return "redirect:/Order/Administrator/Index.do";
+	}
+	
+	@RequestMapping(value = { "/Administrator/Approve.do" }, method = RequestMethod.GET)
+	public String approveByAdmin(@RequestParam("orderId") Integer orderId,
+			Model model, HttpSession session) {
+		
+		updateOrder(orderId, null, 1); // dang giao hang
+
+		return "redirect:/Order/Administrator/Index.do";
 	}
 }

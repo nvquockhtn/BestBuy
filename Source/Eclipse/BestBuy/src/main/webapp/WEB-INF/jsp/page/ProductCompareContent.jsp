@@ -60,11 +60,19 @@ uri="http://java.sun.com/jsp/jstl/fmt"%>
 		            </tr>
 		        
         </tbody>
-        <c:if test="${paramScope.numCompares>3 }">
+        <c:if test="${requestScope.error==-1}">
         	<script type="text/javascript">
             $(document).ready(function($) {
-                alert("Can't compare more than four product");
-                window.location.href("/ProductCompare/ProductsCompare.do");
+                alert("Products had been existen in list compare");
+                window.location.replace("/BestBuy/ProductCompare/ErrorProductsCompare.do");
+            });
+        </script>
+        </c:if>
+        <c:if test="${requestScope.error==-2}">
+        	<script type="text/javascript">
+            $(document).ready(function($) {
+                alert("Can't compare more than three product");
+                window.location.replace("/BestBuy/ProductCompare/ErrorProductsCompare.do");
             });
         </script>
         </c:if>

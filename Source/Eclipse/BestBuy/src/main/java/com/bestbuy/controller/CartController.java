@@ -188,7 +188,7 @@ public class CartController {
 								//orderDao.insertNewOrder(order);
 			}
 		}
-		String s = receiverModel.getFullName();
+		//String s = receiverModel.getFullName();
 		return "Checkout";
 	}
 	private Order createOrderInfor(Account acc,Receiver receiver, ArrayList<ProductInCart> shopCart) {

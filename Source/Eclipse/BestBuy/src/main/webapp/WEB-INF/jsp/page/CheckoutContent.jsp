@@ -116,7 +116,7 @@
 								<div class="control-group">
 
 									<div class="controls">
-										<input type="submit" />
+										<input type="submit" id = "idsubmit" />
 									</div>
 								</div>
 							</fieldset>
@@ -188,7 +188,6 @@
 				<div class="contentbox">
 					<div class="cartoptionbox one-half first">
 						<h4>Total price for these products:</h4>
-
 					</div>
 					<!--cartoptionbox-->
 					<div class="alltotal one-half">
@@ -215,7 +214,7 @@
 							<input type="button" value="Continue Shopping" />
 						</a>
 						<a href="${pageContext.request.contextPath}/Cart/Checkout.do">
-							<input type="submit" value="CheckOut">
+							<input type="button" value="CheckOut" onclick="clickToSubmit()">
 						</a>
 						
 					</div>
@@ -224,6 +223,12 @@
 				<!--end:contentbox-->
 			</div>
 			<!--end:confirm-->
+			<script type="text/javascript">
+				function clickToSubmit()
+				{
+					$( "#idsubmit" ).submit();
+				}
+        	</script>
 		</div>
 	</div>
 	<div style="clear: both; display: block; height: 40px"></div>

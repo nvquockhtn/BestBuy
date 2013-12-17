@@ -25,30 +25,46 @@ public class ProductCompareController {
 	ApplicationContext context = new ClassPathXmlApplicationContext(
 			"beans-hibernate.xml");
 	ProductDao productDao = (ProductDao) context.getBean("productDao");
-	
+	private int error = 1;
+	private boolean flagAdd = false;
 	@RequestMapping(value = {"/ProductsCompare.do"}, method =  RequestMethod.GET)
 	public String ProductCompare( Model model,HttpSession session)
 	{
-		
+		if(flagAdd==true)
+		{
+			model.addAttribute("error", error);
+		}else
+		{
+			model.addAttribute("error", 1);
+		}
+		flagAdd = false;
 		GetProductsCompare(session).size();
-		//model.addAttribute("numCompares", numCompares);
 		return "ProductCompare";
+	}
+	@RequestMapping(value = {"/ErrorProductsCompare.do"}, method =  RequestMethod.GET)
+	public String ErrorProductCompare( Model model,HttpSession session)
+	{
+		flagAdd = false;
+		return "redirect:/ProductCompare/ProductsCompare.do";
 	}
 	@RequestMapping(value = {"/AddProductToListCompare.do"}, method =  RequestMethod.GET)
 	public String AddProductToListCompare(@RequestParam("idProduct") Integer idProduct, Model model,
 			HttpSession session)
 	{
 		ArrayList<Product> listProductsCompare  = GetProductsCompare(session);
-		int numCompares = listProductsCompare.size();
-		if(numCompares<=3)
+		if(listProductsCompare.size()<3)
 		{
-			AddProductToListCompare(idProduct, listProductsCompare);
+			error = AddProductToListCompare(idProduct, listProductsCompare);
+			// error neu -1 la san pham nay da ton tai
+		}else
+		{
+			error = -2;		// so luong add vuot qua 3 san pham
 		}
-		numCompares+= 1;
-		model.addAttribute("numCompares", numCompares);
-		//redirect:/Home/Index.do
+		flagAdd = true;
+		model.addAttribute("error", error);
 		return "redirect:/ProductCompare/ProductsCompare.do";
 	}
+	
 	@RequestMapping(value = {"/DeleteProductFromListCompare.do"}, method =  RequestMethod.GET)
 	public String DeleteProductToListCompare(@RequestParam("idProduct") Integer idProduct, Model model,
 			HttpSession session)
@@ -56,8 +72,6 @@ public class ProductCompareController {
 		ArrayList<Product> listProductsCompare  = GetProductsCompare(session);
 		
 		DeleteProductFromListCompare(idProduct, listProductsCompare);
-		int numCompares = listProductsCompare.size();
-		//model.addAttribute("numCompares", numCompares);
 		return "redirect:/ProductCompare/ProductsCompare.do";
 	}
 	public ArrayList<Product> GetProductsCompare(HttpSession session) {
@@ -71,14 +85,16 @@ public class ProductCompareController {
 		}
 		return listProductsCompare;
 	}
-	private void AddProductToListCompare(Integer idProduct, ArrayList<Product> listProductsCompare)
+	private int AddProductToListCompare(Integer idProduct, ArrayList<Product> listProductsCompare)
 			throws NumberFormatException {
 		int i = 0;
 		boolean temp  = false;
+		int error = 1;	// khong co loi
 		for (i = 0; i < listProductsCompare.size(); i++) {
 			Product item = listProductsCompare.get(i);
 				if (item.getId() == idProduct) {
 					temp = true;
+					error = -1;		// da ton tai
 					break;
 				}
 		}
@@ -88,6 +104,7 @@ public class ProductCompareController {
 			Product item = productDao.getProductById(idProduct);
 			listProductsCompare.add(item);
 		}
+		return error;
 	}
 	private void DeleteProductFromListCompare(Integer idProduct, ArrayList<Product> listProductsCompare)
 			throws NumberFormatException {

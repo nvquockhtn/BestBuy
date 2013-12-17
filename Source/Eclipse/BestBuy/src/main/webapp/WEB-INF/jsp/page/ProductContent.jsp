@@ -101,7 +101,7 @@
                 <section class="right">
                     <span class="price"><small>Price: </small>&nbsp;&nbsp; ${item.price}</span>
                     <ul class="menu-button">
-                        <li><a href="${pageContext.request.contextPath}/Cart/Add.do.do?maSP=${item.id}" class="cart tip" title="Add to Cart"></a></li>
+                        <li><a href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${item.id}" class="cart tip" title="Add to Cart"></a></li>
                         <li><a href="${pageContext.request.contextPath}/resources/images/${imageURL.path}" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom"></a></li>
                         <li><a href="wishlist.html" class="wishlist tip" title="Add to Wishlist"></a></li>
                         <!-- <li><a href="compare.html" class="compare tip" title="Compare"></a></li> -->
@@ -112,6 +112,7 @@
             </li>
         	</c:forEach>
         </ul><!--end:products-->
+        
         <ul id="pagination">
         	<c:if test = "${product.page <= requestScope.pageCount && product.page >1 }" >
         		<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=1&search=${product.search }&idmanufacturer=${product.idmanufacturer }&idproducttype=${product.idproducttype }&fromprice=${product.fromprice }&endprice=${product.endprice }"> << </a></li>

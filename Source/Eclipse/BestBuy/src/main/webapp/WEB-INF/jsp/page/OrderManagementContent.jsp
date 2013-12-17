@@ -53,7 +53,7 @@
 							VND</td>
 						<td class="quantity">${item.orderstate.name}</td>
 						<td class="remove-update">
-						<c:if test="${item.orderstate.id != 3 && item.orderstate.id != 4}"> <%-- chi hien cho phep huy khi khac da huy boi ad va da giao hang --%>
+						<c:if test="${item.orderstate.id != 3 && item.orderstate.id != 4 && item.orderstate.id != 2}"> <%-- chi hien cho phep huy khi khac (da huy boi ad va da giao hang va da huy boi khach hang) --%>
 						<a href="${pageContext.request.contextPath}/Order/Administrator/Cancel.do?orderId=${item.id}"
 							class="tip remove" title="Remove"> <img
 								src="${pageContext.request.contextPath}/resources/images/remove.png"

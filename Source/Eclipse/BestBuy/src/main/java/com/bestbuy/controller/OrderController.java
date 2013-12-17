@@ -131,7 +131,7 @@ public class OrderController {
 		return "OrderManagement";
 	}
 
-	@RequestMapping(value = { "/Administrator/Filter.do" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/Administrator/Filter.do" }, method = {RequestMethod.POST})
 	public String adminFilter(
 			@ModelAttribute("OrderFilterModel") OrderFilterModel form,
 			Model model, HttpSession session) {

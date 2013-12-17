@@ -50,7 +50,7 @@ public class OrderDaoImpl extends DaoSupport implements OrderDao {
 
 	@Transactional(readOnly = true)
 	public ArrayList<Order> getAllOrder() {
-		String hql = "from Order";
+		String hql = "from Order ord order by ord.createDate desc";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		return (ArrayList<Order>) query.list();
 	}

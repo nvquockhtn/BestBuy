@@ -64,7 +64,6 @@ public class ProductCompareController {
 		model.addAttribute("error", error);
 		return "redirect:/ProductCompare/ProductsCompare.do";
 	}
-	
 	@RequestMapping(value = {"/DeleteProductFromListCompare.do"}, method =  RequestMethod.GET)
 	public String DeleteProductToListCompare(@RequestParam("idProduct") Integer idProduct, Model model,
 			HttpSession session)

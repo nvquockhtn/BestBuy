@@ -136,10 +136,7 @@ public class OrderController {
 			@ModelAttribute("OrderFilterModel") OrderFilterModel form,
 			Model model, HttpSession session) {
 
-		model.addAttribute(
-				"Orders",
-				orderDao.filterOrders(null, form.getOrderStateId(),
-						form.getFromDate(), form.getToDate()));
+		model.addAttribute("Orders",orderDao.filterOrders(null, form.getOrderStateId(),form.getFromDate(), form.getToDate()));
 		return "OrderManagement";
 	}
 	

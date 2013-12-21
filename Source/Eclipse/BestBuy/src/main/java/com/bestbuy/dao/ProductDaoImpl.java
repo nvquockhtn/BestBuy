@@ -23,6 +23,18 @@ import com.bestbuy.pojo.Product;
 
 @Repository
 public class ProductDaoImpl extends DaoSupport implements ProductDao{
+	@Transactional
+	public boolean saveOrUpdateProduct(Product product) {
+		boolean kq = true;
+		try {
+			sessionFactory.getCurrentSession().saveOrUpdate(product);
+		} catch (Exception ex) {
+			System.out.println(ex.toString());
+			kq = false;
+		}
+		return kq;
+	}
+	
 	@Transactional(readOnly = true)
 	public ArrayList<Product> getListDiscountProducts()
 	{
@@ -110,6 +122,18 @@ public class ProductDaoImpl extends DaoSupport implements ProductDao{
 			String s = ex.getMessage();
 		}
 		return numsize;
+	}
+
+	@Transactional
+	public boolean deleteProduct(Product product) {
+		 boolean kq = true;
+	        try {
+	            sessionFactory.getCurrentSession().delete(product);
+	        } catch (Exception ex) {
+	            System.out.println(ex.toString());
+	            kq = false;
+	        }
+	        return kq;
 	}
     
 }

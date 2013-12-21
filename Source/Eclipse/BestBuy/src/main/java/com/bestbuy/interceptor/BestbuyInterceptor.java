@@ -7,11 +7,17 @@ package com.bestbuy.interceptor;
 import java.util.ArrayList;
 
 import com.bestbuy.dao.AccountDao;
+import com.bestbuy.dao.ManufacturerDao;
 import com.bestbuy.dao.OrderStateDao;
+import com.bestbuy.dao.ProductstateDao;
+import com.bestbuy.dao.ProducttypeDao;
 import com.bestbuy.model.AccountModel;
 import com.bestbuy.model.CommentModel;
 import com.bestbuy.pojo.Account;
+import com.bestbuy.pojo.Manufacturer;
 import com.bestbuy.pojo.Orderstate;
+import com.bestbuy.pojo.Productstate;
+import com.bestbuy.pojo.Producttype;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -37,8 +43,20 @@ public class BestbuyInterceptor implements HandlerInterceptor {
 	OrderStateDao orderStateDao = (OrderStateDao) context
 			.getBean("orderStateDao");
 	AccountDao accountDao = (AccountDao) context.getBean("accountDao");
+	ProductstateDao productstateDao = (ProductstateDao) context
+			.getBean("productstateDao");
+	ProducttypeDao producttypeDao = (ProducttypeDao) context
+			.getBean("producttypeDao");
+	ManufacturerDao manufacturerDao = (ManufacturerDao) context
+			.getBean("manufacturerDao");
 
 	ArrayList<Orderstate> orderstates = new ArrayList<Orderstate>();
+	ArrayList<Manufacturer> listManufacturers = manufacturerDao
+			.getListManufacturers();
+	ArrayList<Producttype> lisProducttypes = producttypeDao
+			.getListProducttypes();
+	ArrayList<Productstate> listProductstates = productstateDao
+			.getListProductstates();
 
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
@@ -51,7 +69,11 @@ public class BestbuyInterceptor implements HandlerInterceptor {
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 
+		request.setAttribute("listManufacturers", listManufacturers);
+		request.setAttribute("listProducttypes", lisProducttypes);
+		request.setAttribute("listProductstates", listProductstates);		
 		request.setAttribute("OrderStates", orderstates);
+		
 		if (request.getAttribute("account") == null) {
 			request.setAttribute("account", new AccountModel());
 		}

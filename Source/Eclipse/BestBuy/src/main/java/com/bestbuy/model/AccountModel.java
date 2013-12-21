@@ -7,8 +7,10 @@ package com.bestbuy.model;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.ScriptAssert;
+import org.springframework.format.annotation.NumberFormat;
 
 /**
  * 

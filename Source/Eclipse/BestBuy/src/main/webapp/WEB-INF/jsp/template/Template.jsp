@@ -19,6 +19,7 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Arvo:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/redmond/jquery-ui.css" />
         
+        
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery-1.8.2.min.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/css3-mediaqueries.js"></script><!--mediaqueries-->
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/modernizr-1.7.min.js"></script><!--modernizr-->
@@ -37,6 +38,8 @@
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/productview.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/custom.js"></script><!--custom-->
         <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<%--         <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ckeditor.js"></script> <!--CKEditor--> --%>
+        
         
         <!--MENU-->
         <script type="text/javascript">

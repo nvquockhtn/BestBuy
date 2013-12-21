@@ -1,14 +1,10 @@
 package com.bestbuy.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-import com.bestbuy.pojo.Comment;
-import com.bestbuy.pojo.Image;
-import com.bestbuy.pojo.Manufacturer;
-import com.bestbuy.pojo.Orderdetail;
-import com.bestbuy.pojo.Productstate;
-import com.bestbuy.pojo.Producttype;
+import org.springframework.format.annotation.NumberFormat;
+
 
 public class ProductModel {
 	private int id  =-1;
@@ -24,6 +20,57 @@ public class ProductModel {
     private int fromprice = -1;
     private int endprice = -1;
     private int page = 1;
+    
+    
+    private String name;
+    /**
+	 * @return the name
+	 */
+    
+    @NotNull
+	@Size(min = 1, max = 500)
+	public String getName() {
+		return name;
+	}
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+	/**
+	 * @return the smallImgPath
+	 */
+	
+	@NotNull
+	@Size(min = 1, max = 200)	
+	public String getSmallImgPath() {
+		return smallImgPath;
+	}
+	/**
+	 * @param smallImgPath the smallImgPath to set
+	 */
+	public void setSmallImgPath(String smallImgPath) {
+		this.smallImgPath = smallImgPath;
+	}
+	/**
+	 * @return the largeImgPath
+	 */
+	
+	@NotNull
+	@Size(min = 1, max = 200)
+	public String getLargeImgPath() {
+		return largeImgPath;
+	}
+	/**
+	 * @param largeImgPath the largeImgPath to set
+	 */
+	public void setLargeImgPath(String largeImgPath) {
+		this.largeImgPath = largeImgPath;
+	}
+	private String smallImgPath;
+    private String largeImgPath;
+    
     
 	public int getPage() {
 		return page;
@@ -88,12 +135,14 @@ public class ProductModel {
 	public void setSpecification(String specification) {
 		this.specification = specification;
 	}
+	
 	public int getPrice() {
 		return price;
 	}
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	
 	public float getDiscount() {
 		return discount;
 	}

@@ -46,6 +46,18 @@
         <put-attribute name="title" value="Products" />
         <put-attribute name="content_main" value="/WEB-INF/jsp/page/ProductContent.jsp"/>
     </definition>    
+    <definition name="AddProduct" extends="Page">
+        <put-attribute name="title" value="Add Product" />
+        <put-attribute name="content_main" value="/WEB-INF/jsp/page/AddProductContent.jsp"/>
+    </definition>    
+    <definition name="EditProduct" extends="Page">
+        <put-attribute name="title" value="Add Product" />
+        <put-attribute name="content_main" value="/WEB-INF/jsp/page/EditProductContent.jsp"/>
+    </definition>    
+    <definition name="ConfirmDeleteProduct" extends="Page">
+        <put-attribute name="title" value="Add Product" />
+        <put-attribute name="content_main" value="/WEB-INF/jsp/page/ConfirmDeleteProductContent.jsp"/>
+    </definition>    
     <definition name="ProductDetail" extends="Page">
         <put-attribute name="title" value="Products Detail" />
         <put-attribute name="content_main" value="/WEB-INF/jsp/page/ProductDetailContent.jsp"/>

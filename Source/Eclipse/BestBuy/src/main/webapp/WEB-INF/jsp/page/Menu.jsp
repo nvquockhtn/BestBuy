@@ -102,7 +102,7 @@
         <li><a href="${pageContext.request.contextPath}/Product/GetProducts.do?page=1&idproducttype=1">Promotions</a></li>
         <c:if test = "${sessionScope.Account != null}">
 			<c:if test="${sessionScope.Account.accounttype.id==1}">
-				<li><a href="">Admin manager</a>
+				<li><a>Admin manager</a>
 					<ul>
 						<li><a href="${pageContext.request.contextPath}/Customer/Administrator/GetCustomer.do?page=1">Customers</a></li>
 						<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do?page=1">Products</a></li>

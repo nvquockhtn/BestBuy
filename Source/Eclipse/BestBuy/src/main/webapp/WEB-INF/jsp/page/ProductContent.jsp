@@ -115,7 +115,7 @@
 							</c:when>
 							<c:otherwise>
 								<li><a href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${item.id}" class="cart tip" title="Add to Cart"></a></li>
-		                        <li><a href="wishlist.html" class="wishlist tip" title="Add to Wishlist"></a></li>
+		                        <li><a href="${pageContext.request.contextPath}/WishList/Add.do?maSP=${item.id}" class="wishlist tip" title="Add to Wishlist"></a></li>
 		                        <li><a href="${pageContext.request.contextPath}/ProductCompare/AddProductToListCompare.do?idProduct=${item.id}" class="compare tip" title="Compare"></a></li>                        
 		                    	
 							</c:otherwise>

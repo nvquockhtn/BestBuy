@@ -20,7 +20,7 @@
 			modelAttribute="CustomerSeleted">
 			<h3>Update Account</h3>
 			<c:if test="${requestScope.error.equals('')==false}">
-				<h4>${requestScope.error}</h4>
+				<h4 style="color: red;">${requestScope.error}</h4>
 			</c:if>
 			
 			<form:hidden path="u_idAccount" value = "${CustomerSeleted.u_idAccount }"/>

@@ -162,7 +162,7 @@ public class CustomerController {
 	public String postUpdateCustomer(@ModelAttribute("CustomerFilterModel") AccountFilterModel customerfilterModel,@ModelAttribute("CustomerSeleted")@Valid UpdateAccountModel acc,BindingResult result,Model model)
 	{
 		
-		if(acc.getU_isBlock()==false&&acc.getU_isActive()==false)
+		if(acc.getU_isBlock()==true||acc.getU_isActive()==false)
 		{
 			if(acc.getU_accounttype()==1)
 			{

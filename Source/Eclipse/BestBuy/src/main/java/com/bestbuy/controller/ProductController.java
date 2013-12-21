@@ -186,6 +186,7 @@ public class ProductController {
 		{
 			Productstate productstate = productstateDao.getProductstateById(form.getIdproductstateChange());
 			productUpdate.setProductstate(productstate);
+			productUpdate.setDiscount(form.getDiscountChange());
 			productDao.updateProduct(productUpdate);
 		}
 		return "redirect:/Product/Admin/ProductManager.do";

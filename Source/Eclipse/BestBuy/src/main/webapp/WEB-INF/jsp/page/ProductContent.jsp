@@ -101,13 +101,23 @@
                 <section class="right">
                     <span class="price"><small>Price: </small>&nbsp;&nbsp; ${item.price}</span>
                     <ul class="menu-button">
-                        <li><a href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${item.id}" class="cart tip" title="Add to Cart"></a></li>
-                        <li><a href="${pageContext.request.contextPath}/resources/images/${imageURL.path}" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom"></a></li>
-                        <li><a href="wishlist.html" class="wishlist tip" title="Add to Wishlist"></a></li>
-                        <!-- <li><a href="compare.html" class="compare tip" title="Compare"></a></li> -->
-                        <li><a href="${pageContext.request.contextPath}/ProductCompare/AddProductToListCompare.do?idProduct=${item.id}" class="compare tip" title="Compare"></a></li>
                         <li><a href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.id}" class="link tip" title="View Detail"></a></li>
-                    </ul>
+                        <li><a href="${pageContext.request.contextPath}/resources/images/${imageURL.path}" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom"></a></li>
+                        <c:choose>
+							<c:when test="${sessionScope.Account!=null &&  sessionScope.Account.accounttype.id==1}">
+								<li><a href="${pageContext.request.contextPath}/Product/Admin/Add.do" class="cart tip" title="Create Product"></a></li>
+		                        <li><a href="${pageContext.request.contextPath}/Product/Admin/Edit.do?productId=${item.id}" class="wishlist tip" title="Edit"></a></li>
+		                        <li><a href="${pageContext.request.contextPath}/Product/Admin/Delete.do?productId=${item.id}" class="compare tip" title="Delete"></a></li>                        
+		                    	
+							</c:when>
+							<c:otherwise>
+								<li><a href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${item.id}" class="cart tip" title="Add to Cart"></a></li>
+		                        <li><a href="wishlist.html" class="wishlist tip" title="Add to Wishlist"></a></li>
+		                        <li><a href="${pageContext.request.contextPath}/ProductCompare/AddProductToListCompare.do?idProduct=${item.id}" class="compare tip" title="Compare"></a></li>                        
+		                    	
+							</c:otherwise>
+						</c:choose> 
+                        </ul>
                 </section>
             </li>
         	</c:forEach>

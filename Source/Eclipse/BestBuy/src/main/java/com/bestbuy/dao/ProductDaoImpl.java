@@ -35,11 +35,6 @@ public class ProductDaoImpl extends DaoSupport implements ProductDao{
 		return kq;
 	}
 	
-	@Transactional(readOnly = true)
-	public ArrayList<Product> getListDiscountProducts()
-	{
-		return null;
-	}
 
 	@Transactional(readOnly = true)
 	public ArrayList<Product> getListNewProducts(int type) {
@@ -134,6 +129,46 @@ public class ProductDaoImpl extends DaoSupport implements ProductDao{
 	            kq = false;
 	        }
 	        return kq;
+	}
+	@Transactional(readOnly=true)
+	public ArrayList<Product> getProductDiscountDesc() {
+		ArrayList<Product> listProductDiscounts = new ArrayList<Product>();
+		try
+		{
+			String hql = "from Product s left outer join fetch s.productstate where s.productstate.id= 4";
+	        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+	        query.setFirstResult(0);
+	        query.setMaxResults(2);
+	        listProductDiscounts = (ArrayList<Product>) query.list();
+	        for(int i=0;i<listProductDiscounts.size();i++)
+	        {
+	        	Hibernate.initialize(listProductDiscounts.get(i).getImages());
+	        }
+		}catch(Exception ex)
+		{
+			
+		}
+		return listProductDiscounts;
+	}
+	@Transactional(readOnly=true)
+	public ArrayList<Product> getProductNew() {
+		ArrayList<Product> listProductDiscounts = new ArrayList<Product>();
+		try
+		{
+			String hql = "from Product s order by s.discount";
+	        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+	        query.setFirstResult(0);
+	        query.setMaxResults(2);
+	        listProductDiscounts = (ArrayList<Product>) query.list();
+	        for(int i=0;i<listProductDiscounts.size();i++)
+	        {
+	        	Hibernate.initialize(listProductDiscounts.get(i).getImages());
+	        }
+		}catch(Exception ex)
+		{
+			
+		}
+		return listProductDiscounts;
 	}
     
 }

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,8 @@ import com.bestbuy.pojo.Product;
 @Controller
 @RequestMapping("/WishList")
 public class WishListController {
+	private static final Logger logger = Logger.getLogger(WishListController.class);	
+	
 	ApplicationContext context = new ClassPathXmlApplicationContext(
 			"beans-hibernate.xml");
 	ProductDao productDao = (ProductDao) context.getBean("productDao");
@@ -38,6 +41,11 @@ public class WishListController {
 	@RequestMapping(value = { "/Index.do" }, method = RequestMethod.GET)
 	public String index(Model model, HttpSession session) {
 		GetWishList(session);
+		
+		/*Begin Log*/
+		logger.warn("nguoi dung xem danh sach wishlish");
+		/*End Log*/
+		
 		return "WishList";
 	}
 
@@ -48,6 +56,11 @@ public class WishListController {
 		ArrayList<Product> wishList = GetWishList(session);
 
 		AddToWishListAction(maSP, wishList);
+		
+		/*Begin Log*/
+		logger.warn("nguoi dung them san pham vao wishlish, id san pham:" + maSP);
+		/*End Log*/
+		
 		return "WishList";
 	}
 
@@ -82,6 +95,10 @@ public class WishListController {
 		ArrayList<Product> shopCart = GetWishList(session);
 		DeleteItemWishListAction(maSP, shopCart);
 
+		/*Begin Log*/
+		logger.warn("nguoi dung xoa san pham khoi wishlish, id san pham:" + maSP);
+		/*End Log*/
+		
 		return "WishList";
 	}
 

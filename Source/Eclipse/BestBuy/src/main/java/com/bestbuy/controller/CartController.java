@@ -60,10 +60,10 @@ public class CartController {
 
 	@RequestMapping(value = { "/Index.do" }, method = RequestMethod.GET)
 	public String index(Model model, HttpSession session) {
-//		Account account = (Account) session.getAttribute("Account");
-//		if (account == null) {
-//			return "redirect:/Account/GetLogin.do";
-//		}
+		Account account = (Account) session.getAttribute("Account");
+		if (account == null) {
+			return "redirect:/Account/GetLogin.do";
+		}
 
 		ArrayList<ProductInCart> shopCart = GetShoppingCart(session);
 
@@ -122,15 +122,20 @@ public class CartController {
 
 	@RequestMapping(value = { "/Delete.do" }, method = RequestMethod.GET)
 	public String DeleteProduct(@RequestParam("maSP") Integer maSP,
-			Model model, HttpSession session) {
+			Model model, HttpSession session,final RedirectAttributes redirectAttributes) {
 		Account account = (Account) session.getAttribute("Account");
 		if (account == null) {
-			return "redirect:/Account/GetLogin.do";
+			redirectAttributes.addAttribute("maSP", maSP);
+			return "redirect:/Cart/Delete.do";
 		}
 
 		ArrayList<ProductInCart> shopCart = GetShoppingCart(session);
 		DeleteItemCartAction(maSP, shopCart);
 
+		/*Begin Log*/
+		logger.warn(account.getUsername() + " "+ "xoa san pham khoi gio hang, id san pham:" + maSP);
+		/*End Log*/
+		
 		return "ShoppingCart";
 	}
 
@@ -149,16 +154,21 @@ public class CartController {
 	@RequestMapping(value = { "/Update.do" }, method = RequestMethod.GET)
 	public String UpdateAndLiquidateProduct(
 			@RequestParam(value = "soLuong", required = false) String[] soLuong,
-			Model model, HttpSession session) throws IOException {
+			Model model, HttpSession session,final RedirectAttributes redirectAttributes) throws IOException {
 		Account account = (Account) session.getAttribute("Account");
 		if (account == null) {
-			return "redirect:/Account/GetLogin.do";
+			redirectAttributes.addAttribute("soLuong", soLuong);
+			return "redirect:/Cart/Update.do";
 		}
 
 		ArrayList<ProductInCart> shopCart = GetShoppingCart(session);
 
 		UpdateCartAction(soLuong, shopCart);
 
+		/*Begin Log*/
+		logger.warn(account.getUsername() + " "+ "update gio hang");
+		/*End Log*/
+		
 		return "ShoppingCart";
 	}
 
@@ -172,6 +182,8 @@ public class CartController {
 	private String Checkout(@ModelAttribute("receiverModel") Receiver receiverModel, Model model, HttpSession session)
 	{
 		ArrayList<ProductInCart> shopCart = GetShoppingCart(session);
+		
+		
 		return "Checkout";
 	}
 	@RequestMapping(value = { "/SaveCheckout.do" }, method = RequestMethod.POST)
@@ -183,6 +195,10 @@ public class CartController {
 		Account acc = (Account) session.getAttribute("Account");
 		if(acc!=null)
 		{
+			/*Begin Log*/
+			logger.warn(acc.getUsername() + " "+ "checkout");
+			/*End Log*/
+			
 			if(shopCart.size()>0)
 			{
 				Receiver receiver = new Receiver();

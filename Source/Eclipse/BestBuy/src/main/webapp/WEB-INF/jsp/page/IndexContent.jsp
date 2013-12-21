@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <div class="container-2">
     <section class="content">
         <div class="list_work">
@@ -20,8 +21,16 @@
             		</c:forEach>
             		<li>
 	                    <img src="${pageContext.request.contextPath}/resources/images/${imageURL.path }" alt="" />
-	                    <span>${item.name }<br><small class="sale">Price: </small>&nbsp;&nbsp;<small>${item.price }</small></span>
-	                    <span class="sale">Sale</span>
+	                    <span>${item.name }<br><small class="sale" style="text-decoration: none;">Price: </small>&nbsp;&nbsp;<small><fmt:formatNumber type="number"
+								value="${item.price}" /> VND</small></span>
+	                    <span class="sale">
+	                    	<c:if test = "${item.discount!=0 }">
+	                    		Saleoff
+	                    	</c:if>
+	                    	<c:if test = "${item.discount==0 }">
+	                    		Sale
+	                    	</c:if>
+	                    </span>
 	                    <article class="da-animate da-slideFromRight" style="display: block;">
 	                        <h3>${item.name }</h3>
 	                        <p>
@@ -45,7 +54,7 @@
             		</c:forEach>
             			<li>
 		                    <img src="${pageContext.request.contextPath}/resources/images/${imageURL.path }" alt="" />
-		                    <span>${item.name }<br><small class="sale">Price: </small>&nbsp;&nbsp;<small>${item.price }</small></span>
+		                    <span>${item.name }<br><small class="sale" style = "text-decoration: none;">Price: </small>&nbsp;&nbsp;<small >${item.price }</small></span>
 		                    <span class="sale">Sale</span>
 		                    <ul>
 		                        <li><a href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${item.id}" class="cart tip" title="Add to Cart">Cart</a></li>

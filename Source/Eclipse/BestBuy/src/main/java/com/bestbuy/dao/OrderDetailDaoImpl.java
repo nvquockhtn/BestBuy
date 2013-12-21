@@ -2,6 +2,7 @@ package com.bestbuy.dao;
 
 import java.util.ArrayList;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,17 +60,21 @@ public class OrderDetailDaoImpl extends DaoSupport implements OrderDetailDao {
 	}
 	@Transactional
 	public ArrayList<Orderdetail> getListOrderdetailByIdOrder(int IdOrder) {
-		ArrayList<Orderdetail> listAccount = new ArrayList<Orderdetail>();
+		ArrayList<Orderdetail> listOrderdetails = new ArrayList<Orderdetail>();
 		try
 		{
 			String hql = "from Orderdetail s left join fetch s.order where s.order.id="+ IdOrder;
 	        Query query = sessionFactory.getCurrentSession().createQuery(hql);
-	        listAccount = (ArrayList<Orderdetail>) query.list();
+	        listOrderdetails = (ArrayList<Orderdetail>) query.list();
+	        for(int i=0;i<listOrderdetails.size();i++)
+	        {
+	        	Hibernate.initialize(listOrderdetails.get(i).getProduct());
+	        }
 		}catch(Exception ex)
 		{
 			
 		}
-		return listAccount;
+		return listOrderdetails;
 	}
 
 }

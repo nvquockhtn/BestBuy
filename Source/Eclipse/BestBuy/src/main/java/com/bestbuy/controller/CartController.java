@@ -177,6 +177,8 @@ public class CartController {
 	@RequestMapping(value = { "/SaveCheckout.do" }, method = RequestMethod.POST)
 	private String SaveCheckout(@ModelAttribute("receiverModel")@Valid Receiver receiverModel,BindingResult result, Model model, HttpSession session)
 	{
+		if(result.hasErrors())
+			return "Checkout";
 		ArrayList<ProductInCart> shopCart = GetShoppingCart(session);
 		Account acc = (Account) session.getAttribute("Account");
 		if(acc!=null)
@@ -198,7 +200,8 @@ public class CartController {
 					Order order = createOrderInfor(acc, receiver, shopCart);
 					createOrderDetail(order,shopCart);
 					session.removeAttribute("ShoppingCart");
-					return "HistoryCheckout";
+					String s = "redirect:/Account/HistoryCheckout.do?idOrder=" +order.getId(); 
+					return "redirect:/Account/HistoryCheckout.do";
 				}else
 				{
 					return "Checkout";
@@ -253,6 +256,14 @@ public class CartController {
 		ArrayList<ProductInCart> shopCart = GetShoppingCart(session);
 		DeleteItemCartAction(1,shopCart);
 		return "redirect:/Cart/Checkout.do";
+	}
+	@RequestMapping(value = { "/HistoryCheckout.do" }, method = RequestMethod.GET)
+	public String ShoppingHistory(Model model,@RequestParam("idOrder") Integer idOrder, HttpSession session)
+	{
+		ArrayList<Orderdetail> listorderdetails = orderDetailDao.getListOrderdetailByIdOrder(idOrder);
+		String name = listorderdetails.get(0).getProduct().getName();
+		model.addAttribute("listorderdetails", listorderdetails);
+		return "HistoryCheckout";
 	}
 	/*
 	@RequestMapping(value = { "/Liquidate.do" }, method = RequestMethod.GET)

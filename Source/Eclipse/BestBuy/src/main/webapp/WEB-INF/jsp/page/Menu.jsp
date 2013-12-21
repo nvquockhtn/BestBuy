@@ -93,7 +93,9 @@
 <!--                 <li><a href="Templates/404page.html">404 Error Page</a></li> -->
 <!--             </ul> -->
 <!--         </li> -->
-        <li><a href="${pageContext.request.contextPath}/Product/GetProducts.do">Search</a></li>
-        <li><a href="${pageContext.request.contextPath}/Order/Index.do">MyOrder</a></li>
+        <li><a href="${pageContext.request.contextPath}/Product/GetProducts.do?page=1&idproducttype=1">Laptops</a></li>
+        <li><a href="${pageContext.request.contextPath}/Product/GetProducts.do?page=1&idproducttype=2">Taplets</a></li>
+        <li><a href="${pageContext.request.contextPath}/Product/GetProducts.do?page=1&idproducttype=3">Desktops</a></li>
+        <li><a href="${pageContext.request.contextPath}/Product/GetProducts.do?page=1&idproducttype=1">Promotions</a></li>
     </ul>
 </nav><!--end:grey-->

@@ -121,6 +121,7 @@ public class ProductController {
 			@ModelAttribute("productStateChange") ProductChangeModel formChange,
 			Model model) {
 
+		
 		model.addAttribute("listManufacturers", listManufacturers);
 		model.addAttribute("listProducttypes", lisProducttypes);
 		model.addAttribute("listFromPrices", listFromPrices);

@@ -90,6 +90,11 @@ public class ProductController {
 
 		model.addAttribute("Product", product);
 		model.addAttribute("AvarageRating", avarageRating);
+		
+		/*Begin Log*/
+		logger.warn("nguoi dung xem chi tiet san pham, id san pham =" + maSP);
+		/*End Log*/
+		
 		return "ProductDetail";
 	}
 
@@ -115,6 +120,11 @@ public class ProductController {
 			}
 		}
 		model.addAttribute("pageCount", pageCount);
+		
+		/*Begin Log*/
+		logger.warn("nguoi dung xem danh sach san pham");
+		/*End Log*/
+		
 		return "Product";
 	}
 

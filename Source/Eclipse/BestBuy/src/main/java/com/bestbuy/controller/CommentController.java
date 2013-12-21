@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.hibernate.classic.Session;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -25,6 +26,8 @@ import com.bestbuy.pojo.Comment;
 @Controller
 @RequestMapping("/Comment")
 public class CommentController {
+	private static final Logger logger = Logger.getLogger(CommentController.class);	
+	
 	ApplicationContext context = new ClassPathXmlApplicationContext(
 			"beans-hibernate.xml");
 	CommentDao commentDao = (CommentDao) context.getBean("commentDao");

@@ -54,7 +54,8 @@
             		</c:forEach>
             			<li>
 		                    <img src="${pageContext.request.contextPath}/resources/images/${imageURL.path }" alt="" />
-		                    <span>${item.name }<br><small class="sale" style = "text-decoration: none;">Price: </small>&nbsp;&nbsp;<small >${item.price }</small></span>
+		                    <span>${item.name }<br><small class="sale" style = "text-decoration: none;">Price: </small>&nbsp;&nbsp;<small ><fmt:formatNumber type="number"
+								value="${item.price }" /> VND</small></span>
 		                    <span class="sale">Sale</span>
 		                    <ul>
 		                        <li><a href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${item.id}" class="cart tip" title="Add to Cart">Cart</a></li>
@@ -92,7 +93,7 @@
             					</c:forEach>
 	                        <img src="${pageContext.request.contextPath}/resources/images/${imageURL.path}" alt="" width="85px" height="75px">
 	                        <article class="da-animate da-slideFromRight" style="display: block;">
-	                            <p><a href="product-detail.html" class="link"></a></p>
+	                            <p><a href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.id}" class="link"></a></p>
 	                        </article>
 	                    </div>
 	                </div>
@@ -118,7 +119,7 @@
                     <div>
                         <img src="${pageContext.request.contextPath}/resources/images/${imageURL.path}" alt="">
                         <article class="da-animate da-slideFromRight" style="display: block;">
-                            <p><a href="blog.html" class="link"></a></p>
+                            <p><a href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.id}" class="link"></a></p>
                         </article>
                     </div>
                 </div>

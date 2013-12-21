@@ -47,7 +47,7 @@
 				<c:forEach var="item" items="${requestScope.Orders}" varStatus="status">
 					<tr>
 						<td class="image">${status.index}</td>
-						<td class="name"><a href="${pageContext.request.contextPath}/"><fmt:formatDate value="${item.createDate}" type="both"/></a></td>						
+						<td class="name"><a href="${pageContext.request.contextPath}/Cart/HistoryCheckout.do?idOrder=${item.id}"><fmt:formatDate value="${item.createDate}" type="both"/></a></td>						
 						<td class="total"><fmt:formatNumber type="number"
 								value="${item.total}" />
 							VND</td>

@@ -6,7 +6,9 @@ package com.bestbuy.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -237,8 +239,8 @@ public class CartController {
 			total += item.getQuantity() * item.getProduct().getPrice();
 		}
 		Order order = new Order();
-		Date date = new Date();
-		order.setCreateDate(date);
+		Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT 7:00"));
+		order.setCreateDate(calendar.getTime());
 		order.setAccount(acc);
 		order.setTotal(total);
 		Orderstate orderstate = new Orderstate();

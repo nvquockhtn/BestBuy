@@ -70,31 +70,7 @@
 		</table>
 	</form>
 	<div class="contentbox">
-		<div class="cartoptionbox one-half first">
-			<h4>Choose if you have a discount code or reward points you want
-				to use or would like to estimate your delivery cost.</h4>
-			<input type="radio" class="radio"> <span>Use Coupon
-				Code</span> <br> <input type="radio" class="radio"> <span>Use
-				Gift Voucher</span> <br> <input type="radio" class="radio"
-				checked="checked"> <span>Estimate Shipping &amp;
-				Taxes</span> <br> <br>
-			<form action="#" class="ship">
-				<h4>Enter your destination to get a shipping estimate.</h4>
-				<fieldset>
-					<div class="control-group">
-						<label>Select list</label> <select class="span3 cartcountry">
-							<option>Country:</option>
-							<option>Philippines</option>
-							<option>United States</option>
-						</select> <select class="span3 cartstate">
-							<option>Region / State:</option>
-							<option>Manila</option>
-							<option>Los Angeles</option>
-						</select> <input type="submit" value="Submit" class="submit">
-					</div>
-				</fieldset>
-			</form>
-		</div>
+		
 		<!--cartoptionbox-->
 		<div class="alltotal one-half">
 			<table class="alltotal">

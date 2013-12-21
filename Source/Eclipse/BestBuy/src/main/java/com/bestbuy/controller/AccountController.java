@@ -4,7 +4,12 @@
  */
 package com.bestbuy.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 import com.bestbuy.dao.AccountDao;
 import com.bestbuy.dao.ProductDao;
@@ -60,7 +65,9 @@ public class AccountController {
 	@RequestMapping(value = { "/GetRegistration.do" }, method = RequestMethod.GET)
 	public String getRegistrationForm(
 			@ModelAttribute("account") AccountModel form, Model model) {
-logger.warn("Nguoi dung dang ky tai khoan");
+		
+		logger.warn("Nguoi dung dang ky tai khoan");
+		
 		model.addAttribute("listProductDiscountDescs", listProductDiscountDescs);
 		
 		model.addAttribute("listProductNews", listProductNews);

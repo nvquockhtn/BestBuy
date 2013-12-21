@@ -17,9 +17,9 @@
 		<ul class="nav nav2">
 			<li class="nav-one"><a href="#checkout" class="current">
 					Checkout Option</a></li>
-			<li class="nav-two"><a href="#billing"> Billing Details</a></li>
 			<li class="nav-five"><a href="#payment"> Payment Method</a></li>
 			<li class="nav-six"><a href="#confirm"> Confirm Order</a></li>
+			<li class="nav-two"><a href="#billing"> Billing Details</a></li>
 		</ul>
 		<div class="list-wrap checkoutbox">
 			<div id="checkout">

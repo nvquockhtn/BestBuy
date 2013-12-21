@@ -20,6 +20,7 @@ import com.bestbuy.dao.BestBuyHelperDao;
 import com.bestbuy.dao.CommentDao;
 import com.bestbuy.dao.OrderDao;
 import com.bestbuy.dao.OrderDetailDao;
+import com.bestbuy.dao.ProductDao;
 import com.bestbuy.dao.ReceiverDao;
 import com.bestbuy.model.AccountFilterModel;
 import com.bestbuy.model.UpdateAccountModel;
@@ -28,6 +29,7 @@ import com.bestbuy.pojo.Accounttype;
 import com.bestbuy.pojo.Comment;
 import com.bestbuy.pojo.Order;
 import com.bestbuy.pojo.Orderdetail;
+import com.bestbuy.pojo.Product;
 import com.bestbuy.pojo.Receiver;
 
 
@@ -38,6 +40,7 @@ public class CustomerController {
 	ApplicationContext context = new ClassPathXmlApplicationContext(
 			"beans-hibernate.xml");
 	AccountDao accountDao = (AccountDao) context.getBean("accountDao");
+	ProductDao productDao = (ProductDao) context.getBean("productDao");
 	AccounttypeDao accounttypeDao = (AccounttypeDao) context.getBean("accounttypeDao");
 	CommentDao commentDao = (CommentDao) context.getBean("commentDao");
 	OrderDao orderDao = (OrderDao) context.getBean("orderDao");
@@ -47,6 +50,8 @@ public class CustomerController {
 	ArrayList<Account> listCustomers = new ArrayList<Account>();
 	ArrayList<Accounttype> listAccounttypes = accounttypeDao.getListAccounttypes();
 	
+	ArrayList<Product> listProductDiscountDescs = productDao.getProductDiscountDesc();
+	ArrayList<Product> listProductNews = productDao.getProductNew();
 	private String error = "";
 	private String notify = "";
 	private boolean flagPostUpdateCustomer = false;
@@ -155,6 +160,8 @@ public class CustomerController {
 		acc.setU_accounttype(account.getAccounttype().getId());
 		acc.setU_idAccount(idCustomer);
 		model.addAttribute("listAccounttypes", listAccounttypes);
+		model.addAttribute("listProductDiscountDescs", listProductDiscountDescs);
+		model.addAttribute("listProductNews", listProductNews);
 		return "CustomerManagerUpdate";
 	}
 	

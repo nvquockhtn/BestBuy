@@ -28,15 +28,15 @@ public class Account  implements java.io.Serializable {
 
      private Integer id;
      private Accounttype accounttype;
-     private String fullName;
-     private String email;
-     private String address;
+     private String fullName="";
+     private String email="";
+     private String address="";
      private String phoneNumber;
      private String company;
      private String username;
      private String password;
-     private Boolean isBlock;
-     private Boolean isActive;
+     private Boolean isBlock = false;
+     private Boolean isActive = true;
      private Set<Comment> comments = new HashSet<Comment>(0);
      private Set<Order> orders = new HashSet<Order>(0);
 

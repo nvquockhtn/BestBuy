@@ -4,6 +4,8 @@
  */
 package com.bestbuy.dao;
 
+import java.util.ArrayList;
+
 import com.bestbuy.pojo.Comment;
 
 /**
@@ -12,4 +14,7 @@ import com.bestbuy.pojo.Comment;
  */
 public interface CommentDao {
     public boolean add(Comment comment);
+    public ArrayList<Comment> getListCommentByIdAccount(int IdAccount);
+    public boolean deleteCommentByIdComment(int IdComment);
+    public Comment getCommentById(int IdComment);
 }

@@ -39,8 +39,6 @@ public class CommentController {
 		session.setAttribute("Rating", rating);
 		return "ProductDetail";
 	}
-	
-	
 	@RequestMapping(value = { "/Add.do" }, method = RequestMethod.POST)
 	public String Add(@ModelAttribute("comment") @Valid CommentModel commnentModel,BindingResult result,
 			Model model, HttpSession session) {

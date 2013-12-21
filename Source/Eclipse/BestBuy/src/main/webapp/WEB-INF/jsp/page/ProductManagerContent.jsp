@@ -111,6 +111,10 @@
                     <span class="price"><small>Price: </small>&nbsp;&nbsp; ${item.price}</span>
                     <ul class="menu-button">
                     	<form:form modelAttribute="productStateChange" action ="${pageContext.request.contextPath}/Product/Admin/ProductChangeState.do">
+                    		<div style="width: inherit; height: inherit">
+                    			<label style="float:left;display:inline">Discount: </label>
+                    			<form:input path="discountChange" cssStyle="display:block;float: left; width: 70px; margin-left: 10px;" value = "${item.discount}"/>
+                    		</div>
 							<form:select path="idproductstateChange" onchange="submitProductStateChange('${item.id }')" cssStyle="background: none;">
 	                				<form:options items = "${requestScope.listProductstates}" itemValue="id" itemLabel="name"/>
 							</form:select>

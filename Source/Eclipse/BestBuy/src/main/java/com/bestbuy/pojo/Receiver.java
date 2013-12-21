@@ -33,10 +33,10 @@ public class Receiver  implements java.io.Serializable {
 
 
      private Integer id;
-     private String fullName;
+     private String fullName = "";
      private String address;
      private String company;
-     private String email;
+     private String email="";
      private String phone;
      private Set<Order> orders = new HashSet<Order>(0);
 

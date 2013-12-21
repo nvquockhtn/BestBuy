@@ -95,4 +95,14 @@
 		<put-attribute name="content_main"
 			value="/WEB-INF/jsp/page/OrderManagementContent.jsp" />
 	</definition>
+	<definition name="CustomerManager" extends="Page">
+		<put-attribute name="title" value="Bestbuy - Orders Management" />
+		<put-attribute name="content_main"
+			value="/WEB-INF/jsp/page/CustomerManagerContent.jsp" />
+	</definition>
+	<definition name="CustomerManagerUpdate" extends="Page">
+		<put-attribute name="title" value="Bestbuy - Update Customer" />
+		<put-attribute name="content_main"
+			value="/WEB-INF/jsp/page/CustomerManagerUpdateContent.jsp" />
+	</definition>
 </tiles-definitions>

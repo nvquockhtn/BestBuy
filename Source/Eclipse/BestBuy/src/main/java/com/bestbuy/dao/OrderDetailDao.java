@@ -10,4 +10,7 @@ public interface OrderDetailDao {
     public Orderdetail getOrderDetailById(int idOrderdetail);
     public ArrayList<Orderdetail> getAllOrderDetail();
     public boolean checkExistOrderdetailById(int idOrderdetail);
+    public boolean deleteOrderdetailById(int IdOrderdetail);
+    public ArrayList<Orderdetail> getListOrderdetailByIdOrder(int IdOrder);
+    
 }

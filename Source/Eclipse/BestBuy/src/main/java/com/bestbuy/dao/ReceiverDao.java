@@ -19,4 +19,5 @@ public interface ReceiverDao {
     public boolean checkExistReceiverById(int idReceiver);
     public boolean checkExistByEmail(String email);
     public Receiver getReceiverByEmail(String email);
+    public int searchCustomerBy(String name,String email,int page, int numberinpage);
 }

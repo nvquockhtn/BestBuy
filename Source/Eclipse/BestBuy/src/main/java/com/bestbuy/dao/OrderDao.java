@@ -29,4 +29,6 @@ public interface OrderDao {
 	public boolean checkExistOrderById(int idOrder);
 
 	public boolean updateOrder(Order order);
+	
+	public boolean deleteOrderById(int idOrder);
 }

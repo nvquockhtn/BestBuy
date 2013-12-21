@@ -129,4 +129,16 @@ public class OrderDaoImpl extends DaoSupport implements OrderDao {
 
 		return (ArrayList<Order>) query.list();
 	}
+	@Transactional
+	public boolean deleteOrderById(int idOrder) {
+		Order order = getOrderById(idOrder);
+		boolean kq = true;
+		try {
+			sessionFactory.getCurrentSession().delete(order);
+		} catch (Exception ex) {
+			System.out.println(ex.toString());
+			kq = false;
+		}
+		return kq;
+	}
 }

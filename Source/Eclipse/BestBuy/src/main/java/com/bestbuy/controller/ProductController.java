@@ -190,4 +190,6 @@ public class ProductController {
 		}
 		return "redirect:/Product/Admin/ProductManager.do";
 	}
+	
+
 }

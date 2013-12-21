@@ -45,5 +45,31 @@ public class OrderDetailDaoImpl extends DaoSupport implements OrderDetailDao {
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         return query.uniqueResult() != null;
 	}
+	@Transactional
+	public boolean deleteOrderdetailById(int IdOrderdetail) {
+		Orderdetail orderdetail = getOrderDetailById(IdOrderdetail);
+		boolean kq = true;
+        try {
+            sessionFactory.getCurrentSession().delete(orderdetail);
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+            kq = false;
+        }
+        return kq;
+	}
+	@Transactional
+	public ArrayList<Orderdetail> getListOrderdetailByIdOrder(int IdOrder) {
+		ArrayList<Orderdetail> listAccount = new ArrayList<Orderdetail>();
+		try
+		{
+			String hql = "from Orderdetail s left join fetch s.order where s.order.id="+ IdOrder;
+	        Query query = sessionFactory.getCurrentSession().createQuery(hql);
+	        listAccount = (ArrayList<Orderdetail>) query.list();
+		}catch(Exception ex)
+		{
+			
+		}
+		return listAccount;
+	}
 
 }

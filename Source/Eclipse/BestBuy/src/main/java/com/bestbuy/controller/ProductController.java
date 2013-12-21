@@ -58,7 +58,10 @@ public class ProductController {
 	ArrayList<Price> listEndPrices = priceDao.getListEndPrices();
 	ArrayList<Productstate> listProductstates = productstateDao
 			.getListProductstates();
-
+	
+	ArrayList<Product> listProductDiscountDescs = productDao.getProductDiscountDesc();
+	ArrayList<Product> listProductNews = productDao.getProductNew();
+	
 	private String searchNameSelected = "";
 	private int manufacturerSelected = -1;
 	private int producttypeSelected = -1;
@@ -120,6 +123,8 @@ public class ProductController {
 			}
 		}
 		model.addAttribute("pageCount", pageCount);
+		model.addAttribute("listProductDiscountDescs", listProductDiscountDescs);
+		model.addAttribute("listProductNews", listProductNews);
 		
 		/*Begin Log*/
 		logger.warn("nguoi dung xem danh sach san pham");

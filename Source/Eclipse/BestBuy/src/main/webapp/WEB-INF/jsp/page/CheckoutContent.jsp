@@ -15,11 +15,11 @@
 	</h2>
 	<div id="tab" class="tab2">
 		<ul class="nav nav2">
-			<li class="nav-one"><a href="#checkout" class="current">1.
+			<li class="nav-one"><a href="#checkout" class="current">
 					Checkout Option</a></li>
-			<li class="nav-two"><a href="#billing">2. Billing Details</a></li>
-			<li class="nav-five"><a href="#payment">5. Payment Method</a></li>
-			<li class="nav-six"><a href="#confirm">6. Confirm Order</a></li>
+			<li class="nav-two"><a href="#billing"> Billing Details</a></li>
+			<li class="nav-five"><a href="#payment"> Payment Method</a></li>
+			<li class="nav-six"><a href="#confirm"> Confirm Order</a></li>
 		</ul>
 		<div class="list-wrap checkoutbox">
 			<div id="checkout">
@@ -117,7 +117,7 @@
 								</div>
 								<div class="control-group">
 									<div class="controls">
-										<input type="submit"  />
+										<input type="submit"  id = "idsubmit" value = "Checkout"/>
 									</div>
 								</div>
 							</fieldset>
@@ -214,9 +214,9 @@
 						<a href="${pageContext.request.contextPath}/Home/Index.do">
 							<input type="button" value="Continue Shopping" />
 						</a>
-						<a href="${pageContext.request.contextPath}/Cart/Checkout.do">
+						<%-- <a href="${pageContext.request.contextPath}/Cart/Checkout.do">
 							<input type="button" value="CheckOut" onclick="clickToSubmit()">
-						</a>
+						</a> --%>
 						
 					</div>
 					<!--end:alltotal-->
@@ -227,7 +227,7 @@
 			<script type="text/javascript">
 				function clickToSubmit()
 				{
-					$( "#idsubmit" ).submit();
+					$("#idsubmit").submit();
 				}
         	</script>
 		</div>

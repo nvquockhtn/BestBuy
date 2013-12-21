@@ -161,7 +161,8 @@ public class CustomerController {
 	@RequestMapping(value = { "/Administrator/PostUpdateCustomer.do" }, method = RequestMethod.POST)
 	public String postUpdateCustomer(@ModelAttribute("CustomerFilterModel") AccountFilterModel customerfilterModel,@ModelAttribute("CustomerSeleted")@Valid UpdateAccountModel acc,BindingResult result,Model model)
 	{
-		
+		if(result.hasErrors())
+			return "CustomerManagerUpdate";
 		if(acc.getU_isBlock()==true||acc.getU_isActive()==false)
 		{
 			if(acc.getU_accounttype()==1)

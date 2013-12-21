@@ -77,16 +77,12 @@ public class UpdateAccountModel {
 	public void setU_username(String u_username) {
 		this.u_username = u_username;
 	}
-	@NotNull
-	@Size(min = 6, max = 50)
 	public String getU_password() {
 		return u_password;
 	}
 	public void setU_password(String u_password) {
 		this.u_password = u_password;
 	}
-	@NotNull
-	@Size(min = 6, max = 50)
 	public String getU_confirmPassword() {
 		return u_confirmPassword;
 	}

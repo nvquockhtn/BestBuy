@@ -4,9 +4,13 @@
  */
 package com.bestbuy.controller;
 
+import java.util.ArrayList;
+
 import com.bestbuy.dao.AccountDao;
+import com.bestbuy.dao.ProductDao;
 import com.bestbuy.model.AccountModel;
 import com.bestbuy.pojo.Account;
+import com.bestbuy.pojo.Product;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -38,21 +42,28 @@ public class AccountController {
 	ApplicationContext context = new ClassPathXmlApplicationContext(
 			"beans-hibernate.xml");
 	AccountDao accountDao = (AccountDao) context.getBean("accountDao");
-
+	ProductDao productDao = (ProductDao) context.getBean("productDao");
+	
+	ArrayList<Product> listProductDiscountDescs = productDao.getProductDiscountDesc();
+	ArrayList<Product> listProductNews = productDao.getProductNew();
+	
 	public AccountController() {
 	}
 
 	@RequestMapping(value = { "/Index.do" }, method = RequestMethod.GET)
 	public String index(Model model) {
+		model.addAttribute("listProductDiscountDescs", listProductDiscountDescs);
+		model.addAttribute("listProductNews", listProductNews);
 		return "Account";
 	}
 
 	@RequestMapping(value = { "/GetRegistration.do" }, method = RequestMethod.GET)
 	public String getRegistrationForm(
 			@ModelAttribute("account") AccountModel form, Model model) {
+logger.warn("Nguoi dung dang ky tai khoan");
+		model.addAttribute("listProductDiscountDescs", listProductDiscountDescs);
 		
-		
-		logger.warn("Nguoi dung dang ky tai khoan");
+		model.addAttribute("listProductNews", listProductNews);
 		return "Register";
 	}
 

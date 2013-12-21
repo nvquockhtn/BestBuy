@@ -37,6 +37,9 @@ public class HomeController {
 	ArrayList<Product> listProduct = new ArrayList<Product>();
 	ArrayList<Product> listTablet = new ArrayList<Product>();
 	
+	ArrayList<Product> listProductDiscountDescs = productDao.getProductDiscountDesc();
+	ArrayList<Product> listProductNews = productDao.getProductNew();
+	
     @RequestMapping(value = {"/Index.do"}, method = RequestMethod.GET)
     public String Index(@ModelAttribute("account") AccountModel form, Model model) {
     	
@@ -48,6 +51,9 @@ public class HomeController {
     	model.addAttribute("NewTabletProduct", listTablet);
     	Authentication auth = SecurityContextHolder.getContext().getAuthentication();  
 		String name = auth.getName(); //get logged in username
+		
+		model.addAttribute("listProductDiscountDescs", listProductDiscountDescs);
+		model.addAttribute("listProductNews", listProductNews);
         return "Index";
     }
     

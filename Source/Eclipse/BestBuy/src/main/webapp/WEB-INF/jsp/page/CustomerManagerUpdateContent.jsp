@@ -34,9 +34,9 @@
 							Full Name:</label>
 						<div class="controls">
 							<form:input path="u_fullName" class="input-xlarge" />
-							<%-- <form:errors path="fullName">
-								<form:errors path="fullName" htmlEscape="false" cssClass="error"/>
-							</form:errors> --%>
+							<form:errors path="u_fullName">
+								<form:errors path="u_fullName" htmlEscape="false" cssClass="error"/>
+							</form:errors>
 						</div>
 
 					</div>
@@ -45,9 +45,9 @@
 							Email:</label>
 						<div class="controls">
 							<form:input path="u_email" class="input-xlarge" />
-							<%-- <form:errors path="email">
-								<form:errors path="email" htmlEscape="false" cssClass="error"/>
-							</form:errors> --%>
+							<form:errors path="u_email">
+								<form:errors path="u_email" htmlEscape="false" cssClass="error"/>
+							</form:errors>
 						</div>
 					</div>
 					<div class="control-group">
@@ -55,9 +55,9 @@
 							Telephone:</label>
 						<div class="controls">
 							<form:input path="u_phoneNumber" class="input-xlarge" />
-							<%-- <form:errors path="u_phoneNumber">
+							<form:errors path="u_phoneNumber">
 								<form:errors path="u_phoneNumber" htmlEscape="false" cssClass="error"/>
-							</form:errors> --%>
+							</form:errors>
 						</div>
 					</div>
 				</fieldset>
@@ -68,16 +68,19 @@
 						<label class="control-label"> Company:</label>
 						<div class="controls">
 							<form:input path="u_company" class="input-xlarge" />
+							<form:errors path="u_company">
+								<form:errors path="u_company" htmlEscape="false" cssClass="error"/>
+							</form:errors>
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label"><span class="red">*</span>
-							Address 1:</label>
+							Address:</label>
 						<div class="controls">
 							<form:input path="u_address" class="input-xlarge" />
-							<%-- <form:errors path="address">
-								<form:errors path="address" htmlEscape="false" cssClass="error"/>
-							</form:errors> --%>
+							<form:errors path="u_address">
+								<form:errors path="u_address" htmlEscape="false" cssClass="error"/>
+							</form:errors>
 						</div>
 					</div>
 				</fieldset>
@@ -89,9 +92,9 @@
 							User name:</label>
 						<div class="controls">
 							<form:input path="u_username" class="input-xlarge" />
-							<%-- <form:errors path="username">
-								<form:errors path="username" htmlEscape="false" cssClass="error"/>
-							</form:errors> --%>
+							<form:errors path="u_username">
+								<form:errors path="u_username" htmlEscape="false" cssClass="error"/>
+							</form:errors>
 						</div>
 					</div>
 					<div class="control-group">

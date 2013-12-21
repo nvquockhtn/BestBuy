@@ -23,6 +23,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.apache.log4j.Logger;
 
 /**
  * 
@@ -32,6 +33,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/Account")
 public class AccountController {
 
+	private static final Logger logger = Logger.getLogger(AccountController.class);
+	
 	ApplicationContext context = new ClassPathXmlApplicationContext(
 			"beans-hibernate.xml");
 	AccountDao accountDao = (AccountDao) context.getBean("accountDao");
@@ -47,6 +50,9 @@ public class AccountController {
 	@RequestMapping(value = { "/GetRegistration.do" }, method = RequestMethod.GET)
 	public String getRegistrationForm(
 			@ModelAttribute("account") AccountModel form, Model model) {
+		
+		
+		logger.warn("Nguoi dung dang ky tai khoan");
 		return "Register";
 	}
 

@@ -11,6 +11,7 @@ import java.util.Date;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bestbuy.dao.OrderDao;
 import com.bestbuy.dao.OrderDetailDao;
@@ -44,6 +46,8 @@ import com.bestbuy.pojo.Receiver;
 @Controller
 @RequestMapping("/Cart")
 public class CartController {
+	private static final Logger logger = Logger.getLogger(CartController.class);
+	
 	ApplicationContext context = new ClassPathXmlApplicationContext(
 			"beans-hibernate.xml");
 	ProductDao productDao = (ProductDao) context.getBean("productDao");
@@ -81,12 +85,16 @@ public class CartController {
 
 	@RequestMapping(value = { "/Add.do" }, method = RequestMethod.GET)
 	public String AddProduct(@RequestParam("maSP") Integer maSP, Model model,
-			HttpSession session) {
-//		Account account = (Account) session.getAttribute("Account");
-//		if (account == null) {
-//			return "redirect:/Account/GetLogin.do";
-//		}
+			HttpSession session,final RedirectAttributes redirectAttributes) {
+		Account account = (Account) session.getAttribute("Account");
+		if (account == null) {
+			redirectAttributes.addAttribute("maSP", maSP);
+			return "redirect:/Cart/Add.do";
+		}
 
+		/*Begin Log*/
+		logger.warn(account.getUsername() + " "+ "them san pham vao gio hang, id san pham:" + maSP);
+		/*End Log*/
 		ArrayList<ProductInCart> shopCart = GetShoppingCart(session);
 
 		AddToCartAction(maSP, shopCart);
@@ -95,6 +103,7 @@ public class CartController {
 
 	private void AddToCartAction(Integer maSp, ArrayList<ProductInCart> shopCart)
 			throws NumberFormatException {
+		
 		int i = 0;
 		for (i = 0; i < shopCart.size(); i++) {
 			ProductInCart item = shopCart.get(i);

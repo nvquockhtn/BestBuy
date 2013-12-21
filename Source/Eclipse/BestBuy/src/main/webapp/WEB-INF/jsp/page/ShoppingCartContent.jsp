@@ -47,7 +47,7 @@
 								width="50"></a></td>
 						<td class="name"><a href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.getProduct().getId()}">${item.getProduct().getName()}</a></td>
 						<td class="model">${item.getProduct().productstate.getName()}</td>
-						<td class="quantity"><input type="text" size="1"
+						<td class="quantity"><input type="number" size="1"
 							value="${item.getQuantity()}" name="soLuong" class="span1"></td>
 						<td class="price"><fmt:formatNumber type="number"
 								value="${item.getProduct().getPrice()}" /> VND</td>

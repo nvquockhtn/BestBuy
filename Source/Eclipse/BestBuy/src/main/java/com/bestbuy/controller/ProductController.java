@@ -123,6 +123,8 @@ public class ProductController {
 			}
 		}
 		model.addAttribute("pageCount", pageCount);
+		
+		
 		model.addAttribute("listProductDiscountDescs", listProductDiscountDescs);
 		model.addAttribute("listProductNews", listProductNews);
 		
@@ -194,6 +196,8 @@ public class ProductController {
 			}
 		}
 		model.addAttribute("pageCount", pageCount);
+		model.addAttribute("listProductDiscountDescs", listProductDiscountDescs);
+		model.addAttribute("listProductNews", listProductNews);
 		return "ProductManager";
 	}
 

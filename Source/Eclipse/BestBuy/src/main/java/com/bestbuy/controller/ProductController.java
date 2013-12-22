@@ -108,6 +108,7 @@ public class ProductController {
 	public String getListProductAdmin(@ModelAttribute("product") ProductModel form,@ModelAttribute("productStateChange") ProductChangeModel formChange,
 			Model model) {
 
+		
 		model.addAttribute("listManufacturers", listManufacturers);
 		model.addAttribute("listProducttypes", lisProducttypes);
 		model.addAttribute("listFromPrices", listFromPrices);

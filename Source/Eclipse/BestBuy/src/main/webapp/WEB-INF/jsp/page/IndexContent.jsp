@@ -20,8 +20,15 @@
             		</c:forEach>
             		<li>
 	                    <img src="${pageContext.request.contextPath}/resources/images/${imageURL.path }" alt="" />
-	                    <span>${item.name }<br><small class="sale">Price: </small>&nbsp;&nbsp;<small>${item.price }</small></span>
-	                    <span class="sale">Sale</span>
+	                    <span>${item.name }<br><small class="sale" style="text-decoration: none;">Price: </small>&nbsp;&nbsp;<small>${item.price }</small></span>
+	                    <span class="sale">
+	                    	<c:if test = "${item.discount!=0 }">
+	                    		Saleoff
+	                    	</c:if>
+	                    	<c:if test = "${item.discount==0 }">
+	                    		Sale
+	                    	</c:if>
+	                    </span>
 	                    <article class="da-animate da-slideFromRight" style="display: block;">
 	                        <h3>${item.name }</h3>
 	                        <p>

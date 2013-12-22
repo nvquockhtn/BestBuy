@@ -94,6 +94,8 @@
 <!--             </ul> -->
 <!--         </li> -->
         <li><a href="${pageContext.request.contextPath}/Product/GetProducts.do">Search</a></li>
-        <li><a href="${pageContext.request.contextPath}/Order/Index.do">MyOrder</a></li>
+        <li><a href="${pageContext.request.contextPath}/Order/Index.do">Laptops</a></li>
+        <li><a href="${pageContext.request.contextPath}/Product/GetProducts.do">Taplet</a></li>
+        <li><a href="${pageContext.request.contextPath}/Product/GetProducts.do">Search</a></li>
     </ul>
 </nav><!--end:grey-->

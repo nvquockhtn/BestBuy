@@ -4,7 +4,10 @@
     Author     : VanQuoc-CNTT
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <nav>  
     <ul id="mega-menu-3" class="mega-menu">
         <li class="first"><a href="${pageContext.request.contextPath}/Home/Index.do" class="current">Home</a></li>
@@ -97,5 +100,16 @@
         <li><a href="${pageContext.request.contextPath}/Product/GetProducts.do?page=1&idproducttype=2">Taplets</a></li>
         <li><a href="${pageContext.request.contextPath}/Product/GetProducts.do?page=1&idproducttype=3">Desktops</a></li>
         <li><a href="${pageContext.request.contextPath}/Product/GetProducts.do?page=1&idproducttype=1">Promotions</a></li>
-    </ul>
+        <c:if test = "${sessionScope.Account != null}">
+			<c:if test="${sessionScope.Account.accounttype.id==1}">
+				<li><a href="">Admin manager</a>
+					<ul>
+						<li><a href="${pageContext.request.contextPath}/Customer/Administrator/GetCustomer.do?page=1">Customers</a></li>
+						<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do?page=1">Products</a></li>
+						<li><a href="${pageContext.request.contextPath}/Product/Admin/ProductManager.do">Promotions</a></li>
+						<li><a href="${pageContext.request.contextPath}/Order/Administrator/Index.do">Orders</a></li>
+					</ul></li>
+			</c:if>
+		</c:if>
+	</ul>
 </nav><!--end:grey-->

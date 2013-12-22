@@ -153,8 +153,9 @@
 		<a href="${pageContext.request.contextPath}/Home/Index.do">Best
 			Buy</a>
 	</h1>
-	<form action="#" method="post" class="search_bar">
+	<form action="${pageContext.request.contextPath}/Product/GetProducts.do" method="get" class="search_bar">
 		<fieldset>
+			<input type="hidden" value = "1" name = "page"/>
 			<input type="text" name="search" class="search"
 				value="Enter a keywords..."
 				onBlur="if (this.value == '') {

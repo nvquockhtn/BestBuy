@@ -6,6 +6,7 @@ package com.bestbuy.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,8 @@ import com.bestbuy.pojo.Orderstate;
 @Controller
 @RequestMapping("/Order")
 public class OrderController {
+	private static final Logger logger = Logger.getLogger(OrderController.class);
+	
 	ApplicationContext context = new ClassPathXmlApplicationContext(
 			"beans-hibernate.xml");
 	OrderDao orderDao = (OrderDao) context.getBean("orderDao");
@@ -57,6 +60,11 @@ public class OrderController {
 		model.addAttribute("MyOrders",
 				orderDao.getOrdersByAccountId(account.getId()));
 		model.addAttribute("OrderFilterModel", new OrderFilterModel());
+		
+		/*Begin Log*/
+		logger.warn(account.getUsername() + " xem danh sach don dat hang");
+		/*End Log*/
+		
 		return "MyOrder";
 	}
 
@@ -72,19 +80,29 @@ public class OrderController {
 
 		updateOrder(orderId, account, 2);
 
+		/*Begin Log*/
+		logger.warn(account.getUsername() + " cancel don dat hang, id don dat hang: " + orderId);
+		/*End Log*/
+		
 		return "redirect:/Order/Index.do";
 	}
 
 	@RequestMapping(value = { "/Reactive.do" }, method = RequestMethod.GET)
 	public String reactiveByCustomer(@RequestParam("orderId") Integer orderId,
-			Model model, HttpSession session) {
+			Model model, HttpSession session,
+			final RedirectAttributes redirectAttributes) {
 		Account account = (Account) session.getAttribute("Account");
 		if (account == null) {
-			return "redirect:/Account/GetLogin.do";
+			redirectAttributes.addAttribute("orderId", orderId);
+			return "redirect:/Order/Reactive.do";
 		}
 
 		updateOrder(orderId, account, 5); // dang cho xac nhan
-
+		
+		/*Begin Log*/
+		logger.warn(account.getUsername() + " reactive don dat hang, id don dat hang: " + orderId);
+		/*End Log*/
+		
 		return "redirect:/Order/Index.do";
 	}
 

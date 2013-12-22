@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,8 @@ import com.bestbuy.pojo.Producttype;
 @Controller
 @RequestMapping("/Product")
 public class ProductController {
+	private static final Logger logger = Logger.getLogger(ProductController.class);	
+	
 	ApplicationContext context = new ClassPathXmlApplicationContext(
 			"beans-hibernate.xml");
 	ProductDao productDao = (ProductDao) context.getBean("productDao");

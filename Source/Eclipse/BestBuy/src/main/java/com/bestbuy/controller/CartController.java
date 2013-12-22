@@ -191,8 +191,9 @@ public class CartController {
 					Order order = createOrderInfor(acc, receiver, shopCart);
 					createOrderDetail(order,shopCart);
 					session.removeAttribute("ShoppingCart");
-					String s = "redirect:/Account/HistoryCheckout.do?idOrder=" +order.getId(); 
-					return "redirect:/Account/HistoryCheckout.do";
+					int a = order.getId();
+					String s = "redirect:/Cart/HistoryCheckout.do?idOrder=" +order.getId(); 
+					return s;
 				}else
 				{
 					return "Checkout";

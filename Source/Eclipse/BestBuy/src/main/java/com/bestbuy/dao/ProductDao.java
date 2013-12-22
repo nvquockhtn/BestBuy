@@ -13,7 +13,6 @@ import com.bestbuy.pojo.Product;
  * @author VanQuoc-CNTT
  */
 public interface ProductDao {
-    public ArrayList<Product> getListDiscountProducts();
     /**
      * 
      * @param type Neu type = 1 la Laptop
@@ -27,4 +26,6 @@ public interface ProductDao {
 	public Product getProductById(Integer maSp);
 	public int searchProductBy(String nameProduct,int idtypemanufacturer,int idtypeproduct, int pricefrom, int pricend, int idtypestate, int page, int numberinpage);
 	public boolean updateProduct(Product product);
+	public ArrayList<Product> getProductDiscountDesc();
+	public ArrayList<Product> getProductNew();
 }

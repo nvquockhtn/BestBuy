@@ -67,60 +67,70 @@
             </ul>
         </div><!--end:list_work-->
     </section>
-    <aside class="sidebar">
+        <aside class="sidebar">
         <div class="side">
-            <h4>Bestsellers</h4>
-            <div class="entry">
-                <div class="da-thumbs">
-                    <div>
-                        <img src="${pageContext.request.contextPath}/resources/images/products/thumb-1.jpg" alt="">
-                        <article class="da-animate da-slideFromRight" style="display: block;">
-                            <p><a href="product-detail.html" class="link"></a></p>
-                        </article>
-                    </div>
-                </div>
-                <h3><a href="product-detail.html">Athletic Shoes</a></h3>
-                <small>$59.95</small>
-            </div>
-            <div class="entry">
-                <div class="da-thumbs">
-                    <div>
-                        <img src="${pageContext.request.contextPath}/resources/images/products/thumb-2.jpg" alt="">
-                        <article class="da-animate da-slideFromRight" style="display: block;">
-                            <p><a href="product-detail.html" class="link"></a></p>
-                        </article>
-                    </div>
-                </div>
-                <h3><a href="product-detail.html">Athletic Shoes</a></h3>
-                <small>$59.95</small>
-            </div>
+            <h4>Category</h4>
+            <ul class="cat">
+                <li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=1">Laptops</a></li>
+                <li><a href="${pageContext.request.contextPath}/Product/GetProducts.do/?page=1">Tablets</a></li>
+                <li><a href="#">Desktops</a></li>
+                <!-- <li><a href="#">Men's Shoes</a></li>
+                <li><a href="#">Women's Shoes</a></li> -->
+            </ul>
         </div><!--end:side-->
         <div class="side">
-            <h4>Recent Blog</h4>
-            <div class="entry">
+            <h4>Promotions</h4>
+            <c:forEach items = "${requestScope.listProductDiscountDescs}" var = "item">
+	            <div class="entry">
+	                <div class="da-thumbs">
+	                    <div>
+	                    <c:set var="imageURL"/>
+			            		<c:forEach var="itemImage" items="${item.getImages().iterator()}">
+			            			<c:if test="${itemImage.typeId == 1}">
+										<c:set var="imageURL" value="${itemImage}" />
+									</c:if>
+            					</c:forEach>
+	                        <img src="${pageContext.request.contextPath}/resources/images/${imageURL.path}" alt="" width="85px" height="75px">
+	                        <article class="da-animate da-slideFromRight" style="display: block;">
+	                            <p><a href="product-detail.html" class="link"></a></p>
+	                        </article>
+	                    </div>
+	                </div>
+	                <h3><a href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.id}">${item.name }</a></h3>
+	                <small style="font-size: 10px">
+	                <fmt:formatNumber type="number"
+								value="${item.price}" /> VND
+	                </small>
+	            </div>
+            </c:forEach>
+        </div><!--end:side-->
+        <div class="side">
+            <h4>News</h4>
+            <c:forEach var="item" items ="${requestScope.listProductNews }">
+            	<c:set var="imageURL"/>
+			            		<c:forEach var="itemImage" items="${item.getImages().iterator()}">
+			            			<c:if test="${itemImage.typeId == 1}">
+										<c:set var="imageURL" value="${itemImage}" />
+									</c:if>
+            					</c:forEach>
+            	<div class="entry">
                 <div class="da-thumbs">
                     <div>
-                        <img src="${pageContext.request.contextPath}/resources/images/products/thumb-1.jpg" alt="">
+                        <img src="${pageContext.request.contextPath}/resources/images/${imageURL.path}" alt="">
                         <article class="da-animate da-slideFromRight" style="display: block;">
                             <p><a href="blog.html" class="link"></a></p>
                         </article>
                     </div>
                 </div>
-                <h3><a href="blog.html">Pellentesque habitant morbi..</a></h3>
-                <span><a href="blog.html">Posted on:02/28/13</a></span>
+                <h3><a href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.id}" >
+                	${item.name}
+                </a></h3>
+                <small style="font-size: 10px">
+	                <fmt:formatNumber type="number"
+								value="${item.price}" /> VND
+	                </small>
             </div>
-            <div class="entry">
-                <div class="da-thumbs">
-                    <div>
-                        <img src="${pageContext.request.contextPath}/resources/images/products/thumb-2.jpg" alt="">
-                        <article class="da-animate da-slideFromRight" style="display: block;">
-                            <p><a href="blog.html" class="link"></a></p>
-                        </article>
-                    </div>
-                </div>
-                <h3><a href="blog.html">Pellentesque habitant morbi ...</a></h3>
-                <span><a href="blog.html">Posted on:02/28/13</a></span>
-            </div>
+            </c:forEach>
         </div><!--end:side-->
         <div class="side">
             <h4>Our Customer Love Us!</h4>

@@ -7,6 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <div class="container-2">
     <section class="content">
@@ -99,7 +100,9 @@
                     <em>Category: <a href="#">${item.producttype.name }</a></em>
                 </section>
                 <section class="right">
-                    <span class="price"><small>Price: </small>&nbsp;&nbsp; ${item.price}</span>
+                
+                    <span class="price"><small style = "text-decoration: none;">Price: </small>&nbsp;&nbsp; <fmt:formatNumber type="number"
+								value="${item.price}" /> VND</span>
                     <ul class="menu-button">
                         <li><a href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${item.id}" class="cart tip" title="Add to Cart"></a></li>
                         <li><a href="${pageContext.request.contextPath}/resources/images/${imageURL.path}" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom"></a></li>

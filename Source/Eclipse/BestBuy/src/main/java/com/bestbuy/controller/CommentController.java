@@ -65,6 +65,11 @@ public class CommentController {
 		comment.setRating(rating);
 		
 		commentDao.add(comment);
+		
+		/*Begin Log*/
+		logger.warn(account.getUsername() + " comment san pham id: " + commnentModel.getProductId() + "rating: " + rating);
+		/*End Log*/
+		
 		return "redirect:/Product/Detail.do?maSP=" + commnentModel.getProductId();
 	}
 }

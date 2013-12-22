@@ -89,8 +89,8 @@
                         <article class="da-animate da-slideFromRight" style="display: block;">
                             <h3>${item.name}</h3>
                             <p>
-                                <a href="product-detail.html" class="link tip" title="View Detail"></a>&nbsp;
-                                <a href="cart.html" class="cart tip" title="Add to cart"></a>&nbsp;&nbsp;
+                                <a href="${pageContext.request.contextPath}/Product/Detail.do?maSP=${item.id}" class="link tip" title="View Detail"></a>&nbsp;
+                                <a href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${item.id}" class="cart tip" title="Add to cart"></a>&nbsp;&nbsp;
                                 <a href="${pageContext.request.contextPath}/resources/images/${imageURL.path}" rel="prettyPhoto[gallery1]" class="zoom tip" title="Zoom" ></a></p>
                         </article>
                     </section>
@@ -115,7 +115,7 @@
 							</c:when>
 							<c:otherwise>
 								<li><a href="${pageContext.request.contextPath}/Cart/Add.do?maSP=${item.id}" class="cart tip" title="Add to Cart"></a></li>
-		                        <li><a href="wishlist.html" class="wishlist tip" title="Add to Wishlist"></a></li>
+		                        <li><a href="${pageContext.request.contextPath}/WishList/Add.do?maSP=${item.id}" class="wishlist tip" title="Add to Wishlist"></a></li>
 		                        <li><a href="${pageContext.request.contextPath}/ProductCompare/AddProductToListCompare.do?idProduct=${item.id}" class="compare tip" title="Compare"></a></li>                        
 		                    	
 							</c:otherwise>

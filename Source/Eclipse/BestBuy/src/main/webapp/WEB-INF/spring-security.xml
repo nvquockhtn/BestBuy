@@ -15,6 +15,8 @@
 		<intercept-url pattern="/Cart/*" access="ROLE_CUSTOMER" />
 		<intercept-url pattern="/Order/*" access="ROLE_CUSTOMER" />
 		<intercept-url pattern="/Account/Index.do" access="ROLE_CUSTOMER" />
+		
+<!-- 		<intercept-url pattern="/Product/Admin/*" access="ROLE_ADMIN" /> -->
 
 		<form-login login-page="/Account/GetLogin.do"
 			default-target-url="/Home/Index.do" authentication-failure-url="/Account/GetLogin.do" />

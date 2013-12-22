@@ -1,17 +1,22 @@
 package com.bestbuy.controller;
 
 import java.util.ArrayList;
+import java.util.Set;
+
+import javax.validation.Valid;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bestbuy.dao.BestBuyHelperDao;
+import com.bestbuy.dao.ImageDao;
 import com.bestbuy.dao.ManufacturerDao;
 import com.bestbuy.dao.Price;
 import com.bestbuy.dao.PriceDao;
@@ -21,6 +26,7 @@ import com.bestbuy.dao.ProducttypeDao;
 import com.bestbuy.model.ProductChangeModel;
 import com.bestbuy.model.ProductModel;
 import com.bestbuy.pojo.Comment;
+import com.bestbuy.pojo.Image;
 import com.bestbuy.pojo.Manufacturer;
 import com.bestbuy.pojo.Product;
 import com.bestbuy.pojo.Productstate;
@@ -32,21 +38,24 @@ public class ProductController {
 	ApplicationContext context = new ClassPathXmlApplicationContext(
 			"beans-hibernate.xml");
 	ProductDao productDao = (ProductDao) context.getBean("productDao");
-	ProductstateDao productstateDao = (ProductstateDao) context.getBean("productstateDao");
+	ProductstateDao productstateDao = (ProductstateDao) context
+			.getBean("productstateDao");
 	ProducttypeDao producttypeDao = (ProducttypeDao) context
 			.getBean("producttypeDao");
 	ManufacturerDao manufacturerDao = (ManufacturerDao) context
 			.getBean("manufacturerDao");
+	ImageDao imageDao = (ImageDao) context.getBean("imageDao");
+	PriceDao priceDao = new PriceDao();
+
 	ArrayList<Manufacturer> listManufacturers = manufacturerDao
 			.getListManufacturers();
 	ArrayList<Producttype> lisProducttypes = producttypeDao
 			.getListProducttypes();
-	PriceDao priceDao = new PriceDao();
 	ArrayList<Price> listFromPrices = priceDao.getListFromPrices();
 	ArrayList<Price> listEndPrices = priceDao.getListEndPrices();
-	ArrayList<Productstate> listProductstates = productstateDao.getListProductstates();
-	
-	
+	ArrayList<Productstate> listProductstates = productstateDao
+			.getListProductstates();
+
 	private String searchNameSelected = "";
 	private int manufacturerSelected = -1;
 	private int producttypeSelected = -1;
@@ -54,10 +63,11 @@ public class ProductController {
 	private int frompriceSelected = -1;
 	private int endpriceSelected = -1;
 	private int pageSelected = 1;
-	
+
 	private int pageCount = 0;
 	private int numberOnPage = 2;
 	private boolean flagProductChange = false;
+
 	public ProductController() {
 	}
 
@@ -65,15 +75,16 @@ public class ProductController {
 	public String Detail(@RequestParam("maSP") Integer maSP, Model model) {
 
 		Product product = productDao.getProductById(maSP);
-		
+
 		float totalRating = 0;
 		float avarageRating = 0;
 		for (Comment item : product.getComments()) {
 			totalRating += item.getRating();
 		}
-		avarageRating = totalRating/ ((product.getComments().size() == 0) ? 1 : product.getComments().size());
-		
-		
+		avarageRating = totalRating
+				/ ((product.getComments().size() == 0) ? 1 : product
+						.getComments().size());
+
 		model.addAttribute("Product", product);
 		model.addAttribute("AvarageRating", avarageRating);
 		return "ProductDetail";
@@ -103,9 +114,11 @@ public class ProductController {
 		model.addAttribute("pageCount", pageCount);
 		return "Product";
 	}
-	
+
 	@RequestMapping(value = { "/Admin/ProductManager.do" }, method = RequestMethod.GET)
-	public String getListProductAdmin(@ModelAttribute("product") ProductModel form,@ModelAttribute("productStateChange") ProductChangeModel formChange,
+	public String getListProductAdmin(
+			@ModelAttribute("product") ProductModel form,
+			@ModelAttribute("productStateChange") ProductChangeModel formChange,
 			Model model) {
 
 		
@@ -114,9 +127,8 @@ public class ProductController {
 		model.addAttribute("listFromPrices", listFromPrices);
 		model.addAttribute("listEndPrices", listEndPrices);
 		model.addAttribute("listProductstates", listProductstates);
-		
-		if(flagProductChange==true)
-		{
+
+		if (flagProductChange == true) {
 			form.setEndprice(endpriceSelected);
 			form.setFromprice(frompriceSelected);
 			form.setIdmanufacturer(manufacturerSelected);
@@ -125,8 +137,7 @@ public class ProductController {
 			form.setPage(pageSelected);
 			form.setSearch(searchNameSelected);
 			flagProductChange = false;
-		}else
-		{
+		} else {
 			searchNameSelected = "";
 			manufacturerSelected = -1;
 			producttypeSelected = -1;
@@ -140,10 +151,9 @@ public class ProductController {
 		producttypeSelected = form.getIdproducttype();
 		frompriceSelected = form.getFromprice();
 		endpriceSelected = form.getEndprice();
-		searchNameSelected  = form.getSearch();
+		searchNameSelected = form.getSearch();
 		pageSelected = form.getPage();
-		
-		
+
 		model.addAttribute("manufacturerSelected", manufacturerSelected);
 		model.addAttribute("productstateSelected", productstateSelected);
 		model.addAttribute("producttypeSelected", producttypeSelected);
@@ -151,7 +161,7 @@ public class ProductController {
 		model.addAttribute("endpriceSelected", endpriceSelected);
 		model.addAttribute("searchNameSelected", searchNameSelected);
 		model.addAttribute("pageSelected", pageSelected);
-		
+
 		pageCount = 0;
 		int pageCountTemp = productDao.searchProductBy(form.getSearch(),
 				form.getIdmanufacturer(), form.getIdproducttype(),
@@ -168,9 +178,10 @@ public class ProductController {
 		model.addAttribute("pageCount", pageCount);
 		return "ProductManager";
 	}
-	
+
 	@RequestMapping(value = { "/Admin/ProductChangeState.do" }, method = RequestMethod.POST)
-	public String productChangeState(@ModelAttribute("productStateChange") ProductChangeModel form,
+	public String productChangeState(
+			@ModelAttribute("productStateChange") ProductChangeModel form,
 			Model model) {
 
 		manufacturerSelected = form.getIdmanufacturerChange();
@@ -178,20 +189,183 @@ public class ProductController {
 		producttypeSelected = form.getIdproducttypeChange();
 		frompriceSelected = form.getFrompriceChange();
 		endpriceSelected = form.getEndpriceChange();
-		searchNameSelected  = form.getSearchChange();
+		searchNameSelected = form.getSearchChange();
 		flagProductChange = true;
-		//Do something and redirect to getListProductAdmin.do
+		// Do something and redirect to getListProductAdmin.do
 		Product productUpdate = new Product();
 		productUpdate = productDao.getProductById(form.getIdChange());
-		if(productUpdate!=null)
-		{
-			Productstate productstate = productstateDao.getProductstateById(form.getIdproductstateChange());
+		if (productUpdate != null) {
+			Productstate productstate = productstateDao
+					.getProductstateById(form.getIdproductstateChange());
 			productUpdate.setProductstate(productstate);
 			productUpdate.setDiscount(form.getDiscountChange());
 			productDao.updateProduct(productUpdate);
 		}
 		return "redirect:/Product/Admin/ProductManager.do";
 	}
-	
 
+	@RequestMapping(value = { "/Admin/Add.do" }, method = RequestMethod.GET)
+	public String getAddProductAdmin(
+			@ModelAttribute("productModel") ProductModel form, Model model) {
+
+		return "AddProduct";
+	}
+		
+
+	@RequestMapping(value = { "/Admin/Add.do" }, method = RequestMethod.POST)
+	public String postAddProductAdmin(
+			@ModelAttribute("productModel") @Valid ProductModel form,
+			BindingResult result, Model model) {
+
+		if (result.hasErrors())
+			return "AddProduct";
+		
+		
+		Product product = new Product();
+		product.setName(form.getName());
+		product.setOverview(form.getOverview());
+		product.setDiscount(form.getDiscount());
+		product.setPrice(form.getPrice());
+		product.setSpecification(form.getSpecification());
+		product.setProducttype(producttypeDao.getProducttypeById(form
+				.getIdproducttype()));
+		product.setProductstate(productstateDao.getProductstateById(form
+				.getIdproductstate()));
+		product.setManufacturer(manufacturerDao.getManufacturerById(form
+				.getIdmanufacturer()));
+		
+		productDao.saveOrUpdateProduct(product);
+		
+		Image largeImg = new Image();
+		largeImg.setPath(form.getLargeImgPath());
+		largeImg.setTypeId(2);
+		largeImg.setProduct(product);
+		
+		Image smallImg = new Image();
+		smallImg.setPath(form.getSmallImgPath());
+		smallImg.setTypeId(1);
+		smallImg.setProduct(product);
+		
+		imageDao.saveOrUpdateImage(largeImg);
+		imageDao.saveOrUpdateImage(smallImg);
+		
+		
+		return "redirect:/Product/Detail.do?maSP=" + product.getId();
+	}
+	
+	@RequestMapping(value = { "/Admin/Edit.do" }, method = RequestMethod.GET)
+	public String getEditProductAdmin(@RequestParam("productId") int productId, Model model) {
+		Product product = productDao.getProductById(productId);
+		Image[] images = new Image[2];
+		for (Image image : product.getImages()) {
+			if(image.getTypeId() == 1) 	// small image
+				images[1] = image;
+			else if(image.getTypeId() == 2)	// large image
+				images[0] = image;
+		}
+		
+		ProductModel productModel = new ProductModel();
+		productModel.setId(product.getId());
+		productModel.setName(product.getName());
+		productModel.setIdproducttype(product.getProducttype().getId());
+		productModel.setIdmanufacturer(product.getManufacturer().getId());
+		productModel.setOverview(product.getOverview());
+		productModel.setSpecification(product.getSpecification());
+		productModel.setPrice(product.getPrice());
+		productModel.setDiscount(product.getDiscount());
+		productModel.setIdproductstate(product.getProductstate().getId());
+		productModel.setLargeImgPath(images[0].getPath());
+		productModel.setSmallImgPath(images[1].getPath());
+		
+		model.addAttribute("productModel", productModel);
+		return "EditProduct";
+	}
+	
+	@RequestMapping(value = { "/Admin/Edit.do" }, method = RequestMethod.POST)
+	public String postEditProductAdmin(@RequestParam("productId") int productId,
+			@ModelAttribute("productModel") @Valid ProductModel form,
+			BindingResult result, Model model) {
+
+		if (result.hasErrors())
+			return "EditProduct";
+		
+		
+		Product product = new Product();
+		product.setId(productId);
+		product.setName(form.getName());
+		product.setOverview(form.getOverview());
+		product.setDiscount(form.getDiscount());
+		product.setPrice(form.getPrice());
+		product.setSpecification(form.getSpecification());
+		product.setProducttype(producttypeDao.getProducttypeById(form
+				.getIdproducttype()));
+		product.setProductstate(productstateDao.getProductstateById(form
+				.getIdproductstate()));
+		product.setManufacturer(manufacturerDao.getManufacturerById(form
+				.getIdmanufacturer()));
+		
+		productDao.saveOrUpdateProduct(product);
+		
+		Image largeImg = new Image();
+		Image smallImg = new Image();
+		for (Image image : imageDao.getImagesByProductId(form.getId())) {
+			if(image.getTypeId() == 1) 	// small image
+				smallImg = image;
+			else if(image.getTypeId() == 2)	// large image
+				largeImg = image;
+		}
+		
+		largeImg.setPath(form.getLargeImgPath());
+		largeImg.setTypeId(2);
+		largeImg.setProduct(product);		
+		
+		smallImg.setPath(form.getSmallImgPath());
+		smallImg.setTypeId(1);
+		smallImg.setProduct(product);
+		
+		imageDao.saveOrUpdateImage(largeImg);
+		imageDao.saveOrUpdateImage(smallImg);
+		
+		
+		return "redirect:/Product/Detail.do?maSP=" + product.getId();
+	}
+	
+	@RequestMapping(value = { "/Admin/Delete.do" }, method = RequestMethod.GET)
+	public String getDeleteProductAdmin(@RequestParam("productId") int productId, Model model) {
+		Product product = productDao.getProductById(productId);
+		Image[] images = new Image[2];
+		for (Image image : product.getImages()) {
+			if(image.getTypeId() == 1) 	// small image
+				images[1] = image;
+			else if(image.getTypeId() == 2)	// large image
+				images[0] = image;
+		}
+		
+		ProductModel productModel = new ProductModel();
+		productModel.setId(product.getId());
+		productModel.setName(product.getName());
+		productModel.setIdproducttype(product.getProducttype().getId());
+		productModel.setIdmanufacturer(product.getManufacturer().getId());
+		productModel.setOverview(product.getOverview());
+		productModel.setSpecification(product.getSpecification());
+		productModel.setPrice(product.getPrice());
+		productModel.setDiscount(product.getDiscount());
+		productModel.setIdproductstate(product.getProductstate().getId());
+		productModel.setLargeImgPath(images[0].getPath());
+		productModel.setSmallImgPath(images[1].getPath());
+		
+		model.addAttribute("productModel", productModel);
+		return "ConfirmDeleteProduct";
+	}
+	
+	@RequestMapping(value = { "/Admin/Delete.do" }, method = RequestMethod.POST)
+	public String postDeleteProductAdmin(@ModelAttribute("productModel") ProductModel form,
+			BindingResult result, Model model) {
+
+		Product product = productDao.getProductById(form.getId());
+		productDao.deleteProduct(product);	
+		
+		
+		return "redirect:/Product/GetProducts.do";
+	}
 }

@@ -92,3 +92,11 @@ $(window).load(function() {
 	});
 	
 });
+
+//--------------Test Image--------------------
+function testImage($ele) {
+    var link = $ele.children('#link').val();
+    link = "../../resources/images/" + link;
+
+    $ele.children('img').attr("src", link);
+}

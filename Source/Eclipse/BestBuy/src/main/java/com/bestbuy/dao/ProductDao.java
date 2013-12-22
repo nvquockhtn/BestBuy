@@ -20,6 +20,9 @@ public interface ProductDao {
      * 					type = 2 la Tablet
      * @return  ArrayList<Product>
      */
+    
+    public boolean saveOrUpdateProduct(Product product);
+    public boolean deleteProduct(Product product);
     public ArrayList<Product> getListNewProducts(int type);
 	public Product getProductById(Integer maSp);
 	public int searchProductBy(String nameProduct,int idtypemanufacturer,int idtypeproduct, int pricefrom, int pricend, int idtypestate, int page, int numberinpage);

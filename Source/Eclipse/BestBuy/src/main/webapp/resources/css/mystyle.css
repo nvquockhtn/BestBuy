@@ -97,5 +97,110 @@ table.shopping-cart tr td button.update {
 	cursor: pointer;
 }
 
-.ctrl form.left input[type="submit"]{ border:none; cursor:pointer; background:#f5640c; padding:5px 10px; color:#fff; -webkit-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px;}
-.ctrl form.left input[type="submit"]:hover{ color:#fff !important; background:#353535; -ms-transition: all 0.5s ease-in-out; -webkit-transition: all 0.5s ease-in-out; -o-transition: all 0.5s ease-in-out; -moz-transition: all 0.5s ease-in-out; transition: all 0.5s ease-in-out;}
+.ctrl form.left input[type="submit"] {
+	border: none;
+	cursor: pointer;
+	background: #f5640c;
+	padding: 5px 10px;
+	color: #fff;
+	-webkit-border-radius: 2px;
+	-khtml-border-radius: 2px;
+	border-radius: 2px;
+}
+
+.ctrl form.left input[type="submit"]:hover {
+	color: #fff !important;
+	background: #353535;
+	-ms-transition: all 0.5s ease-in-out;
+	-webkit-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.product-content {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.product-content h2 {
+	text-align: center;
+	color: orange;
+	font-weight: bold;
+}
+
+.product-content .editor-label {
+	color: blue;
+	font-weight: bold;
+	margin-top: 30px;
+}
+
+.product-content .editor-field {
+	
+}
+
+.product-content .editor-field select {
+	width: 29%;
+	background: rgb(255, 255, 255);
+	!
+	important
+}
+
+.product-content .editor-field input {
+	width: 29%;
+}
+
+.product-content .editor-field textarea {
+	width: 100%;
+	height: 100px;
+}
+
+.product-content .editor-field .test {
+	width: 70px;
+}
+
+.product-content .editor-field img {
+	margin: 15px auto;
+	max-width: 700px;
+}
+
+#submit-button {
+	height: 50px;
+	width: 100px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	color: white;
+	padding: 5px;
+	background: rgb(245, 100, 12);
+	border: 0px;
+	border-radius: 2px;
+}
+
+#submit-button:hover {
+	background: #353535;
+}
+
+.button_test {
+	color: white;
+	padding: 5px;
+	background: rgb(245, 100, 12);
+	border: 0px;
+	border-radius: 2px;
+}
+
+.button_test:hover {
+	background: #353535;
+}
+
+#xoa_sp {
+    color: white;
+padding: 5px;
+background: rgb(245,100,12);
+border: 0px;
+border-radius: 2px;
+}
+#xoa_sp:hover {
+   background: #353535;  
+}
+/*End*/

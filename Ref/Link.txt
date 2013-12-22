@@ -16,3 +16,7 @@ http://www.particlewave.com/2013/06/09/spring-security-part-i-spring-authenticat
 http://stackoverflow.com/questions/12371770/spring-mvc-checking-if-user-is-already-logged-in-via-spring-security
 http://viralpatel.net/blogs/spring-mvc-flash-attribute-example/
 http://www.mkyong.com/hibernate/hibernate-criteria-examples/
+http://www.mkyong.com/spring-mvc/spring-mvc-file-upload-example/
+http://www.beingjavaguys.com/2013/08/spring-mvc-file-upload-example.html
+http://docs.cksource.com/CKEditor_3.x/Developers_Guide/Java/Integration
+http://stackoverflow.com/questions/3782953/unicode-characters-are-being-saved-incorrectly

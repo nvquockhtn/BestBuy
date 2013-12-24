@@ -1,6 +1,9 @@
 package com.bestbuy.controller;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Set;
 
 import javax.validation.Valid;
@@ -24,14 +27,17 @@ import com.bestbuy.dao.PriceDao;
 import com.bestbuy.dao.ProductDao;
 import com.bestbuy.dao.ProductstateDao;
 import com.bestbuy.dao.ProducttypeDao;
+import com.bestbuy.dao.PromotionDao;
 import com.bestbuy.model.ProductChangeModel;
 import com.bestbuy.model.ProductModel;
+import com.bestbuy.model.PromotionModel;
 import com.bestbuy.pojo.Comment;
 import com.bestbuy.pojo.Image;
 import com.bestbuy.pojo.Manufacturer;
 import com.bestbuy.pojo.Product;
 import com.bestbuy.pojo.Productstate;
 import com.bestbuy.pojo.Producttype;
+import com.bestbuy.pojo.Promotion;
 
 @Controller
 @RequestMapping("/Product")
@@ -48,6 +54,9 @@ public class ProductController {
 	ManufacturerDao manufacturerDao = (ManufacturerDao) context
 			.getBean("manufacturerDao");
 	ImageDao imageDao = (ImageDao) context.getBean("imageDao");
+	PromotionDao promotionDao = (PromotionDao) context.getBean("promotionDao");
+	
+	
 	PriceDao priceDao = new PriceDao();
 
 	ArrayList<Manufacturer> listManufacturers = manufacturerDao
@@ -58,6 +67,8 @@ public class ProductController {
 	ArrayList<Price> listEndPrices = priceDao.getListEndPrices();
 	ArrayList<Productstate> listProductstates = productstateDao
 			.getListProductstates();
+	ArrayList<Promotion> listPromotions  = promotionDao.getListPromotions();
+	
 	
 	ArrayList<Product> listProductDiscountDescs = productDao.getProductDiscountDesc();
 	ArrayList<Product> listProductNews = productDao.getProductNew();
@@ -69,14 +80,96 @@ public class ProductController {
 	private int frompriceSelected = -1;
 	private int endpriceSelected = -1;
 	private int pageSelected = 1;
+	private int promotionSelected = -1;
 
 	private int pageCount = 0;
 	private int numberOnPage = 2;
 	private boolean flagProductChange = false;
-
+	private String notify = "";
 	public ProductController() {
 	}
 
+	@RequestMapping(value = { "/Admin/IndexPromotion.do" }, method = RequestMethod.GET)
+	public String indexPromotionManager(Model model, @RequestParam("page") Integer page)
+	{
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		int pageCountTemp = promotionDao.searchPromotionBy("",date,date, page, numberOnPage);
+		
+		if (pageCountTemp > 0) {
+			if (pageCountTemp % numberOnPage == 0) {
+				pageCount = (int) pageCountTemp / numberOnPage;
+			} else {
+				pageCount = ((int) pageCountTemp / numberOnPage) + 1;
+			}
+		}
+		model.addAttribute("listPromotions", BestBuyHelperDao.listPromotions);
+		model.addAttribute("pageCount", pageCount);
+		model.addAttribute("page", page);
+		model.addAttribute("notify", notify);
+		notify = "";
+		return "IndexPromotionManager";
+	}
+	@RequestMapping(value = { "/Admin/GetAddPromotion.do" }, method = RequestMethod.GET)
+	public String getAddPromotionManger(Model model, @ModelAttribute("Promotion") Promotion promotion)
+	{
+		model.addAttribute("notify", notify);
+		notify = "";
+		return "AddPromotionManager";
+	}
+	@RequestMapping(value = { "/Admin/PostAddPromotion.do" }, method = RequestMethod.POST)
+	public String postAddPromotionManger(Model model, @ModelAttribute("Promotion") @Valid PromotionModel promotion,BindingResult result)
+	{
+		if(result.hasErrors())
+			return "AddPromotionManager";
+		
+		if(promotionDao.checkPromotionExistByName(promotion.getName())==true)
+		{
+			//da ton tai
+			notify = "Name promotion had been exist";
+			return "redirect:/Product/Admin/GetAddPromotion.do";
+		}else
+		{
+			try
+			{
+				SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+				Promotion promotiontemp  = new Promotion();
+				Date datestart = formatter.parse(promotion.getDatestart());
+				Date dateend = formatter.parse(promotion.getDateend());
+				promotiontemp.setDateend(dateend);
+				promotiontemp.setDatestart(datestart);
+				promotiontemp.setDescription(promotion.getDescription());
+				promotiontemp.setName(promotion.getName());
+				promotionDao.addPromotion(promotiontemp);
+				notify = "Add promotion sussecfully";
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return "redirect:/Product/Admin/IndexPromotion.do?page=1";
+	}
+	@RequestMapping(value = { "/Admin/DeletePromotion.do" }, method = RequestMethod.GET)
+	public String deletePromotionManager(@RequestParam("idPromotion") Integer idPromotion, Model model)
+	{
+		ArrayList<Product> listProductOfPromotions = productDao.getProductByIdPromotion(idPromotion);
+		if(listProductOfPromotions!=null)
+		{
+			for(int i=0;i<listProductOfPromotions.size();i++)
+			{
+				Product product = listProductOfPromotions.get(i);
+				product.setDiscount((float) 0.0);
+				product.setPromotion(null);
+				productDao.updateProductInfoPromotion(product);
+			}
+			promotionDao.deletePromotionById(idPromotion);
+			notify = "Product in promotion had been reset sussecfully";
+		}else
+		{
+			notify = "No product had been reset";
+		}
+		return "redirect:/Product/Admin/IndexPromotion.do?page=1";
+	}
+	
 	@RequestMapping(value = { "/Detail.do" }, method = RequestMethod.GET)
 	public String Detail(@RequestParam("maSP") Integer maSP, Model model) {
 
@@ -147,6 +240,7 @@ public class ProductController {
 		model.addAttribute("listFromPrices", listFromPrices);
 		model.addAttribute("listEndPrices", listEndPrices);
 		model.addAttribute("listProductstates", listProductstates);
+		model.addAttribute("listPromotions", listPromotions);
 
 		if (flagProductChange == true) {
 			form.setEndprice(endpriceSelected);
@@ -154,8 +248,10 @@ public class ProductController {
 			form.setIdmanufacturer(manufacturerSelected);
 			form.setIdproductstate(productstateSelected);
 			form.setIdproducttype(producttypeSelected);
+			form.setIdpromotion(promotionSelected);
 			form.setPage(pageSelected);
 			form.setSearch(searchNameSelected);
+			form.setProductId(promotionSelected);
 			flagProductChange = false;
 		} else {
 			searchNameSelected = "";
@@ -165,6 +261,7 @@ public class ProductController {
 			frompriceSelected = -1;
 			endpriceSelected = -1;
 			pageSelected = 1;
+			promotionSelected=-1;
 		}
 		manufacturerSelected = form.getIdmanufacturer();
 		productstateSelected = form.getIdproductstate();
@@ -172,6 +269,7 @@ public class ProductController {
 		frompriceSelected = form.getFromprice();
 		endpriceSelected = form.getEndprice();
 		searchNameSelected = form.getSearch();
+		promotionSelected = form.getIdpromotion();
 		pageSelected = form.getPage();
 
 		model.addAttribute("manufacturerSelected", manufacturerSelected);
@@ -181,12 +279,13 @@ public class ProductController {
 		model.addAttribute("endpriceSelected", endpriceSelected);
 		model.addAttribute("searchNameSelected", searchNameSelected);
 		model.addAttribute("pageSelected", pageSelected);
-
+		model.addAttribute("promotionSelected", promotionSelected);
+		
 		pageCount = 0;
-		int pageCountTemp = productDao.searchProductBy(form.getSearch(),
+		int pageCountTemp = productDao.searchAdminProductBy(form.getSearch(),
 				form.getIdmanufacturer(), form.getIdproducttype(),
 				form.getFromprice(), form.getEndprice(),
-				form.getIdproductstate(), form.getPage(), numberOnPage);
+				form.getIdproductstate(),form.getIdpromotion(), form.getPage(), numberOnPage);
 		model.addAttribute("listProducts", BestBuyHelperDao.listProducts);
 		if (pageCountTemp > 0) {
 			if (pageCountTemp % numberOnPage == 0) {
@@ -212,6 +311,9 @@ public class ProductController {
 		frompriceSelected = form.getFrompriceChange();
 		endpriceSelected = form.getEndpriceChange();
 		searchNameSelected = form.getSearchChange();
+		promotionSelected = form.getIdpromotionChange();
+		
+		
 		flagProductChange = true;
 		// Do something and redirect to getListProductAdmin.do
 		Product productUpdate = new Product();

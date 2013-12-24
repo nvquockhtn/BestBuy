@@ -20,9 +20,15 @@ public class ProductModel {
     private int fromprice = -1;
     private int endprice = -1;
     private int page = 1;
+    private int idpromotion=-1;
     
-    
-    private String name;
+    public int getIdpromotion() {
+		return idpromotion;
+	}
+	public void setIdpromotion(int idpromotion) {
+		this.idpromotion = idpromotion;
+	}
+	private String name;
     /**
 	 * @return the name
 	 */

@@ -15,4 +15,5 @@
   <table-filter match-name="accounttype"/>
   <table-filter match-name="orderstate"/>
   <table-filter match-name="producttype"/>
+  <table-filter match-name="promotion"/>
 </hibernate-reverse-engineering>

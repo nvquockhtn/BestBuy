@@ -28,4 +28,8 @@ public interface ProductDao {
 	public boolean updateProduct(Product product);
 	public ArrayList<Product> getProductDiscountDesc();
 	public ArrayList<Product> getProductNew();
+	
+	public ArrayList<Product> getProductByIdPromotion(int idPromotion);
+	public boolean updateProductInfoPromotion(Product product);
+	public int searchAdminProductBy(String nameProduct,int idtypemanufacturer,int idtypeproduct, int pricefrom, int pricend, int idtypestate,int idpromotion, int page, int numberinpage);
 }

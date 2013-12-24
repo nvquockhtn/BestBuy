@@ -19,6 +19,7 @@
     <mapping class="com.bestbuy.pojo.Accounttype"/>
     <mapping class="com.bestbuy.pojo.Order"/>
     <mapping class="com.bestbuy.pojo.Comment"/>   
-    <mapping class="com.bestbuy.pojo.Accessorydetail"/> 
+    <mapping class="com.bestbuy.pojo.Accessorydetail"/>
+    <mapping class="com.bestbuy.pojo.Promotion"/> 
   </session-factory>
 </hibernate-configuration>

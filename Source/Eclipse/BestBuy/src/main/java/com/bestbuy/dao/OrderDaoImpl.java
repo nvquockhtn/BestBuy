@@ -65,6 +65,7 @@ public class OrderDaoImpl extends DaoSupport implements OrderDao {
 	@Transactional(readOnly = true)
 	public ArrayList<Order> getOrdersByAccountId(int id) {
 		String hql = "select distinct ord from Order ord, Account acc where ord.account.id=:accId";
+		hql += " order by ord.createDate desc";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger("accId", id);
 
@@ -89,6 +90,7 @@ public class OrderDaoImpl extends DaoSupport implements OrderDao {
 		if (stateId != -1)
 			hql += " and ord.orderstate.id=:stateId";
 
+		hql += " order by ord.createDate desc";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setInteger("accId", accId);
 

@@ -76,7 +76,7 @@
 			<div id="reviews" class="hide">
 				<h1>Best Buy Customer Reviews</h1>
 				<div class="rating-detail">
-					<div id="rate1" class="rating"></div>
+					<div id="rate1" class="rating" ></div>
 					<br /> <span>${requestScope.AvarageRating} reviews</span>
 				</div>
 

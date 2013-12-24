@@ -244,7 +244,7 @@ public class CartController {
 		order.setAccount(acc);
 		order.setTotal(total);
 		Orderstate orderstate = new Orderstate();
-		orderstate = orderStateDao.getOrderStateById(1);
+		orderstate = orderStateDao.getOrderStateById(5);
 		order.setOrderstate(orderstate);
 		
 		order.setReceiver(receiver);

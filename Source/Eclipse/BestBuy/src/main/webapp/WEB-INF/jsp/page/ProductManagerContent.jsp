@@ -54,9 +54,7 @@
 	               			</form:select>
 	            		</div>
 	            	</div>
-            	</div>
-                <div class = "formProduct" >
-	                <div class = "formSearch">
+	            	<div class = "formSearch">
 	            		<div class ="formPagg">
 	            			<label>&nbsp; &nbsp; Product type: </label>
 	            			<form:select path="idproducttype">
@@ -65,6 +63,9 @@
 	                		</form:select>
 	            		</div>
 	            	</div>
+	            	<div class="formClear"></div>
+            	</div>
+                <div class = "formProduct" >
 	            	<div class = "formSearch">
 	            		<div class ="formPagg">
 	            			<label>&nbsp; &nbsp; Product state: </label>
@@ -74,6 +75,16 @@
 	                		</form:select>
 	            		</div>
 	            	</div>
+	            	<div class = "formSearch">
+	            		<div class ="formPagg">
+	            			<label>&nbsp; &nbsp; Pomotion: </label>
+	            			<form:select path="idpromotion">
+	                			<form:option value="-1" label="-- All --"/>
+	                			<form:options items = "${requestScope.listPromotions}" itemValue="id" itemLabel="name"/>
+	                		</form:select>
+	            		</div>
+	            	</div>
+	            	<div class="formClear"></div>
                 </div>
                 <input type="submit" value="submit">
             </form:form>
@@ -109,15 +120,34 @@
                     <em>Category: <a href="#">${item.producttype.name }</a></em>
                 </section>
                 <section class="right">
-                    <span class="price"><small>Price: </small>&nbsp;&nbsp; ${item.price}</span>
+                	<c:set var = "valPrice"/>
+                	<c:if test="${item.discount!=0 }">
+                		<c:set var="valPrice" value = "${item.price*item.discount }" />
+                	</c:if>
+                	<c:if test = "${item.discount==0 }">
+                		<c:set var="valPrice" value = "${item.price}" />
+                	</c:if>
+                    <span class="price"><small style = "text-decoration: none">Price: </small>&nbsp;&nbsp; 
+                    <fmt:formatNumber type="number"
+								value="${valPrice}" /> VND
+                    </span>
                     <ul class="menu-button">
                     	<form:form modelAttribute="productStateChange" action ="${pageContext.request.contextPath}/Product/Admin/ProductChangeState.do">
                     		<div style="width: inherit; height: inherit">
                     			<label style="float:left;display:inline">Discount: </label>
                     			<form:input path="discountChange" cssStyle="display:block;float: left; width: 70px; margin-left: 10px;" value = "${item.discount}"/>
                     		</div>
-							<form:select path="idproductstateChange" onchange="submitProductStateChange('${item.id }')" cssStyle="background: none;">
+                    		<%-- <div style="width: inherit; height: inherit">
+                    			<label style="float:left;display:inline">Discount: </label>
+                    			<form:input path="discountChange" cssStyle="display:block;float: left; width: 70px; margin-left: 10px;" value = "${item.discount}"/>
+                    		</div> --%>
+							<%-- <form:select path="idproductstateChange" onchange="submitProductStateChange('${item.id }')" cssStyle="background: none;">
+									<form:option label="-- All --" value = "-1"/>
 	                				<form:options items = "${requestScope.listProductstates}" itemValue="id" itemLabel="name"/>
+							</form:select> --%>
+							<form:select path="idpromotionChange" onchange="submitProductStateChange('${item.id }')" cssStyle="background: none;">
+									<form:option label="-- None --" value = "-1"/>
+	                				<form:options items = "${requestScope.listPromotions}" itemValue="id" itemLabel="name"/>
 							</form:select>
 							<form:hidden path="idmanufacturerChange" value = "${requestScope.manufacturerSelected }"/>
 							<form:hidden path="idproductstateChange" value = "${requestScope.productstateSelected }"/>
@@ -126,6 +156,7 @@
 							<form:hidden path="endpriceChange" value = "${requestScope.endpriceSelected }"/>
 							<form:hidden path="searchChange" value = "${requestScope.searchNameSelected }"/>
 							<form:hidden path="page" value = "${requestScope.pageSelected }"/>
+							<%-- <form:hidden path="idpromotionChange" value = "${requestScope.promotionSelected }"/> --%>
 							<form:hidden path="idChange" value = "${item.id}"/>
 							<input type="submit" value = "Change" />
 						</form:form>
@@ -174,6 +205,7 @@
         		<li><a href="${pageContext.request.contextPath}/Product/Admin/ProductManager.do/?page=${requestScope.pageCount }&search=${product.search }&idmanufacturer=${product.idmanufacturer }&idproducttype=${product.idproducttype }&idproductstate=${product.idproductstate }&fromprice=${product.fromprice }&endprice=${product.endprice }"> >> </a></li>
         		
         	</c:if>
+        	<a href="${pageContext.request.contextPath}/Product/Admin/IndexPromotion.do?page=1" style="float: right;"><input type="button" value="Back" style="float: right;"></a>
         </ul>
     </section>
     <aside class="sidebar">

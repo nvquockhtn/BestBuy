@@ -57,7 +57,7 @@ public class CustomerController {
 	private boolean flagPostUpdateCustomer = false;
 	public CustomerController() {
 	}
-
+	
 	@RequestMapping(value = { "/Administrator/GetCustomer.do" }, method = RequestMethod.GET)
 	public String index(@ModelAttribute("CustomerFilterModel") AccountFilterModel customerfilterModel,@RequestParam("page") Integer page,Model model)
 	{

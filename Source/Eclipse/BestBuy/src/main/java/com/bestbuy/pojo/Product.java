@@ -39,10 +39,71 @@ public class Product implements java.io.Serializable {
 	private Set<Image> images = new HashSet<Image>(0);
 	private Set<Orderdetail> orderdetails = new HashSet<Orderdetail>(0);
 
+	private Promotion promotion;
+	@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="promotionId")
+    public Promotion getPromotion() {
+        return this.promotion;
+    }
+    
+    public void setPromotion(Promotion promotion) {
+        this.promotion = promotion;
+    }
 	public Product() {
 	}
-
-	public Product(Producttype producttype, Manufacturer manufacturer,
+	/**
+	 * Khoi tao co promotion
+	 * @param producttype
+	 * @param promotion
+	 * @param manufacturer
+	 * @param productstate
+	 * @param name
+	 * @param overview
+	 * @param specification
+	 * @param price
+	 * @param discount
+	 * @param productId
+	 * @param accessorydetailsForAccessoryId
+	 * @param accessorydetailsForProductId
+	 * @param comments
+	 * @param images
+	 * @param orderdetails
+	 */
+	public Product(Producttype producttype, Promotion promotion, Manufacturer manufacturer, Productstate productstate, String name, String overview, String specification, Integer price, Float discount, Integer productId, Set<Accessorydetail> accessorydetailsForAccessoryId, Set<Accessorydetail> accessorydetailsForProductId, Set<Comment> comments, Set<Image> images, Set<Orderdetail> orderdetails) {
+	       this.producttype = producttype;
+	       this.promotion = promotion;
+	       this.manufacturer = manufacturer;
+	       this.productstate = productstate;
+	       this.name = name;
+	       this.overview = overview;
+	       this.specification = specification;
+	       this.price = price;
+	       this.discount = discount;
+	       this.productId = productId;
+	       this.accessorydetailsForAccessoryId = accessorydetailsForAccessoryId;
+	       this.accessorydetailsForProductId = accessorydetailsForProductId;
+	       this.comments = comments;
+	       this.images = images;
+	       this.orderdetails = orderdetails;
+	    }
+	/**
+	 * Khoi tao mac dinh khong co promotion
+	 * @param producttype
+	 * @param manufacturer
+	 * @param productstate
+	 * @param name
+	 * @param overview
+	 * @param specification
+	 * @param price
+	 * @param discount
+	 * @param productId
+	 * @param accessorydetailsForAccessoryId
+	 * @param accessorydetailsForProductId
+	 * @param comments
+	 * @param images
+	 * @param orderdetails
+	 */
+public Product(Producttype producttype, Manufacturer manufacturer,
 			Productstate productstate, String name, String overview,
 			String specification, Integer price, Float discount,
 			Integer productId,

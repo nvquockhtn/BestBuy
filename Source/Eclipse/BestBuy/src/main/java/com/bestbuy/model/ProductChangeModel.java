@@ -15,7 +15,16 @@ public class ProductChangeModel {
     private int frompriceChange = -1;
     private int endpriceChange = -1;
     private int page = 1;
+    private int idpromotionChange = -1;
     
+    
+    
+	public int getIdpromotionChange() {
+		return idpromotionChange;
+	}
+	public void setIdpromotionChange(int idpromotionChange) {
+		this.idpromotionChange = idpromotionChange;
+	}
 	public int getPage() {
 		return page;
 	}

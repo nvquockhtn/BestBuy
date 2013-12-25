@@ -141,8 +141,13 @@
                     			<label style="float:left;display:inline">Discount: </label>
                     			<form:input path="discountChange" cssStyle="display:block;float: left; width: 70px; margin-left: 10px;" value = "${item.discount}"/>
                     		</div> --%>
-							<form:select path="idproductstateChange" onchange="submitProductStateChange('${item.id }')" cssStyle="background: none;">
+							<%-- <form:select path="idproductstateChange" onchange="submitProductStateChange('${item.id }')" cssStyle="background: none;">
+									<form:option label="-- All --" value = "-1"/>
 	                				<form:options items = "${requestScope.listProductstates}" itemValue="id" itemLabel="name"/>
+							</form:select> --%>
+							<form:select path="idpromotionChange" onchange="submitProductStateChange('${item.id }')" cssStyle="background: none;">
+									<form:option label="-- None --" value = "-1"/>
+	                				<form:options items = "${requestScope.listPromotions}" itemValue="id" itemLabel="name"/>
 							</form:select>
 							<form:hidden path="idmanufacturerChange" value = "${requestScope.manufacturerSelected }"/>
 							<form:hidden path="idproductstateChange" value = "${requestScope.productstateSelected }"/>
@@ -151,7 +156,7 @@
 							<form:hidden path="endpriceChange" value = "${requestScope.endpriceSelected }"/>
 							<form:hidden path="searchChange" value = "${requestScope.searchNameSelected }"/>
 							<form:hidden path="page" value = "${requestScope.pageSelected }"/>
-							<form:hidden path="idpromotionChange" value = "${requestScope.promotionSelected }"/>
+							<%-- <form:hidden path="idpromotionChange" value = "${requestScope.promotionSelected }"/> --%>
 							<form:hidden path="idChange" value = "${item.id}"/>
 							<input type="submit" value = "Change" />
 						</form:form>

@@ -51,17 +51,25 @@
 					<td class="total">${item.description }</td>
 					<td class="quantity">${item.datestart }</td>
 					<td class="quantity">${item.dateend }</td>
-					<td class="remove-update"><a
+					<td class="remove-update">
+					<a
 						href="${pageContext.request.contextPath}/Product/Admin/DeletePromotion.do?idPromotion=${item.id}"
 						class="tip remove" title="Delete"> <img
 							src="${pageContext.request.contextPath}/resources/images/remove.png"
 							alt="">
 					</a> <a
 						href="${pageContext.request.contextPath}/Product/Admin/ProductManager.do?idpromotion=${item.id}"
-						class="tip update" title="Update"> <img
+						class="tip update" title="Update products"> <img
 							src="${pageContext.request.contextPath}/resources/images/update.png"
 							alt="">
-					</a></td>
+					</a>
+					<a
+						href="${pageContext.request.contextPath}/Product/Admin/GetUpdatePromotion.do?idPromotion=${item.id}"
+						class="tip update" title="Update promotions"> <img
+							src="${pageContext.request.contextPath}/resources/images/update.png"
+							alt="">
+					</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</c:if>

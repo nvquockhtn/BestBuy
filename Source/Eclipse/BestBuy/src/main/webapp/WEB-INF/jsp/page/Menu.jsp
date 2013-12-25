@@ -106,7 +106,7 @@
 					<ul>
 						<li><a href="${pageContext.request.contextPath}/Customer/Administrator/GetCustomer.do?page=1">Customers</a></li>
 						<li><a href="${pageContext.request.contextPath}/Product/GetProducts.do?page=1">Products</a></li>
-						<li><a href="${pageContext.request.contextPath}/Product/Admin/ProductManager.do">Promotions</a></li>
+						<li><a href="${pageContext.request.contextPath}/Product/Admin/IndexPromotion.do?page=1">Promotions</a></li>
 						<li><a href="${pageContext.request.contextPath}/Order/Administrator/Index.do">Orders</a></li>
 					</ul></li>
 			</c:if>

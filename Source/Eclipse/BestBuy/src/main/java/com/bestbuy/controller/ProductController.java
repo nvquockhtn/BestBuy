@@ -115,6 +115,9 @@ public class ProductController {
 	{
 		model.addAttribute("notify", notify);
 		notify = "";
+		
+		model.addAttribute("listProductDiscountDescs", listProductDiscountDescs);
+		model.addAttribute("listProductNews", listProductNews);
 		return "AddPromotionManager";
 	}
 	@RequestMapping(value = { "/Admin/PostAddPromotion.do" }, method = RequestMethod.POST)
@@ -170,6 +173,53 @@ public class ProductController {
 		return "redirect:/Product/Admin/IndexPromotion.do?page=1";
 	}
 	
+	@RequestMapping(value = { "/Admin/GetUpdatePromotion.do" }, method = RequestMethod.GET)
+	public String getUpdatePromotionManager(@RequestParam("idPromotion") Integer idPromotion,Model model, @ModelAttribute("Promotion") PromotionModel promotion)
+	{
+		model.addAttribute("notify", notify);
+		notify = "";
+		Promotion promo  = promotionDao.getPromotionById(idPromotion);
+		promotion.setId(idPromotion);
+		promotion.setDescription(promo.getDescription());
+		promotion.setDatestart(promo.getDatestart().toString());
+		promotion.setDateend(promo.getDateend().toString());
+		
+		
+		model.addAttribute("listProductDiscountDescs", listProductDiscountDescs);
+		model.addAttribute("listProductNews", listProductNews);
+		return "UpdatePromotionManager";
+	}
+	@RequestMapping(value = { "/Admin/PostUpdatePromotion.do" }, method = RequestMethod.POST)
+	public String postUpdatePromotionManger(Model model, @ModelAttribute("Promotion") @Valid PromotionModel promotion,BindingResult result)
+	{
+		if(result.hasErrors())
+			return "UpdatePromotionManager";
+		
+		if(promotionDao.checkPromotionExistByName(promotion.getName())==true)
+		{
+			//da ton tai
+			notify = "Name promotion had been exist";
+			return "redirect:/Product/Admin/GetUpdatePromotion.do";
+		}else
+		{
+			try
+			{
+				SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+				Promotion promotiontemp  = new Promotion();
+				Date datestart = formatter.parse(promotion.getDatestart());
+				Date dateend = formatter.parse(promotion.getDateend());
+				promotiontemp.setDateend(dateend);
+				promotiontemp.setDatestart(datestart);
+				promotiontemp.setDescription(promotion.getDescription());
+				promotiontemp.setName(promotion.getName());
+				promotionDao.addPromotion(promotiontemp);
+				notify = "Update promotion sussecfully";
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return "redirect:/Product/Admin/IndexPromotion.do?page=1";
+	}
 	@RequestMapping(value = { "/Detail.do" }, method = RequestMethod.GET)
 	public String Detail(@RequestParam("maSP") Integer maSP, Model model) {
 
@@ -240,6 +290,7 @@ public class ProductController {
 		model.addAttribute("listFromPrices", listFromPrices);
 		model.addAttribute("listEndPrices", listEndPrices);
 		model.addAttribute("listProductstates", listProductstates);
+		listPromotions = promotionDao.getListPromotions();
 		model.addAttribute("listPromotions", listPromotions);
 
 		if (flagProductChange == true) {
@@ -319,9 +370,10 @@ public class ProductController {
 		Product productUpdate = new Product();
 		productUpdate = productDao.getProductById(form.getIdChange());
 		if (productUpdate != null) {
-			Productstate productstate = productstateDao
-					.getProductstateById(form.getIdproductstateChange());
-			productUpdate.setProductstate(productstate);
+			//Productstate productstate = productstateDao.getProductstateById(form.getIdproductstateChange());
+			Promotion promotion1 = promotionDao.getPromotionById(promotionSelected);
+			//productUpdate.setProductstate(productstate);
+			productUpdate.setPromotion(promotion1);
 			productUpdate.setDiscount(form.getDiscountChange());
 			productDao.updateProduct(productUpdate);
 		}

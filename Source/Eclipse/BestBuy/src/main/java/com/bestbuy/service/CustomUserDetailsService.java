@@ -34,14 +34,14 @@ public class CustomUserDetailsService implements UserDetailsService {
 		
 		Account account = accountDao.getAccountByUserName(username);
 		
-		boolean enabled = true;
+		boolean enabled = !account.getIsBlock();
 		boolean accountNonExpired = true;
 		boolean credentialsNonExpired = true;
-		boolean accountNonLocked = true;
+		boolean accountNonLocked = account.getIsActive();
 
 		return new User(
 				account.getUsername(), 
-				account.getPassword(), 
+				account.getPassword(),
 				enabled, 
 				accountNonExpired, 
 				credentialsNonExpired, 

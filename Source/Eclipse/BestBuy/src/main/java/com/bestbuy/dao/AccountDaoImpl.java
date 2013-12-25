@@ -48,7 +48,7 @@ public class AccountDaoImpl extends DaoSupport implements AccountDao {
 
     @Transactional(readOnly = true)
     public Account login(String username, String pass) {
-        String hql = "from Account a where a.username=:userName and a.password=:pass";
+        String hql = "from Account a where a.username=:userName and a.password=:pass and a.isBlock=false";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setString("userName", username);
         query.setString("pass", pass);

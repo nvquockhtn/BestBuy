@@ -140,7 +140,7 @@ public class AccountController {
 	public String getLogin(@ModelAttribute("account") AccountModel form,
 			Model model) {		
 		
-		String error = "Vui lòng điền đầy đủ các trường";
+		String error = "Failed!! Check again. Please!!";
 		model.addAttribute("Error", error);
 		return "Login";
 	}

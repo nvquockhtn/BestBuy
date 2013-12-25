@@ -161,10 +161,11 @@ public class OrderController {
 	@RequestMapping(value = { "/Administrator/Cancel.do" }, method = RequestMethod.GET)
 	public String cancelByAdmin(@RequestParam("orderId") Integer orderId,
 			Model model) {		
-
+		
 		updateOrder(orderId, null, 3);
-
 		return "redirect:/Order/Administrator/Index.do";
+//		model.addAttribute("Orders",orderDao.filterOrders(null, form.getOrderStateId(),form.getFromDate(), form.getToDate()));
+//		return "OrderManagement";
 	}
 
 	@RequestMapping(value = { "/Administrator/Reactive.do" }, method = RequestMethod.GET)

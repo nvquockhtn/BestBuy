@@ -111,7 +111,7 @@ public class ProductController {
 		return "IndexPromotionManager";
 	}
 	@RequestMapping(value = { "/Admin/GetAddPromotion.do" }, method = RequestMethod.GET)
-	public String getAddPromotionManger(Model model, @ModelAttribute("Promotion") Promotion promotion)
+	public String getAddPromotionManger(Model model, @ModelAttribute("Promotion") PromotionModel promotion)
 	{
 		model.addAttribute("notify", notify);
 		notify = "";
@@ -123,6 +123,7 @@ public class ProductController {
 	@RequestMapping(value = { "/Admin/PostAddPromotion.do" }, method = RequestMethod.POST)
 	public String postAddPromotionManger(Model model, @ModelAttribute("Promotion") @Valid PromotionModel promotion,BindingResult result)
 	{
+		
 		if(result.hasErrors())
 			return "AddPromotionManager";
 		
@@ -137,6 +138,11 @@ public class ProductController {
 			{
 				SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 				Promotion promotiontemp  = new Promotion();
+				if(promotion.getDatestart().equals("")||promotion.getDateend().equals(""))
+				{
+					notify = "Please choose date";
+					return "redirect:/Product/Admin/GetAddPromotion.do";
+				}
 				Date datestart = formatter.parse(promotion.getDatestart());
 				Date dateend = formatter.parse(promotion.getDateend());
 				promotiontemp.setDateend(dateend);
@@ -202,7 +208,8 @@ public class ProductController {
 		{
 			//da ton tai
 			notify = "Name promotion had been exist";
-			return "redirect:/Product/Admin/GetUpdatePromotion.do";
+			String s = "redirect:/Product/Admin/GetUpdatePromotion.do?idPromotion="+ promotion.getId();
+			return s;
 		}else
 		{
 			try

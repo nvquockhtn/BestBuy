@@ -181,10 +181,13 @@ public class ProductController {
 		Promotion promo  = promotionDao.getPromotionById(idPromotion);
 		promotion.setId(idPromotion);
 		promotion.setDescription(promo.getDescription());
-		promotion.setDatestart(promo.getDatestart().toString());
-		promotion.setDateend(promo.getDateend().toString());
-		
-		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+		String date1 = sdf.format(promo.getDatestart());
+		String date2 = sdf.format(promo.getDateend());
+		promotion.setDatestart(date1);
+		promotion.setDateend(date2);
+		promotion.setName(promo.getName());
+		promotion.setId(promo.getId());
 		model.addAttribute("listProductDiscountDescs", listProductDiscountDescs);
 		model.addAttribute("listProductNews", listProductNews);
 		return "UpdatePromotionManager";
@@ -208,11 +211,13 @@ public class ProductController {
 				Promotion promotiontemp  = new Promotion();
 				Date datestart = formatter.parse(promotion.getDatestart());
 				Date dateend = formatter.parse(promotion.getDateend());
+				promotiontemp.setId(promotion.getId());
 				promotiontemp.setDateend(dateend);
 				promotiontemp.setDatestart(datestart);
 				promotiontemp.setDescription(promotion.getDescription());
 				promotiontemp.setName(promotion.getName());
-				promotionDao.addPromotion(promotiontemp);
+				promotionDao.updatePromotion(promotiontemp);
+				
 				notify = "Update promotion sussecfully";
 			}catch (Exception e) {
 				e.printStackTrace();

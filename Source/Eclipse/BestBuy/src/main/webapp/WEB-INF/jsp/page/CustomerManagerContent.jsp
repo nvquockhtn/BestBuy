@@ -51,7 +51,7 @@
 					<td class="quantity">${item.email }</td>
 					<td class="remove-update"><a
 						href="${pageContext.request.contextPath}/Customer/Administrator/DeleteCustomer.do?idCustomer=${item.id}"
-						class="tip remove" title="Delete"> <img
+						class="tip remove" title="Delete" id = "deleteCustomer${item.id}" onclick="return confirmDelete('${item.id}')"> <img
 							src="${pageContext.request.contextPath}/resources/images/remove.png"
 							alt="">
 					</a> <a
@@ -64,7 +64,22 @@
 			</c:forEach>
 		</c:if>
 		</table>
-	
+	<script type="text/javascript">
+		function confirmDelete(id)
+		{
+			var r=confirm("Are you sure delete this product");
+			if (r==true)
+			  {
+					var url = "/BestBuy/Customer/Administrator/DeleteCustomer.do?idCustomer=" + id;
+			  		window.location.replace(url);
+			  		return true;
+			  }
+			else
+			  {
+			  		return false;
+			  }
+		}
+	</script>
 	<ul id="pagination">
         	<c:if test = "${requestScope.page <= requestScope.pageCount && requestScope.page >1 }" >
         		<li><a href="${pageContext.request.contextPath}/Customer/Administrator/GetCustomer.do/?page=1&fullName=${CustomerFilterModel.fullName }&email=${CustomerFilterModel.email }&isBlock=${CustomerFilterModel.isBlock}&isActice=${CustomerFilterModel.isActive}&typeid=${CustomerFilterModel.typeid}"> << </a></li>

@@ -54,13 +54,13 @@
 					<td class="remove-update">
 					<a
 						href="${pageContext.request.contextPath}/Product/Admin/DeletePromotion.do?idPromotion=${item.id}"
-						class="tip remove" title="Delete"> <img
+						class="tip remove" title="Delete" id = "deleteCustomer${item.id}" onclick="return confirmDelete('${item.id}')"> <img
 							src="${pageContext.request.contextPath}/resources/images/remove.png"
 							alt="">
 					</a> <a
 						href="${pageContext.request.contextPath}/Product/Admin/ProductManager.do?idpromotion=${item.id}"
 						class="tip update" title="Update products"> <img
-							src="${pageContext.request.contextPath}/resources/images/update.png"
+							src="${pageContext.request.contextPath}/resources/images/social-icon-dribbble.png"
 							alt="">
 					</a>
 					<a
@@ -74,6 +74,22 @@
 			</c:forEach>
 		</c:if>
 		</table>
+		<script type="text/javascript">
+		function confirmDelete(id)
+		{
+			var r=confirm("Are you sure delete this promotion");
+			if (r==true)
+			  {
+					var url = "/BestBuy/Product/Admin/DeletePromotion.do?idPromotion=" + id;
+			  		window.location.replace(url);
+			  		return true;
+			  }
+			else
+			  {
+			  		return false;
+			  }
+		}
+	</script>
 	<ul id="pagination">
         	<c:if test = "${requestScope.page <= requestScope.pageCount && requestScope.page >1 }" >
         		<li><a href="${pageContext.request.contextPath}/Product/Admin/IndexPromotion.do/?page=1&"> << </a></li>

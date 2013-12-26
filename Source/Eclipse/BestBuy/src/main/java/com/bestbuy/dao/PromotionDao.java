@@ -13,4 +13,5 @@ public interface PromotionDao {
 	public boolean addPromotion(Promotion promotion);
 	public boolean deletePromotionById(int IdPromotion);
 	public boolean checkPromotionExistByName(String name);
+	public boolean updatePromotion(Promotion promotion);
 }

@@ -18,10 +18,10 @@
 		<form:form method="post" class="form-register"
 			action="${pageContext.request.contextPath}/Product/Admin/PostUpdatePromotion.do"
 			modelAttribute="Promotion">
-			<h3>Add promotion</h3>
 			<c:if test="${requestScope.notify.equals('')==false}">
 				<h4 style="color: red;">${requestScope.notify}</h4>
 			</c:if>
+			<form:hidden path="id"/>
 			<div class="registerbox">
 				<fieldset>
 					<div class="control-group">

@@ -111,5 +111,16 @@ public class PromotionDaoImpl extends DaoSupport implements PromotionDao {
         query.setString("pName", name);
         return query.uniqueResult() != null;
 	}
+	@Transactional
+	public boolean updatePromotion(Promotion promotion) {
+		boolean kq = true;
+		try {
+			sessionFactory.getCurrentSession().saveOrUpdate(promotion);
+		} catch (Exception ex) {
+			System.out.println(ex.toString());
+			kq = false;
+		}
+		return kq;
+	}
 
 }
